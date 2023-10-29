@@ -11,7 +11,7 @@ var velocity : float
 var line
 
 func _ready():
-	line = get_node("MovementPreditionLine")
+	line = get_node("MovementPredictionLine")
 
 func _on_touch_screen_button_pressed():
 	pressed = true

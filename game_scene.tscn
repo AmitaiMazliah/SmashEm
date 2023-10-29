@@ -16,12 +16,13 @@ disable_mode = 2
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_lfmai")
 lock_rotation = true
-velocity_multiplier = 50
 
 [node name="BottomWall" type="Node2D" parent="."]
 position = Vector2(614, 2420)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BottomWall"]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall/StaticBody2D"]
 position = Vector2(-24, -23)
@@ -37,6 +38,8 @@ texture = ExtResource("1_qj2fn")
 position = Vector2(614, 70)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TopWall"]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall/StaticBody2D"]
 position = Vector2(-24, -23)
@@ -53,6 +56,8 @@ position = Vector2(34, 1884)
 scale = Vector2(0.04, 29.1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LeftWall"]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/StaticBody2D"]
 position = Vector2(-24, -23)
@@ -69,6 +74,8 @@ position = Vector2(1153, 1889)
 scale = Vector2(0.04, 29.1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="RightWall"]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall/StaticBody2D"]
 position = Vector2(-24, -23)
