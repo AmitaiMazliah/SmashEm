@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd6skvb0tvmwh"]
+
+[ext_resource type="Script" path="res://PlayerAgent.gd" id="1_q2xse"]
+[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_mpm0f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ati38"]
+radius = 6.81519
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jklvc"]
+
+[node name="PlayerAgent" type="RigidBody2D"]
+position = Vector2(604, 1189)
+gravity_scale = 0.0
+linear_damp = 3.0
+script = ExtResource("1_q2xse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(11.32, 9.48)
+shape = SubResource("CircleShape2D_ati38")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mpm0f")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_jklvc")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
