@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=6 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="Script" path="res://PlayerAgent.gd" id="1_q2xse"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_mpm0f"]
+[ext_resource type="Script" path="res://MovementPreditionLine.gd" id="3_mo3as"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ati38"]
 radius = 6.81519
@@ -24,6 +25,9 @@ texture = ExtResource("2_mpm0f")
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_jklvc")
+
+[node name="MovementPreditionLine" type="Line2D" parent="."]
+script = ExtResource("3_mo3as")
 
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
