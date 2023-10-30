@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dd6skvb0tvmwh"]
 
-[ext_resource type="Script" path="res://PlayerAgent.gd" id="1_q2xse"]
-[ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://projection-line.png" id="2_5x2du"]
-[ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="2_dqak1"]
-[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_mpm0f"]
-[ext_resource type="Script" path="res://MovementPreditionLine.gd" id="3_mo3as"]
+[ext_resource type="Script" path="res://agents/PlayerAgent.gd" id="1_pawbk"]
+[ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="2_yuxfm"]
+[ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://projection-line.png" id="3_0xy6o"]
+[ext_resource type="Script" path="res://MovementPredictionLine.gd" id="4_b3vqi"]
+[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="5_thhkc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxlbm"]
-shader = ExtResource("2_dqak1")
+shader = ExtResource("2_yuxfm")
 shader_parameter/scrolling_speed = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ati38"]
@@ -19,16 +19,16 @@ radius = 6.50077
 position = Vector2(604, 1189)
 gravity_scale = 0.0
 linear_damp = 1.0
-script = ExtResource("1_q2xse")
+script = ExtResource("1_pawbk")
 velocity_multiplier = 50
 min_velocity = 1000
 max_velocity = 5000
 
 [node name="MovementPredictionLine" type="Line2D" parent="."]
 material = SubResource("ShaderMaterial_uxlbm")
-texture = ExtResource("2_5x2du")
+texture = ExtResource("3_0xy6o")
 texture_mode = 1
-script = ExtResource("3_mo3as")
+script = ExtResource("4_b3vqi")
 
 [node name="CollisionCheck" type="CharacterBody2D" parent="MovementPredictionLine"]
 collision_layer = 4
@@ -38,7 +38,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_ati38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_mpm0f")
+texture = ExtResource("5_thhkc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(10, 10)

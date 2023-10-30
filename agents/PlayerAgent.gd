@@ -1,8 +1,4 @@
-extends RigidBody2D
-
-@export var velocity_multiplier = 5
-@export var min_velocity = 100
-@export var max_velocity = 500
+extends Agent
 
 var pressed = false
 var direction : Vector2
