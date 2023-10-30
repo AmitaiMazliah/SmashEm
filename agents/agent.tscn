@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://e1xclsgg6q2s"]
+[gd_scene load_steps=6 format=3 uid="uid://e1xclsgg6q2s"]
 
 [ext_resource type="Script" path="res://agents/Agent.gd" id="1_1lp2q"]
+[ext_resource type="Script" path="res://agents/HealthBar.gd" id="3_8ui53"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="3_10hgt"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="5_1jls4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
@@ -23,3 +25,22 @@ texture = ExtResource("5_1jls4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
+
+[node name="HealthBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -82.0
+offset_top = -92.0
+offset_right = 77.0
+offset_bottom = -67.0
+script = ExtResource("3_8ui53")
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_10hgt")
+show_percentage = false

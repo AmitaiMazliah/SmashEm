@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://ioommklr86bm"]
+
+[ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://agents/player_agent.tscn" id="1_gum2r"]
+[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="1_qj2fn"]
+[ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://agents/ai_agent.tscn" id="3_gylyo"]
+[ext_resource type="PackedScene" uid="uid://c8r5036u8wkrv" path="res://match_manager.tscn" id="4_a36yk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7dm5"]
+size = Vector2(1178, 78)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lfmai"]
+bounce = 1.0
+
+[node name="GameScene" type="Node2D"]
+
+[node name="MatchManager" parent="." instance=ExtResource("4_a36yk")]
+
+[node name="BottomWall" type="Node2D" parent="."]
+position = Vector2(614, 2420)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BottomWall"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall/StaticBody2D"]
+position = Vector2(-24, -23)
+shape = SubResource("RectangleShape2D_x7dm5")
+debug_color = Color(0, 0.6, 0.701961, 0.811765)
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomWall"]
+position = Vector2(-23.5, -24)
+scale = Vector2(9.21094, 0.625)
+texture = ExtResource("1_qj2fn")
+
+[node name="TopWall" type="Node2D" parent="."]
+position = Vector2(614, 70)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TopWall"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall/StaticBody2D"]
+position = Vector2(-24, -23)
+shape = SubResource("RectangleShape2D_x7dm5")
+debug_color = Color(0, 0.6, 0.701961, 0.811765)
+
+[node name="Sprite2D" type="Sprite2D" parent="TopWall"]
+position = Vector2(-23.5, -24)
+scale = Vector2(9.21094, 0.625)
+texture = ExtResource("1_qj2fn")
+
+[node name="LeftWall" type="Node2D" parent="."]
+position = Vector2(34, 1884)
+scale = Vector2(0.04, 29.1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftWall"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/StaticBody2D"]
+position = Vector2(-24, -23)
+shape = SubResource("RectangleShape2D_x7dm5")
+debug_color = Color(0, 0.6, 0.701961, 0.811765)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftWall"]
+position = Vector2(-23.5, -24)
+scale = Vector2(9.21094, 0.625)
+texture = ExtResource("1_qj2fn")
+
+[node name="RightWall" type="Node2D" parent="."]
+position = Vector2(1153, 1889)
+scale = Vector2(0.04, 29.1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RightWall"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall/StaticBody2D"]
+position = Vector2(-24, -23)
+shape = SubResource("RectangleShape2D_x7dm5")
+debug_color = Color(0, 0.6, 0.701961, 0.811765)
+
+[node name="Sprite2D" type="Sprite2D" parent="RightWall"]
+position = Vector2(-23.5, -24)
+scale = Vector2(9.21094, 0.625)
+texture = ExtResource("1_qj2fn")
+
+[node name="PlayerAgent" parent="." instance=ExtResource("1_gum2r")]
+disable_mode = 2
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_lfmai")
+
+[node name="AIAgent" parent="." instance=ExtResource("3_gylyo")]
+position = Vector2(386, 789)
