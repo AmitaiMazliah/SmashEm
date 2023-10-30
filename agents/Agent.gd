@@ -2,6 +2,8 @@ extends RigidBody2D
 
 class_name Agent
 
+signal end_turn
+
 @export_category("Movement")
 @export var velocity_multiplier = 5
 @export var min_velocity = 100
@@ -11,6 +13,8 @@ class_name Agent
 @export var max_health : int = 100
 
 var current_health : int
+
+var _my_turn : bool = false
 
 func _ready():
 	self.body_entered.connect(self._on_body_entered)
@@ -22,6 +26,14 @@ func _on_body_entered(body):
 	print(body.is_in_group("Agents"))
 	if body.is_in_group("Agents"):
 		body.take_damage(50)
+
+func change_turn(is_my_turn: bool):
+	_my_turn = is_my_turn
+
+func move(direction: Vector2, velocity: float) -> void:
+	if _my_turn:
+		print("Moving in direction ", direction, " velocity ", velocity)
+		apply_impulse(direction * velocity)
 
 func take_damage(damage: int):
 	current_health -= damage

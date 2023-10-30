@@ -4,20 +4,14 @@ var pressed = false
 var direction : Vector2
 var velocity : float
 
-var line
-
-func _ready():
-	super._ready()
-	line = $MovementPredictionLine
+@onready var line = $MovementPredictionLine
 
 func _on_touch_screen_button_pressed():
 	pressed = true
 
 func _on_touch_screen_button_released():
 	pressed = false
-	print("direction ", direction)
-	print("velocity ", velocity)
-	apply_impulse(direction * velocity)
+	move(direction, velocity)
 
 func _input(event):
 	if event is InputEventScreenDrag and pressed:
