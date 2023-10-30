@@ -15,13 +15,23 @@ var current_health : int
 func _ready():
 	self.body_entered.connect(self._on_body_entered)
 	current_health = max_health
-	
-func take_damage(damage: int):
-	current_health -= damage
-	print("I'm ", self.name, " current_health ", current_health)
+	#_on_player_connected(1, {"name":"name"})
 
 func _on_body_entered(body):
 	print("_on_body_entered ", "self.name=", self.name, "body=", body)
 	print(body.is_in_group("Agents"))
 	if body.is_in_group("Agents"):
-		body.take_damage(5)
+		body.take_damage(50)
+
+func take_damage(damage: int):
+	current_health -= damage
+	print("I'm ", self.name, " current_health ", current_health)
+	if current_health <= 0:
+		die()
+
+func heal(amount: int):
+	current_health += amount
+	print("I'm ", self.name, " current_health ", current_health)
+
+func die():
+	print(self.name, " is now dead")

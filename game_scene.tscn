@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ioommklr86bm"]
+[gd_scene load_steps=7 format=3 uid="uid://ioommklr86bm"]
 
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://agents/player_agent.tscn" id="1_gum2r"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="1_qj2fn"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://agents/ai_agent.tscn" id="3_gylyo"]
+[ext_resource type="PackedScene" uid="uid://c8r5036u8wkrv" path="res://match_manager.tscn" id="4_a36yk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7dm5"]
 size = Vector2(1178, 78)
@@ -11,6 +12,8 @@ size = Vector2(1178, 78)
 bounce = 1.0
 
 [node name="GameScene" type="Node2D"]
+
+[node name="MatchManager" parent="." instance=ExtResource("4_a36yk")]
 
 [node name="BottomWall" type="Node2D" parent="."]
 position = Vector2(614, 2420)
@@ -86,7 +89,6 @@ texture = ExtResource("1_qj2fn")
 disable_mode = 2
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_lfmai")
-lock_rotation = true
 
 [node name="AIAgent" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(386, 789)
