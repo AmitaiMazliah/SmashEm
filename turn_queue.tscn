@@ -4,3 +4,5 @@
 
 [node name="TurnQueue" type="Node"]
 script = ExtResource("1_uop6f")
+
+[node name="TurnTimer" type="Timer" parent="."]
