@@ -86,9 +86,16 @@ scale = Vector2(9.21094, 0.625)
 texture = ExtResource("1_qj2fn")
 
 [node name="PlayerAgent" parent="." instance=ExtResource("1_gum2r")]
+position = Vector2(288, 2117)
 disable_mode = 2
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_lfmai")
 
 [node name="AIAgent" parent="." instance=ExtResource("3_gylyo")]
-position = Vector2(386, 789)
+position = Vector2(258, 338)
+
+[node name="AIAgent2" parent="." instance=ExtResource("3_gylyo")]
+position = Vector2(972, 352)
+
+[node name="AIAgent3" parent="." instance=ExtResource("3_gylyo")]
+position = Vector2(945, 2141)
