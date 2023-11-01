@@ -19,19 +19,19 @@ var current_health : int
 @onready var _equipment : AgentEquipment = $AgentEquipment
 
 var _my_turn : bool = false
+var _current_damage : int
 
 func _ready():
 	self.body_entered.connect(self._on_body_entered)
-	max_health = default_health
-	for i in _equipment.current_equipment:
-		max_health += _equipment.current_equipment[i].bonus_health
+	max_health = default_health + _equipment.get_total_health_bonus()
 	current_health = max_health
+	_current_damage = default_damage + _equipment.get_total_damage_bonus()
 
 func _on_body_entered(body):
 	print("_on_body_entered ", "self.name=", self.name, "body=", body)
 	print(body.is_in_group("Agents"))
 	if body.is_in_group("Agents"):
-		body.take_damage(default_damage)
+		body.take_damage(_current_damage)
 
 func change_turn(is_my_turn: bool):
 	if (_my_turn and !is_my_turn):

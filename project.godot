@@ -8,6 +8,8 @@
 
 config_version=5
 
+show_default_buttons=false
+
 [application]
 
 config/name="SmashEm"
@@ -21,6 +23,10 @@ window/size/viewport_width=1179
 window/size/viewport_height=2556
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/tool_button/plugin.cfg")
 
 [input]
 
