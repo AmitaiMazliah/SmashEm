@@ -13,9 +13,13 @@ show_default_buttons=false
 [application]
 
 config/name="SmashEm"
-run/main_scene="res://game_scene.tscn"
+run/main_scene="res://scenes/game_scene.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioManager="*res://prefabs/audio_manager.tscn"
 
 [display]
 
