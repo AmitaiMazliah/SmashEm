@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioConfiguration" load_steps=2 format=3 uid="uid://ce54b4vtahtc5"]
+
+[ext_resource type="Script" path="res://scripts/audio/audio_data/audio_configuration.gd" id="1_1i14s"]
+
+[resource]
+script = ExtResource("1_1i14s")
+mute = false
+volume = 1.0
+pitch = 1.0

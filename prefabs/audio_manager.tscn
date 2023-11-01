@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyrk7vr5dvsle"]
+[gd_scene load_steps=5 format=3 uid="uid://dyrk7vr5dvsle"]
 
 [ext_resource type="Script" path="res://scripts/audio/audio_manager.gd" id="1_fbvnk"]
 [ext_resource type="Resource" uid="uid://2nvlhruxpke6" path="res://resources/events/play_sound_event_channel.tres" id="2_xyohj"]
 [ext_resource type="Resource" uid="uid://k1f0cqgpau4t" path="res://resources/audio/cues/test.tres" id="3_hf1vd"]
+[ext_resource type="Resource" uid="uid://ce54b4vtahtc5" path="res://resources/audio/config/music_config.tres" id="4_mr6jv"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_fbvnk")
 play_sound_audio_event_channel = ExtResource("2_xyohj")
 _test_audio_cue = ExtResource("3_hf1vd")
+_test_audio_config = ExtResource("4_mr6jv")
