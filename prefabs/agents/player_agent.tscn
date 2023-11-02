@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://dd6skvb0tvmwh"]
+
+[ext_resource type="PackedScene" uid="uid://e1xclsgg6q2s" path="res://prefabs/agents/agent.tscn" id="1_8igvm"]
+[ext_resource type="Script" path="res://scripts/agents/PlayerAgent.gd" id="2_rqt1h"]
+[ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="3_urv4q"]
+[ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
+[ext_resource type="Script" path="res://MovementPredictionLine.gd" id="5_af2o0"]
+[ext_resource type="Shader" uid="uid://bp6gg5wq2nnsf" path="res://art/shaders/agent_highlight_shader.tres" id="6_h8c63"]
+[ext_resource type="Texture2D" uid="uid://d2f7c2r27au8l" path="res://art/pngwing.com.png" id="7_rvrh4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1efxl"]
+shader = ExtResource("3_urv4q")
+shader_parameter/scrolling_speed = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gh628"]
+radius = 6.50077
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdpcg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0357i"]
+bg_color = Color(0.0352941, 0.623529, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8n7w"]
+shader = ExtResource("6_h8c63")
+shader_parameter/ColorParameter = Color(0.0666667, 0.560784, 0.870588, 1)
+
+[node name="PlayerAgent" instance=ExtResource("1_8igvm")]
+script = ExtResource("2_rqt1h")
+
+[node name="MovementPredictionLine" type="Line2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_1efxl")
+texture = ExtResource("4_iupx7")
+texture_mode = 1
+script = ExtResource("5_af2o0")
+
+[node name="CollisionCheck" type="CharacterBody2D" parent="MovementPredictionLine" index="0"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementPredictionLine/CollisionCheck" index="0"]
+shape = SubResource("CircleShape2D_gh628")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." index="3"]
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_hdpcg")
+shape_visible = false
+
+[node name="HealthBar" parent="." index="4"]
+offset_top = -137.0
+offset_bottom = -112.0
+
+[node name="ProgressBar" parent="HealthBar" index="0"]
+theme_override_styles/fill = SubResource("StyleBoxFlat_0357i")
+
+[node name="AgentHighlight" type="Sprite2D" parent="." index="7"]
+material = SubResource("ShaderMaterial_i8n7w")
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("7_rvrh4")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
