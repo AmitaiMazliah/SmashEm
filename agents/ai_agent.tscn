@@ -5,5 +5,8 @@
 
 [node name="AIAgent" instance=ExtResource("1_i2qpj")]
 script = ExtResource("2_fol8r")
-min_think_time_in_secs = 1
-max_think_time_in_secs = 5
+min_think_time_in_secs = null
+max_think_time_in_secs = null
+velocity_multiplier = null
+min_velocity = null
+max_velocity = null

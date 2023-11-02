@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://e1xclsgg6q2s"]
+[gd_scene load_steps=9 format=3 uid="uid://e1xclsgg6q2s"]
 
 [ext_resource type="Script" path="res://agents/Agent.gd" id="1_1lp2q"]
 [ext_resource type="Script" path="res://agents/HealthBar.gd" id="3_8ui53"]
@@ -6,11 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="5_1jls4"]
 [ext_resource type="Script" path="res://agents/AgentEquipment.gd" id="5_8btyd"]
 [ext_resource type="Resource" uid="uid://ci4gu2vrtyy5i" path="res://resources/items/warrior_helm.tres" id="6_hottu"]
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="7_0lbnr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
 radius = 65.2763
 
-[node name="Agent" type="RigidBody2D" groups=["Agents"]]
+[node name="Agent" type="RigidBody2D" node_paths=PackedStringArray("health") groups=["Agents"]]
 position = Vector2(604, 1189)
 gravity_scale = 0.0
 max_contacts_reported = 10
@@ -18,6 +19,7 @@ contact_monitor = true
 lock_rotation = true
 linear_damp = 1.0
 script = ExtResource("1_1lp2q")
+health = NodePath("HealthComponent")
 default_damage = 35
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -50,3 +52,8 @@ script = ExtResource("5_8btyd")
 current_equipment = {
 "Head": ExtResource("6_hottu")
 }
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("7_0lbnr")
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

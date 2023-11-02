@@ -4,5 +4,5 @@ extends Control
 @onready var agent : Agent = get_parent()
 
 func _process(delta):
-	progress_bar.max_value = agent.max_health
-	progress_bar.value = agent.current_health
+	progress_bar.max_value = agent.health.max_health
+	progress_bar.value = agent.health.current_health

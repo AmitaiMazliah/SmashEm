@@ -36,7 +36,7 @@ func play_turn():
 		timer.start()
 		var p: Promise = Promise.new([
 			timer.timeout,
-			active_agent.end_turn
+			active_agent.turn_ended
 		], Promise.MODE.ANY)
 		var data = await p.completed
 		active_agent.change_turn(false)

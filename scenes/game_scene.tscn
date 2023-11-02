@@ -90,16 +90,12 @@ position = Vector2(288, 2117)
 disable_mode = 2
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_lfmai")
-default_damage = 5
 
 [node name="AIAgent" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(258, 338)
-default_damage = 5
 
 [node name="AIAgent2" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(972, 352)
-default_damage = 5
 
 [node name="AIAgent3" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(945, 2141)
-default_damage = 5

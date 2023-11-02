@@ -5,7 +5,7 @@ extends Agent
 @export var min_think_time_in_secs = 1
 @export var max_think_time_in_secs = 5
 
-var _moved : bool = false
+var _played_turn : bool = false
 
 func _ready():
 	super._ready()
@@ -13,15 +13,12 @@ func _ready():
 
 func _process(delta):
 	if _my_turn:
-		if !_moved:
+		if !_played_turn:
 			var nearest_agent = _get_nearest_agent()
 			print(self.name, " nearest target is ", nearest_agent.name)
 			var direction = self.position.direction_to(nearest_agent.position)
 			move(direction, 1000)
-			_moved = true
-		await get_tree().create_timer(5).timeout
-		end_turn.emit()
-		_moved = false
+			_played_turn = true
 
 func _get_nearest_agent() -> Agent:
 	var min_distance
@@ -32,3 +29,13 @@ func _get_nearest_agent() -> Agent:
 			min_distance = current_distance
 			nearest_agent = other_agent
 	return nearest_agent
+
+func _on_sleeping_state_changed():
+	print(self.name, " is now sleeping=", sleeping)
+	if _my_turn and sleeping:
+		print(self.name, " went sleeping, ending turn")
+		end_turn()
+
+func end_turn():
+	_played_turn = false
+	super.end_turn()
