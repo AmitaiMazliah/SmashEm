@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://agents/player_agent.tscn" id="1_gum2r"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="1_qj2fn"]
-[ext_resource type="PackedScene" uid="uid://cfglga485riqx" path="res://turn_queue.tscn" id="2_fiple"]
+[ext_resource type="PackedScene" uid="uid://cfglga485riqx" path="res://prefabs/turn_queue.tscn" id="2_fiple"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://agents/ai_agent.tscn" id="3_gylyo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7dm5"]
@@ -90,12 +90,16 @@ position = Vector2(288, 2117)
 disable_mode = 2
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_lfmai")
+default_damage = 5
 
 [node name="AIAgent" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(258, 338)
+default_damage = 5
 
 [node name="AIAgent2" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(972, 352)
+default_damage = 5
 
 [node name="AIAgent3" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(945, 2141)
+default_damage = 5

@@ -8,6 +8,7 @@ extends Agent
 var _moved : bool = false
 
 func _ready():
+	super._ready()
 	print(other_agents.size())
 
 func _process(delta):
@@ -20,6 +21,7 @@ func _process(delta):
 			_moved = true
 		await get_tree().create_timer(5).timeout
 		end_turn.emit()
+		_moved = false
 
 func _get_nearest_agent() -> Agent:
 	var min_distance

@@ -18,6 +18,7 @@ contact_monitor = true
 lock_rotation = true
 linear_damp = 1.0
 script = ExtResource("1_1lp2q")
+default_damage = 35
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("5_1jls4")

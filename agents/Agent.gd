@@ -47,7 +47,7 @@ func move(direction: Vector2, velocity: float) -> void:
 
 func take_damage(damage: int):
 	current_health -= damage
-	print(self.name, " current_health ", current_health)
+	print(self.name, " took ", damage, " and left with current_health ", current_health)
 	if current_health <= 0:
 		die()
 
@@ -55,7 +55,7 @@ func heal(amount: int):
 	current_health += amount
 	if (current_health > max_health):
 		current_health = max_health
-	print(self.name, " current_health ", current_health)
+	print(self.name, " healed ", amount, " and now has current_health ", current_health)
 
 func die():
 	print(self.name, " is now dead")
