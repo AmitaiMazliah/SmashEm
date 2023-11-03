@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ioommklr86bm"]
 
-[ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://agents/player_agent.tscn" id="1_gum2r"]
+[ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="1_gum2r"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="1_qj2fn"]
 [ext_resource type="PackedScene" uid="uid://cfglga485riqx" path="res://prefabs/turn_queue.tscn" id="2_fiple"]
-[ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://agents/ai_agent.tscn" id="3_gylyo"]
+[ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="3_gylyo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7dm5"]
 size = Vector2(1178, 78)

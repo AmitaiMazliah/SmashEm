@@ -13,9 +13,6 @@ shader_parameter/ColorParameter = Color(1, 0, 0, 1)
 script = ExtResource("2_01t2a")
 min_think_time_in_secs = null
 max_think_time_in_secs = null
-velocity_multiplier = null
-min_velocity = null
-max_velocity = null
 
 [node name="AgentHighlight" type="Sprite2D" parent="." index="5"]
 material = SubResource("ShaderMaterial_nsn1s")

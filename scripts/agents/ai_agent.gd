@@ -17,7 +17,7 @@ func _process(delta):
 			var nearest_agent = _get_nearest_agent()
 			print(self.name, " nearest target is ", nearest_agent.name)
 			var direction = self.position.direction_to(nearest_agent.position)
-			move(direction, 1000)
+			move(direction)
 			_played_turn = true
 
 func _get_nearest_agent() -> Agent:

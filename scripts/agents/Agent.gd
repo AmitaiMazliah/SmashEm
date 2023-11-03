@@ -5,9 +5,7 @@ class_name Agent
 signal turn_ended
 
 @export_category("Movement")
-@export var velocity_multiplier = 5
-@export var min_velocity = 100
-@export var max_velocity = 500
+@export var default_velocity : float = 500
 
 @export_category("Combat")
 @export var health : HealthComponent
@@ -36,10 +34,10 @@ func change_turn(is_my_turn: bool):
 		_on_start_turn()
 	_my_turn = is_my_turn
 
-func move(direction: Vector2, velocity: float) -> void:
+func move(direction: Vector2) -> void:
 	if _my_turn:
-		#print("Moving in direction ", direction, " velocity ", velocity)
-		apply_impulse(direction * velocity)
+		print("Moving in direction ", direction)
+		apply_impulse(direction * default_velocity)
 
 func end_turn():
 	_my_turn = false
