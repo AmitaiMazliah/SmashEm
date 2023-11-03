@@ -1,20 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://vwth8qa6lmwn"]
+[gd_scene load_steps=3 format=3 uid="uid://vwth8qa6lmwn"]
 
 [ext_resource type="PackedScene" uid="uid://e1xclsgg6q2s" path="res://prefabs/agents/agent.tscn" id="1_sai42"]
 [ext_resource type="Script" path="res://scripts/agents/ai_agent.gd" id="2_01t2a"]
-[ext_resource type="Shader" uid="uid://bp6gg5wq2nnsf" path="res://art/shaders/agent_highlight_shader.tres" id="3_u4q0j"]
-[ext_resource type="Texture2D" uid="uid://d2f7c2r27au8l" path="res://art/pngwing.com.png" id="4_36kc5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsn1s"]
-shader = ExtResource("3_u4q0j")
-shader_parameter/ColorParameter = Color(1, 0, 0, 1)
 
 [node name="AIAgent" instance=ExtResource("1_sai42")]
 script = ExtResource("2_01t2a")
 min_think_time_in_secs = null
 max_think_time_in_secs = null
 
-[node name="AgentHighlight" type="Sprite2D" parent="." index="5"]
-material = SubResource("ShaderMaterial_nsn1s")
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_36kc5")
+[node name="CollisionShape2D" parent="." index="1"]
+highlight_color = Color(1, 0, 0, 1)

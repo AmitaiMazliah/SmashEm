@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://e1xclsgg6q2s"]
+[gd_scene load_steps=10 format=3 uid="uid://e1xclsgg6q2s"]
 
 [ext_resource type="Script" path="res://scripts/agents/Agent.gd" id="1_0klcy"]
-[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_lyfvf"]
+[ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_j826y"]
+[ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="3_knjvt"]
 [ext_resource type="Script" path="res://scripts/HealthBar.gd" id="3_oh05k"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="4_w54ah"]
 [ext_resource type="Script" path="res://scripts/agents/AgentEquipment.gd" id="5_s4ep4"]
@@ -23,10 +24,13 @@ health = NodePath("HealthComponent")
 default_damage = 35
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_lyfvf")
+position = Vector2(0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_j826y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
+script = ExtResource("3_knjvt")
 
 [node name="HealthBar" type="Control" parent="."]
 layout_mode = 3
