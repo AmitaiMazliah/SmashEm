@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ioommklr86bm"]
+[gd_scene load_steps=14 format=3 uid="uid://ioommklr86bm"]
 
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="1_gum2r"]
 [ext_resource type="PackedScene" uid="uid://cfglga485riqx" path="res://prefabs/turn_queue.tscn" id="2_fiple"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="3_gylyo"]
+[ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="3_vu050"]
 [ext_resource type="Texture2D" uid="uid://dl7bmar7qa0rt" path="res://art/space-tileset/space-blks-1.034.png" id="5_jyjmj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wlmc"]
@@ -1790,6 +1791,7 @@ position = Vector2(430, 1280)
 [node name="StaticBody2D" type="StaticBody2D" parent="Colliders/BottomWall"]
 collision_layer = 5
 collision_mask = 5
+physics_material_override = ExtResource("3_vu050")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/BottomWall/StaticBody2D"]
 position = Vector2(-70, -32)
@@ -1802,6 +1804,7 @@ position = Vector2(614, 70)
 [node name="StaticBody2D" type="StaticBody2D" parent="Colliders/TopWall"]
 collision_layer = 5
 collision_mask = 5
+physics_material_override = ExtResource("3_vu050")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/TopWall/StaticBody2D"]
 position = Vector2(-254, -38)
@@ -1813,6 +1816,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.235294)
 [node name="StaticBody2D" type="StaticBody2D" parent="Colliders/LeftWall"]
 collision_layer = 5
 collision_mask = 5
+physics_material_override = ExtResource("3_vu050")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/LeftWall/StaticBody2D"]
 position = Vector2(24, 640.5)
@@ -1826,6 +1830,7 @@ position = Vector2(719, 795)
 [node name="StaticBody2D" type="StaticBody2D" parent="Colliders/RightWall"]
 collision_layer = 5
 collision_mask = 5
+physics_material_override = ExtResource("3_vu050")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightWall/StaticBody2D"]
 position = Vector2(-23, -156.5)
@@ -1838,6 +1843,7 @@ position = Vector2(402, 632)
 [node name="StaticBody2D" type="StaticBody2D" parent="Colliders/CenterWall"]
 collision_layer = 5
 collision_mask = 5
+physics_material_override = ExtResource("3_vu050")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/CenterWall/StaticBody2D"]
 position = Vector2(-34, -8)
@@ -1849,13 +1855,15 @@ position = Vector2(162, 1107)
 disable_mode = 2
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_lfmai")
-default_velocity = 5000.0
 
 [node name="AIAgent" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(159, 199)
+physics_material_override = null
 
 [node name="AIAgent2" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(572, 199)
+physics_material_override = null
 
 [node name="AIAgent3" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(550, 1095)
+physics_material_override = null

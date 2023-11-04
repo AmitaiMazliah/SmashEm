@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqsa78xqy80jb"]
+[gd_scene load_steps=10 format=3 uid="uid://dqsa78xqy80jb"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent.gd" id="1_yap2o"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_j826y"]
@@ -8,11 +8,14 @@
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_qy2f6"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="7_rnl5w"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
+bounce = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
 radius = 55.0
 
 [node name="Agent" type="RigidBody2D" node_paths=PackedStringArray("health") groups=["Agents"]]
-position = Vector2(604, 1189)
+physics_material_override = SubResource("PhysicsMaterial_hbdn7")
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true

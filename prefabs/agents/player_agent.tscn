@@ -21,6 +21,7 @@ bg_color = Color(0.0352941, 0.623529, 1, 1)
 [node name="PlayerAgent" instance=ExtResource("1_8igvm")]
 script = ExtResource("2_fx3lm")
 distance_from_touch_location_to_count_play = 60.0
+default_velocity = 5000.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 highlight_color = Color(0, 0, 1, 1)
