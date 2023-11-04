@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dd6skvb0tvmwh"]
 
-[ext_resource type="PackedScene" uid="uid://e1xclsgg6q2s" path="res://prefabs/agents/agent.tscn" id="1_8igvm"]
-[ext_resource type="Script" path="res://scripts/agents/PlayerAgent.gd" id="2_rqt1h"]
+[ext_resource type="PackedScene" uid="uid://dqsa78xqy80jb" path="res://prefabs/agents/agent.tscn" id="1_8igvm"]
+[ext_resource type="Script" path="res://scripts/agents/player_agent.gd" id="2_fx3lm"]
 [ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="3_urv4q"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
 [ext_resource type="Script" path="res://MovementPredictionLine.gd" id="5_af2o0"]
@@ -19,7 +19,8 @@ radius = 6.50077
 bg_color = Color(0.0352941, 0.623529, 1, 1)
 
 [node name="PlayerAgent" instance=ExtResource("1_8igvm")]
-script = ExtResource("2_rqt1h")
+script = ExtResource("2_fx3lm")
+distance_from_touch_location_to_count_play = 60.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 highlight_color = Color(0, 0, 1, 1)

@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://e1xclsgg6q2s"]
+[gd_scene load_steps=9 format=3 uid="uid://dqsa78xqy80jb"]
 
-[ext_resource type="Script" path="res://scripts/agents/Agent.gd" id="1_0klcy"]
+[ext_resource type="Script" path="res://scripts/agents/agent.gd" id="1_yap2o"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_j826y"]
 [ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="3_knjvt"]
-[ext_resource type="Script" path="res://scripts/HealthBar.gd" id="3_oh05k"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_qdccr"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="4_w54ah"]
-[ext_resource type="Script" path="res://scripts/agents/AgentEquipment.gd" id="5_s4ep4"]
-[ext_resource type="Resource" uid="uid://ci4gu2vrtyy5i" path="res://resources/items/warrior_helm.tres" id="6_wotr0"]
-[ext_resource type="Script" path="res://scripts/health_component.gd" id="7_k1qos"]
+[ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_qy2f6"]
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="7_rnl5w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
 radius = 65.2763
@@ -19,9 +18,8 @@ max_contacts_reported = 10
 contact_monitor = true
 lock_rotation = true
 linear_damp = 1.0
-script = ExtResource("1_0klcy")
+script = ExtResource("1_yap2o")
 health = NodePath("HealthComponent")
-default_damage = 35
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
@@ -32,14 +30,15 @@ texture = ExtResource("2_j826y")
 shape = SubResource("CircleShape2D_0fnhx")
 script = ExtResource("3_knjvt")
 
-[node name="HealthBar" type="Control" parent="."]
+[node name="HealthBar" type="Control" parent="." node_paths=PackedStringArray("health")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -80.0
 offset_top = -125.0
 offset_right = 80.0
 offset_bottom = -100.0
-script = ExtResource("3_oh05k")
+script = ExtResource("4_qdccr")
+health = NodePath("../HealthComponent")
 
 [node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
 layout_mode = 1
@@ -52,12 +51,9 @@ theme = ExtResource("4_w54ah")
 show_percentage = false
 
 [node name="AgentEquipment" type="Node" parent="."]
-script = ExtResource("5_s4ep4")
-current_equipment = {
-"Head": ExtResource("6_wotr0")
-}
+script = ExtResource("6_qy2f6")
 
 [node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("7_k1qos")
+script = ExtResource("7_rnl5w")
 
 [connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

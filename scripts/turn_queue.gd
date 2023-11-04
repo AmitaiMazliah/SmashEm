@@ -34,10 +34,10 @@ func play_turn():
 		print("now turn of ", _active_agent_index, " ", active_agent)
 		active_agent.change_turn(true)
 		timer.start()
-		var p: Promise = Promise.new([
-			timer.timeout,
-			active_agent.turn_ended
-		], Promise.MODE.ANY)
-		var data = await p.completed
-		active_agent.change_turn(false)
-		_active_agent_index = (_active_agent_index + 1) % agents.size()
+		var result = await Promise.any([
+			Promise.from(timer.timeout),
+			Promise.from(active_agent.turn_ended)
+		]).settled
+		if result.status == Promise.Status.RESOLVED:
+			active_agent.change_turn(false)
+			_active_agent_index = (_active_agent_index + 1) % agents.size()

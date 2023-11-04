@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vwth8qa6lmwn"]
 
-[ext_resource type="PackedScene" uid="uid://e1xclsgg6q2s" path="res://prefabs/agents/agent.tscn" id="1_sai42"]
+[ext_resource type="PackedScene" uid="uid://dqsa78xqy80jb" path="res://prefabs/agents/agent.tscn" id="1_sai42"]
 [ext_resource type="Script" path="res://scripts/agents/ai_agent.gd" id="2_01t2a"]
 
 [node name="AIAgent" instance=ExtResource("1_sai42")]
