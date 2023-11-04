@@ -23,8 +23,8 @@ AudioManager="*res://prefabs/audio_manager.tscn"
 
 [display]
 
-window/size/viewport_width=1179
-window/size/viewport_height=2556
+window/size/viewport_width=720
+window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 

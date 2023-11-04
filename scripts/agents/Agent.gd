@@ -23,9 +23,10 @@ func _ready():
 
 func _on_body_entered(body):
 	print("_on_body_entered ", "self.name=", self.name, "body=", body)
-	if body.is_in_group("Agents"):
+	if body is Agent:
 		var agent = body as Agent
-		agent.health.take_damage(_current_damage)
+		if !agent._my_turn:
+			agent.health.take_damage(_current_damage)
 
 func change_turn(is_my_turn: bool):
 	if (_my_turn and !is_my_turn):
