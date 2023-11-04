@@ -25,7 +25,7 @@ func _input(event):
 		_distance_from_press_location = drag_position.distance_to(self.get_position())
 
 func _process(delta):
-	if pressed and _distance_from_press_location > distance_from_touch_location_to_count_play:
+	if _my_turn and pressed and _distance_from_press_location > distance_from_touch_location_to_count_play:
 		line.update_trajectory(direction, default_velocity, delta)
 		line.show()
 	else:
