@@ -36,3 +36,6 @@ func _on_sleeping_state_changed():
 		print(self.name, " went sleeping, ending turn")
 		end_turn()
 		_played = false
+
+func _on_death():
+	super._on_death()

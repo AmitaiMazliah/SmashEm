@@ -8,7 +8,9 @@ class_name HealthComponent
 var max_health : int
 var current_health : int
 
-@onready var parent : Agent = get_parent()
+@onready var agent : Agent = get_parent()
+
+signal death()
 
 func _ready():
 	max_health = default_health
@@ -18,7 +20,7 @@ func _ready():
 func take_damage(damage: int):
 	current_health -= damage
 	if log_events:
-		print(parent.name, " took ", damage, " and left with current_health ", current_health)
+		print(agent.name, " took ", damage, " and left with current_health ", current_health)
 	if current_health <= 0:
 		die()
 
@@ -27,8 +29,9 @@ func heal(amount: int):
 	if (current_health > max_health):
 		current_health = max_health
 	if log_events:
-		print(parent.name, " healed ", amount, " and now has current_health ", current_health)
+		print(agent.name, " healed ", amount, " and now has current_health ", current_health)
 
 func die():
 	if log_events:
-		print(parent.name, " is now dead")
+		print(agent.name, " is now dead")
+	death.emit()

@@ -15,14 +15,16 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
 radius = 55.0
 
-[node name="Agent" type="RigidBody2D" node_paths=PackedStringArray("health") groups=["Agents"]]
+[node name="Agent" type="RigidBody2D" node_paths=PackedStringArray("nodes_to_disable_on_death", "health") groups=["Agents"]]
 physics_material_override = SubResource("PhysicsMaterial_hbdn7")
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("1_yap2o")
+nodes_to_disable_on_death = [NodePath("Visuals"), NodePath("CollisionShape2D")]
 health = NodePath("HealthComponent")
+default_damage = 50
 
 [node name="Visuals" type="Node2D" parent="."]
 script = ExtResource("2_4v4as")

@@ -4,6 +4,10 @@ class_name Agent
 
 signal turn_ended
 
+var dead : bool = false
+
+@export var nodes_to_disable_on_death : Array[Node]
+
 @export_category("Movement")
 @export var default_velocity : float = 500
 
@@ -18,7 +22,8 @@ var _current_damage : int
 var _moving : bool = false
 
 func _ready():
-	self.body_entered.connect(self._on_body_entered)
+	body_entered.connect(_on_body_entered)
+	health.death.connect(_on_death)
 	_current_damage = default_damage + _equipment.get_total_damage_bonus()
 
 func _on_body_entered(body):
@@ -39,14 +44,22 @@ func move(direction: Vector2) -> void:
 		print("Moving in direction ", direction)
 		apply_impulse(direction * default_velocity)
 
+func kill():
+	_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnDeath)
+	for node in nodes_to_disable_on_death:
+		remove_child(node)
+
 func end_turn():
 	_my_turn = false
 	turn_ended.emit()
 	
 func _on_start_turn():
 	print(self.name, " turns has started")
-	_equipment.execute_all_effect_for_time(self, Constants.EffectTime.OnTurnStart)
+	_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnTurnStart)
 
 func _on_end_turn():
 	print(self.name, " turns has ended")
-	_equipment.execute_all_effect_for_time(self, Constants.EffectTime.OnTurnEnd)
+	_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnTurnEnd)
+
+func _on_death():
+	dead = true

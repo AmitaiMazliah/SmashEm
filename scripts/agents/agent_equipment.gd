@@ -4,7 +4,7 @@ class_name AgentEquipment
 
 @export var current_equipment : Dictionary
 
-func execute_all_effect_for_time(agent: Agent, effect_time: Constants.EffectTime):
+func execute_all_effect_for_time(agent: Agent, effect_time: Effect.EffectTime):
 	for i in current_equipment:
 		var equipment : Equipment = current_equipment[i]
 		for effect in equipment.effects:

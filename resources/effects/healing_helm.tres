@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HealEffect" load_steps=2 format=3 uid="uid://dt5y0c5usrino"]
 
-[ext_resource type="Script" path="res://scripts/effects/heal_effect.gd" id="1_7onmx"]
+[ext_resource type="Script" path="res://scripts/items/effects/heal_effect.gd" id="1_7onmx"]
 
 [resource]
 script = ExtResource("1_7onmx")

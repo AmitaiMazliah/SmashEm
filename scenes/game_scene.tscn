@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://ioommklr86bm"]
+[gd_scene load_steps=15 format=3 uid="uid://ioommklr86bm"]
 
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="1_gum2r"]
+[ext_resource type="Script" path="res://scripts/match_manager.gd" id="1_l8307"]
 [ext_resource type="PackedScene" uid="uid://cfglga485riqx" path="res://prefabs/turn_queue.tscn" id="2_fiple"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="3_gylyo"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="3_vu050"]
@@ -1778,6 +1779,9 @@ bounce = 1.0
 
 [node name="TurnQueue" parent="." instance=ExtResource("2_fiple")]
 
+[node name="MatchManager" type="Node" parent="."]
+script = ExtResource("1_l8307")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_younl")
 format = 2
@@ -1858,13 +1862,16 @@ physics_material_override = SubResource("PhysicsMaterial_lfmai")
 default_velocity = 5000.0
 
 [node name="AIAgent" parent="." instance=ExtResource("3_gylyo")]
-position = Vector2(159, 199)
+position = Vector2(159, 231)
 physics_material_override = null
+default_damage = 5
 
 [node name="AIAgent2" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(572, 199)
 physics_material_override = null
+default_damage = 5
 
 [node name="AIAgent3" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(550, 1095)
 physics_material_override = null
+default_damage = 5

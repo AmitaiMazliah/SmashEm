@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dqsa78xqy80jb" path="res://prefabs/agents/agent.tscn" id="1_sai42"]
 [ext_resource type="Script" path="res://scripts/agents/ai_agent.gd" id="2_01t2a"]
 
-[node name="AIAgent" instance=ExtResource("1_sai42")]
+[node name="AIAgent" groups=["AI_Agents"] instance=ExtResource("1_sai42")]
 script = ExtResource("2_01t2a")
-min_think_time_in_secs = null
-max_think_time_in_secs = null
+min_think_time_in_secs = 1
+max_think_time_in_secs = 5
 default_velocity = 5000.0
 
 [node name="CollisionShape2D" parent="." index="1"]
