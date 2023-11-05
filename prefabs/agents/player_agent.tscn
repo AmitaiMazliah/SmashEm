@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=9 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="PackedScene" uid="uid://dqsa78xqy80jb" path="res://prefabs/agents/agent.tscn" id="1_8igvm"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent.gd" id="2_fx3lm"]
@@ -15,37 +15,30 @@ radius = 6.50077
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdpcg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0357i"]
-bg_color = Color(0.0352941, 0.623529, 1, 1)
-
 [node name="PlayerAgent" instance=ExtResource("1_8igvm")]
 script = ExtResource("2_fx3lm")
 distance_from_touch_location_to_count_play = 60.0
-default_velocity = 5000.0
 
-[node name="CollisionShape2D" parent="." index="1"]
-highlight_color = Color(0, 0, 1, 1)
-
-[node name="MovementPredictionLine" type="Line2D" parent="." index="2"]
+[node name="MovementPredictionLine" type="Line2D" parent="Visuals" index="2"]
 material = SubResource("ShaderMaterial_1efxl")
 texture = ExtResource("4_iupx7")
 texture_mode = 1
 script = ExtResource("5_af2o0")
 
-[node name="CollisionCheck" type="CharacterBody2D" parent="MovementPredictionLine" index="0"]
+[node name="CollisionCheck" type="CharacterBody2D" parent="Visuals/MovementPredictionLine" index="0"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementPredictionLine/CollisionCheck" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/MovementPredictionLine/CollisionCheck" index="0"]
 shape = SubResource("CircleShape2D_gh628")
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="1"]
+highlight_color = Color(0, 0, 1, 1)
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." index="2"]
 scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_hdpcg")
 shape_visible = false
-
-[node name="ProgressBar" parent="HealthBar" index="0"]
-theme_override_styles/fill = SubResource("StyleBoxFlat_0357i")
 
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]

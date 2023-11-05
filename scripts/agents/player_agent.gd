@@ -4,7 +4,7 @@ extends Agent
 var pressed = false
 var direction : Vector2
 
-@onready var line = $MovementPredictionLine
+@onready var line = $Visuals/MovementPredictionLine
 
 var _distance_from_press_location : float
 var _played : bool = false

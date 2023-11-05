@@ -31,7 +31,6 @@ func _get_nearest_agent() -> Agent:
 	return nearest_agent
 
 func _on_sleeping_state_changed():
-	print(self.name, " is now sleeping=", sleeping)
 	if _my_turn and sleeping:
 		print(self.name, " went sleeping, ending turn")
 		end_turn()

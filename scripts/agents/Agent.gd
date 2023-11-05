@@ -22,11 +22,10 @@ func _ready():
 	_current_damage = default_damage + _equipment.get_total_damage_bonus()
 
 func _on_body_entered(body):
-	print("_on_body_entered ", "self.name=", self.name, "body=", body)
-	if body is Agent:
+	if _my_turn and body is Agent:
 		var agent = body as Agent
-		if !agent._my_turn:
-			agent.health.take_damage(_current_damage)
+		print(self.name, " is attacking ", agent.name)
+		agent.health.take_damage(_current_damage)
 
 func change_turn(is_my_turn: bool):
 	if (_my_turn and !is_my_turn):

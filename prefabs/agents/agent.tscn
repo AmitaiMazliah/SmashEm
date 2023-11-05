@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqsa78xqy80jb"]
+[gd_scene load_steps=11 format=3 uid="uid://dqsa78xqy80jb"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent.gd" id="1_yap2o"]
+[ext_resource type="Script" path="res://prefabs/agents/agent_visuals.gd" id="2_4v4as"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_j826y"]
 [ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="3_knjvt"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_qdccr"]
@@ -19,21 +20,19 @@ physics_material_override = SubResource("PhysicsMaterial_hbdn7")
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
-lock_rotation = true
 linear_damp = 1.0
 script = ExtResource("1_yap2o")
 health = NodePath("HealthComponent")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Visuals" type="Node2D" parent="."]
+script = ExtResource("2_4v4as")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, 1)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_j826y")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0fnhx")
-script = ExtResource("3_knjvt")
-
-[node name="HealthBar" type="Control" parent="." node_paths=PackedStringArray("health")]
+[node name="HealthBar" type="Control" parent="Visuals" node_paths=PackedStringArray("health")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -60.0
@@ -41,9 +40,9 @@ offset_top = -75.0
 offset_right = 60.0
 offset_bottom = -60.0
 script = ExtResource("4_qdccr")
-health = NodePath("../HealthComponent")
+health = NodePath("../../HealthComponent")
 
-[node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
+[node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,6 +51,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_w54ah")
 show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0fnhx")
+script = ExtResource("3_knjvt")
 
 [node name="AgentEquipment" type="Node" parent="."]
 script = ExtResource("6_qy2f6")
