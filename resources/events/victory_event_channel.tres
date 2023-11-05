@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="VoidEventChannel" load_steps=2 format=3 uid="uid://d0e5uorq1a1rt"]
+
+[ext_resource type="Script" path="res://scripts/events/void_event_channel.gd" id="1_fftjv"]
+
+[resource]
+script = ExtResource("1_fftjv")

@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://ioommklr86bm"]
+[gd_scene load_steps=17 format=3 uid="uid://ioommklr86bm"]
 
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="1_gum2r"]
 [ext_resource type="Script" path="res://scripts/match_manager.gd" id="1_l8307"]
 [ext_resource type="PackedScene" uid="uid://cfglga485riqx" path="res://prefabs/turn_queue.tscn" id="2_fiple"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="3_gylyo"]
+[ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="3_t86qo"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="3_vu050"]
 [ext_resource type="Texture2D" uid="uid://dl7bmar7qa0rt" path="res://art/space-tileset/space-blks-1.034.png" id="5_jyjmj"]
+[ext_resource type="Script" path="res://scripts/UI/EndGameUI.gd" id="7_ws6b2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wlmc"]
 texture = ExtResource("5_jyjmj")
@@ -1781,6 +1783,7 @@ bounce = 1.0
 
 [node name="MatchManager" type="Node" parent="."]
 script = ExtResource("1_l8307")
+victory_event_channel = ExtResource("3_t86qo")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_younl")
@@ -1875,3 +1878,22 @@ default_damage = 5
 position = Vector2(550, 1095)
 physics_material_override = null
 default_damage = 5
+
+[node name="EndGameUI" type="CanvasLayer" parent="."]
+script = ExtResource("7_ws6b2")
+victory_event_channel = ExtResource("3_t86qo")
+
+[node name="CenterContainer" type="CenterContainer" parent="EndGameUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="EndGameUI/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.424345, 0.957854, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 60
