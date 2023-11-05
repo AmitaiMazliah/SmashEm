@@ -17,7 +17,7 @@ radius = 6.50077
 
 [node name="PlayerAgent" instance=ExtResource("1_8igvm")]
 script = ExtResource("2_fx3lm")
-distance_from_touch_location_to_count_play = null
+distance_from_touch_location_to_count_play = 60.0
 
 [node name="MovementPredictionLine" type="Line2D" parent="Visuals" index="2"]
 material = SubResource("ShaderMaterial_1efxl")

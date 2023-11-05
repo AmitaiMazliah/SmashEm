@@ -1,5 +1,7 @@
 extends Agent
 
+class_name PlayerAgent
+
 @export var distance_from_touch_location_to_count_play : float = 60
 var pressed = false
 var direction : Vector2

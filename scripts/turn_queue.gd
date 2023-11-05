@@ -2,6 +2,7 @@ extends Node
 
 class_name TurnQueue
 
+@export var defeat_event_channel: VoidEventChannel
 @export var turn_time_in_secs : float = 10
 @export var turn_label : Label
 
@@ -60,3 +61,5 @@ func _kill_dead_agents():
 	var dead_agents = agents.filter(func (a: Agent): return a.dead)
 	for agent in dead_agents:
 		agent.kill()
+		if agent is PlayerAgent:
+			defeat_event_channel.raise_event()
