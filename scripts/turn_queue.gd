@@ -63,3 +63,4 @@ func _kill_dead_agents():
 		agent.kill()
 		if agent is PlayerAgent:
 			defeat_event_channel.raise_event()
+			stop()

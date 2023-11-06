@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ioommklr86bm"]
+[gd_scene load_steps=21 format=3 uid="uid://ioommklr86bm"]
 
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="1_gum2r"]
 [ext_resource type="Script" path="res://scripts/match_manager.gd" id="1_l8307"]
@@ -8,7 +8,10 @@
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="3_t86qo"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="3_vu050"]
 [ext_resource type="Texture2D" uid="uid://dl7bmar7qa0rt" path="res://art/space-tileset/space-blks-1.034.png" id="5_jyjmj"]
-[ext_resource type="Script" path="res://scripts/UI/EndGameUI.gd" id="7_ws6b2"]
+[ext_resource type="Script" path="res://scripts/UI/match_ui.gd" id="9_35syc"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="10_3e6xu"]
+[ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="10_rpg3o"]
+[ext_resource type="PackedScene" uid="uid://nk6lbs27cp64" path="res://scenes/main_menu.tscn" id="11_lglqw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wlmc"]
 texture = ExtResource("5_jyjmj")
@@ -1782,6 +1785,7 @@ bounce = 1.0
 
 [node name="TurnQueue" parent="." instance=ExtResource("2_fiple")]
 defeat_event_channel = ExtResource("2_4aehl")
+turn_time_in_secs = 15.0
 
 [node name="MatchManager" type="Node" parent="."]
 script = ExtResource("1_l8307")
@@ -1864,7 +1868,6 @@ position = Vector2(162, 1107)
 disable_mode = 2
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_lfmai")
-distance_from_touch_location_to_count_play = 60.0
 default_velocity = 5000.0
 default_damage = 40
 
@@ -1883,22 +1886,60 @@ position = Vector2(550, 1095)
 physics_material_override = null
 default_damage = 40
 
-[node name="EndGameUI" type="CanvasLayer" parent="."]
-script = ExtResource("7_ws6b2")
+[node name="MatchUI" type="CanvasLayer" parent="."]
+script = ExtResource("9_35syc")
 victory_event_channel = ExtResource("3_t86qo")
 defeat_event_channel = ExtResource("2_4aehl")
+load_scene_event_chennl = ExtResource("10_rpg3o")
+main_menu_scene = ExtResource("11_lglqw")
 
-[node name="CenterContainer" type="CenterContainer" parent="EndGameUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MatchEndPanel" type="Panel" parent="MatchUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -285.0
+offset_right = 224.0
+offset_bottom = 285.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="EndGameUI/CenterContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="MatchUI/MatchEndPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -43.0
+offset_right = 127.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.424345, 0.957854, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 60
+text = "Victory!!!"
+
+[node name="Button" type="Button" parent="MatchUI/MatchEndPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -148.0
+offset_right = 98.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("10_3e6xu")
+text = "Back"
+
+[connection signal="pressed" from="MatchUI/MatchEndPanel/Button" to="MatchUI" method="_on_back_button_pressed"]
