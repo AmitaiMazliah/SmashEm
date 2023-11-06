@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="NodeEventChannel" load_steps=2 format=3 uid="uid://cthwqdngej46f"]
+
+[ext_resource type="Script" path="res://scripts/events/scene_event_channel.gd" id="1_qs2jg"]
+
+[resource]
+script = ExtResource("1_qs2jg")
