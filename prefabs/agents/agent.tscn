@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dqsa78xqy80jb"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent.gd" id="1_yap2o"]
-[ext_resource type="Script" path="res://prefabs/agents/agent_visuals.gd" id="2_4v4as"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_j826y"]
 [ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="3_knjvt"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_qdccr"]
+[ext_resource type="Script" path="res://scripts/agents/agent_visuals.gd" id="4_v7toc"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="4_w54ah"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_qy2f6"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="7_rnl5w"]
@@ -27,7 +27,7 @@ health = NodePath("HealthComponent")
 default_damage = 50
 
 [node name="Visuals" type="Node2D" parent="."]
-script = ExtResource("2_4v4as")
+script = ExtResource("4_v7toc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, 1)

@@ -14,7 +14,7 @@ signal death()
 
 func _ready():
 	max_health = default_health
-	#max_health = default_health + _equipment.get_total_health_bonus()
+	max_health = default_health + agent.get_node("AgentEquipment").get_total_health_bonus()
 	current_health = max_health
 
 func take_damage(damage: int):
