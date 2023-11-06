@@ -1,5 +1,7 @@
 extends Agent
 
+class_name AiAgent
+
 @export var min_think_time_in_secs = 1
 @export var max_think_time_in_secs = 5
 

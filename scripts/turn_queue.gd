@@ -2,6 +2,7 @@ extends Node
 
 class_name TurnQueue
 
+@export var victory_event_channel: VoidEventChannel
 @export var defeat_event_channel: VoidEventChannel
 @export var turn_time_in_secs : float = 10
 @export var turn_label : Label
@@ -49,8 +50,9 @@ func play_turn():
 		]).settled
 		if result.status == Promise.Status.RESOLVED:
 			active_agent.change_turn(false)
-			_active_agent_index = (_active_agent_index + 1) % live_agents.size()
 			_kill_dead_agents()
+			live_agents = agents.filter(func (a: Agent): return not a.dead)
+			_active_agent_index = (_active_agent_index + 1) % live_agents.size()
 
 func _fade_label():
 	var tween = turn_label.create_tween()
@@ -64,3 +66,7 @@ func _kill_dead_agents():
 		if agent is PlayerAgent:
 			defeat_event_channel.raise_event()
 			stop()
+	if agents.filter(func (a: Agent): return a is AiAgent).all(func (a: Agent): return a.dead):
+		print("Player won the game")
+		victory_event_channel.raise_event()
+		stop()

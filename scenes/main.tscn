@@ -1,16 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb7ask2laejku"]
+[gd_scene load_steps=6 format=3 uid="uid://bb7ask2laejku"]
 
-[ext_resource type="Script" path="res://scenes/initialization_loader.gd" id="1_8k2tx"]
-[ext_resource type="Script" path="res://scene_loader.gd" id="1_76f6g"]
+[ext_resource type="Script" path="res://scripts/initialization_loader.gd" id="1_qnggc"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_o566f"]
 [ext_resource type="PackedScene" uid="uid://nk6lbs27cp64" path="res://scenes/main_menu.tscn" id="3_oid88"]
+[ext_resource type="Script" path="res://scripts/scene_loader.gd" id="4_i0xoi"]
+[ext_resource type="Resource" uid="uid://c1hpycii541ab" path="res://resources/events/load_main_menu_event_channel.tres" id="4_yce1j"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_8k2tx")
+script = ExtResource("1_qnggc")
 load_scene_event_channel = ExtResource("2_o566f")
 main_menu_scene = ExtResource("3_oid88")
 
 [node name="SceneLoader" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("1_76f6g")
+script = ExtResource("4_i0xoi")
 root = NodePath("..")
 load_scene_event_chennl = ExtResource("2_o566f")
+load_main_menu_event_channel = ExtResource("4_yce1j")
+main_menu_scene = ExtResource("3_oid88")

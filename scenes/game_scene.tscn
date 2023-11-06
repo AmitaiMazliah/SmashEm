@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://ioommklr86bm"]
+[gd_scene load_steps=19 format=3 uid="uid://ioommklr86bm"]
 
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="1_gum2r"]
-[ext_resource type="Script" path="res://scripts/match_manager.gd" id="1_l8307"]
 [ext_resource type="Resource" uid="uid://ceg0y65hkm0a2" path="res://resources/events/defeat_event_channel.tres" id="2_4aehl"]
 [ext_resource type="PackedScene" uid="uid://cfglga485riqx" path="res://prefabs/turn_queue.tscn" id="2_fiple"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="3_gylyo"]
@@ -9,9 +8,8 @@
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="3_vu050"]
 [ext_resource type="Texture2D" uid="uid://dl7bmar7qa0rt" path="res://art/space-tileset/space-blks-1.034.png" id="5_jyjmj"]
 [ext_resource type="Script" path="res://scripts/UI/match_ui.gd" id="9_35syc"]
+[ext_resource type="Resource" uid="uid://c1hpycii541ab" path="res://resources/events/load_main_menu_event_channel.tres" id="9_m6g7n"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="10_3e6xu"]
-[ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="10_rpg3o"]
-[ext_resource type="PackedScene" uid="uid://nk6lbs27cp64" path="res://scenes/main_menu.tscn" id="11_lglqw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wlmc"]
 texture = ExtResource("5_jyjmj")
@@ -1784,12 +1782,9 @@ bounce = 1.0
 [node name="GameScene" type="Node2D"]
 
 [node name="TurnQueue" parent="." instance=ExtResource("2_fiple")]
+victory_event_channel = ExtResource("3_t86qo")
 defeat_event_channel = ExtResource("2_4aehl")
 turn_time_in_secs = 15.0
-
-[node name="MatchManager" type="Node" parent="."]
-script = ExtResource("1_l8307")
-victory_event_channel = ExtResource("3_t86qo")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_younl")
@@ -1890,8 +1885,7 @@ default_damage = 40
 script = ExtResource("9_35syc")
 victory_event_channel = ExtResource("3_t86qo")
 defeat_event_channel = ExtResource("2_4aehl")
-load_scene_event_chennl = ExtResource("10_rpg3o")
-main_menu_scene = ExtResource("11_lglqw")
+load_main_menu_event_chennl = ExtResource("9_m6g7n")
 
 [node name="MatchEndPanel" type="Panel" parent="MatchUI"]
 anchors_preset = 8
