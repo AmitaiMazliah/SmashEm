@@ -1782,6 +1782,7 @@ bounce = 1.0
 [node name="GameScene" type="Node2D"]
 
 [node name="TurnQueue" parent="." instance=ExtResource("2_fiple")]
+turn_time_in_secs = 7.0
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_younl")

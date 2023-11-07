@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AudioCue" load_steps=3 format=3 uid="uid://cjfbhsoqhw48n"]
+
+[ext_resource type="AudioStream" uid="uid://hh7038qyoom6" path="res://art/audio/countdown.wav" id="1_1d2hl"]
+[ext_resource type="Script" path="res://scripts/audio/audio_data/audio_cue.gd" id="1_kqbhw"]
+
+[resource]
+script = ExtResource("1_kqbhw")
+looping = false
+sequenceMode = 1
+audioClips = Array[AudioStream]([ExtResource("1_1d2hl")])

@@ -3,6 +3,7 @@ extends RigidBody2D
 class_name Agent
 
 signal turn_ended
+signal moved
 
 var dead : bool = false
 
@@ -43,6 +44,7 @@ func move(direction: Vector2) -> void:
 	if _my_turn:
 		print("Moving in direction ", direction)
 		apply_impulse(direction * default_velocity)
+		moved.emit()
 
 func kill():
 	_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnDeath)

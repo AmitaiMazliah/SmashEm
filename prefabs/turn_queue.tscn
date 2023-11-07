@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp22mksxi8dw0"]
+[gd_scene load_steps=10 format=3 uid="uid://bp22mksxi8dw0"]
 
 [ext_resource type="Script" path="res://scripts/turn_queue.gd" id="1_uop6f"]
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="2_ya30x"]
 [ext_resource type="Resource" uid="uid://ceg0y65hkm0a2" path="res://resources/events/defeat_event_channel.tres" id="3_tldaw"]
+[ext_resource type="Resource" uid="uid://2nvlhruxpke6" path="res://resources/events/play_sound_event_channel.tres" id="4_vxxsm"]
 [ext_resource type="Texture2D" uid="uid://hvfopyjsqeke" path="res://art/timer-icon.png" id="4_vyamo"]
+[ext_resource type="Resource" uid="uid://cjfbhsoqhw48n" path="res://resources/audio/cues/countdown_audio.tres" id="5_hnwi4"]
+[ext_resource type="Resource" uid="uid://moi006drxmk0" path="res://resources/audio/config/sfx_ui_config.tres" id="6_6mhey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7xgg"]
 bg_color = Color(0.92549, 0.92549, 0.92549, 1)
@@ -26,10 +29,11 @@ defeat_event_channel = ExtResource("3_tldaw")
 turn_time_in_secs = 15.0
 turn_label = NodePath("CanvasLayer/CurrentTurnLabel")
 turn_countdown_progress_bar = NodePath("CanvasLayer/TurnCountCount/TurnCountDownProgressBar")
+play_sfx_event_channel = ExtResource("4_vxxsm")
+timer_countdown_audio = ExtResource("5_hnwi4")
+sfx_2d_audio_config = ExtResource("6_6mhey")
 
 [node name="TurnTimer" type="Timer" parent="."]
-
-[node name="LabelDisappearTimer" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
