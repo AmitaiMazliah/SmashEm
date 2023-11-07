@@ -76,3 +76,6 @@ func _kill_dead_agents():
 		print("Player won the game")
 		victory_event_channel.raise_event()
 		stop()
+
+func _get_tool_buttons():
+	return [start]

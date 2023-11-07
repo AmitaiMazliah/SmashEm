@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="1_gum2r"]
 [ext_resource type="Resource" uid="uid://ceg0y65hkm0a2" path="res://resources/events/defeat_event_channel.tres" id="2_4aehl"]
-[ext_resource type="PackedScene" uid="uid://cfglga485riqx" path="res://prefabs/turn_queue.tscn" id="2_fiple"]
+[ext_resource type="PackedScene" uid="uid://bp22mksxi8dw0" path="res://prefabs/turn_queue.tscn" id="2_fiple"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="3_gylyo"]
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="3_t86qo"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="3_vu050"]
@@ -1782,7 +1782,6 @@ bounce = 1.0
 [node name="GameScene" type="Node2D"]
 
 [node name="TurnQueue" parent="." instance=ExtResource("2_fiple")]
-turn_time_in_secs = 15.0
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_younl")
