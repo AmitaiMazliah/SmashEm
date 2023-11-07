@@ -1,28 +1,87 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfglga485riqx"]
+[gd_scene load_steps=7 format=3 uid="uid://cfglga485riqx"]
 
 [ext_resource type="Script" path="res://scripts/turn_queue.gd" id="1_uop6f"]
+[ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="2_ya30x"]
+[ext_resource type="Resource" uid="uid://ceg0y65hkm0a2" path="res://resources/events/defeat_event_channel.tres" id="3_tldaw"]
+[ext_resource type="Texture2D" uid="uid://hvfopyjsqeke" path="res://art/timer-icon.png" id="4_vyamo"]
 
-[node name="TurnQueue" type="Node" node_paths=PackedStringArray("turn_label")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7xgg"]
+bg_color = Color(0.92549, 0.92549, 0.92549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l3x5"]
+bg_color = Color(0.913725, 0.568627, 0.313726, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="TurnQueue" type="Node" node_paths=PackedStringArray("turn_label", "turn_countdown_progress_bar")]
 script = ExtResource("1_uop6f")
-turn_label = NodePath("CanvasLayer/CenterContainer/Label")
+victory_event_channel = ExtResource("2_ya30x")
+defeat_event_channel = ExtResource("3_tldaw")
+turn_label = NodePath("CanvasLayer/CurrentTurnLabel")
+turn_countdown_progress_bar = NodePath("CanvasLayer/TurnCountCount/TurnCountDownProgressBar")
 
 [node name="TurnTimer" type="Timer" parent="."]
 
+[node name="LabelDisappearTimer" type="Timer" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="CurrentTurnLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -41.5
+offset_right = 0.5
+offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/CenterContainer"]
-layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.424345, 0.957854, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 60
 
-[node name="LabelDisappearTimer" type="Timer" parent="CanvasLayer"]
+[node name="TurnCountCount" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Sprite2D" type="TextureRect" parent="CanvasLayer/TurnCountCount"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_right = 577.0
+offset_bottom = 401.0
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_vyamo")
+
+[node name="TurnCountDownProgressBar" type="ProgressBar" parent="CanvasLayer/TurnCountCount"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -161.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_h7xgg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8l3x5")
+value = 100.0
+show_percentage = false

@@ -1782,8 +1782,6 @@ bounce = 1.0
 [node name="GameScene" type="Node2D"]
 
 [node name="TurnQueue" parent="." instance=ExtResource("2_fiple")]
-victory_event_channel = ExtResource("3_t86qo")
-defeat_event_channel = ExtResource("2_4aehl")
 turn_time_in_secs = 15.0
 
 [node name="TileMap" type="TileMap" parent="."]

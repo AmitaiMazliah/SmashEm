@@ -6,20 +6,26 @@ class_name TurnQueue
 @export var defeat_event_channel: VoidEventChannel
 @export var turn_time_in_secs : float = 10
 @export var turn_label : Label
+@export var turn_countdown_progress_bar: ProgressBar
 
 @onready var timer = $TurnTimer
 @onready var agents = get_tree().get_nodes_in_group("Agents")
-@onready var label_fade_timer = $CanvasLayer/LabelDisappearTimer
+@onready var label_fade_timer = $LabelDisappearTimer
 
 var _active_agent_index = 0
 var _running : bool = false
 
 func _ready():
 	timer.wait_time = turn_time_in_secs
+	turn_countdown_progress_bar.max_value = turn_time_in_secs
+	turn_countdown_progress_bar.value = turn_time_in_secs
+	get_tree().create_timer(1).timeout.connect(start)
 
 func _process(delta):
 	if Input.is_action_just_pressed("Test"):
 		start()
+	if _running and not timer.is_stopped():
+		turn_countdown_progress_bar.value = timer.time_left
 
 func start():
 	if !_running:
