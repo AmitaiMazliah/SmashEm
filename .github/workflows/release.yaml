@@ -7,7 +7,7 @@ on:
 env:
   GODOT_VERSION: 4.1.2
   EXPORT_NAME: SmashEm
-  PROJECT_PATH: SmashEm
+  PROJECT_PATH: .
   
 jobs:
   export-windows:
