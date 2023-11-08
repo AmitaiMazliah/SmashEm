@@ -7,7 +7,6 @@ on:
 env:
   GODOT_VERSION: 4.1.2
   EXPORT_NAME: SmashEm
-  PROJECT_PATH: .
   
 jobs:
   export-windows:
@@ -27,10 +26,9 @@ jobs:
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
-          cd $PROJECT_PATH
-          godot -v --headless --export-release "Windows Desktop" build/windows/$EXPORT_NAME.exe
+          godot -v --headless --export-release "Windows Desktop" ./build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
           name: windows
-          path: build/windows
+          path: ./build/windows
