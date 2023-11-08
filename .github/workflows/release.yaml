@@ -32,3 +32,4 @@ jobs:
         with:
           name: windows
           path: build/windows/
+          if-no-files-found: error
