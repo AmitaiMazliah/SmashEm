@@ -25,6 +25,8 @@ material = SubResource("ShaderMaterial_1efxl")
 texture = ExtResource("4_iupx7")
 texture_mode = 1
 script = ExtResource("5_af2o0")
+max_points_to_predict = 30000
+precision = 50
 
 [node name="CollisionCheck" type="CharacterBody2D" parent="Visuals/MovementPredictionLine" index="0"]
 collision_layer = 4

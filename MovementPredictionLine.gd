@@ -1,10 +1,12 @@
 extends Line2D
 
 @export var max_points_to_predict = 300
+@export_range(1, 100) var precision = 1
 @export var gravity = 0
 
 func update_trajectory(direction: Vector2, speed: float, delta: float):
 	clear_points()
+	delta /= precision
 	var position : Vector2 = Vector2.ZERO
 	$CollisionCheck.position = position
 	var velocity = direction * speed
