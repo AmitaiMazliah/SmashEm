@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=11 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/UI/my_tab_container.gd" id="6_h72yk"]
 [ext_resource type="Texture2D" uid="uid://dh7p2heexlnvw" path="res://art/gold-bag.png" id="7_5l8re"]
 [ext_resource type="Texture2D" uid="uid://cb4blv1uyky7" path="res://art/space-ship.png" id="8_mp6ow"]
+[ext_resource type="Texture2D" uid="uid://dpdex8nwm0hob" path="res://art/cards-icon.png" id="9_mwucg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -54,12 +55,6 @@ text = "Shop"
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/TabContainer/PlayTab"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Play"
 
 [node name="Button" type="Button" parent="UI/TabContainer/PlayTab"]
 layout_mode = 1
@@ -130,7 +125,9 @@ expand_icon = true
 custom_minimum_size = Vector2(240, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "ITEMS"
+icon = ExtResource("9_mwucg")
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="UI/TabContainer/PlayTab/Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
