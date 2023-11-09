@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buo68l8tw07u0"
-path="res://.godot/imported/8-jwGziKt37BZo6zk.png-e22f68c0e5f7fb78ccd5d6d1932739d1.ctex"
+uid="uid://dh7p2heexlnvw"
+path="res://.godot/imported/gold-bag.png-5902d85be932948f3b8a1f13d6378856.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/8-jwGziKt37BZo6zk.png"
-dest_files=["res://.godot/imported/8-jwGziKt37BZo6zk.png-e22f68c0e5f7fb78ccd5d6d1932739d1.ctex"]
+source_file="res://art/gold-bag.png"
+dest_files=["res://.godot/imported/gold-bag.png-5902d85be932948f3b8a1f13d6378856.ctex"]
 
 [params]
 

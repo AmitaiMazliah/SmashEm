@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=10 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
-[ext_resource type="Texture2D" uid="uid://buo68l8tw07u0" path="res://art/8-jwGziKt37BZo6zk.png" id="1_wwoe7"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
 [ext_resource type="PackedScene" uid="uid://ioommklr86bm" path="res://scenes/game_scene.tscn" id="3_ct418"]
+[ext_resource type="Texture2D" uid="uid://dq80ejflk6ev" path="res://art/background.jpg" id="4_5q6jk"]
+[ext_resource type="Script" path="res://scripts/UI/my_tab_container.gd" id="6_h72yk"]
+[ext_resource type="Texture2D" uid="uid://dh7p2heexlnvw" path="res://art/gold-bag.png" id="7_5l8re"]
+[ext_resource type="Texture2D" uid="uid://cb4blv1uyky7" path="res://art/space-ship.png" id="8_mp6ow"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_hfqvu")
@@ -19,24 +25,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_wwoe7")
+texture = ExtResource("4_5q6jk")
+expand_mode = 1
 
-[node name="ColorRect" type="Panel" parent="UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 200.0
+[node name="TabContainer" type="TabContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pno0j")
+tabs_visible = false
+script = ExtResource("6_h72yk")
 
-[node name="Button" type="Button" parent="UI/ColorRect"]
+[node name="ShopTab" type="Control" parent="UI/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/ShopTab"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Shop"
+
+[node name="PlayTab" type="Control" parent="UI/TabContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Play"
+
+[node name="Button" type="Button" parent="UI/TabContainer/PlayTab"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,13 +69,70 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -61.5
-offset_top = -35.5
+offset_top = 24.5
 offset_right = 61.5
-offset_bottom = 35.5
+offset_bottom = 95.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_bv25m")
 theme_override_font_sizes/font_size = 50
 text = "PLAY"
 
-[connection signal="pressed" from="UI/ColorRect/Button" to="." method="_on_play_button_pressed"]
+[node name="ItemsTab" type="Control" parent="UI/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/ItemsTab"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Items"
+
+[node name="BottomMenu" type="Panel" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+
+[node name="VFlowContainer" type="VFlowContainer" parent="UI/BottomMenu"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+alignment = 1
+
+[node name="ShopButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("7_5l8re")
+icon_alignment = 1
+expand_icon = true
+
+[node name="PlayButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("8_mp6ow")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ItemsButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "ITEMS"
+
+[connection signal="pressed" from="UI/TabContainer/PlayTab/Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
