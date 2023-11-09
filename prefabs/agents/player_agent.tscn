@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=10 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="PackedScene" uid="uid://dqsa78xqy80jb" path="res://prefabs/agents/agent.tscn" id="1_8igvm"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent.gd" id="2_fx3lm"]
 [ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="3_urv4q"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
 [ext_resource type="Script" path="res://MovementPredictionLine.gd" id="5_af2o0"]
+[ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/test.tres" id="6_mmbng"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1efxl"]
 shader = ExtResource("3_urv4q")
@@ -39,6 +40,11 @@ highlight_color = Color(0, 0, 1, 1)
 scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_hdpcg")
 shape_visible = false
+
+[node name="AgentEquipment" parent="." index="3"]
+current_equipment = {
+"Head": ExtResource("6_mmbng")
+}
 
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
