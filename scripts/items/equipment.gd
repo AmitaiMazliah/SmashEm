@@ -11,4 +11,4 @@ class_name Equipment
 @export var bonus_damage : int
 @export var effects : Array[Effect]
 
-enum Slot { Head, Chest, Boots, Weapon }
+enum Slot { Head, RightHand, LeftHand, Boots }
