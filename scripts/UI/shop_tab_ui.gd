@@ -10,6 +10,7 @@ func _ready():
 	for item in shop_items:
 		var item_view = _item_view_prefab.instantiate() as ShopItemView
 		item_view.set_item(item)
+		item_view.pressed.connect(_select_item.bind(item))
 		_items_grid.add_child(item_view)
 
 func _get_items_catalog() -> Array[Equipment]:
@@ -25,3 +26,6 @@ func _get_items_catalog() -> Array[Equipment]:
 				items.append(item)
 			file_name = dir.get_next()
 	return items
+
+func _select_item(item: Equipment):
+	print("You have selected ", item.name)

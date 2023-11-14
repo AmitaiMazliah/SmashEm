@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://scripts/UI/shop_item_view.gd" id="1_6qnby"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_u4eqi"]
 
-[node name="ShopItemView" type="PanelContainer"]
+[node name="ShopItemView" type="Button"]
 custom_minimum_size = Vector2(150, 220)
 size_flags_horizontal = 6
 script = ExtResource("1_6qnby")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+offset_right = 150.0
+offset_bottom = 220.0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
