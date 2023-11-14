@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b2aqtmf08yyom"]
+
+[node name="ShopItemView" type="PanelContainer"]
+custom_minimum_size = Vector2(150, 220)
+size_flags_horizontal = 6
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(120, 175)
+layout_mode = 2

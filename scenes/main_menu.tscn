@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=13 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dq80ejflk6ev" path="res://art/background.jpg" id="4_5q6jk"]
 [ext_resource type="Script" path="res://scripts/UI/my_tab_container.gd" id="6_h72yk"]
 [ext_resource type="Texture2D" uid="uid://dh7p2heexlnvw" path="res://art/gold-bag.png" id="7_5l8re"]
+[ext_resource type="Script" path="res://scripts/UI/shop_tab_ui.gd" id="7_k4bha"]
 [ext_resource type="Texture2D" uid="uid://cb4blv1uyky7" path="res://art/space-ship.png" id="8_mp6ow"]
+[ext_resource type="PackedScene" uid="uid://b2aqtmf08yyom" path="res://prefabs/ui/shop_item_view.tscn" id="8_q14h2"]
 [ext_resource type="Texture2D" uid="uid://dpdex8nwm0hob" path="res://art/cards-icon.png" id="9_mwucg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
@@ -45,6 +47,8 @@ script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
 layout_mode = 2
+script = ExtResource("7_k4bha")
+_item_view_prefab = ExtResource("8_q14h2")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ShopTab"]
 layout_mode = 1
@@ -62,87 +66,6 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 size_flags_vertical = 3
 columns = 4
-
-[node name="PanelContainer" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer2"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-
-[node name="PanelContainer3" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer3"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-
-[node name="PanelContainer4" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer4"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-
-[node name="PanelContainer5" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer5"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-
-[node name="PanelContainer6" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer6"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-
-[node name="PanelContainer7" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer7"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-
-[node name="PanelContainer8" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer8"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-
-[node name="PanelContainer9" type="PanelContainer" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ShopTab/MarginContainer/GridContainer/PanelContainer9"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
 visible = false
