@@ -1,9 +1,31 @@
-[gd_scene format=3 uid="uid://b2aqtmf08yyom"]
+[gd_scene load_steps=3 format=3 uid="uid://b2aqtmf08yyom"]
+
+[ext_resource type="Script" path="res://scripts/UI/shop_item_view.gd" id="1_6qnby"]
+[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_u4eqi"]
 
 [node name="ShopItemView" type="PanelContainer"]
 custom_minimum_size = Vector2(150, 220)
 size_flags_horizontal = 6
+script = ExtResource("1_6qnby")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(120, 175)
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+texture = ExtResource("2_u4eqi")
+
+[node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "hfdhsdf"
+horizontal_alignment = 1

@@ -6,8 +6,10 @@ extends Control
 
 func _ready():
 	var items = _get_items_catalog()
-	for item in items:
-		var item_view = _item_view_prefab.instantiate()
+	var shop_items = items.filter(func (i): return not Player.owned_items.has(i))
+	for item in shop_items:
+		var item_view = _item_view_prefab.instantiate() as ShopItemView
+		item_view.set_item(item)
 		_items_grid.add_child(item_view)
 
 func _get_items_catalog() -> Array[Equipment]:

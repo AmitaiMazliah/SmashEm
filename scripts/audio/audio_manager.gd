@@ -22,7 +22,6 @@ func _ready():
 		_sound_emitter_pool.append(sound_emitter)
 		sound_emitter.finished.connect(_on_stream_player_finished.bind(sound_emitter))
 	play_sound_audio_event_channel.event_raised.connect(_on_play_sound_audio_cue)
-	test_audio_cue()
 
 func _on_play_sound_audio_cue(audio_cue: AudioCue, audio_config: AudioConfiguration, position: Vector2 = Vector2.ZERO):
 	var clip_to_play = audio_cue.get_next_clip()
