@@ -31,14 +31,12 @@ func _generate_audio_pool():
 
 func _on_play_music_audio_cue(audio_cue: AudioCue, audio_config: AudioConfiguration, position: Vector2 = Vector2.ZERO):
 	if _music_sound_emitter and _music_sound_emitter.playing:
-		# Music is already playing, need to fade it out
 		_music_sound_emitter.fade_out(2)
-		#startTime = musicSoundEmitter.FadeMusicOut(fadeDuration);
 	
 	var clip_to_play = audio_cue.get_next_clip()
 	_music_sound_emitter = _sound_emitter_pool.pop_back();
 	print(clip_to_play)
-	_music_sound_emitter.play_audio_clip(clip_to_play, audio_config, false, position)
+	_music_sound_emitter.fade_music_in(clip_to_play, audio_config, 1)
 
 func _on_play_sound_audio_cue(audio_cue: AudioCue, audio_config: AudioConfiguration, position: Vector2 = Vector2.ZERO):
 	var clip_to_play = audio_cue.get_next_clip()

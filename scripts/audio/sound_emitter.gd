@@ -11,15 +11,16 @@ func play_audio_clip(audio_clip: AudioStream, audio_config: AudioConfiguration, 
 	stream = audio_clip
 	play()
 
-func fade_in():
-	print("fade in")
+func fade_music_in(audio_clip: AudioStream, audio_config: AudioConfiguration, duration: float, start_time: float = 0):
+	play_audio_clip(audio_clip, audio_config, true)
+	volume_db = -80
+	var tween = create_tween()
+	tween.tween_property(self, "volume_db", audio_config.volume, duration).set_trans(Tween.TRANS_SINE)
 
 func fade_out(duration: float):
 	var tween = create_tween()
-	# tween music volume down to 0
 	tween.tween_property(self, "volume_db", -80, duration).set_trans(Tween.TRANS_SINE)
 	tween.finished.connect(_on_fade_out_completed)
-	# when the tween ends, the music will be stopped
 
 func _on_fade_out_completed():
 	# stop the music -- otherwise it continues to run at silent volume
