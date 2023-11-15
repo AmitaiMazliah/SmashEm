@@ -10,8 +10,11 @@ class_name AudioConfiguration
 @export_range(0, 1) var pitch : float = 1
 
 func apply_to(audio_stream_player):
-	audio_stream_player.volume_db = volume
+	audio_stream_player.volume_db = _normalize_volume(volume)
 	audio_stream_player.pitch_scale = pitch
 	audio_stream_player.bus = AudioBusName.keys()[audio_bus]
+
+func _normalize_volume(volume: float) -> float:
+	return (volume - 1) * 80
 
 enum AudioBusName { Music, SFX_2D, SFX_UI }

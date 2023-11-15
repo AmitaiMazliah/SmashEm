@@ -13,9 +13,10 @@ func play_audio_clip(audio_clip: AudioStream, audio_config: AudioConfiguration, 
 
 func fade_music_in(audio_clip: AudioStream, audio_config: AudioConfiguration, duration: float, start_time: float = 0):
 	play_audio_clip(audio_clip, audio_config, true)
+	var desired_volume = volume_db
 	volume_db = -80
 	var tween = create_tween()
-	tween.tween_property(self, "volume_db", audio_config.volume, duration).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "volume_db", desired_volume, duration).set_trans(Tween.TRANS_SINE)
 
 func fade_out(duration: float):
 	var tween = create_tween()
