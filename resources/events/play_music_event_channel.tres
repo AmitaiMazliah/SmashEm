@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="AudioCueEventChannel" load_steps=2 format=3 uid="uid://bo4vefyw7bh5w"]
+
+[ext_resource type="Script" path="res://scripts/events/audio_cue_event_channel.gd" id="1_y0s76"]
+
+[resource]
+script = ExtResource("1_y0s76")

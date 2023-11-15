@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="NodeEventChannel" load_steps=2 format=3 uid="uid://cthwqdngej46f"]
+[gd_resource type="Resource" script_class="LoadSceneEventChannel" load_steps=2 format=3 uid="uid://cthwqdngej46f"]
 
-[ext_resource type="Script" path="res://scripts/events/scene_event_channel.gd" id="1_qs2jg"]
+[ext_resource type="Script" path="res://scripts/events/load_scene_event_channel.gd" id="1_xrcgv"]
 
 [resource]
-script = ExtResource("1_qs2jg")
+script = ExtResource("1_xrcgv")
