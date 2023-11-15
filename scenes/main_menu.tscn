@@ -75,19 +75,17 @@ columns = 4
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="UI/TabContainer/PlayTab"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = -37.5
-offset_right = 63.5
-offset_bottom = 37.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab"]
+offset_right = 720.0
+offset_bottom = 1160.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Button" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("2_bv25m")
 theme_override_font_sizes/font_size = 50
 text = "PLAY"
@@ -252,7 +250,7 @@ icon = ExtResource("9_mwucg")
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="pressed" from="UI/TabContainer/PlayTab/Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
