@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_1i14s")
+audio_bus = 0
 mute = false
-volume = 1.0
+volume = 0.6
 pitch = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=23 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
@@ -15,19 +15,21 @@
 [ext_resource type="Texture2D" uid="uid://dpdex8nwm0hob" path="res://art/cards-icon.png" id="9_mwucg"]
 [ext_resource type="Texture2D" uid="uid://blprr73ufbyq1" path="res://art/head-vector.png" id="10_b1vdq"]
 [ext_resource type="Script" path="res://scripts/UI/item_slot_view.gd" id="10_mkhw2"]
+[ext_resource type="Script" path="res://scripts/UI/play_tab_ui.gd" id="10_o3i1a"]
 [ext_resource type="Texture2D" uid="uid://cifiw3hk25fdb" path="res://art/boots-vector.png" id="11_8widl"]
-
-[sub_resource type="Resource" id="Resource_uht0j"]
-script = ExtResource("4_oh1vm")
-scene_reference = ExtResource("3_ct418")
+[ext_resource type="Texture2D" uid="uid://cr64eflh0ntn4" path="res://art/ui/main-menu/settings-icon.png" id="11_v2t7b"]
+[ext_resource type="Script" path="res://scripts/UI/settings_panel.gd" id="12_bpdcs"]
+[ext_resource type="Texture2D" uid="uid://cavi4fecd3cmi" path="res://art/ui/main-menu/Red_X_Cross_Wrong_Not_clip_art_small.png" id="13_pg5gj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="Resource" id="Resource_tjlyx"]
+script = ExtResource("4_oh1vm")
+scene_reference = ExtResource("3_ct418")
+
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_hfqvu")
-load_scene_event_channel = ExtResource("2_4dvcv")
-game_scene = SubResource("Resource_uht0j")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -55,6 +57,7 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -77,8 +80,10 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
+script = ExtResource("10_o3i1a")
+load_scene_event_channel = ExtResource("2_4dvcv")
+game_scene = SubResource("Resource_tjlyx")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab"]
 layout_mode = 0
@@ -89,12 +94,50 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
+[node name="SettingsButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("11_v2t7b")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [node name="Button" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_bv25m")
 theme_override_font_sizes/font_size = 50
 text = "PLAY"
+
+[node name="SettingsPanel" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer"]
+custom_minimum_size = Vector2(580, 950)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("12_bpdcs")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab/MarginContainer/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="CloseButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/SettingsPanel/MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("13_pg5gj")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
 visible = false
@@ -256,7 +299,9 @@ icon = ExtResource("9_mwucg")
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/SettingsButton" to="UI/TabContainer/PlayTab" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Button" to="UI/TabContainer/PlayTab" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/SettingsPanel/MarginContainer/CloseButton" to="UI/TabContainer/PlayTab/MarginContainer/SettingsPanel" method="_on_close_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
