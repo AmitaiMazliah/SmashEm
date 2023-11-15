@@ -2,7 +2,12 @@ extends Resource
 
 class_name AudioCueEventChannel
 
-signal event_raised(audio_cue: AudioCue, audio_config: AudioConfiguration, position: Vector2)
+signal play_audio(audio_cue: AudioCue, audio_config: AudioConfiguration, position: Vector2)
+signal stop_audio()
 
-func raise_event(audio_cue : AudioCue, audio_config: AudioConfiguration, position: Vector2 = Vector2.ZERO) -> void:
-	event_raised.emit(audio_cue, audio_config, position)
+func raise_play_event(audio_cue : AudioCue, audio_config: AudioConfiguration, position: Vector2 = Vector2.ZERO) -> void:
+	play_audio.emit(audio_cue, audio_config, position)
+	return AudioCueKey.new(audio_cue)
+
+func raise_stop_event() -> void:
+	stop_audio.emit()

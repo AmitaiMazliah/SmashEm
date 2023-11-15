@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=19 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
 [ext_resource type="PackedScene" uid="uid://ioommklr86bm" path="res://scenes/game_scene.tscn" id="3_ct418"]
 [ext_resource type="Texture2D" uid="uid://dq80ejflk6ev" path="res://art/background.jpg" id="4_5q6jk"]
+[ext_resource type="Script" path="res://scripts/SceneManagement/game_scene.gd" id="4_oh1vm"]
 [ext_resource type="Script" path="res://scripts/UI/my_tab_container.gd" id="6_h72yk"]
 [ext_resource type="Texture2D" uid="uid://dh7p2heexlnvw" path="res://art/gold-bag.png" id="7_5l8re"]
 [ext_resource type="Script" path="res://scripts/UI/shop_tab_ui.gd" id="7_k4bha"]
@@ -16,13 +17,17 @@
 [ext_resource type="Script" path="res://scripts/UI/item_slot_view.gd" id="10_mkhw2"]
 [ext_resource type="Texture2D" uid="uid://cifiw3hk25fdb" path="res://art/boots-vector.png" id="11_8widl"]
 
+[sub_resource type="Resource" id="Resource_uht0j"]
+script = ExtResource("4_oh1vm")
+scene_reference = ExtResource("3_ct418")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_hfqvu")
 load_scene_event_channel = ExtResource("2_4dvcv")
-game_scene = ExtResource("3_ct418")
+game_scene = SubResource("Resource_uht0j")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

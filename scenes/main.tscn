@@ -1,32 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://bb7ask2laejku"]
+[gd_scene load_steps=9 format=3 uid="uid://bb7ask2laejku"]
 
 [ext_resource type="Script" path="res://scripts/SceneManagement/initialization_loader.gd" id="1_32475"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_o566f"]
-[ext_resource type="AudioStream" uid="uid://bpo1c6x3ry1ot" path="res://art/audio/menu-ambient-music.mp3" id="3_j3fqu"]
-[ext_resource type="PackedScene" uid="uid://nk6lbs27cp64" path="res://scenes/main_menu.tscn" id="3_oid88"]
-[ext_resource type="Script" path="res://scripts/audio/audio_data/audio_cue.gd" id="4_lmuf8"]
+[ext_resource type="Resource" uid="uid://dwkdnf1qqb0nj" path="res://resources/scene_data/main_menu.tres" id="3_86xh3"]
 [ext_resource type="Script" path="res://scripts/SceneManagement/scene_loader.gd" id="4_pnwts"]
 [ext_resource type="Resource" uid="uid://c1hpycii541ab" path="res://resources/events/load_main_menu_event_channel.tres" id="4_yce1j"]
 [ext_resource type="PackedScene" uid="uid://dyrk7vr5dvsle" path="res://prefabs/audio_manager.tscn" id="6_u8mvd"]
-[ext_resource type="Script" path="res://scripts/SceneManagement/game_scene.gd" id="6_w7wo3"]
 [ext_resource type="Resource" uid="uid://bo4vefyw7bh5w" path="res://resources/events/play_music_event_channel.tres" id="8_y274d"]
 [ext_resource type="Resource" uid="uid://ce54b4vtahtc5" path="res://resources/audio/config/music_config.tres" id="9_3n8mt"]
-
-[sub_resource type="Resource" id="Resource_cwnaq"]
-script = ExtResource("4_lmuf8")
-looping = true
-sequenceMode = 1
-audioClips = Array[AudioStream]([ExtResource("3_j3fqu")])
-
-[sub_resource type="Resource" id="Resource_8iy2e"]
-script = ExtResource("6_w7wo3")
-scene_reference = ExtResource("3_oid88")
-music_track = SubResource("Resource_cwnaq")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_32475")
 load_scene_event_channel = ExtResource("2_o566f")
-main_menu_scene = SubResource("Resource_8iy2e")
+main_menu_scene = ExtResource("3_86xh3")
 
 [node name="SceneLoader" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("4_pnwts")
@@ -35,7 +21,7 @@ load_scene_event_chennl = ExtResource("2_o566f")
 play_music_event_channel = ExtResource("8_y274d")
 audio_config = ExtResource("9_3n8mt")
 load_main_menu_event_channel = ExtResource("4_yce1j")
-main_menu_scene = ExtResource("3_oid88")
+main_menu_scene = ExtResource("3_86xh3")
 
 [node name="AudioManager" parent="." instance=ExtResource("6_u8mvd")]
 play_music_audio_event_channel = ExtResource("8_y274d")

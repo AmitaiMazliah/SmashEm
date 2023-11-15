@@ -1882,7 +1882,7 @@ default_damage = 40
 script = ExtResource("9_35syc")
 victory_event_channel = ExtResource("3_t86qo")
 defeat_event_channel = ExtResource("2_4aehl")
-load_main_menu_event_chennl = ExtResource("9_m6g7n")
+load_main_menu_event_channel = ExtResource("9_m6g7n")
 
 [node name="MatchEndPanel" type="Panel" parent="MatchUI"]
 anchors_preset = 8

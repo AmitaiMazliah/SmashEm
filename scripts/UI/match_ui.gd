@@ -5,7 +5,7 @@ extends CanvasLayer
 
 @export var victory_event_channel: VoidEventChannel
 @export var defeat_event_channel: VoidEventChannel
-@export var load_main_menu_event_chennl: VoidEventChannel
+@export var load_main_menu_event_channel: VoidEventChannel
 
 func _ready():
 	victory_event_channel.event_raised.connect(_on_victory)
@@ -21,4 +21,4 @@ func _on_defeat():
 	match_end_pabel.show()
 
 func _on_back_button_pressed():
-	load_main_menu_event_chennl.raise_event()
+	load_main_menu_event_channel.raise_event()

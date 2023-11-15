@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GameScene" load_steps=6 format=3 uid="uid://dwkdnf1qqb0nj"]
+
+[ext_resource type="AudioStream" uid="uid://bpo1c6x3ry1ot" path="res://art/audio/menu-ambient-music.mp3" id="1_nqj3a"]
+[ext_resource type="Script" path="res://scripts/audio/audio_data/audio_cue.gd" id="2_xecun"]
+[ext_resource type="PackedScene" uid="uid://nk6lbs27cp64" path="res://scenes/main_menu.tscn" id="3_j38jx"]
+[ext_resource type="Script" path="res://scripts/SceneManagement/game_scene.gd" id="4_qxqnj"]
+
+[sub_resource type="Resource" id="Resource_cwnaq"]
+script = ExtResource("2_xecun")
+looping = true
+sequenceMode = 1
+audioClips = Array[AudioStream]([ExtResource("1_nqj3a")])
+
+[resource]
+script = ExtResource("4_qxqnj")
+scene_reference = ExtResource("3_j38jx")
+music_track = SubResource("Resource_cwnaq")
