@@ -19,21 +19,32 @@ jobs:
         uses: actions/checkout@v3
         with:
           lfs: true
+      
+      - name: Get next version
+        uses: reecetech/version-increment@2023.9.3
+        id: version
+        with:
+          scheme: semver
+          increment: patch
+      
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           cp -a /root/.local/share/godot/templates/. ~/.local/share/godot/export_templates/
           mkdir -v -p ~/.local/share/godot/templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
           godot -v --headless --export-release "Windows Desktop" build/windows/$EXPORT_NAME.exe
           pwd
           ls
+      
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: windows
+          name: windows-${{ steps.version.outputs.version }}
           path: build/windows/
           if-no-files-found: error
+
