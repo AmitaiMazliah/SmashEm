@@ -22,13 +22,13 @@ jobs:
         id: build
         uses: manleydev/build-godot-action@v1.5.0
         with:
-          name: SmashEm
+          name: $EXPORT_NAME.exe
           preset: "Windows Desktop"
           debugMode: "true"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: SmashEm
+          name: $EXPORT_NAME
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
 
