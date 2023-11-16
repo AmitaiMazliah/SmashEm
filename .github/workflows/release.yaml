@@ -12,8 +12,8 @@ jobs:
   export-windows:
     name: Windows Export
     runs-on: ubuntu-20.04
-    container:
-      image: barichello/godot-ci:4.1.2
+    # container:
+    #   image: barichello/godot-ci:4.1.2
     steps:
       - name: Checkout
         uses: actions/checkout@v4
