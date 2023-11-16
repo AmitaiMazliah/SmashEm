@@ -18,9 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-tags: true
+          # fetch-tags: true
           fetch-depth: 0
-          lfs: true
+          # lfs: true
       
       - name: Get current tag
         id: current-tag
