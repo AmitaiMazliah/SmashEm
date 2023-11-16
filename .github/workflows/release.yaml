@@ -65,11 +65,22 @@ jobs:
           name: windows-${{ needs.project-version.outputs.projectVersion }}
           path: build/windows/
           if-no-files-found: error
+    outputs:
+      projectVersion: ${{ needs.project-version.outputs.projectVersion }}
+
+  gitops:
+    runs-on: ubuntu-20.04
+    needs: [export-windows]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-tags: true
       
       - name: Push gitops changes to git
         run: |
-          tag=${{ needs.project-version.outputs.projectVersion }}
-          message='Bump version - ${{ needs.project-version.outputs.projectVersion }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}'
+          tag=${{ needs.export-windows.outputs.projectVersion }}
+          message='Bump version - ${{ needs.export-windows.outputs.projectVersion }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}'
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git tag -a "${tag}" -m "${message}"
