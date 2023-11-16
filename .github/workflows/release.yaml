@@ -12,28 +12,23 @@ jobs:
   export-windows:
     name: Windows Export
     runs-on: ubuntu-20.04
-    container:
-      image: barichello/godot-ci:4.1.2
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           lfs: true
-      - name: Setup
-        run: |
-          mkdir -p /github/home/.config/godot
-          cp /root/.config/godot/editor_settings-4.tres /github/home/.config/godot/
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-      - name: Windows Build
-        run: |
-          mkdir -v -p build/windows
-          godot -v --headless --export-release "Windows Desktop" build/windows/$EXPORT_NAME.exe
-          pwd
-          ls
+      
+      - name: Build
+        id: build
+        uses: manleydev/build-godot-action@v1.5.0
+        with:
+          name: SmashEm
+          preset: "Windows Desktop"
+          debugMode: "true"
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: windows
-          path: build/windows/
-          if-no-files-found: error
+          name: SmashEm
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+
