@@ -28,7 +28,7 @@ jobs:
         uses: WyriHaximus/github-action-next-semvers@v1.2.1
         with:
           version: ${{ steps.current-tag.outputs.tag }}
-          strict: true
+          strict: false
     outputs:
       projectVersion: ${{ steps.next-tag.outputs.v_major }}
 
