@@ -18,20 +18,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          fetch-depth: 0
           lfs: true
       
       - name: Get current tag
         id: current-tag
-        uses: WyriHaximus/github-action-get-previous-tag@v1
+        uses: WyriHaximus/github-action-get-previous-tag@v1.3.0
         with:
-          fallback: v0
+          fallback: 0
+          prefix: v
 
       - name: Increase tag version
         id: next-tag
-        uses: WyriHaximus/github-action-next-semvers@v1
+        uses: WyriHaximus/github-action-next-semvers@v1.2.1
         with:
           version: ${{ steps.current-tag.outputs.tag }}
-          strict: false
+          strict: true
       
       - name: Setup
         run: |
