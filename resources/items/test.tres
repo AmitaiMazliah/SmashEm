@@ -1,38 +1,7 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=9 format=3 uid="uid://uc34v13np0qq"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://uc34v13np0qq"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_6c0yp"]
-[ext_resource type="Script" path="res://scripts/items/effects/damage_effect.gd" id="1_kcrpp"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="3_j0401"]
-
-[sub_resource type="Resource" id="Resource_sp86d"]
-script = ExtResource("1_kcrpp")
-who_to_damage = 0
-time = 0
-amount = 10
-
-[sub_resource type="Resource" id="Resource_yujok"]
-script = ExtResource("1_kcrpp")
-who_to_damage = 1
-time = 0
-amount = 10
-
-[sub_resource type="Resource" id="Resource_l3voh"]
-script = ExtResource("1_kcrpp")
-who_to_damage = 2
-time = 0
-amount = 10
-
-[sub_resource type="Resource" id="Resource_4117h"]
-script = ExtResource("1_kcrpp")
-who_to_damage = 3
-time = 0
-amount = 10
-
-[sub_resource type="Resource" id="Resource_8tj15"]
-script = ExtResource("1_kcrpp")
-who_to_damage = 4
-time = 0
-amount = 10
 
 [resource]
 script = ExtResource("1_6c0yp")
@@ -42,4 +11,4 @@ sprite = ExtResource("3_j0401")
 slot = 0
 bonus_health = 0
 bonus_damage = 0
-effects = Array[Resource("res://scripts/items/effects/effect.gd")]([SubResource("Resource_sp86d"), SubResource("Resource_yujok"), SubResource("Resource_l3voh"), SubResource("Resource_4117h"), SubResource("Resource_8tj15")])
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])
