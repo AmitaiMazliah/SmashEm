@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4uxbe4mt0ymo"]
+
+[ext_resource type="Script" path="res://scripts/UI/item_slot_view.gd" id="1_7wrph"]
+[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_h1hb8"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="3_utcyu"]
+
+[node name="ItemView" type="Button"]
+custom_minimum_size = Vector2(150, 220)
+size_flags_horizontal = 6
+script = ExtResource("1_7wrph")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 150.0
+offset_bottom = 220.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+texture = ExtResource("2_h1hb8")
+
+[node name="OptionsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UpgradeButton" type="Button" parent="OptionsContainer"]
+layout_mode = 2
+theme = ExtResource("3_utcyu")
+text = "Upgrade"
+
+[node name="InfoButton" type="Button" parent="OptionsContainer"]
+layout_mode = 2
+theme = ExtResource("3_utcyu")
+text = "Info"
+
+[node name="UseButton" type="Button" parent="OptionsContainer"]
+layout_mode = 2
+theme = ExtResource("3_utcyu")
+text = "Use"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

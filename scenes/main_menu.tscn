@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=21 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
@@ -13,13 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://b2aqtmf08yyom" path="res://prefabs/ui/shop_item_view.tscn" id="8_q14h2"]
 [ext_resource type="Script" path="res://scripts/UI/items_tab_ui.gd" id="9_hdxf0"]
 [ext_resource type="Texture2D" uid="uid://dpdex8nwm0hob" path="res://art/cards-icon.png" id="9_mwucg"]
-[ext_resource type="Texture2D" uid="uid://blprr73ufbyq1" path="res://art/head-vector.png" id="10_b1vdq"]
-[ext_resource type="Script" path="res://scripts/UI/item_slot_view.gd" id="10_mkhw2"]
 [ext_resource type="Script" path="res://scripts/UI/play_tab_ui.gd" id="10_o3i1a"]
-[ext_resource type="Texture2D" uid="uid://cifiw3hk25fdb" path="res://art/boots-vector.png" id="11_8widl"]
 [ext_resource type="Texture2D" uid="uid://cr64eflh0ntn4" path="res://art/ui/main-menu/settings-icon.png" id="11_v2t7b"]
 [ext_resource type="Script" path="res://scripts/UI/settings_panel.gd" id="12_bpdcs"]
 [ext_resource type="Texture2D" uid="uid://cavi4fecd3cmi" path="res://art/ui/main-menu/Red_X_Cross_Wrong_Not_clip_art_small.png" id="13_pg5gj"]
+[ext_resource type="PackedScene" uid="uid://c4uxbe4mt0ymo" path="res://prefabs/ui/item_view.tscn" id="15_e5ni1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -57,7 +55,6 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -80,6 +77,7 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -143,7 +141,7 @@ expand_icon = true
 visible = false
 layout_mode = 2
 script = ExtResource("9_hdxf0")
-_item_view_prefab = ExtResource("8_q14h2")
+_item_view_prefab = ExtResource("15_e5ni1")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab"]
 layout_mode = 0
@@ -167,81 +165,17 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="HeadSlot" type="PanelContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer"]
-custom_minimum_size = Vector2(150, 220)
+[node name="ItemView" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
 layout_mode = 2
-size_flags_horizontal = 6
-script = ExtResource("10_mkhw2")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer/HeadSlot"]
+[node name="ItemView2" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer/HeadSlot/MarginContainer"]
-custom_minimum_size = Vector2(120, 175)
+[node name="ItemView3" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
 layout_mode = 2
-texture = ExtResource("10_b1vdq")
-expand_mode = 1
 
-[node name="RightHandSlot" type="PanelContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer"]
-custom_minimum_size = Vector2(150, 220)
+[node name="ItemView4" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
 layout_mode = 2
-size_flags_horizontal = 6
-script = ExtResource("10_mkhw2")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer/RightHandSlot"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer/RightHandSlot/MarginContainer"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-texture = ExtResource("11_8widl")
-expand_mode = 1
-
-[node name="LeftHandSlot" type="PanelContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-script = ExtResource("10_mkhw2")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer/LeftHandSlot"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer/LeftHandSlot/MarginContainer"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-texture = ExtResource("11_8widl")
-expand_mode = 1
-
-[node name="BootsSlot" type="PanelContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-size_flags_horizontal = 6
-script = ExtResource("10_mkhw2")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer/BootsSlot"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer/BootsSlot/MarginContainer"]
-custom_minimum_size = Vector2(120, 175)
-layout_mode = 2
-texture = ExtResource("11_8widl")
-expand_mode = 1
 
 [node name="CollectionLabel" type="Label" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer"]
 layout_mode = 2
