@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqujkcrm8hwuk"]
-
-[ext_resource type="Script" path="res://Lobby.gd" id="1_45bvl"]
-
-[node name="Lobby" type="Node"]
-script = ExtResource("1_45bvl")

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/agents/player_agent.gd" id="2_fx3lm"]
 [ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="3_urv4q"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
-[ext_resource type="Script" path="res://MovementPredictionLine.gd" id="5_af2o0"]
+[ext_resource type="Script" path="res://scripts/agents/movement_prediction_line.gd" id="5_af2o0"]
 [ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/test.tres" id="6_mmbng"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1efxl"]
