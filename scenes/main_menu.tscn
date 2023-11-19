@@ -55,7 +55,6 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -139,6 +138,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("9_hdxf0")
 _item_view_prefab = ExtResource("15_e5ni1")

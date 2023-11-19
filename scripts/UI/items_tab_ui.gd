@@ -62,3 +62,7 @@ func _on_item_selected(item_view: ItemSlotView):
 		
 	item_view.selected = not item_view.selected
 	_selected_item = item_view
+
+func on_close():
+	if _selected_item:
+		_selected_item.selected = false

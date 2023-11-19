@@ -8,6 +8,9 @@ extends Control
 func _ready():
 	_settings_panel.hide()
 
+func on_close():
+	_settings_panel.hide()
+
 func _on_play_button_pressed():
 	load_scene_event_channel.raise_event(game_scene)
 
