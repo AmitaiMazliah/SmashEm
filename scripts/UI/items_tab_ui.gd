@@ -9,6 +9,8 @@ extends Control
 
 @export var _item_view_prefab: PackedScene
 
+var _selected_item: ItemSlotView
+
 func _ready():
 	_prepare_player_items_view()
 	
@@ -16,7 +18,7 @@ func _ready():
 	Player.owned_items.append_array(items)
 	
 	for item in Player.owned_items:
-		var item_view = _item_view_prefab.instantiate() as ItemSlotView
+		var item_view = _create_item_view()
 		item_view.set_item(item)
 		_owned_items_grid.add_child(item_view)
 
@@ -34,10 +36,15 @@ func _get_items_catalog() -> Array[Equipment]:
 			file_name = dir.get_next()
 	return items
 
+func _create_item_view() -> ItemSlotView:
+	var item_view = _item_view_prefab.instantiate() as ItemSlotView
+	item_view.pressed.connect(_on_item_selected.bind(item_view))
+	return item_view
+
 func _prepare_player_items_view():
 	for slot in Equipment.Slot:
 		var item = Player.selected_items.get(slot, null)
-		var item_view = _item_view_prefab.instantiate() as ItemSlotView
+		var item_view = _create_item_view()
 		item_view.set_item(item)
 		_my_items_container.add_child(item_view)
 #	var head_item: Equipment = Player.selected_items.get(Equipment.Slot.Head, null)
@@ -48,3 +55,10 @@ func _prepare_player_items_view():
 #	_left_hand_item_view.set_item(left_hand_item)
 #	var boots_item: Equipment = Player.selected_items.get(Equipment.Slot.Boots, null)
 #	_boots_item_view.set_item(boots_item)
+
+func _on_item_selected(item_view: ItemSlotView):
+	if _selected_item and _selected_item != item_view:
+		_selected_item.selected = false
+		
+	item_view.selected = not item_view.selected
+	_selected_item = item_view
