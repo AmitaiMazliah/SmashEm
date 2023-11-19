@@ -12,17 +12,15 @@ class_name TurnQueue
 @export var timer_countdown_audio: AudioCue
 @export var sfx_2d_audio_config: AudioConfiguration
 
-@onready var timer = $TurnTimer
 @onready var agents = get_tree().get_nodes_in_group("Agents")
 
 var _active_agent_index = -1
 var _active_agent: Agent
 var _running : bool = false
+var _turn_timer: SceneTreeTimer
 var _countdown_timers: Array[SceneTreeTimer]
 
 func _ready():
-	timer.wait_time = turn_time_in_secs
-	timer.timeout.connect(_end_turn)
 	turn_countdown_progress_bar.max_value = turn_time_in_secs
 	turn_countdown_progress_bar.value = turn_time_in_secs
 	for agent in agents:
@@ -33,8 +31,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("Test"):
 		start()
-	if _running and not timer.is_stopped():
-		turn_countdown_progress_bar.value = timer.time_left
+	if _running and _turn_timer:
+		turn_countdown_progress_bar.value = _turn_timer.time_left
 
 func start():
 	if !_running:
@@ -45,7 +43,7 @@ func start():
 func stop():
 	if _running:
 		print("Stoping the turn queue")
-		timer.stop()
+		_turn_timer = null
 		_running = false
 
 func _start_turn():
@@ -57,11 +55,12 @@ func _start_turn():
 		turn_label.text = _active_agent.name + "'s turns"
 		get_tree().create_timer(1).timeout.connect(_fade_label)
 		_active_agent.change_turn(true)
-		timer.start()
+		_turn_timer = get_tree().create_timer(turn_time_in_secs)
+		_turn_timer.timeout.connect(_end_turn)
 		_countdown_timers = [
-			get_tree().create_timer(timer.wait_time - 3),
-			get_tree().create_timer(timer.wait_time - 2),
-			get_tree().create_timer(timer.wait_time - 1)
+			get_tree().create_timer(turn_time_in_secs - 3),
+			get_tree().create_timer(turn_time_in_secs - 2),
+			get_tree().create_timer(turn_time_in_secs - 1)
 		]
 		for t in _countdown_timers:
 			t.timeout.connect(_play_countdown_audio)
@@ -78,7 +77,7 @@ func _get_next_live_agent() -> Agent:
 	return live_agents[_active_agent_index]
 
 func _on_agent_moved():
-	timer.stop()
+	_turn_timer = null
 	for t in _countdown_timers:
 		t.timeout.disconnect(_play_countdown_audio)
 
@@ -100,7 +99,7 @@ func _kill_dead_agents():
 		stop()
 
 func _play_countdown_audio():
-	play_sfx_event_channel.raise_event(timer_countdown_audio, sfx_2d_audio_config)
+	play_sfx_event_channel.raise_play_event(timer_countdown_audio, sfx_2d_audio_config)
 
 func _get_tool_buttons():
 	return [start]

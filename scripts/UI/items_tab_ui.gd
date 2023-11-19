@@ -4,12 +4,13 @@ extends Control
 @onready var _right_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/RightHandSlot
 @onready var _left_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/LeftHandSlot
 @onready var _boots_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/BootsSlot
+@onready var _my_items_container: HBoxContainer = $MarginContainer/HFlowContainer/MyItemsContainer
 @onready var _owned_items_grid: GridContainer = $MarginContainer/HFlowContainer/OwnedItemsGridContainer
 
 @export var _item_view_prefab: PackedScene
 
 func _ready():
-	#_prepare_player_items_view()
+	_prepare_player_items_view()
 	
 	var items = _get_items_catalog()
 	Player.owned_items.append_array(items)
@@ -34,11 +35,16 @@ func _get_items_catalog() -> Array[Equipment]:
 	return items
 
 func _prepare_player_items_view():
-	var head_item: Equipment = Player.selected_items.get(Equipment.Slot.Head, null)
-	_head_item_view.set_item(head_item)
-	var right_hand_item: Equipment = Player.selected_items.get(Equipment.Slot.RightHand, null)
-	_right_hand_item_view.set_item(right_hand_item)
-	var left_hand_item: Equipment = Player.selected_items.get(Equipment.Slot.LeftHand, null)
-	_left_hand_item_view.set_item(left_hand_item)
-	var boots_item: Equipment = Player.selected_items.get(Equipment.Slot.Boots, null)
-	_boots_item_view.set_item(boots_item)
+	for slot in Equipment.Slot:
+		var item = Player.selected_items.get(slot, null)
+		var item_view = _item_view_prefab.instantiate() as ItemSlotView
+		item_view.set_item(item)
+		_my_items_container.add_child(item_view)
+#	var head_item: Equipment = Player.selected_items.get(Equipment.Slot.Head, null)
+#	_head_item_view.set_item(head_item)
+#	var right_hand_item: Equipment = Player.selected_items.get(Equipment.Slot.RightHand, null)
+#	_right_hand_item_view.set_item(right_hand_item)
+#	var left_hand_item: Equipment = Player.selected_items.get(Equipment.Slot.LeftHand, null)
+#	_left_hand_item_view.set_item(left_hand_item)
+#	var boots_item: Equipment = Player.selected_items.get(Equipment.Slot.Boots, null)
+#	_boots_item_view.set_item(boots_item)

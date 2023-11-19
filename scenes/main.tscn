@@ -24,4 +24,3 @@ load_main_menu_event_channel = ExtResource("4_yce1j")
 main_menu_scene = ExtResource("3_86xh3")
 
 [node name="AudioManager" parent="." instance=ExtResource("6_u8mvd")]
-play_music_audio_event_channel = ExtResource("8_y274d")
