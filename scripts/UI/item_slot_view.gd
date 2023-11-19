@@ -14,13 +14,13 @@ var selected: bool = false :
 	get:
 		return selected
 
-var _item: Equipment
+var _item: PlayerEquipment
 
 func _ready():
 	_options_container.hide()
-	_update_ui()
+#	_update_ui()
 
-func set_item(item: Equipment):
+func set_item(item: PlayerEquipment):
 	_item = item
 	_update_ui()
 
@@ -32,6 +32,11 @@ func _on_selected_changed(selected: bool):
 
 func _update_ui():
 	if _item:
-		if _item_icon:
-			_item_icon.texture = _item.sprite
-		tooltip_text = _item.description
+		if _item.can_upgrade():
+			_upgrade_button.show()
+			_info_button.hide()
+		else:
+			_upgrade_button.hide()
+			_info_button.show()
+		_item_icon.texture = _item.equipment.sprite
+		tooltip_text = _item.equipment.description

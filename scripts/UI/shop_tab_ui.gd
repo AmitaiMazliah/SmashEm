@@ -9,7 +9,7 @@ func _ready():
 	var shop_items = items.filter(func (i): return not Player.owned_items.has(i))
 	for item in shop_items:
 		var item_view = _item_view_prefab.instantiate() as ShopItemView
-		item_view.set_item(item)
+		item_view.ready.connect(item_view.set_item.bind(item))
 		item_view.pressed.connect(_select_item.bind(item))
 		_items_grid.add_child(item_view)
 

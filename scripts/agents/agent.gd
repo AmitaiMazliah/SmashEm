@@ -20,7 +20,6 @@ var dead : bool = false
 
 var _my_turn : bool = false
 var _current_damage : int
-var _moving : bool = false
 
 func _ready():
 	body_entered.connect(_on_body_entered)

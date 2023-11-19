@@ -28,7 +28,7 @@ func _ready():
 		agent.moved.connect(_on_agent_moved)
 	get_tree().create_timer(1).timeout.connect(start)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("Test"):
 		start()
 	if _running and _turn_timer:

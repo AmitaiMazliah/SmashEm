@@ -7,7 +7,7 @@ class_name AiAgent
 
 var _played_turn : bool = false
 
-func _process(delta):
+func _process(_delta):
 	if _my_turn:
 		if !_played_turn:
 			_played_turn = true

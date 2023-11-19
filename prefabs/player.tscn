@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b1yybdwu532jp"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_qc3mj"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_qc3mj"]
 [ext_resource type="Script" path="res://scripts/items/effects/damage_effect.gd" id="2_818bn"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="3_m7d85"]
 

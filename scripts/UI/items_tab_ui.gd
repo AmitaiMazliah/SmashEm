@@ -1,9 +1,9 @@
 extends Control
 
-@onready var _head_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/HeadSlot
-@onready var _right_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/RightHandSlot
-@onready var _left_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/LeftHandSlot
-@onready var _boots_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/BootsSlot
+#@onready var _head_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/HeadSlot
+#@onready var _right_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/RightHandSlot
+#@onready var _left_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/LeftHandSlot
+#@onready var _boots_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/BootsSlot
 @onready var _my_items_container: HBoxContainer = $MarginContainer/HFlowContainer/MyItemsContainer
 @onready var _owned_items_grid: GridContainer = $MarginContainer/HFlowContainer/OwnedItemsGridContainer
 
@@ -15,11 +15,11 @@ func _ready():
 	_prepare_player_items_view()
 	
 	var items = _get_items_catalog()
-	Player.owned_items.append_array(items)
+	Player.owned_items.append_array(items.map(func (e): return PlayerEquipment.new(e, 1, 1)))
 	
 	for item in Player.owned_items:
 		var item_view = _create_item_view()
-		item_view.set_item(item)
+		item_view.ready.connect(item_view.set_item.bind(item))
 		_owned_items_grid.add_child(item_view)
 
 func _get_items_catalog() -> Array[Equipment]:
@@ -45,7 +45,7 @@ func _prepare_player_items_view():
 	for slot in Equipment.Slot:
 		var item = Player.selected_items.get(slot, null)
 		var item_view = _create_item_view()
-		item_view.set_item(item)
+		item_view.ready.connect(item_view.set_item.bind(item))
 		_my_items_container.add_child(item_view)
 #	var head_item: Equipment = Player.selected_items.get(Equipment.Slot.Head, null)
 #	_head_item_view.set_item(head_item)

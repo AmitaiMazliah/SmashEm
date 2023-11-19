@@ -23,7 +23,7 @@ buses/default_bus_layout="res://settings/default_bus_layout.tres"
 
 [autoload]
 
-Player="*res://scripts/player.gd"
+Player="*res://scripts/player/player.gd"
 
 [display]
 
