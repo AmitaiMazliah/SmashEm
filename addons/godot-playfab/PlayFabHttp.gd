@@ -46,7 +46,7 @@ func _get_api_url() -> String:
 	return "https://%s.%s" % [ _title_id, _base_uri ]
 
 
-func _http_request(request_method: int, body: Dictionary, path: String, callback: Callable, additional_headers: Dictionary = {}):
+func _http_request(request_method: int, body: Dictionary, path: String, callback: Callable, error_callback: Callable = Callable(), additional_headers: Dictionary = {}):
 	var json = JSON.stringify(body)
 	#print_debug(JSON.stringify(body, "\t"))
 	var headers = [
@@ -85,6 +85,7 @@ func _http_request(request_method: int, body: Dictionary, path: String, callback
 
 	if parse_error != OK:
 		emit_signal("json_parse_error", json_parse_result)
+		error_callback.call(json_parse_result)
 		return
 	if response_code >= 200 and response_code < 400:
 		if callback != null:
@@ -98,9 +99,11 @@ func _http_request(request_method: int, body: Dictionary, path: String, callback
 		for key in json_parse_result.keys():
 			apiErrorWrapper.set(key, json_parse_result[key])
 		emit_signal("api_error", apiErrorWrapper)
+		error_callback.call(apiErrorWrapper)
 		return
 	if response_code >= 500:
 		emit_signal("server_error", path)
+		error_callback.call(path)
 		return
 
 

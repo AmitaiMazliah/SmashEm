@@ -20,7 +20,6 @@ func _get_items_catalog() -> Array[Equipment]:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			print("File name: ", file_name)
 			var item = load("res://resources/items/" + file_name)
 			if item:
 				items.append(item)

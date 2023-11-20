@@ -96,13 +96,13 @@ func _on_login_with_email(result: Dictionary):
 	emit_signal("logged_in", login_result)
 
 
-func _post_with_session_auth(body: JsonSerializable, path: String, callback: Callable, additional_headers: Dictionary = {}) -> bool:
+func _post_with_session_auth(body: JsonSerializable, path: String, callback: Callable, error_callback: Callable = Callable(), additional_headers: Dictionary = {}) -> bool:
 	var result = _add_auth_headers(additional_headers, AUTH_TYPE.SESSION_TICKET)
 	if !result:
 		return false
 
 	var dict = body.to_dict()
-	_http_request(HTTPClient.METHOD_POST, dict, path, callback, additional_headers)
+	_http_request(HTTPClient.METHOD_POST, dict, path, callback, error_callback, additional_headers)
 	return true
 
 # General request method for endpoints which require Entity-Token-Auth.
@@ -114,19 +114,19 @@ func _post_with_session_auth(body: JsonSerializable, path: String, callback: Cal
 # @param callback: Callable							- A callback which will be called once the request **succeeds**
 # @param additional_headers: Dictionary (optional)	- Additional headers to be sent with the request
 # @ returns: bool									- False if the player is not logged in - true if the request was sent.
-func _post_with_entity_auth(body: JsonSerializable, path: String, callback: Callable, additional_headers: Dictionary = {}) -> bool:
+func _post_with_entity_auth(body: JsonSerializable, path: String, callback: Callable, error_callback: Callable = Callable(), additional_headers: Dictionary = {}) -> bool:
 	var result = _add_auth_headers(additional_headers, AUTH_TYPE.ENTITY_TOKEN)
 	if !result:
 		return false
 
 	var dict = body.to_dict()
-	_http_request(HTTPClient.METHOD_POST, dict, path, callback, additional_headers)
+	_http_request(HTTPClient.METHOD_POST, dict, path, callback, error_callback, additional_headers)
 	return true
 
 
-func _post(body: JsonSerializable, path: String, callback: Callable, additional_headers: Dictionary = {}):
+func _post(body: JsonSerializable, path: String, callback: Callable, error_callback: Callable = Callable(), additional_headers: Dictionary = {}):
 	var dict = body.to_dict()
-	_http_request(HTTPClient.METHOD_POST, dict, path, callback, additional_headers)
+	_http_request(HTTPClient.METHOD_POST, dict, path, callback, error_callback, additional_headers)
 
 
 # General (POST) request method for endpoints which require Authentication.
@@ -138,9 +138,9 @@ func _post(body: JsonSerializable, path: String, callback: Callable, additional_
 # @param auth_type: PlayFab.AUTH_TYPE				- One of `PlayFab.AUTH_TYPE`
 # @param callback: Callable							- A callback which will be called once the request **succeeds**
 # @param additional_headers: Dictionary (optional)	- Additional headers to be sent with the request
-func post_dict_auth(body: Dictionary, path: String, auth_type, callback: Callable, additional_headers: Dictionary = {}):
+func post_dict_auth(body: Dictionary, path: String, auth_type, callback: Callable, error_callback: Callable = Callable(), additional_headers: Dictionary = {}):
 	_add_auth_headers(additional_headers, auth_type)
-	_http_request(HTTPClient.METHOD_POST, body, path, callback, additional_headers)
+	_http_request(HTTPClient.METHOD_POST, body, path, callback, error_callback, additional_headers)
 
 
 # General (POST) request method for endpoints which **DO NOT** require Authentication.
@@ -152,8 +152,8 @@ func post_dict_auth(body: Dictionary, path: String, auth_type, callback: Callabl
 # @param path: String								- The request path, e.g. `/Client/GetTitleData`
 # @param callback: Callable							- A callback which will be called once the request **succeeds**
 # @param additional_headers: Dictionary (optional)	- Additional headers to be sent with the request
-func post_dict(body: Dictionary, path: String, callback: Callable, additional_headers: Dictionary = {}):
-	_http_request(HTTPClient.METHOD_POST, body, path, callback, additional_headers)
+func post_dict(body: Dictionary, path: String, callback: Callable, error_callback: Callable = Callable(), additional_headers: Dictionary = {}):
+	_http_request(HTTPClient.METHOD_POST, body, path, callback, error_callback, additional_headers)
 
 
 # Adds PlayFab specific authentication headers depending checked the `auth_type` provided.
