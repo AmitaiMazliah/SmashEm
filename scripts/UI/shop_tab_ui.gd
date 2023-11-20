@@ -1,6 +1,6 @@
 extends Control
 
-@onready var _items_grid: GridContainer = $MarginContainer/GridContainer
+@onready var _items_grid: GridContainer = $ScrollContainer/MarginContainer/GridContainer
 
 @export var _item_view_prefab: PackedScene
 
