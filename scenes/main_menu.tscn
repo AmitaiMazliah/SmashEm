@@ -55,6 +55,7 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -138,57 +139,60 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("9_hdxf0")
 _item_view_prefab = ExtResource("15_e5ni1")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab"]
-layout_mode = 0
-offset_right = 720.0
-offset_bottom = 1160.0
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/TabContainer/ItemsTab"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 695.0
+offset_bottom = 1135.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer"]
+layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="HFlowContainer" type="VBoxContainer" parent="UI/TabContainer/ItemsTab/MarginContainer"]
+[node name="HFlowContainer" type="VBoxContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="MyItemsLabel" type="Label" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer"]
+[node name="MyItemsLabel" type="Label" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer"]
 layout_mode = 2
 text = "YOUR ITEMS"
 horizontal_alignment = 1
 
-[node name="MyItemsContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer"]
+[node name="MyItemsContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer"]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="ItemView" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
+[node name="ItemView" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
 visible = false
 layout_mode = 2
 
-[node name="ItemView2" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
+[node name="ItemView2" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
 visible = false
 layout_mode = 2
 
-[node name="ItemView3" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
+[node name="ItemView3" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
 visible = false
 layout_mode = 2
 
-[node name="ItemView4" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
+[node name="ItemView4" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer/MyItemsContainer" instance=ExtResource("15_e5ni1")]
 visible = false
 layout_mode = 2
 
-[node name="CollectionLabel" type="Label" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer"]
+[node name="CollectionLabel" type="Label" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer"]
 layout_mode = 2
 text = "COLLECTION"
 horizontal_alignment = 1
 
-[node name="OwnedItemsGridContainer" type="GridContainer" parent="UI/TabContainer/ItemsTab/MarginContainer/HFlowContainer"]
+[node name="OwnedItemsGridContainer" type="GridContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 columns = 4
 
 [node name="BottomMenu" type="Panel" parent="UI"]

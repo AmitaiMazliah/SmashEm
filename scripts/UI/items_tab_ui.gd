@@ -4,8 +4,8 @@ extends Control
 #@onready var _right_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/RightHandSlot
 #@onready var _left_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/LeftHandSlot
 #@onready var _boots_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/BootsSlot
-@onready var _my_items_container: HBoxContainer = $MarginContainer/HFlowContainer/MyItemsContainer
-@onready var _owned_items_grid: GridContainer = $MarginContainer/HFlowContainer/OwnedItemsGridContainer
+@onready var _my_items_container: HBoxContainer = $ScrollContainer/MarginContainer/HFlowContainer/MyItemsContainer
+@onready var _owned_items_grid: GridContainer = $ScrollContainer/MarginContainer/HFlowContainer/OwnedItemsGridContainer
 
 @export var _item_view_prefab: PackedScene
 
@@ -38,7 +38,7 @@ func _get_items_catalog() -> Array[Equipment]:
 
 func _create_item_view() -> ItemSlotView:
 	var item_view = _item_view_prefab.instantiate() as ItemSlotView
-	item_view.pressed.connect(_on_item_selected.bind(item_view))
+	item_view.selected.connect(_on_item_selected.bind(item_view))
 	return item_view
 
 func _prepare_player_items_view():
@@ -58,11 +58,11 @@ func _prepare_player_items_view():
 
 func _on_item_selected(item_view: ItemSlotView):
 	if _selected_item and _selected_item != item_view:
-		_selected_item.selected = false
+		_selected_item.is_selected = false
 		
-	item_view.selected = not item_view.selected
+	item_view.is_selected = not item_view.is_selected
 	_selected_item = item_view
 
 func on_close():
 	if _selected_item:
-		_selected_item.selected = false
+		_selected_item.is_selected = false
