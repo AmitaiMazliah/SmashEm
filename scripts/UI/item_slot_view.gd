@@ -22,7 +22,6 @@ var _item: PlayerEquipment
 
 func _ready():
 	_options_container.hide()
-#	_update_ui()
 
 func set_item(item: PlayerEquipment):
 	_item = item

@@ -2,6 +2,7 @@ extends Node
 
 @export var load_scene_event_channel: LoadSceneEventChannel
 @export var main_menu_scene: GameScene
+@export var items_catalog: ItemsCatalog
 
 func _ready():
 	PlayFabManager.client.logged_in.connect(_on_logged_in)
@@ -10,7 +11,11 @@ func _ready():
 
 func _on_logged_in(login_result: LoginResult):
 	print("Logged in successfully")
-	load_scene_event_channel.raise_event(main_menu_scene)
+#	load_scene_event_channel.raise_event(main_menu_scene)
+#	_get_player_currencies()
+	items_catalog.init()
+	await items_catalog.initialized
+	Player.init(items_catalog)
 
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	print("error")
@@ -25,3 +30,5 @@ func _login():
 			combined_info_request_params.ProfileConstraints = player_profile_view_constraints
 			var tags = {}
 			PlayFabManager.client.login_with_email("a@gmail.com", "password", tags, combined_info_request_params)
+
+
