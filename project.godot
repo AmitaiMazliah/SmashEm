@@ -24,6 +24,7 @@ buses/default_bus_layout="res://settings/default_bus_layout.tres"
 [autoload]
 
 Player="*res://scripts/player/player.gd"
+PlayFabManager="*res://addons/godot-playfab/PlayFabManager.gd"
 
 [display]
 
@@ -34,7 +35,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-tabs/plugin.cfg", "res://addons/tool_button/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-playfab/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/tool_button/plugin.cfg")
 
 [input]
 
@@ -47,6 +48,10 @@ Test={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[playfab]
+
+title_id="B9762"
 
 [rendering]
 
