@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="BoolEventChannel" load_steps=2 format=3 uid="uid://cql16ww2gkoc6"]
+
+[ext_resource type="Script" path="res://scripts/events/bool_event_channel.gd" id="1_hww6w"]
+
+[resource]
+script = ExtResource("1_hww6w")

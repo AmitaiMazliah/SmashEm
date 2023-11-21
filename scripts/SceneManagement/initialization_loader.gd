@@ -13,7 +13,7 @@ func _on_logged_in(login_result: LoginResult):
 	print("Logged in successfully")
 	await items_catalog.init()
 	await Player.init(items_catalog)
-	load_scene_event_channel.raise_event(main_menu_scene)
+	load_scene_event_channel.raise_event(main_menu_scene, true)
 
 func _on_api_error(api_error_wrapper: ApiErrorWrapper):
 	print("error")

@@ -12,7 +12,7 @@ func on_close():
 	_settings_panel.hide()
 
 func _on_play_button_pressed():
-	load_scene_event_channel.raise_event(game_scene)
+	load_scene_event_channel.raise_event(game_scene, false)
 
 func _on_settings_button_pressed():
 	_settings_panel.show()

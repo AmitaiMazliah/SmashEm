@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb7ask2laejku"]
+[gd_scene load_steps=16 format=3 uid="uid://bb7ask2laejku"]
 
 [ext_resource type="Script" path="res://scripts/SceneManagement/initialization_loader.gd" id="1_32475"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_o566f"]
@@ -9,6 +9,24 @@
 [ext_resource type="PackedScene" uid="uid://dyrk7vr5dvsle" path="res://prefabs/audio_manager.tscn" id="6_u8mvd"]
 [ext_resource type="Resource" uid="uid://bo4vefyw7bh5w" path="res://resources/events/play_music_event_channel.tres" id="8_y274d"]
 [ext_resource type="Resource" uid="uid://ce54b4vtahtc5" path="res://resources/audio/config/music_config.tres" id="9_3n8mt"]
+[ext_resource type="Script" path="res://scripts/UI/loading_page.gd" id="10_jwh6n"]
+[ext_resource type="Resource" uid="uid://cql16ww2gkoc6" path="res://resources/events/ui/toggle_loading_screen.tres" id="11_383an"]
+[ext_resource type="Texture2D" uid="uid://dq80ejflk6ev" path="res://art/background.jpg" id="11_kk4pd"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="12_2ospk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sp13r"]
+bg_color = Color(0, 0, 0, 0.54902)
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.266667, 0.494118, 0.054902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2ymb"]
+bg_color = Color(0.423529, 0.768627, 0.0901961, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.266667, 0.494118, 0.054902, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_32475")
@@ -19,10 +37,43 @@ items_catalog = ExtResource("4_4cf07")
 [node name="SceneLoader" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("4_pnwts")
 root = NodePath("..")
-load_scene_event_chennl = ExtResource("2_o566f")
+load_scene_event_channel = ExtResource("2_o566f")
+toggle_loading_screen = ExtResource("11_383an")
 play_music_event_channel = ExtResource("8_y274d")
 audio_config = ExtResource("9_3n8mt")
 load_main_menu_event_channel = ExtResource("4_yce1j")
 main_menu_scene = ExtResource("3_86xh3")
 
 [node name="AudioManager" parent="." instance=ExtResource("6_u8mvd")]
+
+[node name="LoadingPage" type="CanvasLayer" parent="."]
+script = ExtResource("10_jwh6n")
+toggle_loading_screen = ExtResource("11_383an")
+
+[node name="Background" type="TextureRect" parent="LoadingPage"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_kk4pd")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="LoadingPage"]
+top_level = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -330.0
+offset_right = 200.0
+offset_bottom = -285.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("12_2ospk")
+theme_override_styles/background = SubResource("StyleBoxFlat_sp13r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q2ymb")
+step = 1.0
+value = 50.0

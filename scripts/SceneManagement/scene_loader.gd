@@ -3,7 +3,8 @@ extends Node
 class_name SceneLoader
 
 @export var root : Node
-@export var load_scene_event_chennl: LoadSceneEventChannel
+@export var load_scene_event_channel: LoadSceneEventChannel
+@export var toggle_loading_screen: BoolEventChannel
 @export var play_music_event_channel: AudioCueEventChannel
 @export var audio_config: AudioConfiguration
 @export var load_main_menu_event_channel: VoidEventChannel
@@ -13,11 +14,13 @@ var _current_scene: Node
 var _current_scene_music
 
 func _ready():
-	load_scene_event_chennl.event_raised.connect(_on_scene_requested)
-	load_main_menu_event_channel.event_raised.connect(_on_scene_requested.bind(main_menu_scene))
+	load_scene_event_channel.event_raised.connect(_on_scene_requested)
+	load_main_menu_event_channel.event_raised.connect(_on_scene_requested.bind(main_menu_scene, true))
 
-func _on_scene_requested(scene_to_load: GameScene):
+func _on_scene_requested(scene_to_load: GameScene, show_loading_screen: bool):
 	_unload_previous_scene()
+	if show_loading_screen:
+		toggle_loading_screen.raise_event(true)
 	_load_new_scene(scene_to_load)
 
 func _unload_previous_scene():
@@ -31,6 +34,7 @@ func _load_new_scene(scene_to_load: GameScene):
 	scene.ready.connect(_on_new_scene_loaded.bind(scene_to_load))
 	_current_scene = scene
 	root.add_child(scene)
+	toggle_loading_screen.raise_event(false)
 
 func _on_new_scene_loaded(scene_to_load: GameScene):
 	if scene_to_load.music_track:
