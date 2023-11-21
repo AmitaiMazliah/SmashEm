@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://n54pcx3d0pjc"]
+[gd_scene load_steps=5 format=3 uid="uid://n54pcx3d0pjc"]
 
 [ext_resource type="Script" path="res://scripts/UI/player_data_ui.gd" id="1_bttva"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="1_ii2a6"]
+[ext_resource type="Texture2D" uid="uid://bcfnd0buxueli" path="res://art/ui/main-menu/trophy-icon.png" id="2_gqkhk"]
 [ext_resource type="Texture2D" uid="uid://cd3my62ml7jof" path="res://art/ui/main-menu/gold-icon.png" id="3_lpkvm"]
 
 [node name="PlayerData" type="Control"]
@@ -38,14 +39,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -7.0
+offset_top = -8.0
 offset_right = -40.0
-offset_bottom = 7.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 37
-text = "500"
+theme_override_font_sizes/font_size = 38
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -55,10 +56,13 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
+offset_left = -43.0
+offset_top = -7.0
+offset_right = 8.0
+offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("1_ii2a6")
+texture = ExtResource("2_gqkhk")
 expand_mode = 1
 
 [node name="GoldPanel" type="Panel" parent="MarginContainer/HBoxContainer"]
@@ -78,7 +82,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 38
-text = "500"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

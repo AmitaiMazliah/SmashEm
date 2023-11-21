@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1yybdwu532jp"]
+[gd_scene load_steps=4 format=3 uid="uid://b1yybdwu532jp"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_qc3mj"]
+[ext_resource type="Resource" uid="uid://biu2m4lhnme5u" path="res://resources/variables/player_gold.tres" id="2_jyq85"]
+[ext_resource type="Resource" uid="uid://duy0tow7ypgc0" path="res://resources/variables/player_trophies.tres" id="3_qdw34"]
 
 [node name="Player" type="Node"]
 script = ExtResource("1_qc3mj")
+gold = ExtResource("2_jyq85")
+trophy_count = ExtResource("3_qdw34")

@@ -4,10 +4,10 @@ extends Control
 @onready var _gold_label: Label = $MarginContainer/HBoxContainer/GoldPanel/Label
 
 func _ready():
-	Player.trophy_count_changed.connect(_on_trophy_count_changed)
-	Player.gold_changed.connect(_on_player_gold_changed)
-	_on_trophy_count_changed(Player.trophy_count)
-	_on_player_gold_changed(Player.gold)
+	Player.trophy_count.value_changed.connect(_on_trophy_count_changed)
+	Player.gold.value_changed.connect(_on_player_gold_changed)
+	_on_trophy_count_changed(Player.trophy_count.value)
+	_on_player_gold_changed(Player.gold.value)
 
 func _on_player_gold_changed(player_gold: int):
 	_gold_label.text = str(player_gold)
