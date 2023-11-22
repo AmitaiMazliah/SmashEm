@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://n54pcx3d0pjc"]
+[gd_scene load_steps=6 format=3 uid="uid://n54pcx3d0pjc"]
 
 [ext_resource type="Script" path="res://scripts/UI/player_data_ui.gd" id="1_bttva"]
 [ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="1_ii2a6"]
 [ext_resource type="Texture2D" uid="uid://bcfnd0buxueli" path="res://art/ui/main-menu/trophy-icon.png" id="2_gqkhk"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_utrv7"]
 [ext_resource type="Texture2D" uid="uid://cd3my62ml7jof" path="res://art/ui/main-menu/gold-icon.png" id="3_lpkvm"]
 
 [node name="PlayerData" type="Control"]
@@ -45,6 +46,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 10
+theme = ExtResource("2_utrv7")
 theme_override_font_sizes/font_size = 38
 text = "0"
 horizontal_alignment = 1
@@ -81,6 +83,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 10
+theme = ExtResource("2_utrv7")
 theme_override_font_sizes/font_size = 38
 text = "0"
 horizontal_alignment = 1
@@ -117,6 +120,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 10
+theme = ExtResource("2_utrv7")
 theme_override_font_sizes/font_size = 38
 text = "500"
 horizontal_alignment = 1

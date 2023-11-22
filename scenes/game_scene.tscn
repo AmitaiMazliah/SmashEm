@@ -1910,10 +1910,8 @@ offset_right = 127.0
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("10_3e6xu")
 theme_override_colors/font_color = Color(1, 0.424345, 0.957854, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 60
 text = "Victory!!!"
 

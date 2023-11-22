@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp22mksxi8dw0"]
+[gd_scene load_steps=11 format=3 uid="uid://bp22mksxi8dw0"]
 
 [ext_resource type="Script" path="res://scripts/turn_queue.gd" id="1_uop6f"]
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="2_ya30x"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://hvfopyjsqeke" path="res://art/timer-icon.png" id="4_vyamo"]
 [ext_resource type="Resource" uid="uid://cjfbhsoqhw48n" path="res://resources/audio/cues/countdown_audio.tres" id="5_hnwi4"]
 [ext_resource type="Resource" uid="uid://moi006drxmk0" path="res://resources/audio/config/sfx_ui_config.tres" id="6_6mhey"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="7_hykho"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7xgg"]
 bg_color = Color(0.92549, 0.92549, 0.92549, 1)
@@ -49,10 +50,8 @@ offset_right = 0.5
 offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_hykho")
 theme_override_colors/font_color = Color(1, 0.424345, 0.957854, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 60
 
 [node name="TurnCountCount" type="Control" parent="CanvasLayer"]

@@ -64,7 +64,6 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -91,6 +90,7 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -356,6 +356,7 @@ layout_mode = 2
 
 [node name="MyItemsLabel" type="Label" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer"]
 layout_mode = 2
+theme = ExtResource("2_bv25m")
 text = "YOUR ITEMS"
 horizontal_alignment = 1
 
@@ -382,6 +383,7 @@ layout_mode = 2
 
 [node name="CollectionLabel" type="Label" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/HFlowContainer"]
 layout_mode = 2
+theme = ExtResource("2_bv25m")
 text = "COLLECTION"
 horizontal_alignment = 1
 
