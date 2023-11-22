@@ -56,6 +56,7 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -82,7 +83,6 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -108,9 +108,18 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="SettingsButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer"]
-custom_minimum_size = Vector2(75, 75)
+[node name="Control" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer"]
 layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_bottom = 75.0
+grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("2_bv25m")
@@ -120,28 +129,51 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer"]
-layout_mode = 2
+[node name="PlayButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -37.5
+offset_right = 335.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 4
 theme = ExtResource("2_bv25m")
 theme_override_font_sizes/font_size = 50
 text = "PLAY"
 
-[node name="SettingsPanel" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer"]
+[node name="SettingsPanel" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control"]
+visible = false
 custom_minimum_size = Vector2(580, 950)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -475.0
+offset_right = 290.0
+offset_bottom = 475.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("12_bpdcs")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab/MarginContainer/SettingsPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="CloseButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/SettingsPanel/MarginContainer"]
+[node name="CloseButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsPanel/MarginContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -152,6 +184,75 @@ icon = ExtResource("13_pg5gj")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="ChestsArea" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -286.0
+offset_top = -280.0
+offset_right = 287.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -286.5
+offset_top = -330.0
+offset_right = 283.5
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="ChestArea" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea"]
+layout_mode = 2
+text = "Chest Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChestArea2" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea2"]
+layout_mode = 2
+text = "Chest Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChestArea3" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea3"]
+layout_mode = 2
+text = "Chest Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChestArea4" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea4"]
+layout_mode = 2
+text = "Chest Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
 visible = false
@@ -259,9 +360,9 @@ icon = ExtResource("9_mwucg")
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/SettingsButton" to="UI/TabContainer/PlayTab" method="_on_settings_button_pressed"]
-[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Button" to="UI/TabContainer/PlayTab" method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/SettingsPanel/MarginContainer/CloseButton" to="UI/TabContainer/PlayTab/MarginContainer/SettingsPanel" method="_on_close_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsButton" to="UI/TabContainer/PlayTab" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/PlayButton" to="UI/TabContainer/PlayTab" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsPanel/MarginContainer/CloseButton" to="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsPanel" method="_on_close_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
