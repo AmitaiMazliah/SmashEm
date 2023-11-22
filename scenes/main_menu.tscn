@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=24 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cr64eflh0ntn4" path="res://art/ui/main-menu/settings-icon.png" id="11_v2t7b"]
 [ext_resource type="Script" path="res://scripts/UI/settings_panel.gd" id="12_bpdcs"]
 [ext_resource type="Texture2D" uid="uid://cavi4fecd3cmi" path="res://art/ui/main-menu/Red_X_Cross_Wrong_Not_clip_art_small.png" id="13_pg5gj"]
+[ext_resource type="Texture2D" uid="uid://dc1kdga1k8p3n" path="res://art/ui/common-chest.png" id="15_3hw3l"]
 [ext_resource type="PackedScene" uid="uid://c4uxbe4mt0ymo" path="res://prefabs/ui/item_view.tscn" id="15_e5ni1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
@@ -26,6 +27,13 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="Resource" id="Resource_tjlyx"]
 script = ExtResource("4_oh1vm")
 scene_reference = ExtResource("3_ct418")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cgm3"]
+bg_color = Color(0, 0, 0, 0.45098)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_hfqvu")
@@ -214,45 +222,112 @@ grow_vertical = 0
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="ChestArea" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
+[node name="ChestArea1" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cgm3")
 
-[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea"]
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea1"]
 layout_mode = 2
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 30
 text = "Chest Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ChestUI" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea1"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea1/ChestUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_bv25m")
+
+[node name="ChestIcon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea1/ChestUI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -166.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("15_3hw3l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LockedLabel" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea1/ChestUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 6.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 20
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DurationLabel" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea1/ChestUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 41.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 35
+text = "3h"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ChestArea2" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cgm3")
 
 [node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea2"]
 layout_mode = 2
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 30
 text = "Chest Slot"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ChestArea3" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cgm3")
 
 [node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea3"]
 layout_mode = 2
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 30
 text = "Chest Slot"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ChestArea4" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cgm3")
 
 [node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea4"]
 layout_mode = 2
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 30
 text = "Chest Slot"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
 visible = false
