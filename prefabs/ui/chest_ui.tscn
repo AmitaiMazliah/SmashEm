@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://ymcc5x36un2d"]
+[gd_scene load_steps=6 format=3 uid="uid://ymcc5x36un2d"]
 
 [ext_resource type="Script" path="res://scripts/UI/chest_ui.gd" id="1_xbtgh"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="1_xg5ct"]
 [ext_resource type="Texture2D" uid="uid://dc1kdga1k8p3n" path="res://art/ui/common-chest.png" id="2_ft6tc"]
+[ext_resource type="Texture2D" uid="uid://hvfopyjsqeke" path="res://art/timer-icon.png" id="4_u10gk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6t0l"]
+bg_color = Color(0, 0, 0, 0.470588)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="ChestUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 130.0
+offset_bottom = 220.0
 script = ExtResource("1_xbtgh")
 
 [node name="Button" type="Button" parent="."]
@@ -20,23 +30,30 @@ theme = ExtResource("1_xg5ct")
 
 [node name="ChestIcon" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -166.0
+anchor_bottom = 0.5
+offset_top = -45.0
+offset_bottom = 94.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_ft6tc")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LockedLabel" type="Label" parent="."]
+[node name="LockedPanel" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 129.0
+offset_bottom = 94.0
+
+[node name="LockedLabel" type="Label" parent="LockedPanel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 6.0
+offset_right = -1.0
 offset_bottom = 41.0
 grow_horizontal = 2
 theme = ExtResource("1_xg5ct")
@@ -45,15 +62,51 @@ text = "LOCKED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DurationLabel" type="Label" parent="."]
+[node name="DurationLabel" type="Label" parent="LockedPanel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 41.0
-offset_bottom = 76.0
+offset_right = 2.0
+offset_bottom = 93.0
 grow_horizontal = 2
 theme = ExtResource("1_xg5ct")
 theme_override_font_sizes/font_size = 35
 text = "3h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpeningPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme = ExtResource("1_xg5ct")
+theme_override_styles/panel = SubResource("StyleBoxFlat_l6t0l")
+
+[node name="TextureRect" type="TextureRect" parent="OpeningPanel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 30.0
+grow_vertical = 2
+texture = ExtResource("4_u10gk")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Duration" type="Label" parent="OpeningPanel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -101.0
+offset_right = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_xg5ct")
+text = "1h 2min"
 horizontal_alignment = 1
 vertical_alignment = 1
