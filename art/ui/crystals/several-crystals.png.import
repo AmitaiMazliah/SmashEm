@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i4w008b3vmdo"
-path="res://.godot/imported/timer-icon.png-a9eeeb1354958f50afa1343579e790ff.ctex"
+uid="uid://rrk6mcgylsln"
+path="res://.godot/imported/several-crystals.png-49f44028869d4e146cd9fe19c75233e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/timer-icon.png"
-dest_files=["res://.godot/imported/timer-icon.png-a9eeeb1354958f50afa1343579e790ff.ctex"]
+source_file="res://art/ui/crystals/several-crystals.png"
+dest_files=["res://.godot/imported/several-crystals.png-49f44028869d4e146cd9fe19c75233e5.ctex"]
 
 [params]
 

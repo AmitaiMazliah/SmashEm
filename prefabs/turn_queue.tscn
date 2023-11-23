@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="2_ya30x"]
 [ext_resource type="Resource" uid="uid://ceg0y65hkm0a2" path="res://resources/events/defeat_event_channel.tres" id="3_tldaw"]
 [ext_resource type="Resource" uid="uid://2nvlhruxpke6" path="res://resources/events/play_sound_event_channel.tres" id="4_vxxsm"]
-[ext_resource type="Texture2D" uid="uid://hvfopyjsqeke" path="res://art/timer-icon.png" id="4_vyamo"]
+[ext_resource type="Texture2D" uid="uid://i4w008b3vmdo" path="res://art/timer-icon.png" id="4_vyamo"]
 [ext_resource type="Resource" uid="uid://cjfbhsoqhw48n" path="res://resources/audio/cues/countdown_audio.tres" id="5_hnwi4"]
 [ext_resource type="Resource" uid="uid://moi006drxmk0" path="res://resources/audio/config/sfx_ui_config.tres" id="6_6mhey"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="7_hykho"]
@@ -69,9 +69,10 @@ grow_horizontal = 2
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = -12.0
-offset_right = 577.0
-offset_bottom = 401.0
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 409.0
+offset_bottom = 283.0
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_vyamo")

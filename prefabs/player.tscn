@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1yybdwu532jp"]
+[gd_scene load_steps=15 format=3 uid="uid://b1yybdwu532jp"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_qc3mj"]
 [ext_resource type="Resource" uid="uid://biu2m4lhnme5u" path="res://resources/variables/player_gold.tres" id="2_jyq85"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://v1iniouwyapp" path="res://art/ui/rare-chest.png" id="4_wykwx"]
 [ext_resource type="Script" path="res://scripts/items/chest.gd" id="5_kpcpo"]
 [ext_resource type="Script" path="res://scripts/player/player_chest.gd" id="6_btxn7"]
+[ext_resource type="Texture2D" uid="uid://bw0g6umslgede" path="res://art/ui/legendary-chest.png" id="8_g1itp"]
 
 [sub_resource type="Resource" id="Resource_lt130"]
 script = ExtResource("5_kpcpo")
@@ -23,7 +24,7 @@ open_start_time = 0.0
 [sub_resource type="Resource" id="Resource_45l10"]
 script = ExtResource("5_kpcpo")
 name = ""
-duration_to_open_in_hours = 7
+duration_to_open_in_hours = 999
 icon = ExtResource("4_wcxlx")
 
 [sub_resource type="Resource" id="Resource_g1rni"]
@@ -32,8 +33,20 @@ chest = SubResource("Resource_45l10")
 started_open = true
 open_start_time = 1.70073e+09
 
+[sub_resource type="Resource" id="Resource_bpn8s"]
+script = ExtResource("5_kpcpo")
+name = ""
+duration_to_open_in_hours = 1
+icon = ExtResource("8_g1itp")
+
+[sub_resource type="Resource" id="Resource_uiqvs"]
+script = ExtResource("6_btxn7")
+chest = SubResource("Resource_bpn8s")
+started_open = true
+open_start_time = 1.70073e+09
+
 [node name="Player" type="Node"]
 script = ExtResource("1_qc3mj")
 gold = ExtResource("2_jyq85")
 trophy_count = ExtResource("3_qdw34")
-chests = Array[ExtResource("6_btxn7")]([null, SubResource("Resource_etd1k"), SubResource("Resource_g1rni"), null])
+chests = Array[ExtResource("6_btxn7")]([null, SubResource("Resource_etd1k"), SubResource("Resource_g1rni"), SubResource("Resource_uiqvs")])

@@ -30,7 +30,7 @@ script = ExtResource("4_oh1vm")
 scene_reference = ExtResource("3_ct418")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cgm3"]
-bg_color = Color(0, 0, 0, 0.45098)
+bg_color = Color(0, 0, 0, 0.27451)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -91,6 +91,7 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -237,9 +238,6 @@ text = "Chest Slot"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-
-[node name="ChestUI" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer/ChestArea1" instance_placeholder="res://prefabs/ui/chest_ui.tscn"]
-layout_mode = 2
 
 [node name="ChestArea2" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea/HBoxContainer"]
 custom_minimum_size = Vector2(130, 0)

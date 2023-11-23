@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dx4axq65l727t"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dx4axq65l727t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eaw12"]
 content_margin_left = 3.0
@@ -10,6 +10,19 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oot5v"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.992157, 0.815686, 0.317647, 1)
+draw_center = false
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -31,8 +44,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_left = 3.0
-expand_margin_right = 3.0
 shadow_size = 5
 shadow_offset = Vector2(0, 3)
 
@@ -67,8 +78,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_left = 3.0
-expand_margin_right = 3.0
 shadow_size = 5
 shadow_offset = Vector2(0, 3)
 
@@ -81,6 +90,7 @@ bg_color = Color(0.886275, 0, 0.0784314, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 5
 Button/styles/disabled = SubResource("StyleBoxFlat_eaw12")
+Button/styles/focus = SubResource("StyleBoxFlat_oot5v")
 Button/styles/hover = SubResource("StyleBoxFlat_n6dec")
 Button/styles/normal = SubResource("StyleBoxFlat_45osr")
 Button/styles/pressed = SubResource("StyleBoxFlat_hahjp")
@@ -93,3 +103,7 @@ Label/constants/shadow_outline_size = 1
 ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_xhk1r")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_cyh20")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.294118)
+RichTextLabel/constants/outline_size = 1
+RichTextLabel/constants/shadow_offset_x = -1
