@@ -1,10 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1yybdwu532jp"]
+[gd_scene load_steps=9 format=3 uid="uid://b1yybdwu532jp"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_qc3mj"]
 [ext_resource type="Resource" uid="uid://biu2m4lhnme5u" path="res://resources/variables/player_gold.tres" id="2_jyq85"]
 [ext_resource type="Resource" uid="uid://duy0tow7ypgc0" path="res://resources/variables/player_trophies.tres" id="3_qdw34"]
+[ext_resource type="Texture2D" uid="uid://v1iniouwyapp" path="res://art/ui/rare-chest.png" id="4_y4qfm"]
+[ext_resource type="Script" path="res://scripts/items/chest.gd" id="5_kpcpo"]
+[ext_resource type="Texture2D" uid="uid://bw0g6umslgede" path="res://art/ui/legendary-chest.png" id="6_fqqc3"]
+
+[sub_resource type="Resource" id="Resource_vn3k4"]
+script = ExtResource("5_kpcpo")
+name = "gfreg"
+duration_to_open_in_hours = 6
+icon = ExtResource("4_y4qfm")
+
+[sub_resource type="Resource" id="Resource_sjal7"]
+script = ExtResource("5_kpcpo")
+name = ""
+duration_to_open_in_hours = 9
+icon = ExtResource("6_fqqc3")
 
 [node name="Player" type="Node"]
 script = ExtResource("1_qc3mj")
 gold = ExtResource("2_jyq85")
 trophy_count = ExtResource("3_qdw34")
+chests = Array[ExtResource("5_kpcpo")]([SubResource("Resource_vn3k4"), null, null, SubResource("Resource_sjal7")])

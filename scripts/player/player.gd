@@ -7,6 +7,7 @@ var nickname: String
 
 var selected_items: Dictionary
 var owned_items: Array[PlayerEquipment]
+@export var chests: Array[Chest]
 
 func init(items_catalog: ItemsCatalog):
 	await _get_player_currencies(items_catalog)
