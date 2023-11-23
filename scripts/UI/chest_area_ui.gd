@@ -10,6 +10,9 @@ func set_chests(chests: Array[PlayerChest]):
 	for i in len(chests):
 		var player_chest = chests[i]
 		if player_chest:
+			_chest_views[i].get_child(0).hide()
 			var chest_view = _chest_view_prefab.instantiate() as ChestUI
 			chest_view.ready.connect(chest_view.set_chest.bind(player_chest))
 			_chest_views[i].add_child(chest_view)
+		else:
+			_chest_views[i].get_child(0).show()
