@@ -2,7 +2,7 @@ extends Panel
 
 class_name ChestUI
 
-@onready var _button: Button = $Button
+@onready var button: Button = $Button
 @onready var _icon: TextureRect = $ChestIcon
 
 @onready var _locked_panel: Control = $LockedPanel
@@ -25,13 +25,13 @@ func _update_ui():
 	if (_player_chest != null):
 		_icon.texture = _player_chest.chest.icon
 		if not _player_chest.started_open:
-			_button.flat = true
+			button.flat = true
 			_opening_panel.hide()
 			_opened_panel.hide()
 			_locked_panel.show()
 			_locked_panel_duration_label.text = str(_player_chest.chest.duration_to_open_in_hours) + "h"
 		elif _player_chest.locked:
-			_button.flat = true
+			button.flat = true
 			_locked_panel.hide()
 			_opened_panel.hide()
 			_opening_panel.show()
@@ -47,7 +47,7 @@ func _update_ui():
 			else:
 				_opening_panel_duration_label.text = str(seconds) + "secs"
 		else:
-			_button.flat = false
+			button.flat = false
 			_locked_panel.hide()
 			_opening_panel.hide()
 			_opened_panel.show()

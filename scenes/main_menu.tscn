@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=30 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
@@ -21,6 +21,8 @@
 [ext_resource type="Script" path="res://scripts/UI/chest_area_ui.gd" id="15_dr38f"]
 [ext_resource type="PackedScene" uid="uid://c4uxbe4mt0ymo" path="res://prefabs/ui/item_view.tscn" id="15_e5ni1"]
 [ext_resource type="PackedScene" uid="uid://ymcc5x36un2d" path="res://prefabs/ui/chest_ui.tscn" id="16_7b5qt"]
+[ext_resource type="Script" path="res://scripts/UI/unlock_chest_dialog.gd" id="17_nsobb"]
+[ext_resource type="Texture2D" uid="uid://dc1kdga1k8p3n" path="res://art/ui/common-chest.png" id="18_b2jud"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -31,6 +33,34 @@ scene_reference = ExtResource("3_ct418")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cgm3"]
 bg_color = Color(0, 0, 0, 0.27451)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_my5wn"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unij3"]
+bg_color = Color(0.776471, 0.776471, 0.776471, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qg4fr"]
+content_margin_left = 50.0
+content_margin_right = 50.0
+bg_color = Color(0.145098, 0.4, 0.215686, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -202,8 +232,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -286.0
-offset_top = -280.0
+offset_top = -341.0
 offset_right = 287.0
+offset_bottom = -121.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("15_dr38f")
@@ -211,17 +242,11 @@ _chest_view_prefab = ExtResource("16_7b5qt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestsArea"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -286.5
-offset_top = -330.0
-offset_right = 283.5
-offset_bottom = -80.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/separation = 15
 alignment = 1
 
@@ -280,6 +305,163 @@ text = "Chest Slot"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="ChestDialog" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -282.0
+offset_right = 243.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_nsobb")
+
+[node name="Panel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_my5wn")
+
+[node name="ChestIcon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = -36.0
+offset_right = 74.0
+offset_bottom = 112.0
+grow_horizontal = 2
+texture = ExtResource("18_b2jud")
+expand_mode = 1
+
+[node name="ChestName" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -112.0
+offset_right = 65.5
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_bv25m")
+text = "COMMON CHEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChestDetails" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -80.0
+offset_right = 180.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_unij3")
+
+[node name="StartUnlockButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.5
+offset_top = -74.0
+offset_right = 80.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/StartUnlockButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][font_size=14]START UNLOCK[/font_size]
+[img=20]res://art/timer-icon.png[/img] 6H
+[/center]"
+
+[node name="OpenNowPanel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -79.0
+offset_right = 180.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qg4fr")
+
+[node name="UnlockDuration" type="RichTextLabel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/OpenNowPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -22.0
+offset_right = 168.0
+offset_bottom = 22.0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=14]UNLOCKING TAKES:[/font_size]
+[img=20]res://art/timer-icon.png[/img] 6H 50mins"
+
+[node name="OpenNowButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/OpenNowPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -25.0
+offset_right = -14.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/OpenNowPanel/OpenNowButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][font_size=14]OPEN NOW[/font_size]
+50[img=20]res://art/ui/crystals/single-crystal.png[/img]
+[/center]"
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
 visible = false
