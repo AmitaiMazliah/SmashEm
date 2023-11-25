@@ -1,6 +1,5 @@
-[gd_scene load_steps=35 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=34 format=3 uid="uid://nk6lbs27cp64"]
 
-[ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
 [ext_resource type="PackedScene" uid="uid://ioommklr86bm" path="res://scenes/game_scene.tscn" id="3_ct418"]
@@ -84,7 +83,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="MainMenu" type="Node"]
-script = ExtResource("1_hfqvu")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -112,7 +110,6 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -139,6 +136,7 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")

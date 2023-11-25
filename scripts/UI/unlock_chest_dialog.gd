@@ -44,6 +44,5 @@ func _update_ui():
 			_open_now_panel.show()
 			_open_now_duration.text = OPEN_NOW_DURATION_PREFIX + _player_chest.get_remaining_time_as_string()
 
-
 func _on_blur_background_pressed():
 	hide()
