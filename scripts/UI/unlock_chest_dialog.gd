@@ -10,6 +10,8 @@ const OPEN_NOW_DURATION_PREFIX = "[font_size=14]UNLOCKING TAKES:[/font_size]
 
 @onready var _chest_icon: TextureRect = $Panel/ChestIcon
 @onready var _chest_name_label: Label = $Panel/ChestName
+@onready var _chest_gold_reward_label: Label = $Panel/ChestDetails/GoldPanel/Amount
+@onready var _chest_cards_reward_label: Label = $Panel/ChestDetails/CardsPanel/Amount
 
 @onready var _start_unlock_button: Button = $Panel/StartUnlockButton
 @onready var _start_unlock_button_text: RichTextLabel = $Panel/StartUnlockButton/RichTextLabel
@@ -31,6 +33,8 @@ func _update_ui():
 	if (_player_chest != null):
 		_chest_icon.texture = _player_chest.chest.icon
 		_chest_name_label.text = _player_chest.chest.name
+		_chest_gold_reward_label.text = str(_player_chest.chest.min_gold) + "-" + str(_player_chest.chest.max_gold)
+		_chest_cards_reward_label.text = "x" + str(_player_chest.chest.cards_amount)
 		if not _player_chest.started_open and _can_start_unlock:
 			_open_now_panel.hide()
 			_start_unlock_button.show()

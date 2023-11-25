@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v1iniouwyapp"
-path="res://.godot/imported/rare-chest.png-00db69611e3aacacaa497fc6afb02841.ctex"
+uid="uid://bw0g6umslgede"
+path="res://.godot/imported/legendary-chest.png-71a8ee3e6b96c56f1b8db5c22d9da820.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/rare-chest.png"
-dest_files=["res://.godot/imported/rare-chest.png-00db69611e3aacacaa497fc6afb02841.ctex"]
+source_file="res://art/ui/chests/legendary-chest.png"
+dest_files=["res://.godot/imported/legendary-chest.png-71a8ee3e6b96c56f1b8db5c22d9da820.ctex"]
 
 [params]
 

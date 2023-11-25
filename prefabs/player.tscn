@@ -4,17 +4,20 @@
 [ext_resource type="Resource" uid="uid://biu2m4lhnme5u" path="res://resources/variables/player_gold.tres" id="2_jyq85"]
 [ext_resource type="Resource" uid="uid://b6xty4y876tkc" path="res://resources/variables/player_crystals.tres" id="3_ep0cu"]
 [ext_resource type="Resource" uid="uid://duy0tow7ypgc0" path="res://resources/variables/player_trophies.tres" id="3_qdw34"]
-[ext_resource type="Texture2D" uid="uid://kssf0d8a745o" path="res://art/ui/uncommon-chest.png" id="4_wcxlx"]
-[ext_resource type="Texture2D" uid="uid://v1iniouwyapp" path="res://art/ui/rare-chest.png" id="4_wykwx"]
+[ext_resource type="Texture2D" uid="uid://v1iniouwyapp" path="res://art/ui/chests/rare-chest.png" id="5_0e014"]
 [ext_resource type="Script" path="res://scripts/items/chest.gd" id="5_kpcpo"]
 [ext_resource type="Script" path="res://scripts/player/player_chest.gd" id="6_btxn7"]
-[ext_resource type="Texture2D" uid="uid://bw0g6umslgede" path="res://art/ui/legendary-chest.png" id="8_g1itp"]
+[ext_resource type="Texture2D" uid="uid://kssf0d8a745o" path="res://art/ui/chests/uncommon-chest.png" id="8_g42sd"]
+[ext_resource type="Texture2D" uid="uid://bw0g6umslgede" path="res://art/ui/chests/legendary-chest.png" id="9_qgxir"]
 
 [sub_resource type="Resource" id="Resource_lt130"]
 script = ExtResource("5_kpcpo")
 name = "Rare Chest"
 duration_to_open_in_hours = 3
-icon = ExtResource("4_wykwx")
+icon = ExtResource("5_0e014")
+min_gold = 50
+max_gold = 100
+cards_amount = 3
 
 [sub_resource type="Resource" id="Resource_etd1k"]
 script = ExtResource("6_btxn7")
@@ -26,7 +29,10 @@ open_start_time = 0.0
 script = ExtResource("5_kpcpo")
 name = "Uncommon Chest"
 duration_to_open_in_hours = 999
-icon = ExtResource("4_wcxlx")
+icon = ExtResource("8_g42sd")
+min_gold = 500
+max_gold = 1500
+cards_amount = 55
 
 [sub_resource type="Resource" id="Resource_g1rni"]
 script = ExtResource("6_btxn7")
@@ -38,7 +44,10 @@ open_start_time = 1.70073e+09
 script = ExtResource("5_kpcpo")
 name = "Legendary Chest"
 duration_to_open_in_hours = 1
-icon = ExtResource("8_g1itp")
+icon = ExtResource("9_qgxir")
+min_gold = 9000
+max_gold = 9500
+cards_amount = 99
 
 [sub_resource type="Resource" id="Resource_uiqvs"]
 script = ExtResource("6_btxn7")

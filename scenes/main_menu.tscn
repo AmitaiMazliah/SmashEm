@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=35 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
@@ -21,8 +21,10 @@
 [ext_resource type="Script" path="res://scripts/UI/chest_area_ui.gd" id="15_dr38f"]
 [ext_resource type="PackedScene" uid="uid://c4uxbe4mt0ymo" path="res://prefabs/ui/item_view.tscn" id="15_e5ni1"]
 [ext_resource type="PackedScene" uid="uid://ymcc5x36un2d" path="res://prefabs/ui/chest_ui.tscn" id="16_7b5qt"]
+[ext_resource type="Texture2D" uid="uid://dc1kdga1k8p3n" path="res://art/ui/chests/common-chest.png" id="16_we4lh"]
+[ext_resource type="Texture2D" uid="uid://cd3my62ml7jof" path="res://art/ui/main-menu/gold-icon.png" id="17_5hxa1"]
 [ext_resource type="Script" path="res://scripts/UI/unlock_chest_dialog.gd" id="17_nsobb"]
-[ext_resource type="Texture2D" uid="uid://dc1kdga1k8p3n" path="res://art/ui/common-chest.png" id="18_b2jud"]
+[ext_resource type="Texture2D" uid="uid://c3yp0tdpks03l" path="res://art/ui/cards/common-cards.png" id="18_3u7md"]
 [ext_resource type="StyleBox" uid="uid://dyw3b3j4n6c2a" path="res://settings/theme/bottom_menu_button_style.tres" id="21_e5tia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
@@ -333,7 +335,7 @@ offset_top = -36.0
 offset_right = 74.0
 offset_bottom = 112.0
 grow_horizontal = 2
-texture = ExtResource("18_b2jud")
+texture = ExtResource("16_we4lh")
 expand_mode = 1
 
 [node name="ChestName" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
@@ -370,6 +372,100 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_unij3")
+
+[node name="GoldPanel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = -20.0
+offset_right = 170.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/GoldPanel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -17.0
+offset_right = 58.0
+offset_bottom = 12.0
+theme = ExtResource("2_bv25m")
+theme_override_colors/font_color = Color(0.956863, 0.956863, 0.584314, 1)
+theme_override_font_sizes/font_size = 18
+text = "Gold"
+
+[node name="Icon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/GoldPanel"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -9.0
+offset_right = 18.0
+offset_bottom = 48.0
+texture = ExtResource("17_5hxa1")
+expand_mode = 1
+
+[node name="Amount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/GoldPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_bv25m")
+theme_override_colors/font_color = Color(0.956863, 0.956863, 0.584314, 1)
+theme_override_font_sizes/font_size = 21
+text = "1000-2000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsPanel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -20.0
+offset_right = -17.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/CardsPanel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -17.0
+offset_right = 58.0
+offset_bottom = 12.0
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 18
+text = "Cards"
+
+[node name="Icon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/CardsPanel"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -9.0
+offset_right = 18.0
+offset_bottom = 48.0
+texture = ExtResource("18_3u7md")
+expand_mode = 1
+
+[node name="Amount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/CardsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 21
+text = "x44"
+vertical_alignment = 1
 
 [node name="StartUnlockButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
 layout_mode = 1
