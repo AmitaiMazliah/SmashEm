@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=35 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
 [ext_resource type="PackedScene" uid="uid://ioommklr86bm" path="res://scenes/game_scene.tscn" id="3_ct418"]
 [ext_resource type="Texture2D" uid="uid://dq80ejflk6ev" path="res://art/background.jpg" id="4_5q6jk"]
 [ext_resource type="Script" path="res://scripts/SceneManagement/game_scene.gd" id="4_oh1vm"]
+[ext_resource type="Resource" uid="uid://d0chcwn00fwsc" path="res://resources/items_catalog.tres" id="6_3g17t"]
 [ext_resource type="Script" path="res://scripts/UI/my_tab_container.gd" id="6_h72yk"]
 [ext_resource type="Texture2D" uid="uid://dh7p2heexlnvw" path="res://art/gold-bag.png" id="7_5l8re"]
 [ext_resource type="Script" path="res://scripts/UI/shop_tab_ui.gd" id="7_k4bha"]
@@ -113,6 +114,7 @@ script = ExtResource("6_h72yk")
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
+_items_catalog = ExtResource("6_3g17t")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/TabContainer/ShopTab"]
 layout_mode = 0
@@ -626,6 +628,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("9_hdxf0")
 _item_view_prefab = ExtResource("15_e5ni1")
+_items_catalog = ExtResource("6_3g17t")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/TabContainer/ItemsTab"]
 layout_mode = 2

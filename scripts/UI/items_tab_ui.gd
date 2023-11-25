@@ -8,32 +8,19 @@ extends Control
 @onready var _owned_items_grid: GridContainer = $ScrollContainer/MarginContainer/HFlowContainer/OwnedItemsGridContainer
 
 @export var _item_view_prefab: PackedScene
+@export var _items_catalog: ItemsCatalog
 
 var _selected_item: ItemSlotView
 
 func _ready():
 	_prepare_player_items_view()
 	
-	var items = _get_items_catalog()
-	Player.owned_items.append_array(items.map(func (e): return PlayerEquipment.new(e, 1, 1)))
+	Player.owned_items.append_array(_items_catalog.equipment.map(func (e): return PlayerEquipment.new(e, 1, 1)))
 	
 	for item in Player.owned_items:
 		var item_view = _create_item_view()
 		item_view.ready.connect(item_view.set_item.bind(item))
 		_owned_items_grid.add_child(item_view)
-
-func _get_items_catalog() -> Array[Equipment]:
-	var items: Array[Equipment] = []
-	var dir = DirAccess.open("res://resources/items/")
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			var item = load("res://resources/items/" + file_name)
-			if item:
-				items.append(item)
-			file_name = dir.get_next()
-	return items
 
 func _create_item_view() -> ItemSlotView:
 	var item_view = _item_view_prefab.instantiate() as ItemSlotView
