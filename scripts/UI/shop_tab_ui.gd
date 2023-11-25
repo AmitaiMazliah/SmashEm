@@ -6,7 +6,8 @@ extends Control
 
 func _ready():
 	var items = _get_items_catalog()
-	var shop_items = items.filter(func (i): return not Player.owned_items.has(i))
+	var player_items = Player.owned_items.map(func (player_equip: PlayerEquipment): return player_equip.equipment)
+	var shop_items = items.filter(func (i: Equipment): return not player_items.has(i))
 	for item in shop_items:
 		var item_view = _item_view_prefab.instantiate() as ShopItemView
 		item_view.ready.connect(item_view.set_item.bind(item))
