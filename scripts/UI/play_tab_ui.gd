@@ -22,5 +22,8 @@ func _on_settings_button_pressed():
 	_settings_panel.show()
 
 func _on_chest_selected(chest: PlayerChest):
-	_chest_dialog.set_chest(chest)
-	_chest_dialog.show()
+	if chest.locked:
+		_chest_dialog.set_chest(chest, Player.chests.filter(func (c): return c).all(func (c): return not c.started_open))
+		_chest_dialog.show()
+	else:
+		print("Chest is unlocked need to open it")

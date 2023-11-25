@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://n54pcx3d0pjc"]
 
 [ext_resource type="Script" path="res://scripts/UI/player_data_ui.gd" id="1_bttva"]
-[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="1_ii2a6"]
 [ext_resource type="Texture2D" uid="uid://bcfnd0buxueli" path="res://art/ui/main-menu/trophy-icon.png" id="2_gqkhk"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_utrv7"]
 [ext_resource type="Texture2D" uid="uid://cd3my62ml7jof" path="res://art/ui/main-menu/gold-icon.png" id="3_lpkvm"]
+[ext_resource type="Texture2D" uid="uid://750wkxah2wdm" path="res://art/ui/crystals/single-crystal.png" id="5_ph55e"]
 
 [node name="PlayerData" type="Control"]
 layout_mode = 3
@@ -104,12 +104,12 @@ grow_vertical = 2
 texture = ExtResource("3_lpkvm")
 expand_mode = 1
 
-[node name="Panel3" type="Panel" parent="MarginContainer/HBoxContainer"]
+[node name="CrystalsPanel" type="Panel" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Panel3"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/CrystalsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -126,14 +126,17 @@ text = "500"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Panel3"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CrystalsPanel"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
+offset_left = -50.0
+offset_top = -24.0
+offset_right = 18.0
+offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("1_ii2a6")
+texture = ExtResource("5_ph55e")
 expand_mode = 1

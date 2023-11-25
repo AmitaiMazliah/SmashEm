@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=31 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Script" path="res://scripts/UI/main_menu.gd" id="1_hfqvu"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ymcc5x36un2d" path="res://prefabs/ui/chest_ui.tscn" id="16_7b5qt"]
 [ext_resource type="Script" path="res://scripts/UI/unlock_chest_dialog.gd" id="17_nsobb"]
 [ext_resource type="Texture2D" uid="uid://dc1kdga1k8p3n" path="res://art/ui/common-chest.png" id="18_b2jud"]
+[ext_resource type="StyleBox" uid="uid://dyw3b3j4n6c2a" path="res://settings/theme/bottom_menu_button_style.tres" id="21_e5tia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -320,6 +321,7 @@ offset_right = 243.0
 offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("17_nsobb")
 
 [node name="Panel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog"]
@@ -403,6 +405,7 @@ offset_top = 3.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "[center][font_size=14]START UNLOCK[/font_size]
 [img=20]res://art/timer-icon.png[/img] 6H
@@ -421,6 +424,7 @@ offset_right = 180.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qg4fr")
 
@@ -459,6 +463,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "[center][font_size=14]OPEN NOW[/font_size]
 50[img=20]res://art/ui/crystals/single-crystal.png[/img]
@@ -552,6 +557,11 @@ alignment = 1
 custom_minimum_size = Vector2(240, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
 icon = ExtResource("7_5l8re")
 icon_alignment = 1
 expand_icon = true
@@ -560,6 +570,11 @@ expand_icon = true
 custom_minimum_size = Vector2(240, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
 icon = ExtResource("8_mp6ow")
 icon_alignment = 1
 expand_icon = true
@@ -568,6 +583,11 @@ expand_icon = true
 custom_minimum_size = Vector2(240, 120)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
 icon = ExtResource("9_mwucg")
 icon_alignment = 1
 expand_icon = true

@@ -12,6 +12,8 @@ var locked: bool :
 
 var remaining_open_time: int :
 	get:
+		if not started_open:
+			return chest.duration_to_open_in_hours * 3600
 		var end_open_time = open_start_time + (chest.duration_to_open_in_hours * 3600)
 		var r = end_open_time - Time.get_unix_time_from_system()
 		return r
