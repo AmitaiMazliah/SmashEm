@@ -95,6 +95,7 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -121,7 +122,6 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -359,6 +359,7 @@ offset_bottom = -86.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 26
 text = "COMMON CHEST"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -435,7 +436,7 @@ offset_bottom = 22.0
 grow_vertical = 2
 bbcode_enabled = true
 text = "[font_size=14]UNLOCKING TAKES:[/font_size]
-[img=20]res://art/timer-icon.png[/img] 6H 50mins"
+[img=20]res://art/timer-icon.png[/img] {duration}"
 
 [node name="OpenNowButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/OpenNowPanel"]
 layout_mode = 1

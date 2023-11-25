@@ -35,17 +35,7 @@ func _update_ui():
 			_locked_panel.hide()
 			_opened_panel.hide()
 			_opening_panel.show()
-			var remaining_time = _player_chest.remaining_open_time
-			var time_dict = Time.get_time_dict_from_unix_time(remaining_time)
-			var hours = time_dict.get("hour")
-			var minutes = time_dict.get("minute")
-			var seconds = time_dict.get("second")
-			if hours > 0:
-				_opening_panel_duration_label.text = str(hours) + "h " + str(minutes) + "min"
-			elif minutes > 0:
-				_opening_panel_duration_label.text = str(minutes) + "min " + str(seconds) + "secs"
-			else:
-				_opening_panel_duration_label.text = str(seconds) + "secs"
+			_opening_panel_duration_label.text = _player_chest.get_remaining_time_as_string()
 		else:
 			button.flat = false
 			_locked_panel.hide()

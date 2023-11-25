@@ -11,7 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_lt130"]
 script = ExtResource("5_kpcpo")
-name = ""
+name = "Rare Chest"
 duration_to_open_in_hours = 3
 icon = ExtResource("4_wykwx")
 
@@ -23,7 +23,7 @@ open_start_time = 0.0
 
 [sub_resource type="Resource" id="Resource_45l10"]
 script = ExtResource("5_kpcpo")
-name = ""
+name = "Uncommon Chest"
 duration_to_open_in_hours = 999
 icon = ExtResource("4_wcxlx")
 
@@ -35,7 +35,7 @@ open_start_time = 1.70073e+09
 
 [sub_resource type="Resource" id="Resource_bpn8s"]
 script = ExtResource("5_kpcpo")
-name = ""
+name = "Legendary Chest"
 duration_to_open_in_hours = 1
 icon = ExtResource("8_g1itp")
 
