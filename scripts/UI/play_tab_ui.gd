@@ -3,7 +3,7 @@ extends Control
 @export var load_scene_event_channel: LoadSceneEventChannel
 @export var game_scene: GameScene
 
-@onready var _settings_panel: SettingsPanel = $MarginContainer/Control/SettingsPanel
+@onready var _settings_panel: SettingsPanel = $MarginContainer/Control/SettingsArea
 @onready var _chests_area: ChestArea = $MarginContainer/Control/ChestsArea
 @onready var _chest_dialog: UnlockChestDialog = $MarginContainer/Control/ChestDialog
 
