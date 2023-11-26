@@ -11,6 +11,7 @@ var owned_items: Array[PlayerEquipment]
 @export var chests: Array[PlayerChest]
 
 func init(items_catalog: ItemsCatalog):
+	await _get_player_profile()
 	await _get_player_currencies(items_catalog)
 	await _get_player_data()
 	print("Player initialized successfully")
@@ -29,6 +30,11 @@ func _get_player_currencies(items_catalog: ItemsCatalog):
 				gold.value = currency.Amount
 			elif currency.Id == crystal_playfab_id:
 				crystals.value = currency.Amount
+
+func _get_player_profile():
+	var result = await MyPlayFab.send_request({}, "/Client/GetPlayerProfile", PlayFab.AUTH_TYPE.ENTITY_TOKEN).settled
+	if result.status == Promise.Status.RESOLVED:
+		nickname = result.payload.data.PlayerProfile.DisplayName
 
 func _get_player_data():
 	var result = await MyPlayFab.send_request({}, "/Client/GetUserData", PlayFab.AUTH_TYPE.ENTITY_TOKEN).settled
