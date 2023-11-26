@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp4u241nje36o"]
+
+[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_31550"]
+
+[node name="Ice-staff" type="Sprite2D"]
+position = Vector2(9, -29)
+rotation = 0.393271
+scale = Vector2(0.283951, 0.283951)
+texture = ExtResource("1_31550")
