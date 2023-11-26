@@ -2,9 +2,11 @@ extends Node
 
 @export var load_scene_event_channel: LoadSceneEventChannel
 @export var main_menu_scene: GameScene
+@export var _save_system: SaveSystem
 @export var items_catalog: ItemsCatalog
 
 func _ready():
+	_save_system.load()
 	PlayFabManager.client.logged_in.connect(_on_logged_in)
 	PlayFabManager.client.api_error.connect(_on_api_error)
 	_login()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bb7ask2laejku"]
+[gd_scene load_steps=17 format=3 uid="uid://bb7ask2laejku"]
 
 [ext_resource type="Script" path="res://scripts/SceneManagement/initialization_loader.gd" id="1_32475"]
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_o566f"]
 [ext_resource type="Resource" uid="uid://dwkdnf1qqb0nj" path="res://resources/scene_data/main_menu.tres" id="3_86xh3"]
 [ext_resource type="Resource" uid="uid://d0chcwn00fwsc" path="res://resources/items_catalog.tres" id="4_4cf07"]
+[ext_resource type="Resource" uid="uid://cg4qjyciidyxj" path="res://resources/save_system.tres" id="4_48gkk"]
 [ext_resource type="Script" path="res://scripts/SceneManagement/scene_loader.gd" id="4_pnwts"]
 [ext_resource type="Resource" uid="uid://c1hpycii541ab" path="res://resources/events/load_main_menu_event_channel.tres" id="4_yce1j"]
 [ext_resource type="PackedScene" uid="uid://dyrk7vr5dvsle" path="res://prefabs/audio_manager.tscn" id="6_u8mvd"]
@@ -32,6 +33,7 @@ border_color = Color(0.266667, 0.494118, 0.054902, 1)
 script = ExtResource("1_32475")
 load_scene_event_channel = ExtResource("2_o566f")
 main_menu_scene = ExtResource("3_86xh3")
+_save_system = ExtResource("4_48gkk")
 items_catalog = ExtResource("4_4cf07")
 
 [node name="SceneLoader" type="Node" parent="." node_paths=PackedStringArray("root")]
