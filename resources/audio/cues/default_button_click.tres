@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AudioCue" load_steps=3 format=3 uid="uid://cbgk1xcnltyyv"]
+
+[ext_resource type="AudioStream" uid="uid://gb62a3wrbrs2" path="res://art/audio/button_click.wav" id="1_8cfqc"]
+[ext_resource type="Script" path="res://scripts/audio/audio_data/audio_cue.gd" id="1_fg8yq"]
+
+[resource]
+script = ExtResource("1_fg8yq")
+looping = false
+sequenceMode = 1
+audioClips = Array[AudioStream]([ExtResource("1_8cfqc")])
