@@ -494,6 +494,7 @@ offset_right = 80.5
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("13_slbhp")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/StartUnlockButton"]
 layout_mode = 1
@@ -554,6 +555,7 @@ offset_right = -14.0
 offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
+script = ExtResource("13_slbhp")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/OpenNowPanel/OpenNowButton"]
 layout_mode = 1
@@ -630,6 +632,7 @@ icon = ExtResource("13_pg5gj")
 flat = true
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("13_slbhp")
 
 [node name="InnerSettingsPanel" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer"]
 custom_minimum_size = Vector2(625, 935)
@@ -681,6 +684,7 @@ theme_override_styles/hover = ExtResource("22_tgrci")
 theme_override_styles/pressed = ExtResource("23_7jc18")
 theme_override_styles/focus = ExtResource("24_cn7g5")
 text = "On"
+script = ExtResource("13_slbhp")
 
 [node name="OffButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer/MusicSetting"]
 layout_mode = 1
@@ -697,6 +701,7 @@ theme_override_styles/hover = ExtResource("26_tjlfo")
 theme_override_styles/pressed = ExtResource("27_l6j48")
 theme_override_styles/focus = ExtResource("28_hkbvk")
 text = "Off"
+script = ExtResource("13_slbhp")
 
 [node name="SfxSetting" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -729,6 +734,7 @@ theme_override_styles/hover = ExtResource("22_tgrci")
 theme_override_styles/pressed = ExtResource("23_7jc18")
 theme_override_styles/focus = ExtResource("24_cn7g5")
 text = "On"
+script = ExtResource("13_slbhp")
 
 [node name="OffButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer/SfxSetting"]
 layout_mode = 1
@@ -745,6 +751,7 @@ theme_override_styles/hover = ExtResource("26_tjlfo")
 theme_override_styles/pressed = ExtResource("27_l6j48")
 theme_override_styles/focus = ExtResource("28_hkbvk")
 text = "Off"
+script = ExtResource("13_slbhp")
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
 visible = false
@@ -843,6 +850,7 @@ theme_override_styles/focus = ExtResource("21_e5tia")
 icon = ExtResource("7_5l8re")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("13_slbhp")
 
 [node name="PlayButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
 custom_minimum_size = Vector2(240, 120)
@@ -856,6 +864,7 @@ theme_override_styles/focus = ExtResource("21_e5tia")
 icon = ExtResource("8_mp6ow")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("13_slbhp")
 
 [node name="ItemsButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
 custom_minimum_size = Vector2(240, 120)
@@ -869,6 +878,7 @@ theme_override_styles/focus = ExtResource("21_e5tia")
 icon = ExtResource("9_mwucg")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("13_slbhp")
 
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsButton" to="UI/TabContainer/PlayTab" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/PlayButton" to="UI/TabContainer/PlayTab" method="_on_play_button_pressed"]
