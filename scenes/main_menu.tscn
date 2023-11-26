@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=39 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
@@ -25,7 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://cd3my62ml7jof" path="res://art/ui/main-menu/gold-icon.png" id="17_5hxa1"]
 [ext_resource type="Script" path="res://scripts/UI/unlock_chest_dialog.gd" id="17_nsobb"]
 [ext_resource type="Texture2D" uid="uid://c3yp0tdpks03l" path="res://art/ui/cards/common-cards.png" id="18_3u7md"]
+[ext_resource type="StyleBox" uid="uid://bv46sq14vgjin" path="res://settings/theme/green_button_normal.tres" id="21_6iibt"]
 [ext_resource type="StyleBox" uid="uid://dyw3b3j4n6c2a" path="res://settings/theme/bottom_menu_button_style.tres" id="21_e5tia"]
+[ext_resource type="StyleBox" uid="uid://hat5ea8i3nsw" path="res://settings/theme/green_button_hover.tres" id="22_tgrci"]
+[ext_resource type="StyleBox" uid="uid://cy52xux8aw2yy" path="res://settings/theme/green_button_pressed.tres" id="23_7jc18"]
+[ext_resource type="StyleBox" uid="uid://dg5g4ifij1aa7" path="res://settings/theme/green_button_focus.tres" id="24_cn7g5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -111,6 +115,7 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -138,7 +143,6 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -555,7 +559,6 @@ text = "[center][font_size=14]OPEN NOW[/font_size]
 [/center]"
 
 [node name="SettingsArea" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -622,6 +625,81 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_wah6d")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MusicSetting" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer/MusicSetting"]
+layout_mode = 2
+offset_left = 172.5
+offset_right = 252.5
+offset_bottom = 42.0
+theme = ExtResource("2_bv25m")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OnButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer/MusicSetting"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_styles/normal = ExtResource("21_6iibt")
+theme_override_styles/hover = ExtResource("22_tgrci")
+theme_override_styles/pressed = ExtResource("23_7jc18")
+theme_override_styles/focus = ExtResource("24_cn7g5")
+text = "On"
+
+[node name="SoundSetting" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer/SoundSetting"]
+layout_mode = 2
+offset_left = 172.5
+offset_right = 252.5
+offset_bottom = 42.0
+theme = ExtResource("2_bv25m")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Sfx"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OnButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer/SoundSetting"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_styles/normal = ExtResource("21_6iibt")
+theme_override_styles/hover = ExtResource("22_tgrci")
+theme_override_styles/pressed = ExtResource("23_7jc18")
+theme_override_styles/focus = ExtResource("24_cn7g5")
+text = "On"
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
 visible = false
