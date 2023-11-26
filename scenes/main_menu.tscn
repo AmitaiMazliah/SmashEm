@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=46 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
@@ -25,11 +25,18 @@
 [ext_resource type="Texture2D" uid="uid://cd3my62ml7jof" path="res://art/ui/main-menu/gold-icon.png" id="17_5hxa1"]
 [ext_resource type="Script" path="res://scripts/UI/unlock_chest_dialog.gd" id="17_nsobb"]
 [ext_resource type="Texture2D" uid="uid://c3yp0tdpks03l" path="res://art/ui/cards/common-cards.png" id="18_3u7md"]
+[ext_resource type="Resource" uid="uid://byj4phfr6molj" path="res://resources/events/audio/change_music_volume.tres" id="20_fqwcc"]
 [ext_resource type="StyleBox" uid="uid://bv46sq14vgjin" path="res://settings/theme/green_button_normal.tres" id="21_6iibt"]
 [ext_resource type="StyleBox" uid="uid://dyw3b3j4n6c2a" path="res://settings/theme/bottom_menu_button_style.tres" id="21_e5tia"]
+[ext_resource type="Resource" uid="uid://b8upagox4tpba" path="res://resources/events/audio/change_sfx_2d_volume.tres" id="21_stb8h"]
+[ext_resource type="Resource" uid="uid://bmarqig4b5nb5" path="res://resources/events/audio/change_sfx_ui_volume.tres" id="22_nyrqm"]
 [ext_resource type="StyleBox" uid="uid://hat5ea8i3nsw" path="res://settings/theme/green_button_hover.tres" id="22_tgrci"]
 [ext_resource type="StyleBox" uid="uid://cy52xux8aw2yy" path="res://settings/theme/green_button_pressed.tres" id="23_7jc18"]
 [ext_resource type="StyleBox" uid="uid://dg5g4ifij1aa7" path="res://settings/theme/green_button_focus.tres" id="24_cn7g5"]
+[ext_resource type="StyleBox" uid="uid://c0v4tvjv8j6pk" path="res://settings/theme/red_button_normal.tres" id="25_vfaav"]
+[ext_resource type="StyleBox" uid="uid://bgs4e2wpbemni" path="res://settings/theme/red_button_hover.tres" id="26_tjlfo"]
+[ext_resource type="StyleBox" uid="uid://b6stx3rrwsf5j" path="res://settings/theme/red_button_pressed.tres" id="27_l6j48"]
+[ext_resource type="StyleBox" uid="uid://cujsuyf71tn4d" path="res://settings/theme/red_button_focus.tres" id="28_hkbvk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -566,6 +573,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_bpdcs")
+_change_music_volume = ExtResource("20_fqwcc")
+_change_sfx_2d_volume = ExtResource("21_stb8h")
+_change_sfx_ui_volume = ExtResource("22_nyrqm")
 
 [node name="BlurBackground" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea"]
 layout_mode = 1
@@ -618,7 +628,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="SettingsPanel" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer"]
+[node name="InnerSettingsPanel" type="PanelContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer"]
 custom_minimum_size = Vector2(625, 935)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -626,22 +636,22 @@ size_flags_vertical = 8
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_wah6d")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="MusicSetting" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer"]
+[node name="MusicSetting" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer/MusicSetting"]
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer/MusicSetting"]
 layout_mode = 2
 offset_left = 172.5
 offset_right = 252.5
@@ -653,7 +663,7 @@ text = "Music"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OnButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer/MusicSetting"]
+[node name="OnButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer/MusicSetting"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -669,11 +679,27 @@ theme_override_styles/pressed = ExtResource("23_7jc18")
 theme_override_styles/focus = ExtResource("24_cn7g5")
 text = "On"
 
-[node name="SoundSetting" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer"]
+[node name="OffButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer/MusicSetting"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_styles/normal = ExtResource("25_vfaav")
+theme_override_styles/hover = ExtResource("26_tjlfo")
+theme_override_styles/pressed = ExtResource("27_l6j48")
+theme_override_styles/focus = ExtResource("28_hkbvk")
+text = "Off"
+
+[node name="SfxSetting" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer/SoundSetting"]
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer/SfxSetting"]
 layout_mode = 2
 offset_left = 172.5
 offset_right = 252.5
@@ -685,7 +711,7 @@ text = "Sfx"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OnButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/SettingsPanel/MarginContainer/VBoxContainer/SoundSetting"]
+[node name="OnButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer/SfxSetting"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -700,6 +726,22 @@ theme_override_styles/hover = ExtResource("22_tgrci")
 theme_override_styles/pressed = ExtResource("23_7jc18")
 theme_override_styles/focus = ExtResource("24_cn7g5")
 text = "On"
+
+[node name="OffButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/InnerSettingsPanel/MarginContainer/VBoxContainer/SfxSetting"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_styles/normal = ExtResource("25_vfaav")
+theme_override_styles/hover = ExtResource("26_tjlfo")
+theme_override_styles/pressed = ExtResource("27_l6j48")
+theme_override_styles/focus = ExtResource("28_hkbvk")
+text = "Off"
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
 visible = false
