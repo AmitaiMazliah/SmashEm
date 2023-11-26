@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ymcc5x36un2d"]
+[gd_scene load_steps=8 format=3 uid="uid://ymcc5x36un2d"]
 
 [ext_resource type="Script" path="res://scripts/UI/chest_ui.gd" id="1_xbtgh"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="1_xg5ct"]
 [ext_resource type="Texture2D" uid="uid://dc1kdga1k8p3n" path="res://art/ui/chests/common-chest.png" id="3_csreo"]
+[ext_resource type="Script" path="res://scripts/UI/core/ui_button.gd" id="3_pswnd"]
 [ext_resource type="Texture2D" uid="uid://i4w008b3vmdo" path="res://art/timer-icon.png" id="4_u10gk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lqb6"]
@@ -48,6 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xg5ct")
 flat = true
+script = ExtResource("3_pswnd")
 
 [node name="ChestIcon" type="TextureRect" parent="."]
 layout_mode = 1
