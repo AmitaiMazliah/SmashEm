@@ -41,6 +41,10 @@ func _on_toggle_sfx(on: bool) -> void:
 	if on:
 		_sfx_off_button.hide()
 		_sfx_on_button.show()
+		_change_sfx_2d_volume.raise_event(0)
+		_change_sfx_ui_volume.raise_event(0)
 	else:
 		_sfx_on_button.hide()
 		_sfx_off_button.show()
+		_change_sfx_2d_volume.raise_event(-80)
+		_change_sfx_ui_volume.raise_event(-80)
