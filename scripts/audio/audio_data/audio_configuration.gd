@@ -17,4 +17,4 @@ func apply_to(audio_stream_player):
 func _normalize_volume(volume: float) -> float:
 	return (volume - 1) * 80
 
-enum AudioBusName { Music, SFX_2D, SFX_UI }
+enum AudioBusName { Music, SFX }

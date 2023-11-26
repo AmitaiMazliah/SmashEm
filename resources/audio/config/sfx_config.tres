@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AudioConfiguration" load_steps=2 format=3 uid="uid://moi006drxmk0"]
 
-[ext_resource type="Script" path="res://scripts/audio/audio_data/audio_configuration.gd" id="1_alpln"]
+[ext_resource type="Script" path="res://scripts/audio/audio_data/audio_configuration.gd" id="1_wdosk"]
 
 [resource]
-script = ExtResource("1_alpln")
-audio_bus = 2
+script = ExtResource("1_wdosk")
+audio_bus = 1
 mute = false
 volume = 1.0
 pitch = 1.0

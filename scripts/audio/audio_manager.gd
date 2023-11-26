@@ -4,8 +4,7 @@ extends Node
 @export var play_sound_audio_event_channel : AudioCueEventChannel
 @export var play_music_audio_event_channel : AudioCueEventChannel
 @export var _change_music_volume: FloatEventChannel
-@export var _change_sfx_2d_volume: FloatEventChannel
-@export var _change_sfx_ui_volume: FloatEventChannel
+@export var _change_sfx_volume: FloatEventChannel
 
 var _sound_emitter_pool : Array[SoundEmitter]
 var _music_sound_emitter: SoundEmitter
@@ -22,8 +21,7 @@ func test_audio_cue():
 
 func _ready():
 	_change_music_volume.event_raised.connect(_change_audio_bus_volume.bind(AudioConfiguration.AudioBusName.Music))
-	_change_sfx_2d_volume.event_raised.connect(_change_audio_bus_volume.bind(AudioConfiguration.AudioBusName.SFX_2D))
-	_change_sfx_ui_volume.event_raised.connect(_change_audio_bus_volume.bind(AudioConfiguration.AudioBusName.SFX_UI))
+	_change_sfx_volume.event_raised.connect(_change_audio_bus_volume.bind(AudioConfiguration.AudioBusName.SFX))
 	_generate_audio_pool()
 	play_sound_audio_event_channel.play_audio.connect(_on_play_sound_audio_cue)
 	play_music_audio_event_channel.play_audio.connect(_on_play_music_audio_cue)

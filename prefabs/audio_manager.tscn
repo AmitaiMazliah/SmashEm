@@ -1,16 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyrk7vr5dvsle"]
+[gd_scene load_steps=6 format=3 uid="uid://dyrk7vr5dvsle"]
 
 [ext_resource type="Script" path="res://scripts/audio/audio_manager.gd" id="1_fbvnk"]
 [ext_resource type="Resource" uid="uid://2nvlhruxpke6" path="res://resources/events/play_sound_event_channel.tres" id="2_xyohj"]
 [ext_resource type="Resource" uid="uid://bo4vefyw7bh5w" path="res://resources/events/play_music_event_channel.tres" id="3_4uk1y"]
 [ext_resource type="Resource" uid="uid://byj4phfr6molj" path="res://resources/events/audio/change_music_volume.tres" id="4_7cak3"]
-[ext_resource type="Resource" uid="uid://b8upagox4tpba" path="res://resources/events/audio/change_sfx_2d_volume.tres" id="5_32ugv"]
-[ext_resource type="Resource" uid="uid://bmarqig4b5nb5" path="res://resources/events/audio/change_sfx_ui_volume.tres" id="6_n5gbi"]
+[ext_resource type="Resource" uid="uid://b8upagox4tpba" path="res://resources/events/audio/change_sfx_volume.tres" id="5_hm5k6"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_fbvnk")
 play_sound_audio_event_channel = ExtResource("2_xyohj")
 play_music_audio_event_channel = ExtResource("3_4uk1y")
 _change_music_volume = ExtResource("4_7cak3")
-_change_sfx_2d_volume = ExtResource("5_32ugv")
-_change_sfx_ui_volume = ExtResource("6_n5gbi")
+_change_sfx_volume = ExtResource("5_hm5k6")

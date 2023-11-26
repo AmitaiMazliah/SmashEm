@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=47 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
@@ -30,10 +30,9 @@
 [ext_resource type="StyleBox" uid="uid://bv46sq14vgjin" path="res://settings/theme/green_button_normal.tres" id="21_6iibt"]
 [ext_resource type="StyleBox" uid="uid://dyw3b3j4n6c2a" path="res://settings/theme/bottom_menu_button_style.tres" id="21_e5tia"]
 [ext_resource type="Resource" uid="uid://cg4qjyciidyxj" path="res://resources/save_system.tres" id="21_hj43i"]
-[ext_resource type="Resource" uid="uid://b8upagox4tpba" path="res://resources/events/audio/change_sfx_2d_volume.tres" id="21_stb8h"]
-[ext_resource type="Resource" uid="uid://bmarqig4b5nb5" path="res://resources/events/audio/change_sfx_ui_volume.tres" id="22_nyrqm"]
 [ext_resource type="StyleBox" uid="uid://hat5ea8i3nsw" path="res://settings/theme/green_button_hover.tres" id="22_tgrci"]
 [ext_resource type="StyleBox" uid="uid://cy52xux8aw2yy" path="res://settings/theme/green_button_pressed.tres" id="23_7jc18"]
+[ext_resource type="Resource" uid="uid://b8upagox4tpba" path="res://resources/events/audio/change_sfx_volume.tres" id="23_wefy3"]
 [ext_resource type="StyleBox" uid="uid://dg5g4ifij1aa7" path="res://settings/theme/green_button_focus.tres" id="24_cn7g5"]
 [ext_resource type="StyleBox" uid="uid://c0v4tvjv8j6pk" path="res://settings/theme/red_button_normal.tres" id="25_vfaav"]
 [ext_resource type="StyleBox" uid="uid://bgs4e2wpbemni" path="res://settings/theme/red_button_hover.tres" id="26_tjlfo"]
@@ -581,8 +580,7 @@ grow_vertical = 2
 script = ExtResource("12_bpdcs")
 _save_system = ExtResource("21_hj43i")
 _change_music_volume = ExtResource("20_fqwcc")
-_change_sfx_2d_volume = ExtResource("21_stb8h")
-_change_sfx_ui_volume = ExtResource("22_nyrqm")
+_change_sfx_volume = ExtResource("23_wefy3")
 
 [node name="BlurBackground" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea"]
 layout_mode = 1
