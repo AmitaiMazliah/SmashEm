@@ -26,6 +26,8 @@ theme_override_constants/separation = 5
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 texture = ExtResource("2_u4eqi")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)

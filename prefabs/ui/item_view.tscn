@@ -75,6 +75,8 @@ theme_override_constants/margin_bottom = 5
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 texture = ExtResource("2_h1hb8")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

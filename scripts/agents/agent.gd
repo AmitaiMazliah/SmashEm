@@ -20,6 +20,16 @@ var dead : bool = false
 
 var _my_turn : bool = false
 var _current_damage : int
+var status: AgentStatus :
+	set(value):
+		var previous_status = status
+		if previous_status and previous_status.has_method("on_status_ended"):
+			previous_status.on_status_ended(self)
+		status = value
+		if status and status.has_method("on_status_given"):
+			status.on_status_given(self)
+	get:
+		return status
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -51,16 +61,18 @@ func kill():
 		remove_child(node)
 
 func end_turn():
-	_my_turn = false
 	turn_ended.emit()
-	
+
 func _on_start_turn():
 	print(self.name, " turns has started")
 	_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnTurnStart)
 
 func _on_end_turn():
 	print(self.name, " turns has ended")
+	if status:
+		status.on_turn_ended()
 	_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnTurnEnd)
+	_my_turn = false
 
 func _on_death():
 	dead = true

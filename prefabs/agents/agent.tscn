@@ -71,6 +71,10 @@ position = Vector2(-36, 44)
 z_index = 10
 position = Vector2(0, 56)
 
+[node name="LegsPlaceHolder" type="Node2D" parent="Visuals/LegsPlaceHolder"]
+z_index = 10
+position = Vector2(0, 56)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
 script = ExtResource("3_knjvt")
