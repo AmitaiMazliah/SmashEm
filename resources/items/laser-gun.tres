@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3 uid="uid://ui8johbxlx2g"]
+
+[ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_8o6yc"]
+
+[resource]
+script = ExtResource("1_8o6yc")
+name = "Laser Gun"
+description = "on turn start shot a sright line to near target and dmg all in that line"
+slot = 0
+bonus_health = 0
+bonus_damage = 0
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])

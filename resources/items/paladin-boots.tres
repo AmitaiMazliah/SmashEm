@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://b86o17na18sph"]
+
+[ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_raedn"]
+[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_dsq5h"]
+
+[resource]
+script = ExtResource("1_raedn")
+name = "Paladin Boots"
+description = "heal yourself on hit"
+sprite = ExtResource("2_dsq5h")
+slot = 0
+bonus_health = 0
+bonus_damage = 0
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3 uid="uid://tiqv2f7n0fb1"]
+
+[ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_teeo0"]
+
+[resource]
+script = ExtResource("1_teeo0")
+name = "Smashing Gloves"
+description = "on turn end attack players near"
+slot = 0
+bonus_health = 0
+bonus_damage = 0
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])

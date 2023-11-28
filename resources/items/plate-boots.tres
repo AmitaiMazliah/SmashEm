@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3 uid="uid://3uf1hdxpp2fd"]
+
+[ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_fa52v"]
+
+[resource]
+script = ExtResource("1_fa52v")
+name = "Plate Boots"
+description = "health bonus
+shield?"
+slot = 0
+bonus_health = 0
+bonus_damage = 0
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])

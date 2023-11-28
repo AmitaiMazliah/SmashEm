@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3 uid="uid://bye7vxofk7bnb"]
+
+[ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_eectm"]
+
+[resource]
+script = ExtResource("1_eectm")
+name = "Poison Dagger"
+description = "poison on hit
+poison = dmg on turn end"
+slot = 0
+bonus_health = 0
+bonus_damage = 0
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])
