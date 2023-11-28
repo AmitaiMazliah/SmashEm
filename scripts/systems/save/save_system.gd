@@ -33,6 +33,8 @@ func save() -> void:
 
 func load():
 	var file := FileAccess.open(_file_location, FileAccess.READ)
+	if not file:
+		return
 	var json := JSON.new()
 	json.parse(file.get_line())
 	_values = json.get_data() as Dictionary
