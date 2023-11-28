@@ -3,10 +3,10 @@ extends Effect
 class_name StatusEffect
 
 @export var status: AgentStatus
-@export var who_to_damage: Target
+@export var target: Target
 
 func execute(agent: Agent):
-	var targets = _get_targets(who_to_damage, agent)
+	var targets = _get_targets(target, agent)
 	for target in targets:
 		target.status = status
 
@@ -22,6 +22,8 @@ func _get_targets(who_to_find: Target, agent: Agent) -> Array:
 			return [_get_all_live_agents(agent).filter(func (a): return a != agent).pick_random()]
 		Target.Nearest:
 			return [_get_nearest_agent(agent)]
+		Target.Me:
+			return [agent]
 		_: return []
 
 func _get_all_live_agents(agent: Agent) -> Array:
@@ -44,5 +46,6 @@ enum Target
 	AllButMe,
 	Random,
 	RandomNotMe,
-	Nearest
+	Nearest,
+	Me
 }

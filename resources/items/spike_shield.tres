@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://bekvfnso28m3a"]
+
+[ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_rvywl"]
+[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_uqorm"]
+
+[resource]
+script = ExtResource("1_rvywl")
+name = "Spike Shield"
+description = ""
+sprite = ExtResource("2_uqorm")
+slot = 2
+bonus_health = 20
+bonus_damage = 0
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])
