@@ -17,6 +17,7 @@ duration_to_open_in_hours = 3
 icon = ExtResource("5_0e014")
 min_gold = 50
 max_gold = 100
+different_cards = 0
 cards_amount = 3
 
 [sub_resource type="Resource" id="Resource_etd1k"]
@@ -32,6 +33,7 @@ duration_to_open_in_hours = 999
 icon = ExtResource("8_g42sd")
 min_gold = 500
 max_gold = 1500
+different_cards = 0
 cards_amount = 55
 
 [sub_resource type="Resource" id="Resource_g1rni"]
@@ -45,9 +47,10 @@ script = ExtResource("5_kpcpo")
 name = "Legendary Chest"
 duration_to_open_in_hours = 1
 icon = ExtResource("9_qgxir")
-min_gold = 9000
-max_gold = 9500
-cards_amount = 99
+min_gold = 500
+max_gold = 700
+different_cards = 4
+cards_amount = 66
 
 [sub_resource type="Resource" id="Resource_uiqvs"]
 script = ExtResource("6_btxn7")

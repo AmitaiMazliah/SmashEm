@@ -19,6 +19,16 @@ func _draw_chest_rewards(chest: Chest) -> Array[ChestReward]:
 	var rewards = [] as Array[ChestReward]
 	var given_gold = randi_range(chest.min_gold, chest.max_gold)
 	rewards.append(ChestReward.new("Gold", given_gold, null))
+	var given_cards_amount = 0
+	for i in chest.different_cards:
+		var amount
+		if i == chest.different_cards - 1:
+			amount = chest.cards_amount - given_cards_amount
+		else:
+			amount = randi_range(1, chest.cards_amount - chest.different_cards + (i + 1) - given_cards_amount)
+		given_cards_amount += amount
+		rewards.append(ChestReward.new("Gold", amount, null))
+	rewards.sort_custom(func (a, b): return a.amount > b.amount)
 	return rewards
 
 func _show_next_reward():

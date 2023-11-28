@@ -7,4 +7,5 @@ class_name Chest
 @export var icon: Texture
 @export var min_gold: int
 @export var max_gold: int
+@export var different_cards: int
 @export var cards_amount: int
