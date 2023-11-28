@@ -19,6 +19,8 @@ const OPEN_NOW_DURATION_PREFIX = "[font_size=14]UNLOCKING TAKES:[/font_size]
 @onready var _open_now_panel: Panel = $Panel/OpenNowPanel
 @onready var _open_now_duration: RichTextLabel = $Panel/OpenNowPanel/UnlockDuration
 
+@onready var _cannot_unlock_panel: Control = $Panel/CannotUnlockPanel
+
 var _player_chest: PlayerChest
 var _can_start_unlock: bool
 
@@ -35,14 +37,20 @@ func _update_ui():
 		_chest_name_label.text = _player_chest.chest.name
 		_chest_gold_reward_label.text = str(_player_chest.chest.min_gold) + "-" + str(_player_chest.chest.max_gold)
 		_chest_cards_reward_label.text = "x" + str(_player_chest.chest.cards_amount)
-		if not _player_chest.started_open and _can_start_unlock:
-			_open_now_panel.hide()
-			_start_unlock_button.show()
-			_start_unlock_button_text.text = START_UNLOCK_DURATION_TEXT.format({"duration": _player_chest.chest.duration_to_open_in_hours})
-		else:
+		if _player_chest.started_open:
 			_start_unlock_button.hide()
+			_cannot_unlock_panel.hide()
 			_open_now_panel.show()
 			_open_now_duration.text = OPEN_NOW_DURATION_PREFIX + _player_chest.get_remaining_time_as_string()
+		elif not _can_start_unlock:
+			_open_now_panel.hide()
+			_start_unlock_button.hide()
+			_cannot_unlock_panel.show()
+		else:
+			_open_now_panel.hide()
+			_cannot_unlock_panel.hide()
+			_start_unlock_button.show()
+			_start_unlock_button_text.text = START_UNLOCK_DURATION_TEXT.format({"duration": _player_chest.chest.duration_to_open_in_hours})
 
 func _on_blur_background_pressed():
 	hide()
