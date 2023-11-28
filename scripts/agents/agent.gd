@@ -18,6 +18,7 @@ var dead : bool = false
 
 @onready var _equipment : AgentEquipment = $AgentEquipment
 
+var current_velocity: float
 var _my_turn : bool = false
 var _current_damage : int
 var status: AgentStatus :
@@ -35,6 +36,7 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	health.death.connect(_on_death)
 	_current_damage = default_damage + _equipment.get_total_damage_bonus()
+	current_velocity = default_velocity
 
 func _on_body_entered(body):
 	if _my_turn and body is Agent:
@@ -51,8 +53,8 @@ func change_turn(is_my_turn: bool):
 
 func move(direction: Vector2) -> void:
 	if _my_turn:
-		print("Moving in direction ", direction)
-		apply_impulse(direction * default_velocity)
+		print("Moving in direction ", direction, " velocity ", current_velocity)
+		apply_impulse(direction * current_velocity)
 		moved.emit()
 
 func kill():
