@@ -143,6 +143,7 @@ tabs_visible = false
 script = ExtResource("6_h72yk")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -170,7 +171,6 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -853,6 +853,7 @@ script = ExtResource("13_slbhp")
 layer = 2
 visible = false
 script = ExtResource("33_ye4vm")
+_items_catalog = ExtResource("6_3g17t")
 
 [node name="Background" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen"]
 anchors_preset = 15
@@ -881,42 +882,37 @@ stretch_mode = 5
 
 [node name="RewardArea" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -187.5
-offset_top = -349.0
-offset_right = 187.5
-offset_bottom = -131.0
+offset_top = -227.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RewardName" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -216.0
-offset_right = 1.0
-offset_bottom = 75.0
-grow_horizontal = 0
-theme = ExtResource("2_bv25m")
-theme_override_font_sizes/font_size = 52
-text = "Gold"
-vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 1
-anchors_preset = 9
 anchor_bottom = 1.0
+offset_top = -109.0
+offset_bottom = -109.0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_npel3")
 
-[node name="RewardIcon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/Panel"]
+[node name="RewardIcon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/MarginContainer/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -927,7 +923,7 @@ texture = ExtResource("17_5hxa1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="RewardAmount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/Panel"]
+[node name="RewardAmount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/MarginContainer/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -941,6 +937,16 @@ theme = ExtResource("2_bv25m")
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RewardName" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 52
+text = "Gold"
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="NextRewardButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen"]
 anchors_preset = 15

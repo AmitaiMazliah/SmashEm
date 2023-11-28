@@ -2,9 +2,11 @@ extends CanvasLayer
 
 class_name ChestRewardsScreen
 
-@onready var _reward_name_label: Label = $RewardArea/RewardName
-@onready var _reward_amount_label: Label = $RewardArea/Panel/RewardAmount
-@onready var _reward_icon: TextureRect = $RewardArea/Panel/RewardIcon
+@onready var _reward_name_label: Label = $RewardArea/MarginContainer/HBoxContainer/RewardName
+@onready var _reward_amount_label: Label = $RewardArea/MarginContainer/HBoxContainer/Panel/RewardAmount
+@onready var _reward_icon: TextureRect = $RewardArea/MarginContainer/HBoxContainer/Panel/RewardIcon
+
+@export var _items_catalog: ItemsCatalog
 
 var _chest_rewards: Array[ChestReward]
 var _current_reward_index: int
@@ -19,6 +21,9 @@ func _draw_chest_rewards(chest: Chest) -> Array[ChestReward]:
 	var rewards = [] as Array[ChestReward]
 	var given_gold = randi_range(chest.min_gold, chest.max_gold)
 	rewards.append(ChestReward.new("Gold", given_gold, null))
+	var duplicated_items_catalog = _items_catalog.equipment
+	randomize()
+	duplicated_items_catalog.shuffle()
 	var given_cards_amount = 0
 	for i in chest.different_cards:
 		var amount
@@ -27,7 +32,8 @@ func _draw_chest_rewards(chest: Chest) -> Array[ChestReward]:
 		else:
 			amount = randi_range(1, chest.cards_amount - chest.different_cards + (i + 1) - given_cards_amount)
 		given_cards_amount += amount
-		rewards.append(ChestReward.new("Gold", amount, null))
+		var card = duplicated_items_catalog[i]
+		rewards.append(ChestReward.new(card.name, amount, card.sprite))
 	rewards.sort_custom(func (a, b): return a.amount > b.amount)
 	return rewards
 
