@@ -27,6 +27,7 @@ var _can_start_unlock: bool
 func set_chest(player_chest: PlayerChest, can_start_unlock: bool):
 	_player_chest = player_chest
 	_can_start_unlock = can_start_unlock
+	show()
 
 func _process(_delta):
 	_update_ui()
