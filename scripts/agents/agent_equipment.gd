@@ -11,6 +11,9 @@ class_name AgentEquipment
 func _ready():
 	for i in current_equipment:
 		var equipment : Equipment = current_equipment[i]
+		if not equipment.prefab:
+			printerr(equipment.name, " has no prefab")
+			return
 		var equipment_instance = equipment.prefab.instantiate()
 		match equipment.slot:
 			Equipment.Slot.Head:
