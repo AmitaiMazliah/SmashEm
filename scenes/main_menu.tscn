@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=50 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
@@ -38,6 +38,7 @@
 [ext_resource type="StyleBox" uid="uid://bgs4e2wpbemni" path="res://settings/theme/red_button_hover.tres" id="26_tjlfo"]
 [ext_resource type="StyleBox" uid="uid://b6stx3rrwsf5j" path="res://settings/theme/red_button_pressed.tres" id="27_l6j48"]
 [ext_resource type="StyleBox" uid="uid://cujsuyf71tn4d" path="res://settings/theme/red_button_focus.tres" id="28_hkbvk"]
+[ext_resource type="Script" path="res://scripts/UI/chest_rewards_screen.gd" id="33_ye4vm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -97,6 +98,18 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wah6d"]
 bg_color = Color(0.87451, 0.917647, 0.941176, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npel3"]
+bg_color = Color(0.47451, 0.509804, 0.572549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -836,6 +849,107 @@ theme_override_styles/focus = ExtResource("28_hkbvk")
 text = "Off"
 script = ExtResource("13_slbhp")
 
+[node name="ChestRewardsScreen" type="CanvasLayer" parent="UI/TabContainer/PlayTab/MarginContainer/Control"]
+layer = 2
+visible = false
+script = ExtResource("33_ye4vm")
+
+[node name="Background" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5q6jk")
+expand_mode = 1
+
+[node name="ChestIcon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.5
+offset_top = -152.5
+offset_right = 152.5
+offset_bottom = 152.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_we4lh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RewardArea" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.5
+offset_top = -349.0
+offset_right = 187.5
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RewardName" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_right = 1.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 52
+text = "Gold"
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_npel3")
+
+[node name="RewardIcon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/Panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 150.0
+offset_bottom = 2.0
+grow_vertical = 2
+texture = ExtResource("17_5hxa1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RewardAmount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/RewardArea/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextRewardButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
 visible = false
 layout_mode = 2
@@ -968,6 +1082,7 @@ script = ExtResource("13_slbhp")
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/BlurBackground" to="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/BlurBackground" to="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/CloseButton" to="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea" method="_on_close_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/NextRewardButton" to="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen" method="_on_next_reward_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
