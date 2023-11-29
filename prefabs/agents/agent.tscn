@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_qy2f6"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="7_rnl5w"]
 [ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/ice-staff.tres" id="8_7ld8q"]
-[ext_resource type="Resource" uid="uid://bhqr0wsguw7f6" path="res://resources/items/speed_boots.tres" id="9_avy51"]
+[ext_resource type="Resource" uid="uid://geett66gbknt" path="res://resources/items/speed_boots.tres" id="9_avy51"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
 bounce = 1.0
@@ -69,10 +69,6 @@ z_index = 10
 position = Vector2(-36, 44)
 
 [node name="LegsPlaceHolder" type="Node2D" parent="Visuals"]
-z_index = 10
-position = Vector2(0, 56)
-
-[node name="LegsPlaceHolder" type="Node2D" parent="Visuals/LegsPlaceHolder"]
 z_index = 10
 position = Vector2(0, 56)
 
