@@ -25,6 +25,15 @@ func _ready():
 			Equipment.Slot.Boots:
 				_legs_place_holder.add_child(equipment_instance)
 
+func init(agent: Agent):
+	for i in current_equipment:
+		var equipment : Equipment = current_equipment[i]
+		if equipment.has_method("init"):
+			equipment.init(agent)
+		for effect in equipment.effects:
+			if effect.has_method("init"):
+				effect.init(agent)
+
 func execute_all_effect_for_time(agent: Agent, effect_time: Effect.EffectTime):
 	for i in current_equipment:
 		var equipment : Equipment = current_equipment[i]
