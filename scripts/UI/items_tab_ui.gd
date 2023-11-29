@@ -4,8 +4,8 @@ extends Control
 #@onready var _right_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/RightHandSlot
 #@onready var _left_hand_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/LeftHandSlot
 #@onready var _boots_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/BootsSlot
-@onready var _my_items_container: HBoxContainer = $ScrollContainer/MarginContainer/Control/HFlowContainer/MyItemsContainer
-@onready var _owned_items_grid: GridContainer = $ScrollContainer/MarginContainer/Control/HFlowContainer/OwnedItemsGridContainer
+@onready var _my_items_container: HBoxContainer = $ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer
+@onready var _owned_items_grid: GridContainer = $ScrollContainer/MarginContainer/Control/ItemsContainer/OwnedItemsGridContainer
 @onready var _item_details_popup: ItemDetailsPopup = $ScrollContainer/MarginContainer/Control/ItemDetailsPopup
 
 @export var _item_view_prefab: PackedScene

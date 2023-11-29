@@ -12,7 +12,7 @@ duration = 1
 [sub_resource type="Resource" id="Resource_ofpvs"]
 script = ExtResource("1_bm2hb")
 status = SubResource("Resource_iusc4")
-who_to_damage = 0
+target = 0
 time = 0
 amount = 0
 

@@ -89,6 +89,7 @@ bg_color = Color(0.886275, 0, 0.0784314, 1)
 [resource]
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 5
+Button/font_sizes/font_size = 38
 Button/styles/disabled = SubResource("StyleBoxFlat_eaw12")
 Button/styles/focus = SubResource("StyleBoxFlat_oot5v")
 Button/styles/hover = SubResource("StyleBoxFlat_n6dec")

@@ -37,6 +37,10 @@ window/handheld/orientation=1
 
 enabled=PackedStringArray("res://addons/godot-playfab/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/tool_button/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://art/fonts/You Blockhead.ttf"
+
 [input]
 
 Test={
