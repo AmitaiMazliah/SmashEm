@@ -6,7 +6,7 @@ const ITEM_ATTACK_BONUS_TEXT = "[font_size=24][color=black]Damage[/color]
 {damage}[/font_size]"
 const ITEM_HEALTH_BONUS_TEXT = "[font_size=24][color=black]Hitpoints[/color]
 {health}[/font_size]"
-const ITEM_DESCRIPTION_TEXT = "[center][font_size=28]{description}[/font_size][/center]"
+const ITEM_DESCRIPTION_TEXT = "[center][font_size=24]{description}[/font_size][/center]"
 
 @onready var _item_name_label: Label = $Panel/MarginContainer/Control/ItemName
 @onready var _item_icon: TextureRect = $Panel/MarginContainer/Control/ItemIconPanel/ItemIcon

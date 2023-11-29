@@ -1268,7 +1268,7 @@ theme_override_constants/margin_bottom = 30
 layout_mode = 2
 theme = ExtResource("2_bv25m")
 bbcode_enabled = true
-text = "[center][font_size=28]This is an awesome
+text = "[center][font_size=24]This is an awesome
 item description
 that does so much thins
 and is amazing[/font_size][/center]"

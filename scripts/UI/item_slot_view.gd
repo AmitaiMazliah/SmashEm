@@ -4,7 +4,7 @@ class_name ItemSlotView
 
 signal selected
 
-@onready var _item_icon: TextureRect = $VBoxContainer/Button/MarginContainer/ItemIcon
+@onready var _item_icon: TextureRect = $VBoxContainer/Panel/MarginContainer/ItemIcon
 @onready var _item_process_bar: ProgressBar = $VBoxContainer/ProgressBar
 @onready var _item_process_bar_label: Label = $VBoxContainer/ProgressBar/Label
 

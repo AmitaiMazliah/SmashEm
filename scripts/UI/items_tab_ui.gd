@@ -42,4 +42,5 @@ func _prepare_player_items_view():
 #	_boots_item_view.set_item(boots_item)
 
 func _on_item_selected(item_view: ItemSlotView):
-	_item_details_popup.set_item(item_view.item)
+	if item_view.item:
+		_item_details_popup.set_item(item_view.item)
