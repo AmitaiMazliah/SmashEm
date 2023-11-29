@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="PackedSceneEventChannel" load_steps=2 format=3 uid="uid://c0yytqqi3af2b"]
+
+[ext_resource type="Script" path="res://scripts/events/control_event_channel.gd" id="1_kop6v"]
+
+[resource]
+script = ExtResource("1_kop6v")

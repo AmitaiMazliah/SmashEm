@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=56 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
@@ -39,10 +39,9 @@
 [ext_resource type="StyleBox" uid="uid://b6stx3rrwsf5j" path="res://settings/theme/red_button_pressed.tres" id="27_l6j48"]
 [ext_resource type="StyleBox" uid="uid://cujsuyf71tn4d" path="res://settings/theme/red_button_focus.tres" id="28_hkbvk"]
 [ext_resource type="Script" path="res://scripts/UI/chest_rewards_screen.gd" id="33_ye4vm"]
+[ext_resource type="Resource" uid="uid://c0yytqqi3af2b" path="res://resources/events/ui/show_popup_event.tres" id="35_h10it"]
 [ext_resource type="Script" path="res://scripts/UI/item_details_popup.gd" id="36_302yw"]
-[ext_resource type="Script" path="res://scripts/UI/blur_background.gd" id="41_k8ite"]
-[ext_resource type="Resource" uid="uid://5wkwx64wqn1g" path="res://resources/events/ui/close_popup_event.tres" id="42_txn36"]
-[ext_resource type="Resource" uid="uid://djsp0m8veg5bc" path="res://resources/events/ui/toggle_blur_background_event.tres" id="43_qcsot"]
+[ext_resource type="Script" path="res://scripts/UI/core/popup_controller.gd" id="40_f3300"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -165,82 +164,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_5q6jk")
 expand_mode = 1
-
-[node name="BottomMenu" type="Panel" parent="UI"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -120.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 4
-
-[node name="VFlowContainer" type="VFlowContainer" parent="UI/BottomMenu"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-alignment = 1
-
-[node name="ShopButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
-custom_minimum_size = Vector2(240, 120)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("21_e5tia")
-theme_override_styles/hover = ExtResource("21_e5tia")
-theme_override_styles/pressed = ExtResource("21_e5tia")
-theme_override_styles/disabled = ExtResource("21_e5tia")
-theme_override_styles/focus = ExtResource("21_e5tia")
-icon = ExtResource("7_5l8re")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("13_slbhp")
-
-[node name="PlayButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
-custom_minimum_size = Vector2(240, 120)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("21_e5tia")
-theme_override_styles/hover = ExtResource("21_e5tia")
-theme_override_styles/pressed = ExtResource("21_e5tia")
-theme_override_styles/disabled = ExtResource("21_e5tia")
-theme_override_styles/focus = ExtResource("21_e5tia")
-icon = ExtResource("8_mp6ow")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("13_slbhp")
-
-[node name="ItemsButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
-custom_minimum_size = Vector2(240, 120)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("21_e5tia")
-theme_override_styles/hover = ExtResource("21_e5tia")
-theme_override_styles/pressed = ExtResource("21_e5tia")
-theme_override_styles/disabled = ExtResource("21_e5tia")
-theme_override_styles/focus = ExtResource("21_e5tia")
-icon = ExtResource("9_mwucg")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("13_slbhp")
-
-[node name="BlurBackground" type="Button" parent="UI"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-script = ExtResource("41_k8ite")
-_close_popup_event = ExtResource("42_txn36")
-_toggle_blur_background_event = ExtResource("43_qcsot")
 
 [node name="TabContainer" type="TabContainer" parent="UI"]
 anchors_preset = 15
@@ -1110,6 +1033,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MyItemsLabel" type="Label" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/HFlowContainer"]
 layout_mode = 2
@@ -1119,6 +1043,7 @@ horizontal_alignment = 1
 
 [node name="MyItemsContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/HFlowContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 4
 alignment = 1
 
@@ -1146,6 +1071,7 @@ horizontal_alignment = 1
 
 [node name="OwnedItemsGridContainer" type="GridContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/HFlowContainer"]
 layout_mode = 2
+mouse_filter = 2
 columns = 4
 
 [node name="ItemDetailsPopup" type="Control" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control"]
@@ -1163,6 +1089,19 @@ offset_bottom = 390.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("36_302yw")
+
+[node name="BlurBackground" type="Button" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.037
+anchor_top = -0.078
+anchor_right = -0.037
+anchor_bottom = -0.078
+offset_left = -27.27
+offset_top = -128.682
+offset_right = 692.73
+offset_bottom = 1151.32
 
 [node name="Panel" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup"]
 layout_mode = 1
@@ -1320,13 +1259,98 @@ theme_override_styles/focus = ExtResource("24_cn7g5")
 text = "Upgrade"
 script = ExtResource("13_slbhp")
 
-[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
-[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
+[node name="BottomMenu" type="Panel" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+
+[node name="VFlowContainer" type="VFlowContainer" parent="UI/BottomMenu"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+alignment = 1
+
+[node name="ShopButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
+icon = ExtResource("7_5l8re")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("13_slbhp")
+
+[node name="PlayButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
+icon = ExtResource("8_mp6ow")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("13_slbhp")
+
+[node name="ItemsButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
+icon = ExtResource("9_mwucg")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("13_slbhp")
+
+[node name="PopupControl" type="Control" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(720, 1280)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("40_f3300")
+show_popup_event = ExtResource("35_h10it")
+
+[node name="BlurBackground" type="Button" parent="UI/PopupControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsButton" to="UI/TabContainer/PlayTab" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/PlayButton" to="UI/TabContainer/PlayTab" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/BlurBackground" to="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/BlurBackground" to="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/CloseButton" to="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea" method="_on_close_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/NextRewardButton" to="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen" method="_on_next_reward_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/BlurBackground" to="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/CloseButton" to="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup" method="_on_close_button_pressed"]
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
+[connection signal="pressed" from="UI/PopupControl/BlurBackground" to="UI/PopupControl" method="_on_blur_background_pressed"]
