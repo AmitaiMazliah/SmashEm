@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://geett66gbknt"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://geett66gbknt"]
 
 [ext_resource type="Script" path="res://scripts/items/effects/status_effect.gd" id="1_bm2hb"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_iwp1n"]
 [ext_resource type="Script" path="res://scripts/agents/statuses/speed_status.gd" id="2_4spgg"]
-[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_v33i0"]
 
 [sub_resource type="Resource" id="Resource_iusc4"]
 script = ExtResource("2_4spgg")
@@ -21,7 +20,6 @@ amount = 0
 script = ExtResource("1_iwp1n")
 name = "Speed Boots"
 description = ""
-sprite = ExtResource("2_v33i0")
 slot = 0
 bonus_health = 0
 bonus_damage = 0

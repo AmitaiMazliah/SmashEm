@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=8 format=3 uid="uid://uc34v13np0qq"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://uc34v13np0qq"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_6c0yp"]
 [ext_resource type="Script" path="res://scripts/items/effects/status_effect.gd" id="1_87cl2"]
 [ext_resource type="PackedScene" uid="uid://bp4u241nje36o" path="res://prefabs/items/ice_staff.tscn" id="1_vtuwt"]
 [ext_resource type="Script" path="res://scripts/agents/statuses/speed_status.gd" id="2_vc4og"]
-[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="3_b6aa7"]
 
 [sub_resource type="Resource" id="Resource_ej7sp"]
 script = ExtResource("2_vc4og")
@@ -22,7 +21,6 @@ amount = 0
 script = ExtResource("1_6c0yp")
 name = "Ice Staff"
 description = "This is a great item"
-sprite = ExtResource("3_b6aa7")
 prefab = ExtResource("1_vtuwt")
 slot = 1
 bonus_health = 0
