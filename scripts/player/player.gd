@@ -1,5 +1,7 @@
 extends Node
 
+signal selected_items_changed
+
 var nickname: String
 
 @export var gold: IntVariable
@@ -15,6 +17,10 @@ func init(items_catalog: ItemsCatalog):
 	await _get_player_currencies(items_catalog)
 	await _get_player_data()
 	print("Player initialized successfully")
+
+func change_selected_item(selected_item: PlayerEquipment):
+	selected_items[selected_item.equipment.slot] = selected_item
+	selected_items_changed.emit()
 
 func _get_player_currencies(items_catalog: ItemsCatalog):
 	var dict = {

@@ -26,4 +26,4 @@ func _get_drag_data(at_position):
 	preview.position = -0.5 * preview.size
 	set_drag_preview(c)
 	
-	return preview
+	return item

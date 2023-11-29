@@ -1459,18 +1459,21 @@ custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
 script = ExtResource("44_w3qhp")
+equipment_slot = 1
 
 [node name="ItemContainer3" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
 custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
 script = ExtResource("44_w3qhp")
+equipment_slot = 2
 
 [node name="ItemContainer4" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
 custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
 script = ExtResource("44_w3qhp")
+equipment_slot = 3
 
 [node name="ItemContainer" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
 custom_minimum_size = Vector2(150, 220)
