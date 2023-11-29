@@ -33,7 +33,7 @@ func _draw_chest_rewards(chest: Chest) -> Array[ChestReward]:
 			amount = randi_range(1, chest.cards_amount - chest.different_cards + (i + 1) - given_cards_amount)
 		given_cards_amount += amount
 		var card = duplicated_items_catalog[i]
-		rewards.append(ChestReward.new(card.name, amount, card.sprite))
+		rewards.append(ChestReward.new(card.name, amount, card.icon))
 	rewards.sort_custom(func (a, b): return a.amount > b.amount)
 	return rewards
 

@@ -12,6 +12,6 @@ func set_item(item: Equipment):
 	_update_ui()
 
 func _update_ui():
-	_item_icon.texture = _item.sprite
+	_item_icon.texture = _item.icon
 	_item_name_label.text = _item.name
 	tooltip_text = _item.description
