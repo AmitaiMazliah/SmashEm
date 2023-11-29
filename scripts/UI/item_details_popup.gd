@@ -31,6 +31,7 @@ func _on_close_button_pressed():
 	hide()
 
 func _on_use_button_pressed():
+	hide()
 	use_item.emit(_player_item)
 
 func _on_blur_background_pressed():

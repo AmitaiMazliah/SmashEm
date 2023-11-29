@@ -1402,6 +1402,14 @@ grow_vertical = 2
 texture = ExtResource("4_5q6jk")
 expand_mode = 1
 
+[node name="BlurBackground" type="Button" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
 [node name="Label" type="Label" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
 anchors_preset = 10
 anchor_right = 1.0
@@ -1422,6 +1430,7 @@ offset_right = 330.0
 offset_bottom = 377.0
 grow_horizontal = 2
 size_flags_horizontal = 4
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_dnw4d")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea"]
@@ -1440,6 +1449,24 @@ grow_vertical = 2
 alignment = 1
 
 [node name="ItemContainer" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
+custom_minimum_size = Vector2(150, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
+script = ExtResource("44_w3qhp")
+
+[node name="ItemContainer2" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
+custom_minimum_size = Vector2(150, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
+script = ExtResource("44_w3qhp")
+
+[node name="ItemContainer3" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
+custom_minimum_size = Vector2(150, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
+script = ExtResource("44_w3qhp")
+
+[node name="ItemContainer4" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
 custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
@@ -1493,3 +1520,4 @@ stretch_mode = 5
 [connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/BlurBackground" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/CloseButton" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_close_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemActions/UseButton" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_use_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/ItemsTab/UseItemScreen/BlurBackground" to="UI/TabContainer/ItemsTab/UseItemScreen" method="_on_blur_background_pressed"]

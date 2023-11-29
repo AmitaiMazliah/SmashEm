@@ -7,3 +7,7 @@ class_name UseItemScreen
 func set_item(player_item: PlayerEquipment):
 	_draggable_item_view.set_item(player_item)
 	show()
+
+
+func _on_blur_background_pressed():
+	hide()
