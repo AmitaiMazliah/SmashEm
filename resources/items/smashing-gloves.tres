@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3 uid="uid://tiqv2f7n0fb1"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://tiqv2f7n0fb1"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_teeo0"]
+[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_xnjcg"]
 
 [resource]
 script = ExtResource("1_teeo0")
 name = "Smashing Gloves"
 description = "on turn end attack players near"
+icon = ExtResource("1_xnjcg")
 slot = 0
 bonus_health = 0
 bonus_damage = 0

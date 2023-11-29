@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3 uid="uid://ui8johbxlx2g"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://ui8johbxlx2g"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_8o6yc"]
+[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_kuov8"]
 
 [resource]
 script = ExtResource("1_8o6yc")
 name = "Laser Gun"
 description = "on turn start shot a sright line to near target and dmg all in that line"
+icon = ExtResource("1_kuov8")
 slot = 0
 bonus_health = 0
 bonus_damage = 0

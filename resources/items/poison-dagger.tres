@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3 uid="uid://bye7vxofk7bnb"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://bye7vxofk7bnb"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_eectm"]
+[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_pabv8"]
 
 [resource]
 script = ExtResource("1_eectm")
 name = "Poison Dagger"
 description = "poison on hit
 poison = dmg on turn end"
+icon = ExtResource("1_pabv8")
 slot = 0
 bonus_health = 0
 bonus_damage = 0

@@ -6,12 +6,14 @@ extends Control
 #@onready var _boots_item_view: ItemSlotView = $MarginContainer/HFlowContainer/MyItemsContainer/BootsSlot
 @onready var _my_items_container: HBoxContainer = $ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer
 @onready var _owned_items_grid: GridContainer = $ScrollContainer/MarginContainer/Control/ItemsContainer/OwnedItemsGridContainer
-@onready var _item_details_popup: ItemDetailsPopup = $ScrollContainer/MarginContainer/Control/ItemDetailsPopup
+@onready var _item_details_popup: ItemDetailsPopup = $ItemDetailsPopup
+@onready var _use_item_screen: UseItemScreen = $UseItemScreen
 
 @export var _item_view_prefab: PackedScene
 @export var _items_catalog: ItemsCatalog
 
 func _ready():
+	_item_details_popup.use_item.connect(_on_use_item)
 	_prepare_player_items_view()
 	
 	Player.owned_items.append_array(_items_catalog.equipment.map(func (e): return PlayerEquipment.new(e, 1, 1)))
@@ -44,3 +46,6 @@ func _prepare_player_items_view():
 func _on_item_selected(item_view: ItemSlotView):
 	if item_view.item:
 		_item_details_popup.set_item(item_view.item)
+
+func _on_use_item(player_item: PlayerEquipment):
+	_use_item_screen.set_item(player_item)

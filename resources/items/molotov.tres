@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://psm0gjoxtx04"]
 
+[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_cdg6t"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_xdriu"]
-[ext_resource type="Texture2D" uid="uid://bwph8pvq002av" path="res://icon.svg" id="2_28yap"]
 
 [resource]
 script = ExtResource("1_xdriu")
 name = "Molotov"
 description = "On collistion leave a circle of fire that burns player in it"
-sprite = ExtResource("2_28yap")
+icon = ExtResource("1_cdg6t")
 slot = 2
 bonus_health = 0
 bonus_damage = 0

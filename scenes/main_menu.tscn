@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=62 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
@@ -39,11 +39,13 @@
 [ext_resource type="StyleBox" uid="uid://b6stx3rrwsf5j" path="res://settings/theme/red_button_pressed.tres" id="27_l6j48"]
 [ext_resource type="StyleBox" uid="uid://cujsuyf71tn4d" path="res://settings/theme/red_button_focus.tres" id="28_hkbvk"]
 [ext_resource type="Script" path="res://scripts/UI/chest_rewards_screen.gd" id="33_ye4vm"]
-[ext_resource type="Resource" uid="uid://c0yytqqi3af2b" path="res://resources/events/ui/show_popup_event.tres" id="35_h10it"]
 [ext_resource type="Script" path="res://scripts/UI/item_details_popup.gd" id="36_302yw"]
 [ext_resource type="Texture2D" uid="uid://ctupjkes4ls8i" path="res://art/ui/main-menu/sword-icon.png" id="37_81lia"]
 [ext_resource type="Texture2D" uid="uid://b80nmeo74k1hy" path="res://art/ui/main-menu/heart-icon.png" id="38_iq5d6"]
-[ext_resource type="Script" path="res://scripts/UI/core/popup_controller.gd" id="40_f3300"]
+[ext_resource type="Script" path="res://scripts/UI/use_item_screen.gd" id="43_alv7h"]
+[ext_resource type="Script" path="res://scripts/UI/dropable_item_container.gd" id="44_w3qhp"]
+[ext_resource type="Script" path="res://scripts/UI/draggable_item_view.gd" id="45_y06ci"]
+[ext_resource type="Texture2D" uid="uid://c4l3kgqf03sab" path="res://art/items/nature-staff.png" id="46_wcs5h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -109,12 +111,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npel3"]
-bg_color = Color(0.47451, 0.509804, 0.572549, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0.392157)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -154,6 +151,19 @@ shadow_color = Color(0.52549, 0.596078, 0.694118, 1)
 shadow_size = 2
 shadow_offset = Vector2(-2, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnw4d"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7548"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="MainMenu" type="Node"]
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -166,6 +176,70 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_5q6jk")
 expand_mode = 1
+
+[node name="BottomMenu" type="Panel" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+
+[node name="VFlowContainer" type="VFlowContainer" parent="UI/BottomMenu"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+alignment = 1
+
+[node name="ShopButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
+icon = ExtResource("7_5l8re")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("13_slbhp")
+
+[node name="PlayButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
+icon = ExtResource("8_mp6ow")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("13_slbhp")
+
+[node name="ItemsButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
+custom_minimum_size = Vector2(240, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("21_e5tia")
+theme_override_styles/hover = ExtResource("21_e5tia")
+theme_override_styles/pressed = ExtResource("21_e5tia")
+theme_override_styles/disabled = ExtResource("21_e5tia")
+theme_override_styles/focus = ExtResource("21_e5tia")
+icon = ExtResource("9_mwucg")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("13_slbhp")
 
 [node name="TabContainer" type="TabContainer" parent="UI"]
 anchors_preset = 15
@@ -183,7 +257,6 @@ tabs_visible = false
 script = ExtResource("3_y1gmt")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -998,6 +1071,7 @@ grow_vertical = 2
 flat = true
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("9_hdxf0")
@@ -1060,7 +1134,23 @@ layout_mode = 2
 mouse_filter = 2
 columns = 4
 
-[node name="ItemDetailsPopup" type="Control" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control"]
+[node name="ItemDetailsPopup" type="Control" parent="UI/TabContainer/ItemsTab"]
+visible = false
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+script = ExtResource("36_302yw")
+
+[node name="BlurBackground" type="Button" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Panel" type="Panel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1073,19 +1163,10 @@ offset_right = 310.0
 offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("36_302yw")
-
-[node name="Panel" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_0h652")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1097,10 +1178,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Control" type="Control" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer"]
+[node name="Control" type="Control" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="CloseButton" type="Button" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control"]
+[node name="CloseButton" type="Button" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 1
@@ -1119,13 +1200,13 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("13_slbhp")
 
-[node name="ItemIconPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control"]
+[node name="ItemIconPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control"]
 custom_minimum_size = Vector2(120, 200)
 layout_mode = 0
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_npel3")
 
-[node name="ItemIcon" type="TextureRect" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemIconPanel"]
+[node name="ItemIcon" type="TextureRect" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemIconPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1136,7 +1217,7 @@ texture = ExtResource("17_5hxa1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemName" type="Label" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control"]
+[node name="ItemName" type="Label" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1150,7 +1231,7 @@ theme_override_font_sizes/font_size = 45
 text = "Item Name"
 horizontal_alignment = 1
 
-[node name="ItemStatsPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control"]
+[node name="ItemStatsPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1163,7 +1244,7 @@ grow_vertical = 2
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_1wtje")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1175,17 +1256,17 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="DamageStatPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer"]
+[node name="DamageStatPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_or8iw")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/DamageStatPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/DamageStatPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1194,14 +1275,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/DamageStatPanel/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/DamageStatPanel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("37_81lia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemDamageBonus" type="RichTextLabel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/DamageStatPanel/HBoxContainer"]
+[node name="ItemDamageBonus" type="RichTextLabel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/DamageStatPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_bv25m")
@@ -1209,13 +1290,13 @@ bbcode_enabled = true
 text = "[font_size=24][color=black]Damage[/color]
 50[/font_size]"
 
-[node name="HealthStatPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer"]
+[node name="HealthStatPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_or8iw")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/HealthStatPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/HealthStatPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1224,14 +1305,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/HealthStatPanel/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/HealthStatPanel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("38_iq5d6")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ItemHealthBonus" type="RichTextLabel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/HealthStatPanel/HBoxContainer"]
+[node name="ItemHealthBonus" type="RichTextLabel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemStatsPanel/MarginContainer/VBoxContainer/HealthStatPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_bv25m")
@@ -1239,7 +1320,7 @@ bbcode_enabled = true
 text = "[font_size=24][color=black]Hitpoints[/color]
 50[/font_size]"
 
-[node name="ItemDescriptionPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control"]
+[node name="ItemDescriptionPanel" type="Panel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -1252,7 +1333,7 @@ grow_vertical = 2
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_1wtje")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemDescriptionPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemDescriptionPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1264,7 +1345,7 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 30
 
-[node name="ItemDescription" type="RichTextLabel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemDescriptionPanel/MarginContainer"]
+[node name="ItemDescription" type="RichTextLabel" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemDescriptionPanel/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("2_bv25m")
 bbcode_enabled = true
@@ -1273,7 +1354,7 @@ item description
 that does so much thins
 and is amazing[/font_size][/center]"
 
-[node name="ItemActions" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control"]
+[node name="ItemActions" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1285,7 +1366,7 @@ grow_vertical = 0
 theme_override_constants/separation = 75
 alignment = 1
 
-[node name="UseButton" type="Button" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemActions"]
+[node name="UseButton" type="Button" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemActions"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1294,7 +1375,7 @@ theme_override_font_sizes/font_size = 31
 text = "USE"
 script = ExtResource("13_slbhp")
 
-[node name="UpgradeButton" type="Button" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/ItemActions"]
+[node name="UpgradeButton" type="Button" parent="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemActions"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -1307,97 +1388,108 @@ theme_override_styles/focus = ExtResource("24_cn7g5")
 text = "Upgrade"
 script = ExtResource("13_slbhp")
 
-[node name="BottomMenu" type="Panel" parent="UI"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -120.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 4
+[node name="UseItemScreen" type="CanvasLayer" parent="UI/TabContainer/ItemsTab"]
+layer = 2
+visible = false
+script = ExtResource("43_alv7h")
 
-[node name="VFlowContainer" type="VFlowContainer" parent="UI/BottomMenu"]
-clip_contents = true
-layout_mode = 1
+[node name="Background" type="TextureRect" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
+texture = ExtResource("4_5q6jk")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Select Item To Replace"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentItemsArea" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -330.0
+offset_top = 127.0
+offset_right = 330.0
+offset_bottom = 377.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dnw4d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -110.0
+offset_right = 306.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
-[node name="ShopButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
-custom_minimum_size = Vector2(240, 120)
+[node name="ItemContainer" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
+custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("21_e5tia")
-theme_override_styles/hover = ExtResource("21_e5tia")
-theme_override_styles/pressed = ExtResource("21_e5tia")
-theme_override_styles/disabled = ExtResource("21_e5tia")
-theme_override_styles/focus = ExtResource("21_e5tia")
-icon = ExtResource("7_5l8re")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("13_slbhp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
+script = ExtResource("44_w3qhp")
 
-[node name="PlayButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
-custom_minimum_size = Vector2(240, 120)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("21_e5tia")
-theme_override_styles/hover = ExtResource("21_e5tia")
-theme_override_styles/pressed = ExtResource("21_e5tia")
-theme_override_styles/disabled = ExtResource("21_e5tia")
-theme_override_styles/focus = ExtResource("21_e5tia")
-icon = ExtResource("8_mp6ow")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("13_slbhp")
+[node name="ItemContainer" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
+custom_minimum_size = Vector2(150, 220)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -110.0
+offset_right = 75.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
 
-[node name="ItemsButton" type="Button" parent="UI/BottomMenu/VFlowContainer"]
-custom_minimum_size = Vector2(240, 120)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("21_e5tia")
-theme_override_styles/hover = ExtResource("21_e5tia")
-theme_override_styles/pressed = ExtResource("21_e5tia")
-theme_override_styles/disabled = ExtResource("21_e5tia")
-theme_override_styles/focus = ExtResource("21_e5tia")
-icon = ExtResource("9_mwucg")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("13_slbhp")
-
-[node name="PopupControl" type="Control" parent="UI"]
-visible = false
-custom_minimum_size = Vector2(720, 1280)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("40_f3300")
-show_popup_event = ExtResource("35_h10it")
-
-[node name="BlurBackground" type="Button" parent="UI/PopupControl"]
+[node name="DraggableItemView" type="Control" parent="UI/TabContainer/ItemsTab/UseItemScreen/ItemContainer" node_paths=PackedStringArray("_item_icon")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-flat = true
+script = ExtResource("45_y06ci")
+_item_icon = NodePath("ItemIcon")
 
+[node name="ItemIcon" type="TextureRect" parent="UI/TabContainer/ItemsTab/UseItemScreen/ItemContainer/DraggableItemView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("46_wcs5h")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsButton" to="UI/TabContainer/PlayTab" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/PlayButton" to="UI/TabContainer/PlayTab" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/BlurBackground" to="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/BlurBackground" to="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea/SettingsPanel/MarginContainer/CloseButton" to="UI/TabContainer/PlayTab/MarginContainer/Control/SettingsArea" method="_on_close_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen/NextRewardButton" to="UI/TabContainer/PlayTab/MarginContainer/Control/ChestRewardsScreen" method="_on_next_reward_button_pressed"]
-[connection signal="pressed" from="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup/Panel/MarginContainer/Control/CloseButton" to="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemDetailsPopup" method="_on_close_button_pressed"]
-[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
-[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
-[connection signal="pressed" from="UI/PopupControl/BlurBackground" to="UI/PopupControl" method="_on_blur_background_pressed"]
+[connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/BlurBackground" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_blur_background_pressed"]
+[connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/CloseButton" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_close_button_pressed"]
+[connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemActions/UseButton" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_use_button_pressed"]
