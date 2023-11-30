@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=61 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
@@ -42,6 +42,10 @@
 [ext_resource type="Script" path="res://scripts/UI/item_details_popup.gd" id="36_302yw"]
 [ext_resource type="Texture2D" uid="uid://ctupjkes4ls8i" path="res://art/ui/main-menu/sword-icon.png" id="37_81lia"]
 [ext_resource type="Texture2D" uid="uid://b80nmeo74k1hy" path="res://art/ui/main-menu/heart-icon.png" id="38_iq5d6"]
+[ext_resource type="Texture2D" uid="uid://j17e03vwph15" path="res://art/ui/main-menu/helm-icon.png" id="40_whfkm"]
+[ext_resource type="Texture2D" uid="uid://bvqf1pgluhqdi" path="res://art/ui/main-menu/items-tab/sword-icon.png" id="41_3d1vt"]
+[ext_resource type="Texture2D" uid="uid://y8nf6ke8fdeq" path="res://art/ui/main-menu/items-tab/shield-icon.png" id="42_a6hvk"]
+[ext_resource type="Texture2D" uid="uid://dmidt3q743mlb" path="res://art/ui/main-menu/boots-icon.png" id="43_jq1uo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -108,6 +112,18 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npel3"]
 bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di1xv"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -268,6 +284,7 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -1053,7 +1070,6 @@ grow_vertical = 2
 flat = true
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("9_hdxf0")
@@ -1104,6 +1120,102 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
 alignment = 1
+
+[node name="HeadSlot" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer"]
+custom_minimum_size = Vector2(150, 220)
+layout_mode = 2
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_di1xv")
+
+[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer/HeadSlot"]
+self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("40_whfkm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightHandSlot" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer"]
+custom_minimum_size = Vector2(150, 220)
+layout_mode = 2
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_di1xv")
+
+[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer/RightHandSlot"]
+self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("41_3d1vt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftHandSlot" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer"]
+custom_minimum_size = Vector2(150, 220)
+layout_mode = 2
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_di1xv")
+
+[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer/LeftHandSlot"]
+self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("42_a6hvk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BootsSlot" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer"]
+custom_minimum_size = Vector2(150, 220)
+layout_mode = 2
+theme = ExtResource("2_bv25m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_di1xv")
+
+[node name="TextureRect" type="TextureRect" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer/BootsSlot"]
+self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("43_jq1uo")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CollectionLabel" type="Label" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/Control/ItemsContainer"]
 layout_mode = 2
