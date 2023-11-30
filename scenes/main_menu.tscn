@@ -240,6 +240,7 @@ tabs_visible = false
 script = ExtResource("3_y1gmt")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -267,7 +268,6 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
@@ -417,7 +417,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ChestDialog" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -501,18 +500,28 @@ grow_vertical = 2
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_unij3")
 
-[node name="GoldPanel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 43.0
-offset_top = -20.0
-offset_right = 170.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
 
-[node name="Title" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/GoldPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 55
+alignment = 1
+
+[node name="GoldPanel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer/HBoxContainer/GoldPanel"]
 layout_mode = 0
 offset_left = 17.0
 offset_top = -17.0
@@ -523,7 +532,7 @@ theme_override_colors/font_color = Color(0.956863, 0.956863, 0.584314, 1)
 theme_override_font_sizes/font_size = 18
 text = "Gold"
 
-[node name="Icon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/GoldPanel"]
+[node name="Icon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer/HBoxContainer/GoldPanel"]
 layout_mode = 0
 offset_left = -30.0
 offset_top = -9.0
@@ -532,12 +541,12 @@ offset_bottom = 48.0
 texture = ExtResource("17_5hxa1")
 expand_mode = 1
 
-[node name="Amount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/GoldPanel"]
+[node name="Amount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer/HBoxContainer/GoldPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
+offset_left = 25.0
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -545,24 +554,15 @@ theme = ExtResource("2_bv25m")
 theme_override_colors/font_color = Color(0.956863, 0.956863, 0.584314, 1)
 theme_override_font_sizes/font_size = 21
 text = "1000-2000"
-horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardsPanel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -20.0
-offset_right = -17.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="CardsPanel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[node name="Title" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/CardsPanel"]
+[node name="Title" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer/HBoxContainer/CardsPanel"]
 layout_mode = 0
 offset_left = 17.0
 offset_top = -17.0
@@ -572,7 +572,7 @@ theme = ExtResource("2_bv25m")
 theme_override_font_sizes/font_size = 18
 text = "Cards"
 
-[node name="Icon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/CardsPanel"]
+[node name="Icon" type="TextureRect" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer/HBoxContainer/CardsPanel"]
 layout_mode = 0
 offset_left = -30.0
 offset_top = -9.0
@@ -581,12 +581,12 @@ offset_bottom = 48.0
 texture = ExtResource("18_3u7md")
 expand_mode = 1
 
-[node name="Amount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/CardsPanel"]
+[node name="Amount" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/ChestDetails/MarginContainer/HBoxContainer/CardsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 19.0
+offset_left = 30.0
 offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -602,10 +602,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -79.5
-offset_top = -74.0
-offset_right = 80.5
-offset_bottom = -24.0
+offset_left = -90.5
+offset_top = -73.0
+offset_right = 90.5
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("13_slbhp")
@@ -626,6 +626,7 @@ text = "[center][font_size=14]START UNLOCK[/font_size]
 [/center]"
 
 [node name="OpenNowPanel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -649,12 +650,13 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 17.0
 offset_top = -22.0
-offset_right = 168.0
-offset_bottom = 22.0
+offset_right = 231.0
+offset_bottom = 26.0
 grow_vertical = 2
 bbcode_enabled = true
 text = "[font_size=14]UNLOCKING TAKES:[/font_size]
-[img=20]res://art/timer-icon.png[/img] {duration}"
+    [img=20]res://art/timer-icon.png[/img] {duration}"
+scroll_active = false
 
 [node name="OpenNowButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/OpenNowPanel"]
 layout_mode = 1
@@ -663,7 +665,7 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -119.0
+offset_left = -143.0
 offset_top = -25.0
 offset_right = -14.0
 offset_bottom = 25.0
@@ -684,12 +686,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("2_bv25m")
 bbcode_enabled = true
-text = "[center][font_size=14]OPEN NOW[/font_size]
+text = "[center][font_size=12]OPEN NOW[/font_size]
 50[img=20]res://art/ui/crystals/single-crystal.png[/img]
 [/center]"
 
 [node name="CannotUnlockPanel" type="Control" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -705,15 +709,18 @@ grow_vertical = 0
 mouse_filter = 2
 theme = ExtResource("2_bv25m")
 
-[node name="OpenNowButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -25.0
-offset_right = 105.0
-offset_bottom = 25.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="OpenNowButton" type="Button" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 theme = ExtResource("2_bv25m")
 theme_override_styles/normal = ExtResource("21_6iibt")
 theme_override_styles/hover = ExtResource("22_tgrci")
@@ -721,11 +728,13 @@ theme_override_styles/pressed = ExtResource("23_7jc18")
 theme_override_styles/focus = ExtResource("24_cn7g5")
 script = ExtResource("13_slbhp")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel/OpenNowButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel/HBoxContainer/OpenNowButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 6.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -734,23 +743,13 @@ text = "[center][font_size=14]OPEN NOW[/font_size]
 50[img=20]res://art/ui/crystals/single-crystal.png[/img]
 [/center]"
 
-[node name="Panel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -333.0
-offset_top = -20.0
-offset_right = 2.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="Panel" type="Panel" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_0xmom")
 
-[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel/Panel"]
+[node name="Label" type="Label" parent="UI/TabContainer/PlayTab/MarginContainer/Control/ChestDialog/Panel/CannotUnlockPanel/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -758,6 +757,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_bv25m")
+theme_override_font_sizes/font_size = 13
 text = "Another unlock is still in progress!"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://chomv1nxs73k8"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://bas1gvh2c13qs"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_iviyx"]
 [ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_kbwkr"]

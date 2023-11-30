@@ -6,7 +6,7 @@ const START_UNLOCK_DURATION_TEXT = "[center][font_size=14]START UNLOCK[/font_siz
 [img=20]res://art/timer-icon.png[/img] {duration}H
 [/center]"
 const OPEN_NOW_DURATION_PREFIX = "[font_size=14]UNLOCKING TAKES:[/font_size]
-[img=20]res://art/timer-icon.png[/img]"
+	[img=20]res://art/timer-icon.png[/img]"
 
 @onready var _chest_icon: TextureRect = $Panel/ChestIcon
 @onready var _chest_name_label: Label = $Panel/ChestName
