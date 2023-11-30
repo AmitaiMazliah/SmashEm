@@ -39,6 +39,7 @@ func _ready():
 	current_velocity = default_velocity
 
 func _on_body_entered(body):
+	_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnCollision)
 	if _my_turn and body is Agent:
 		var agent = body as Agent
 		print(self.name, " is attacking ", agent.name)
