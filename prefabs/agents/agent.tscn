@@ -8,8 +8,8 @@
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="4_w54ah"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_qy2f6"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="7_rnl5w"]
-[ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/ice-staff.tres" id="8_7ld8q"]
 [ext_resource type="Resource" uid="uid://geett66gbknt" path="res://resources/items/speed_boots.tres" id="9_avy51"]
+[ext_resource type="Resource" uid="uid://tiqv2f7n0fb1" path="res://resources/items/smashing-gloves.tres" id="9_hjccy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
 bounce = 1.0
@@ -80,7 +80,7 @@ script = ExtResource("3_knjvt")
 script = ExtResource("6_qy2f6")
 current_equipment = {
 "Boots": ExtResource("9_avy51"),
-"RightHand": ExtResource("8_7ld8q")
+"RightHand": ExtResource("9_hjccy")
 }
 _head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
 _right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")

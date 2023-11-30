@@ -37,6 +37,7 @@ func _ready():
 	health.death.connect(_on_death)
 	_current_damage = default_damage + _equipment.get_total_damage_bonus()
 	current_velocity = default_velocity
+	_equipment.init(self)
 
 func _on_body_entered(body):
 	if _my_turn and body is Agent:
@@ -73,6 +74,10 @@ func _on_end_turn():
 	print(self.name, " turns has ended")
 	if status:
 		status.on_turn_ended()
+	for i in _equipment.current_equipment:
+		var equipment : Equipment = _equipment.current_equipment[i]
+		if equipment.has_method("on_turn_end"):
+			equipment.on_turn_end()
 	_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnTurnEnd)
 	_my_turn = false
 
