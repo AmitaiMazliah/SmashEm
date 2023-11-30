@@ -37,7 +37,6 @@ func _ready():
 	health.death.connect(_on_death)
 	_current_damage = default_damage + _equipment.get_total_damage_bonus()
 	current_velocity = default_velocity
-	_equipment.init(self)
 
 func _on_body_entered(body):
 	if _my_turn and body is Agent:

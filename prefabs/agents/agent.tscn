@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqsa78xqy80jb"]
+[gd_scene load_steps=12 format=3 uid="uid://dqsa78xqy80jb"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent.gd" id="1_yap2o"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_j826y"]
@@ -8,8 +8,7 @@
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="4_w54ah"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_qy2f6"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="7_rnl5w"]
-[ext_resource type="Resource" uid="uid://geett66gbknt" path="res://resources/items/speed_boots.tres" id="9_avy51"]
-[ext_resource type="Resource" uid="uid://tiqv2f7n0fb1" path="res://resources/items/smashing-gloves.tres" id="9_hjccy"]
+[ext_resource type="Resource" uid="uid://tiqv2f7n0fb1" path="res://resources/items/smashing-gloves.tres" id="8_7p6no"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
 bounce = 1.0
@@ -26,7 +25,7 @@ linear_damp = 1.0
 script = ExtResource("1_yap2o")
 nodes_to_disable_on_death = [NodePath("Visuals"), NodePath("CollisionShape2D")]
 health = NodePath("HealthComponent")
-default_damage = 50
+default_damage = 0
 
 [node name="Visuals" type="Node2D" parent="."]
 script = ExtResource("4_v7toc")
@@ -79,8 +78,7 @@ script = ExtResource("3_knjvt")
 [node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
 script = ExtResource("6_qy2f6")
 current_equipment = {
-"Boots": ExtResource("9_avy51"),
-"RightHand": ExtResource("9_hjccy")
+"Boots": ExtResource("8_7p6no")
 }
 _head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
 _right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")

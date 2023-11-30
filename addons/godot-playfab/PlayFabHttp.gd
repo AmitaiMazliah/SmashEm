@@ -85,7 +85,8 @@ func _http_request(request_method: int, body: Dictionary, path: String, callback
 
 	if parse_error != OK:
 		emit_signal("json_parse_error", json_parse_result)
-		error_callback.call(json_parse_result)
+		if error_callback:
+			error_callback.call(json_parse_result)
 		return
 	if response_code >= 200 and response_code < 400:
 		if callback != null:

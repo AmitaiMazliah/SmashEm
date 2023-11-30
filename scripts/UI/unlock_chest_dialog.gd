@@ -10,8 +10,8 @@ const OPEN_NOW_DURATION_PREFIX = "[font_size=14]UNLOCKING TAKES:[/font_size]
 
 @onready var _chest_icon: TextureRect = $Panel/ChestIcon
 @onready var _chest_name_label: Label = $Panel/ChestName
-@onready var _chest_gold_reward_label: Label = $Panel/ChestDetails/GoldPanel/Amount
-@onready var _chest_cards_reward_label: Label = $Panel/ChestDetails/CardsPanel/Amount
+@onready var _chest_gold_reward_label: Label = $Panel/ChestDetails/MarginContainer/HBoxContainer/GoldPanel/Amount
+@onready var _chest_cards_reward_label: Label = $Panel/ChestDetails/MarginContainer/HBoxContainer/CardsPanel/Amount
 
 @onready var _start_unlock_button: Button = $Panel/StartUnlockButton
 @onready var _start_unlock_button_text: RichTextLabel = $Panel/StartUnlockButton/RichTextLabel

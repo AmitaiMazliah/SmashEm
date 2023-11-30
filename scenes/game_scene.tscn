@@ -1861,22 +1861,18 @@ disable_mode = 2
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_lfmai")
 default_velocity = 5000.0
-default_damage = 40
 
 [node name="AIAgent" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(159, 231)
 physics_material_override = null
-default_damage = 40
 
 [node name="AIAgent2" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(572, 199)
 physics_material_override = null
-default_damage = 40
 
 [node name="AIAgent3" parent="." instance=ExtResource("3_gylyo")]
 position = Vector2(550, 1095)
 physics_material_override = null
-default_damage = 40
 
 [node name="MatchUI" type="CanvasLayer" parent="."]
 script = ExtResource("9_35syc")
