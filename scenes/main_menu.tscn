@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://nk6lbs27cp64"]
+[gd_scene load_steps=56 format=3 uid="uid://nk6lbs27cp64"]
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
@@ -42,10 +42,6 @@
 [ext_resource type="Script" path="res://scripts/UI/item_details_popup.gd" id="36_302yw"]
 [ext_resource type="Texture2D" uid="uid://ctupjkes4ls8i" path="res://art/ui/main-menu/sword-icon.png" id="37_81lia"]
 [ext_resource type="Texture2D" uid="uid://b80nmeo74k1hy" path="res://art/ui/main-menu/heart-icon.png" id="38_iq5d6"]
-[ext_resource type="Script" path="res://scripts/UI/use_item_screen.gd" id="43_alv7h"]
-[ext_resource type="Script" path="res://scripts/UI/dropable_item_container.gd" id="44_w3qhp"]
-[ext_resource type="Script" path="res://scripts/UI/draggable_item_view.gd" id="45_y06ci"]
-[ext_resource type="Texture2D" uid="uid://c4l3kgqf03sab" path="res://art/items/nature-staff.png" id="46_wcs5h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -150,19 +146,6 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.52549, 0.596078, 0.694118, 1)
 shadow_size = 2
 shadow_offset = Vector2(-2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnw4d"]
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7548"]
-bg_color = Color(0, 0, 0, 0.392157)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="MainMenu" type="Node"]
 
@@ -1388,129 +1371,6 @@ theme_override_styles/focus = ExtResource("24_cn7g5")
 text = "Upgrade"
 script = ExtResource("13_slbhp")
 
-[node name="UseItemScreen" type="CanvasLayer" parent="UI/TabContainer/ItemsTab"]
-layer = 2
-visible = false
-script = ExtResource("43_alv7h")
-
-[node name="Background" type="TextureRect" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_5q6jk")
-expand_mode = 1
-
-[node name="BlurBackground" type="Button" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Label" type="Label" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 104.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "Select Item To Replace"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CurrentItemsArea" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -330.0
-offset_top = 127.0
-offset_right = 330.0
-offset_bottom = 377.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_dnw4d")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -306.0
-offset_top = -110.0
-offset_right = 306.0
-offset_bottom = 110.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="ItemContainer" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
-script = ExtResource("44_w3qhp")
-
-[node name="ItemContainer2" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
-script = ExtResource("44_w3qhp")
-equipment_slot = 1
-
-[node name="ItemContainer3" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
-script = ExtResource("44_w3qhp")
-equipment_slot = 2
-
-[node name="ItemContainer4" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen/CurrentItemsArea/HBoxContainer"]
-custom_minimum_size = Vector2(150, 220)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
-script = ExtResource("44_w3qhp")
-equipment_slot = 3
-
-[node name="ItemContainer" type="Panel" parent="UI/TabContainer/ItemsTab/UseItemScreen"]
-custom_minimum_size = Vector2(150, 220)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -110.0
-offset_right = 75.0
-offset_bottom = 110.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n7548")
-
-[node name="DraggableItemView" type="Control" parent="UI/TabContainer/ItemsTab/UseItemScreen/ItemContainer" node_paths=PackedStringArray("_item_icon")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("45_y06ci")
-_item_icon = NodePath("ItemIcon")
-
-[node name="ItemIcon" type="TextureRect" parent="UI/TabContainer/ItemsTab/UseItemScreen/ItemContainer/DraggableItemView"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("46_wcs5h")
-expand_mode = 1
-stretch_mode = 5
-
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ShopButton" to="UI/TabContainer" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/PlayButton" to="UI/TabContainer" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/BottomMenu/VFlowContainer/ItemsButton" to="UI/TabContainer" method="_on_items_button_pressed"]
@@ -1523,4 +1383,3 @@ stretch_mode = 5
 [connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/BlurBackground" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_blur_background_pressed"]
 [connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/CloseButton" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_close_button_pressed"]
 [connection signal="pressed" from="UI/TabContainer/ItemsTab/ItemDetailsPopup/Panel/MarginContainer/Control/ItemActions/UseButton" to="UI/TabContainer/ItemsTab/ItemDetailsPopup" method="_on_use_button_pressed"]
-[connection signal="pressed" from="UI/TabContainer/ItemsTab/UseItemScreen/BlurBackground" to="UI/TabContainer/ItemsTab/UseItemScreen" method="_on_blur_background_pressed"]

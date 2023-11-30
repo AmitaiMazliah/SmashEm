@@ -7,7 +7,6 @@ extends Control
 @onready var _my_items_container: HBoxContainer = $ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer
 @onready var _owned_items_grid: GridContainer = $ScrollContainer/MarginContainer/Control/ItemsContainer/OwnedItemsGridContainer
 @onready var _item_details_popup: ItemDetailsPopup = $ItemDetailsPopup
-@onready var _use_item_screen: UseItemScreen = $UseItemScreen
 
 @export var _item_view_prefab: PackedScene
 @export var _items_catalog: ItemsCatalog
@@ -48,4 +47,4 @@ func _on_item_selected(item_view: ItemSlotView):
 		_item_details_popup.set_item(item_view.item)
 
 func _on_use_item(player_item: PlayerEquipment):
-	_use_item_screen.set_item(player_item)
+	Player.change_selected_item(player_item)
