@@ -27,7 +27,6 @@ func _ready():
 	turn_countdown_progress_bar.max_value = turn_time_in_secs
 	turn_countdown_progress_bar.value = turn_time_in_secs
 	for agent in agents:
-#		agent.turn_ended.connect(_end_turn)
 		agent.moved.connect(_on_agent_moved)
 	get_tree().create_timer(1).timeout.connect(start)
 
@@ -78,7 +77,7 @@ func _end_turn():
 	_start_turn()
 
 func _get_next_live_agent() -> MyAgent:
-	var live_agents = agents #.filter(func (a: Agent): return not a.dead)
+	var live_agents = agents
 	_active_agent_index = (_active_agent_index + 1) % live_agents.size()
 	return live_agents[_active_agent_index]
 
@@ -93,12 +92,13 @@ func _fade_label():
 	await tween.finished
 
 func _kill_dead_agents():
-	var dead_agents = agents.filter(func (a: Agent): return a.dead)
+	var dead_agents = agents.filter(func (a: MyAgent): return a.current_health <= 0)
 	for agent in dead_agents:
-		agent.kill()
+		agent.die()
 		if agent is PlayerAgent:
 			defeat_event_channel.raise_event()
 			stop()
+	agents = agents.filter(func (a: MyAgent): return a.current_health > 0)
 #	if agents.filter(func (a: Agent): return a is AiAgent).all(func (a: Agent): return a.dead):
 #		print("Player won the game")
 #		victory_event_channel.raise_event()
