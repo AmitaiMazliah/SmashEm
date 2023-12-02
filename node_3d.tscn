@@ -1,0 +1,265 @@
+[gd_scene load_steps=17 format=3 uid="uid://qo6a5oc54pdy"]
+
+[ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="1_8p5yp"]
+[ext_resource type="PackedScene" uid="uid://bp22mksxi8dw0" path="res://prefabs/turn_queue.tscn" id="1_sr6hx"]
+[ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="2_38rvw"]
+[ext_resource type="Script" path="res://scripts/agent.gd" id="2_ho5q5"]
+[ext_resource type="Script" path="res://scripts/agents/agent_ai.gd" id="5_t5ai7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_og77g"]
+size = Vector2(100, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kqy0g"]
+size = Vector3(25, 10, 1)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_8t2gd"]
+albedo_color = Color(1, 1, 0.12549, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q65ki"]
+size = Vector3(25, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4hegr"]
+size = Vector3(1, 10, 75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8c1j0"]
+size = Vector3(1, 10, 75)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bnvlo"]
+size = Vector3(20, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rorfa"]
+size = Vector3(20, 10, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_fud1l"]
+size = Vector2(15, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqgdu"]
+transparency = 1
+albedo_texture = ExtResource("1_8p5yp")
+billboard_mode = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n4g5e"]
+height = 10.0
+radius = 2.0
+
+[node name="Node" type="Node"]
+
+[node name="TurnQueue" parent="." instance=ExtResource("1_sr6hx")]
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GameUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="Panel" type="Panel" parent="GameUI/Control"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Panel2" type="Panel" parent="GameUI/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="Panel3" type="Panel" parent="GameUI/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 100.0
+grow_vertical = 0
+
+[node name="Panel4" type="Panel" parent="GameUI/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("PlaneMesh_og77g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.96698, -49.2399)
+mesh = SubResource("BoxMesh_kqy0g")
+surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_q65ki")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2826, 3.96698, -1.00532)
+mesh = SubResource("BoxMesh_4hegr")
+surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_8c1j0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1662, 3.96698, -1.00532)
+mesh = SubResource("BoxMesh_4hegr")
+surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("BoxShape3D_8c1j0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.96698, 48.5932)
+mesh = SubResource("BoxMesh_kqy0g")
+surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_q65ki")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17.6799, 3.96698, 42.2928)
+mesh = SubResource("BoxMesh_bnvlo")
+surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D5/StaticBody3D"]
+shape = SubResource("BoxShape3D_rorfa")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 17.1586, 3.96698, 42.2928)
+mesh = SubResource("BoxMesh_bnvlo")
+surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D6/StaticBody3D"]
+shape = SubResource("BoxShape3D_rorfa")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -17.8423, 3.96698, -42.1436)
+mesh = SubResource("BoxMesh_bnvlo")
+surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D7/StaticBody3D"]
+shape = SubResource("BoxShape3D_rorfa")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 17.5333, 3.96698, -42.1436)
+mesh = SubResource("BoxMesh_bnvlo")
+surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D8/StaticBody3D"]
+shape = SubResource("BoxShape3D_rorfa")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 76.8757, 0)
+current = true
+fov = 70.0
+size = 107.999
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(0.555643, 0, -0.831421, 0.161562, 0.980938, 0.107973, 0.815573, -0.19432, 0.545051, 0, 32.479, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(0.237513, -0.417048, 0.877302, -0.955094, 0.0644464, 0.28921, -0.177153, -0.906597, -0.383013, 0, 31.8438, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64431, 0)
+visible = false
+mesh = SubResource("QuadMesh_fud1l")
+surface_material_override/0 = SubResource("StandardMaterial3D_qqgdu")
+
+[node name="Agent2" type="RigidBody3D" parent="Node3D" groups=["Agents"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79499, 0, -14.4831)
+physics_material_override = ExtResource("2_38rvw")
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+lock_rotation = true
+linear_damp = 1.0
+script = ExtResource("2_ho5q5")
+starting_velocity = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Agent2"]
+shape = SubResource("CylinderShape3D_n4g5e")
+
+[node name="Visuals" type="Node3D" parent="Node3D/Agent2"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D/Agent2/Visuals"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_8p5yp")
+
+[node name="AgentAI" type="Node" parent="Node3D/Agent2"]
+script = ExtResource("5_t5ai7")
+
+[node name="Agent3" type="RigidBody3D" parent="Node3D" groups=["Agents"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1963, 0, -19.0568)
+physics_material_override = ExtResource("2_38rvw")
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+lock_rotation = true
+linear_damp = 1.0
+script = ExtResource("2_ho5q5")
+starting_velocity = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Agent3"]
+shape = SubResource("CylinderShape3D_n4g5e")
+
+[node name="Visuals" type="Node3D" parent="Node3D/Agent3"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D/Agent3/Visuals"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_8p5yp")
+
+[node name="AgentAI" type="Node" parent="Node3D/Agent3"]
+script = ExtResource("5_t5ai7")
+
+[node name="Agent4" type="RigidBody3D" parent="Node3D" groups=["Agents"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7209, 0, 26.6795)
+physics_material_override = ExtResource("2_38rvw")
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+lock_rotation = true
+linear_damp = 1.0
+script = ExtResource("2_ho5q5")
+starting_velocity = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Agent4"]
+shape = SubResource("CylinderShape3D_n4g5e")
+
+[node name="Visuals" type="Node3D" parent="Node3D/Agent4"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D/Agent4/Visuals"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_8p5yp")
+
+[node name="AgentAI" type="Node" parent="Node3D/Agent4"]
+script = ExtResource("5_t5ai7")

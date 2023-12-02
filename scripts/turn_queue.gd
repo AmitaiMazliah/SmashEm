@@ -16,8 +16,9 @@ class_name TurnQueue
 @onready var agents = get_tree().get_nodes_in_group("Agents")
 
 var _active_agent_index = -1
-var _active_agent: Agent
-var _running : bool = false
+var _active_agent: MyAgent
+var _active_agent_started_moving: bool
+var _running : bool
 var _countdown_timers: Array[SceneTreeTimer]
 
 func _ready():
@@ -26,15 +27,19 @@ func _ready():
 	turn_countdown_progress_bar.max_value = turn_time_in_secs
 	turn_countdown_progress_bar.value = turn_time_in_secs
 	for agent in agents:
-		agent.turn_ended.connect(_end_turn)
+#		agent.turn_ended.connect(_end_turn)
 		agent.moved.connect(_on_agent_moved)
 	get_tree().create_timer(1).timeout.connect(start)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("Test"):
-		start()
 	if _running and not timer.is_stopped():
 		turn_countdown_progress_bar.value = timer.time_left
+	if _running and _active_agent_started_moving:
+		if agents.all(func (a): return not a.moving):
+			print("All agents came to a stop, ending turn")
+			_end_turn()
+	
+	_active_agent_started_moving = agents.any(func (a): return a.moving)
 
 func start():
 	if !_running:
@@ -56,7 +61,7 @@ func _start_turn():
 		turn_label.modulate.a = 1
 		turn_label.text = _active_agent.name + "'s turns"
 		get_tree().create_timer(1).timeout.connect(_fade_label)
-		_active_agent.change_turn(true)
+		_active_agent.start_turn()
 		timer.start()
 		_countdown_timers = [
 			get_tree().create_timer(turn_time_in_secs - 3),
@@ -68,12 +73,12 @@ func _start_turn():
 
 func _end_turn():
 	print("Ending turn of ", _active_agent_index, " ", _active_agent)
-	_active_agent.change_turn(false)
+	_active_agent.end_turn()
 	_kill_dead_agents()
 	_start_turn()
 
-func _get_next_live_agent() -> Agent:
-	var live_agents = agents.filter(func (a: Agent): return not a.dead)
+func _get_next_live_agent() -> MyAgent:
+	var live_agents = agents #.filter(func (a: Agent): return not a.dead)
 	_active_agent_index = (_active_agent_index + 1) % live_agents.size()
 	return live_agents[_active_agent_index]
 
@@ -94,10 +99,10 @@ func _kill_dead_agents():
 		if agent is PlayerAgent:
 			defeat_event_channel.raise_event()
 			stop()
-	if agents.filter(func (a: Agent): return a is AiAgent).all(func (a: Agent): return a.dead):
-		print("Player won the game")
-		victory_event_channel.raise_event()
-		stop()
+#	if agents.filter(func (a: Agent): return a is AiAgent).all(func (a: Agent): return a.dead):
+#		print("Player won the game")
+#		victory_event_channel.raise_event()
+#		stop()
 
 func _play_countdown_audio():
 	play_sfx_event_channel.raise_play_event(timer_countdown_audio, sfx_2d_audio_config)

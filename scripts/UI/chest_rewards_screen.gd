@@ -45,6 +45,7 @@ func _show_next_reward():
 		var reward = _chest_rewards[_current_reward_index]
 		_reward_name_label.text = reward.name
 		_reward_amount_label.text = "+" + str(reward.amount)
+		_reward_icon.texture = reward.icon
 
 func _on_next_reward_button_pressed():
 	_show_next_reward()

@@ -23,15 +23,9 @@ func _play_turn():
 	move(direction)
 
 func _get_nearest_agent() -> Agent:
-	var min_distance
-	var nearest_agent
 	var other_agents = get_tree().get_nodes_in_group("Agents").filter(func (a): return not a.dead and a != self)
-	for other_agent in other_agents:
-		var current_distance = position.distance_to(other_agent.position)
-		if min_distance == null or current_distance < min_distance:
-			min_distance = current_distance
-			nearest_agent = other_agent
-	return nearest_agent
+	other_agents.sort_custom(func (a, b): return position.distance_to(a.position) < position.distance_to(b.position))
+	return other_agents.front()
 
 func _on_sleeping_state_changed():
 	if _my_turn and _played_turn and sleeping:
