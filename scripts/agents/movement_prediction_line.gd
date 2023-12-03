@@ -1,5 +1,7 @@
 extends Line2D
 
+class_name AgentMovementProjection
+
 @export var max_points_to_predict = 300
 @export_range(1, 100) var precision = 1
 @export var gravity = 0

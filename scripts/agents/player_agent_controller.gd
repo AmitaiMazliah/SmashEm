@@ -1,10 +1,11 @@
-extends Node
+extends Node3D
 
 @export var distance_from_touch_location_to_count_play : float = 60
+@export var agent_movement_projection: AgentMovementProjection
+@export var camera: Camera3D
+@export var max_points_to_predict: int = 300
 
 @onready var agent: MyAgent = self.get_parent()
-@onready var agent_movement_projection: AgentMovementProjection = $MovementPredictionLine
-@onready var l: Line3D = $Node3D
 
 var pressed: bool
 var input_start_position: Vector2
@@ -13,14 +14,11 @@ var should_draw_projection: bool
 
 func _process(delta):
 	if agent.is_my_turn and pressed and should_draw_projection:
-		agent_movement_projection.update_trajectory_3d(direction, agent.current_velocity, delta)
+		var points = calculate_movement(direction, delta)
+		agent_movement_projection.points = points
 		agent_movement_projection.show()
-		
-		l.update_trajectory(direction, agent.current_velocity, delta)
-		l.show()
 	else:
 		agent_movement_projection.hide()
-#		l.hide()
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -43,3 +41,17 @@ func _input(event):
 			should_draw_projection = true
 		else:
 			should_draw_projection = false
+
+func calculate_movement(direction: Vector3, delta: float) -> PackedVector2Array:
+	var points = PackedVector2Array()
+	var position : Vector3 = global_position
+	$CollisionCheck.position = position
+	var velocity = direction * agent.current_velocity
+	for i in max_points_to_predict:
+		points.append(camera.unproject_position(position))
+		position += velocity * delta
+		var collision = $CollisionCheck.move_and_collide(velocity * delta, true)
+		if collision:
+			break
+		$CollisionCheck.global_position = position
+	return points

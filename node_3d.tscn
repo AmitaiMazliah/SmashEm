@@ -1,18 +1,29 @@
-[gd_scene load_steps=22 format=3 uid="uid://qo6a5oc54pdy"]
+[gd_scene load_steps=27 format=3 uid="uid://qo6a5oc54pdy"]
 
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="1_8p5yp"]
 [ext_resource type="PackedScene" uid="uid://bp22mksxi8dw0" path="res://prefabs/turn_queue.tscn" id="1_sr6hx"]
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="2_38rvw"]
 [ext_resource type="Script" path="res://scripts/agent.gd" id="2_ho5q5"]
+[ext_resource type="Script" path="res://scripts/agents/player_agent_controller.gd" id="3_ia631"]
+[ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="4_e7c2u"]
+[ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="5_3srou"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="5_3tonp"]
 [ext_resource type="Script" path="res://scripts/health_bar_3d.gd" id="5_ge32v"]
 [ext_resource type="Script" path="res://scripts/agents/agent_ai.gd" id="5_t5ai7"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_7ele3"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="6_mnvth"]
+[ext_resource type="Script" path="res://scripts/agents/movement_prediction_line.gd" id="6_srus8"]
 [ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/ice-staff.tres" id="7_ivki7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4sn0y"]
+shader = ExtResource("4_e7c2u")
+shader_parameter/scrolling_speed = 2.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_og77g"]
 size = Vector2(100, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xj04"]
+size = Vector3(100, 1, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kqy0g"]
 size = Vector3(25, 10, 1)
@@ -35,15 +46,11 @@ size = Vector3(20, 10, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rorfa"]
 size = Vector3(20, 10, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_fud1l"]
-size = Vector2(15, 15)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqgdu"]
-transparency = 1
-albedo_texture = ExtResource("1_8p5yp")
-billboard_mode = 1
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n4g5e"]
+height = 10.0
+radius = 2.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6p1x7"]
 height = 10.0
 radius = 2.0
 
@@ -94,10 +101,23 @@ offset_top = -100.0
 grow_horizontal = 0
 grow_vertical = 0
 
+[node name="MovementPredictionLine" type="Line2D" parent="GameUI"]
+material = SubResource("ShaderMaterial_4sn0y")
+texture = ExtResource("5_3srou")
+texture_mode = 1
+script = ExtResource("6_srus8")
+max_points_to_predict = 30000
+precision = 50
+
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 mesh = SubResource("PlaneMesh_og77g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_3xj04")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.96698, -49.2399)
@@ -105,6 +125,7 @@ mesh = SubResource("BoxMesh_kqy0g")
 surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_q65ki")
@@ -115,6 +136,7 @@ mesh = SubResource("BoxMesh_4hegr")
 surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D3"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("BoxShape3D_8c1j0")
@@ -125,6 +147,7 @@ mesh = SubResource("BoxMesh_4hegr")
 surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D4"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D4/StaticBody3D"]
 shape = SubResource("BoxShape3D_8c1j0")
@@ -135,6 +158,7 @@ mesh = SubResource("BoxMesh_kqy0g")
 surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D2"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D2/StaticBody3D"]
 shape = SubResource("BoxShape3D_q65ki")
@@ -145,6 +169,7 @@ mesh = SubResource("BoxMesh_bnvlo")
 surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D5"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("BoxShape3D_rorfa")
@@ -155,6 +180,7 @@ mesh = SubResource("BoxMesh_bnvlo")
 surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D6"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D6/StaticBody3D"]
 shape = SubResource("BoxShape3D_rorfa")
@@ -165,6 +191,7 @@ mesh = SubResource("BoxMesh_bnvlo")
 surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D7"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D7/StaticBody3D"]
 shape = SubResource("BoxShape3D_rorfa")
@@ -175,6 +202,7 @@ mesh = SubResource("BoxMesh_bnvlo")
 surface_material_override/0 = SubResource("ORMMaterial3D_8t2gd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D/MeshInstance3D8"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/MeshInstance3D8/StaticBody3D"]
 shape = SubResource("BoxShape3D_rorfa")
@@ -191,11 +219,92 @@ transform = Transform3D(0.555643, 0, -0.831421, 0.161562, 0.980938, 0.107973, 0.
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(0.237513, -0.417048, 0.877302, -0.955094, 0.0644464, 0.28921, -0.177153, -0.906597, -0.383013, 0, 31.8438, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64431, 0)
-visible = false
-mesh = SubResource("QuadMesh_fud1l")
-surface_material_override/0 = SubResource("StandardMaterial3D_qqgdu")
+[node name="AgentWithPlayer" type="RigidBody3D" parent="Node3D" groups=["Agents"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 17)
+physics_material_override = ExtResource("2_38rvw")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 1.0
+script = ExtResource("2_ho5q5")
+starting_velocity = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AgentWithPlayer"]
+shape = SubResource("CylinderShape3D_n4g5e")
+
+[node name="Visuals" type="Node3D" parent="Node3D/AgentWithPlayer"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D/AgentWithPlayer/Visuals"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_8p5yp")
+
+[node name="HealthBar3D" type="Sprite3D" parent="Node3D/AgentWithPlayer/Visuals"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -4.68527)
+billboard = 1
+script = ExtResource("5_ge32v")
+
+[node name="SubViewport" type="SubViewport" parent="Node3D/AgentWithPlayer/Visuals/HealthBar3D"]
+disable_3d = true
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(120, 15)
+size_2d_override = Vector2i(120, 15)
+size_2d_override_stretch = true
+
+[node name="HealthBar" type="Control" parent="Node3D/AgentWithPlayer/Visuals/HealthBar3D/SubViewport" node_paths=PackedStringArray("agent")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 15.0
+script = ExtResource("5_3tonp")
+agent = NodePath("../../../../../AgentWithAI")
+
+[node name="ProgressBar" type="ProgressBar" parent="Node3D/AgentWithPlayer/Visuals/HealthBar3D/SubViewport/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_mnvth")
+value = 55.0
+show_percentage = false
+
+[node name="HeadPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209995, 0, -3.68897)
+
+[node name="RightHandPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
+transform = Transform3D(0.840737, 0, -0.541444, 0, 1, 0, 0.541444, 0, 0.840737, 3.02734, 8.92747, 3.26165)
+
+[node name="LeftHandPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.392, 0, 2.66)
+
+[node name="LegsPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255, 0, 2.418)
+
+[node name="PlayerAgentController" type="Node3D" parent="Node3D/AgentWithPlayer" node_paths=PackedStringArray("agent_movement_projection", "camera")]
+script = ExtResource("3_ia631")
+agent_movement_projection = NodePath("../../../GameUI/MovementPredictionLine")
+camera = NodePath("../../Camera3D")
+
+[node name="CollisionCheck" type="CharacterBody3D" parent="Node3D/AgentWithPlayer/PlayerAgentController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.55353, 4.50074, 0.56131)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AgentWithPlayer/PlayerAgentController/CollisionCheck"]
+shape = SubResource("CylinderShape3D_n4g5e")
+
+[node name="AgentEquipment" type="Node" parent="Node3D/AgentWithPlayer" node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
+script = ExtResource("6_7ele3")
+current_equipment = {
+"RightHand": ExtResource("7_ivki7")
+}
+_head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
+_right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
+_left_hand_place_holder = NodePath("../Visuals/LeftHandPlaceHolder")
+_legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 
 [node name="AgentWithAI" type="RigidBody3D" parent="Node3D" groups=["Agents"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79499, 0, -14.4831)
@@ -210,7 +319,7 @@ starting_velocity = 50.0
 starting_damage = 30
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AgentWithAI"]
-shape = SubResource("CylinderShape3D_n4g5e")
+shape = SubResource("CylinderShape3D_6p1x7")
 
 [node name="Visuals" type="Node3D" parent="Node3D/AgentWithAI"]
 
