@@ -1,11 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://qo6a5oc54pdy"]
+[gd_scene load_steps=22 format=3 uid="uid://qo6a5oc54pdy"]
 
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="1_8p5yp"]
 [ext_resource type="PackedScene" uid="uid://bp22mksxi8dw0" path="res://prefabs/turn_queue.tscn" id="1_sr6hx"]
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="2_38rvw"]
 [ext_resource type="Script" path="res://scripts/agent.gd" id="2_ho5q5"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="5_3tonp"]
+[ext_resource type="Script" path="res://scripts/health_bar_3d.gd" id="5_ge32v"]
 [ext_resource type="Script" path="res://scripts/agents/agent_ai.gd" id="5_t5ai7"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_7ele3"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="6_mnvth"]
 [ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/ice-staff.tres" id="7_ivki7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_og77g"]
@@ -204,6 +207,7 @@ lock_rotation = true
 linear_damp = 1.0
 script = ExtResource("2_ho5q5")
 starting_velocity = 50.0
+starting_damage = 30
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AgentWithAI"]
 shape = SubResource("CylinderShape3D_n4g5e")
@@ -214,6 +218,39 @@ shape = SubResource("CylinderShape3D_n4g5e")
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
 billboard = 1
 texture = ExtResource("1_8p5yp")
+
+[node name="HealthBar3D" type="Sprite3D" parent="Node3D/AgentWithAI/Visuals"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -4.68527)
+billboard = 1
+script = ExtResource("5_ge32v")
+
+[node name="SubViewport" type="SubViewport" parent="Node3D/AgentWithAI/Visuals/HealthBar3D"]
+disable_3d = true
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(120, 15)
+size_2d_override = Vector2i(120, 15)
+size_2d_override_stretch = true
+
+[node name="HealthBar" type="Control" parent="Node3D/AgentWithAI/Visuals/HealthBar3D/SubViewport" node_paths=PackedStringArray("agent")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 15.0
+script = ExtResource("5_3tonp")
+agent = NodePath("../../../..")
+
+[node name="ProgressBar" type="ProgressBar" parent="Node3D/AgentWithAI/Visuals/HealthBar3D/SubViewport/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_mnvth")
+value = 55.0
+show_percentage = false
 
 [node name="HeadPlaceHolder" type="Node3D" parent="Node3D/AgentWithAI/Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209995, 0, -3.68897)
