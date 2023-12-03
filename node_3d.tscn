@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://qo6a5oc54pdy"]
+[gd_scene load_steps=28 format=3 uid="uid://qo6a5oc54pdy"]
 
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="1_8p5yp"]
 [ext_resource type="PackedScene" uid="uid://bp22mksxi8dw0" path="res://prefabs/turn_queue.tscn" id="1_sr6hx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="5_3srou"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="5_3tonp"]
 [ext_resource type="Script" path="res://scripts/health_bar_3d.gd" id="5_ge32v"]
+[ext_resource type="PackedScene" uid="uid://bp4u241nje36o" path="res://prefabs/items/ice_staff.tscn" id="5_leo50"]
 [ext_resource type="Script" path="res://scripts/agents/agent_ai.gd" id="5_t5ai7"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_7ele3"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="6_mnvth"]
@@ -220,7 +221,7 @@ transform = Transform3D(0.555643, 0, -0.831421, 0.161562, 0.980938, 0.107973, 0.
 transform = Transform3D(0.237513, -0.417048, 0.877302, -0.955094, 0.0644464, 0.28921, -0.177153, -0.906597, -0.383013, 0, 31.8438, 0)
 
 [node name="AgentWithPlayer" type="RigidBody3D" parent="Node3D" groups=["Agents"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0847662, 0, -0.153319)
 physics_material_override = ExtResource("2_38rvw")
 gravity_scale = 0.0
 lock_rotation = true
@@ -275,7 +276,10 @@ show_percentage = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209995, 0, -3.68897)
 
 [node name="RightHandPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
-transform = Transform3D(0.840737, 0, -0.541444, 0, 1, 0, 0.541444, 0, 0.840737, 3.02734, 8.92747, 3.26165)
+transform = Transform3D(0.840737, 0, -0.541444, 0, 1, 0, 0.541444, 0, 0.840737, 3.62172, 8.92747, 2.0729)
+
+[node name="Ice-staff" parent="Node3D/AgentWithPlayer/Visuals/RightHandPlaceHolder" instance=ExtResource("5_leo50")]
+texture_filter = 0
 
 [node name="LeftHandPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.392, 0, 2.66)
@@ -289,7 +293,6 @@ agent_movement_projection = NodePath("../../../GameUI/MovementPredictionLine")
 camera = NodePath("../../Camera3D")
 
 [node name="CollisionCheck" type="CharacterBody3D" parent="Node3D/AgentWithPlayer/PlayerAgentController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.55353, 4.50074, 0.56131)
 collision_layer = 0
 collision_mask = 2
 
@@ -310,9 +313,9 @@ _legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79499, 0, -14.4831)
 physics_material_override = ExtResource("2_38rvw")
 gravity_scale = 0.0
+lock_rotation = true
 max_contacts_reported = 10
 contact_monitor = true
-lock_rotation = true
 linear_damp = 1.0
 script = ExtResource("2_ho5q5")
 starting_velocity = 50.0

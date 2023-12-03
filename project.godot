@@ -14,7 +14,7 @@ show_default_buttons=false
 
 config/name="SmashEm"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [audio]
@@ -61,3 +61,4 @@ title_id="B9762"
 
 textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
