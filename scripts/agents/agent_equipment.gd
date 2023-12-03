@@ -3,10 +3,10 @@ extends Node
 class_name AgentEquipment
 
 @export var current_equipment : Dictionary
-@export var _head_place_holder: Node2D
-@export var _right_hand_place_holder: Node2D
-@export var _left_hand_place_holder: Node2D
-@export var _legs_place_holder: Node2D
+@export var _head_place_holder: Node
+@export var _right_hand_place_holder: Node
+@export var _left_hand_place_holder: Node
+@export var _legs_place_holder: Node
 
 func _ready():
 	for i in current_equipment:
