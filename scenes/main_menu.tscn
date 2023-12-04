@@ -2,7 +2,6 @@
 
 [ext_resource type="Resource" uid="uid://cthwqdngej46f" path="res://resources/events/load_scene_event_channel.tres" id="2_4dvcv"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="2_bv25m"]
-[ext_resource type="PackedScene" uid="uid://ioommklr86bm" path="res://scenes/game_scene.tscn" id="3_ct418"]
 [ext_resource type="Script" path="res://scripts/UI/core/my_tab_container.gd" id="3_y1gmt"]
 [ext_resource type="Texture2D" uid="uid://dq80ejflk6ev" path="res://art/background.jpg" id="4_5q6jk"]
 [ext_resource type="Script" path="res://scripts/SceneManagement/game_scene.gd" id="4_oh1vm"]
@@ -19,6 +18,7 @@
 [ext_resource type="Script" path="res://scripts/UI/settings_panel.gd" id="12_bpdcs"]
 [ext_resource type="Texture2D" uid="uid://cavi4fecd3cmi" path="res://art/ui/main-menu/Red_X_Cross_Wrong_Not_clip_art_small.png" id="13_pg5gj"]
 [ext_resource type="Script" path="res://scripts/UI/core/ui_button.gd" id="13_slbhp"]
+[ext_resource type="PackedScene" uid="uid://qo6a5oc54pdy" path="res://scenes/game_scene_base.tscn" id="14_vef7u"]
 [ext_resource type="Script" path="res://scripts/UI/chest_area_ui.gd" id="15_dr38f"]
 [ext_resource type="PackedScene" uid="uid://c4uxbe4mt0ymo" path="res://prefabs/ui/item_view.tscn" id="15_e5ni1"]
 [ext_resource type="PackedScene" uid="uid://ymcc5x36un2d" path="res://prefabs/ui/chest_ui.tscn" id="16_7b5qt"]
@@ -52,7 +52,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="Resource" id="Resource_tjlyx"]
 script = ExtResource("4_oh1vm")
-scene_reference = ExtResource("3_ct418")
+scene_reference = ExtResource("14_vef7u")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cgm3"]
 bg_color = Color(0, 0, 0, 0.27451)
@@ -256,7 +256,6 @@ tabs_visible = false
 script = ExtResource("3_y1gmt")
 
 [node name="ShopTab" type="Control" parent="UI/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("7_k4bha")
 _item_view_prefab = ExtResource("8_q14h2")
@@ -284,6 +283,7 @@ size_flags_vertical = 3
 columns = 4
 
 [node name="PlayTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")

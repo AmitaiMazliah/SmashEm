@@ -44,6 +44,8 @@ func start():
 	if !_running:
 		print("Starting the turn queue")
 		_running = true
+		randomize()
+		agents.shuffle()
 		_start_turn()
 
 func stop():

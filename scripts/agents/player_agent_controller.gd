@@ -2,10 +2,10 @@ extends Node3D
 
 @export var distance_from_touch_location_to_count_play : float = 60
 @export var agent_movement_projection: AgentMovementProjection
-@export var camera: Camera3D
 @export var max_points_to_predict: int = 300
 
 @onready var agent: MyAgent = self.get_parent()
+@onready var camera: Camera3D = get_viewport().get_camera_3d()
 
 var pressed: bool
 var input_start_position: Vector2

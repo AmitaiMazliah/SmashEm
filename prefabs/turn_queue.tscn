@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://2nvlhruxpke6" path="res://resources/events/play_sound_event_channel.tres" id="4_vxxsm"]
 [ext_resource type="Texture2D" uid="uid://i4w008b3vmdo" path="res://art/timer-icon.png" id="4_vyamo"]
 [ext_resource type="Resource" uid="uid://cjfbhsoqhw48n" path="res://resources/audio/cues/countdown_audio.tres" id="5_hnwi4"]
-[ext_resource type="Resource" uid="uid://moi006drxmk0" path="res://resources/audio/config/sfx_ui_config.tres" id="6_6mhey"]
+[ext_resource type="Resource" uid="uid://moi006drxmk0" path="res://resources/audio/config/sfx_config.tres" id="6_6mhey"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="7_hykho"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7xgg"]
@@ -50,9 +50,13 @@ offset_right = 0.5
 offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 theme = ExtResource("7_hykho")
 theme_override_colors/font_color = Color(1, 0.424345, 0.957854, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="TurnCountCount" type="Control" parent="CanvasLayer"]
 layout_mode = 3
