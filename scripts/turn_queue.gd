@@ -95,16 +95,16 @@ func _fade_label():
 
 func _kill_dead_agents():
 	var dead_agents = agents.filter(func (a: MyAgent): return a.current_health <= 0)
-	for agent in dead_agents:
+	for agent: MyAgent in dead_agents:
 		agent.die()
-		if agent is PlayerAgent:
+		if agent.is_player:
 			defeat_event_channel.raise_event()
 			stop()
 	agents = agents.filter(func (a: MyAgent): return a.current_health > 0)
-#	if agents.filter(func (a: Agent): return a is AiAgent).all(func (a: Agent): return a.dead):
-#		print("Player won the game")
-#		victory_event_channel.raise_event()
-#		stop()
+	if len(agents) == 1:
+		print("Player won the game")
+		victory_event_channel.raise_event()
+		stop()
 
 func _play_countdown_audio():
 	play_sfx_event_channel.raise_play_event(timer_countdown_audio, sfx_2d_audio_config)

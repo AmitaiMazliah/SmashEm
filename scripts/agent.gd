@@ -16,6 +16,7 @@ var max_health: int
 var current_health: int
 var current_damage: int
 var previous_velocity: Vector3
+var is_player: bool
 
 func _ready():
 	body_entered.connect(_on_body_entered)

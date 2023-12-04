@@ -12,6 +12,9 @@ var input_start_position: Vector2
 var direction: Vector3
 var should_draw_projection: bool
 
+func _ready():
+	agent.is_player = true
+
 func _process(delta):
 	if agent.is_my_turn and pressed and should_draw_projection:
 		var points = calculate_movement(direction, delta)

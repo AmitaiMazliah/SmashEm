@@ -1,10 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://qo6a5oc54pdy"]
+[gd_scene load_steps=23 format=3 uid="uid://qo6a5oc54pdy"]
 
 [ext_resource type="PackedScene" uid="uid://bp22mksxi8dw0" path="res://prefabs/turn_queue.tscn" id="1_sr6hx"]
+[ext_resource type="Script" path="res://scripts/UI/match_ui.gd" id="2_v67rp"]
+[ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="3_w16re"]
 [ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="4_e7c2u"]
+[ext_resource type="Resource" uid="uid://ceg0y65hkm0a2" path="res://resources/events/defeat_event_channel.tres" id="4_fbcs8"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="5_3srou"]
+[ext_resource type="Resource" uid="uid://c1hpycii541ab" path="res://resources/events/load_main_menu_event_channel.tres" id="5_dhjc8"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="5_dlqts"]
 [ext_resource type="PackedScene" uid="uid://02lpxvdyrnb6" path="res://prefabs/agents/agent_with_ai.tscn" id="6_du88s"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="6_mnvth"]
 [ext_resource type="Script" path="res://scripts/agents/movement_prediction_line.gd" id="6_srus8"]
 [ext_resource type="PackedScene" uid="uid://dxygh0jwqfawt" path="res://prefabs/agents/agent_with_player.tscn" id="7_ajaon"]
 
@@ -43,20 +48,72 @@ size = Vector3(20, 10, 1)
 
 [node name="TurnQueue" parent="." instance=ExtResource("1_sr6hx")]
 
-[node name="GameUI" type="CanvasLayer" parent="."]
+[node name="MatchUI" type="CanvasLayer" parent="."]
+script = ExtResource("2_v67rp")
+victory_event_channel = ExtResource("3_w16re")
+defeat_event_channel = ExtResource("4_fbcs8")
+load_main_menu_event_channel = ExtResource("5_dhjc8")
 
-[node name="Control" type="Control" parent="GameUI"]
+[node name="MatchEndPanel" type="Panel" parent="MatchUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -285.0
+offset_right = 224.0
+offset_bottom = 285.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MatchUI/MatchEndPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -43.0
+offset_right = 127.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_mnvth")
+theme_override_colors/font_color = Color(1, 0.424345, 0.957854, 1)
+theme_override_font_sizes/font_size = 60
+text = "Victory!!!"
+
+[node name="BackButton" type="Button" parent="MatchUI/MatchEndPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -148.0
+offset_right = 98.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("6_mnvth")
+text = "Back"
+
+[node name="Control" type="Control" parent="MatchUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
+mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="GameUI/Control"]
+[node name="Panel" type="Panel" parent="MatchUI/Control"]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 
-[node name="Panel2" type="Panel" parent="GameUI/Control"]
+[node name="Panel2" type="Panel" parent="MatchUI/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -65,7 +122,7 @@ offset_left = -100.0
 offset_bottom = 100.0
 grow_horizontal = 0
 
-[node name="Panel3" type="Panel" parent="GameUI/Control"]
+[node name="Panel3" type="Panel" parent="MatchUI/Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -74,7 +131,7 @@ offset_top = -100.0
 offset_right = 100.0
 grow_vertical = 0
 
-[node name="Panel4" type="Panel" parent="GameUI/Control"]
+[node name="Panel4" type="Panel" parent="MatchUI/Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -86,7 +143,7 @@ offset_top = -100.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="MovementPredictionLine" type="Line2D" parent="GameUI"]
+[node name="MovementPredictionLine" type="Line2D" parent="MatchUI"]
 material = SubResource("ShaderMaterial_4sn0y")
 texture = ExtResource("5_3srou")
 texture_mode = 1
@@ -214,6 +271,7 @@ transform = Transform3D(0.237513, -0.417048, 0.877302, -0.955094, 0.0644464, 0.2
 
 [node name="AgentWithPlayer" parent="Node3D" instance=ExtResource("7_ajaon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.507, 0.5, 36.191)
+starting_damage = 999
 
 [node name="AgentWithAI" parent="Node3D" instance=ExtResource("6_du88s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1624, 0.5, 34.7786)
@@ -223,3 +281,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2793, 0.5, -35.95)
 
 [node name="AgentWithAI3" parent="Node3D" instance=ExtResource("6_du88s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6045, 0.5, -34.956)
+
+[connection signal="pressed" from="MatchUI/MatchEndPanel/BackButton" to="MatchUI" method="_on_back_button_pressed"]
