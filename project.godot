@@ -37,6 +37,15 @@ window/handheld/orientation=1
 
 enabled=PackedStringArray("res://addons/godot-playfab/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/tool_button/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://art/": "pink",
+"res://scenes/": "purple",
+"res://scripts/": "blue",
+"res://settings/": "gray"
+}
+
 [gui]
 
 theme/custom_font="res://art/fonts/You Blockhead.ttf"

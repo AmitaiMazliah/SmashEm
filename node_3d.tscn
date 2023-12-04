@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="5_3srou"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="5_3tonp"]
 [ext_resource type="Script" path="res://scripts/health_bar_3d.gd" id="5_ge32v"]
-[ext_resource type="PackedScene" uid="uid://bp4u241nje36o" path="res://prefabs/items/ice_staff.tscn" id="5_leo50"]
 [ext_resource type="Script" path="res://scripts/agents/agent_ai.gd" id="5_t5ai7"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="6_7ele3"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="6_mnvth"]
@@ -50,6 +49,9 @@ size = Vector3(20, 10, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n4g5e"]
 height = 10.0
 radius = 2.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_k3ahc"]
+viewport_path = NodePath("Node3D/AgentWithPlayer/Visuals/SubViewport")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6p1x7"]
 height = 10.0
@@ -221,30 +223,26 @@ transform = Transform3D(0.555643, 0, -0.831421, 0.161562, 0.980938, 0.107973, 0.
 transform = Transform3D(0.237513, -0.417048, 0.877302, -0.955094, 0.0644464, 0.28921, -0.177153, -0.906597, -0.383013, 0, 31.8438, 0)
 
 [node name="AgentWithPlayer" type="RigidBody3D" parent="Node3D" groups=["Agents"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0847662, 0, -0.153319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00259608, 0, 0.0909142)
 physics_material_override = ExtResource("2_38rvw")
 gravity_scale = 0.0
 lock_rotation = true
+max_contacts_reported = 10
+contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("2_ho5q5")
 starting_velocity = 50.0
+starting_damage = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AgentWithPlayer"]
 shape = SubResource("CylinderShape3D_n4g5e")
 
-[node name="Visuals" type="Node3D" parent="Node3D/AgentWithPlayer"]
-
-[node name="Sprite3D" type="Sprite3D" parent="Node3D/AgentWithPlayer/Visuals"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
-billboard = 1
-texture = ExtResource("1_8p5yp")
-
-[node name="HealthBar3D" type="Sprite3D" parent="Node3D/AgentWithPlayer/Visuals"]
+[node name="HealthBar3D" type="Sprite3D" parent="Node3D/AgentWithPlayer"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -4.68527)
 billboard = 1
 script = ExtResource("5_ge32v")
 
-[node name="SubViewport" type="SubViewport" parent="Node3D/AgentWithPlayer/Visuals/HealthBar3D"]
+[node name="SubViewport" type="SubViewport" parent="Node3D/AgentWithPlayer/HealthBar3D"]
 disable_3d = true
 transparent_bg = true
 snap_2d_transforms_to_pixel = true
@@ -253,15 +251,15 @@ size = Vector2i(120, 15)
 size_2d_override = Vector2i(120, 15)
 size_2d_override_stretch = true
 
-[node name="HealthBar" type="Control" parent="Node3D/AgentWithPlayer/Visuals/HealthBar3D/SubViewport" node_paths=PackedStringArray("agent")]
+[node name="HealthBar" type="Control" parent="Node3D/AgentWithPlayer/HealthBar3D/SubViewport" node_paths=PackedStringArray("agent")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 120.0
 offset_bottom = 15.0
 script = ExtResource("5_3tonp")
-agent = NodePath("../../../../../AgentWithAI")
+agent = NodePath("../../..")
 
-[node name="ProgressBar" type="ProgressBar" parent="Node3D/AgentWithPlayer/Visuals/HealthBar3D/SubViewport/HealthBar"]
+[node name="ProgressBar" type="ProgressBar" parent="Node3D/AgentWithPlayer/HealthBar3D/SubViewport/HealthBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -272,20 +270,38 @@ theme = ExtResource("6_mnvth")
 value = 55.0
 show_percentage = false
 
-[node name="HeadPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209995, 0, -3.68897)
+[node name="Visuals" type="Sprite3D" parent="Node3D/AgentWithPlayer"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_k3ahc")
 
-[node name="RightHandPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
-transform = Transform3D(0.840737, 0, -0.541444, 0, 1, 0, 0.541444, 0, 0.840737, 3.62172, 8.92747, 2.0729)
+[node name="SubViewport" type="SubViewport" parent="Node3D/AgentWithPlayer/Visuals"]
+disable_3d = true
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(500, 500)
 
-[node name="Ice-staff" parent="Node3D/AgentWithPlayer/Visuals/RightHandPlaceHolder" instance=ExtResource("5_leo50")]
-texture_filter = 0
+[node name="Sprite2D" type="Sprite2D" parent="Node3D/AgentWithPlayer/Visuals/SubViewport"]
+position = Vector2(250, 250)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_8p5yp")
 
-[node name="LeftHandPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.392, 0, 2.66)
+[node name="HeadPlaceHolder" type="Node2D" parent="Node3D/AgentWithPlayer/Visuals/SubViewport"]
+position = Vector2(250, 165)
 
-[node name="LegsPlaceHolder" type="Node3D" parent="Node3D/AgentWithPlayer/Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255, 0, 2.418)
+[node name="RightHandPlaceHolder" type="Node2D" parent="Node3D/AgentWithPlayer/Visuals/SubViewport"]
+position = Vector2(326, 319)
+rotation = 0.349066
+scale = Vector2(1, 1)
+
+[node name="LeftHandPlaceHolder" type="Node2D" parent="Node3D/AgentWithPlayer/Visuals/SubViewport"]
+position = Vector2(181, 316)
+rotation = -0.349066
+scale = Vector2(1, 1)
+
+[node name="FeetPlaceHolder" type="Node2D" parent="Node3D/AgentWithPlayer/Visuals/SubViewport"]
+position = Vector2(250, 345)
 
 [node name="PlayerAgentController" type="Node3D" parent="Node3D/AgentWithPlayer" node_paths=PackedStringArray("agent_movement_projection", "camera")]
 script = ExtResource("3_ia631")
@@ -304,10 +320,10 @@ script = ExtResource("6_7ele3")
 current_equipment = {
 "RightHand": ExtResource("7_ivki7")
 }
-_head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
-_right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
-_left_hand_place_holder = NodePath("../Visuals/LeftHandPlaceHolder")
-_legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
+_head_place_holder = NodePath("../Visuals/SubViewport/HeadPlaceHolder")
+_right_hand_place_holder = NodePath("../Visuals/SubViewport/RightHandPlaceHolder")
+_left_hand_place_holder = NodePath("../Visuals/SubViewport/LeftHandPlaceHolder")
+_legs_place_holder = NodePath("../Visuals/SubViewport/FeetPlaceHolder")
 
 [node name="AgentWithAI" type="RigidBody3D" parent="Node3D" groups=["Agents"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79499, 0, -14.4831)
@@ -319,24 +335,17 @@ contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("2_ho5q5")
 starting_velocity = 50.0
-starting_damage = 30
+starting_damage = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AgentWithAI"]
 shape = SubResource("CylinderShape3D_6p1x7")
 
-[node name="Visuals" type="Node3D" parent="Node3D/AgentWithAI"]
-
-[node name="Sprite3D" type="Sprite3D" parent="Node3D/AgentWithAI/Visuals"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
-billboard = 1
-texture = ExtResource("1_8p5yp")
-
-[node name="HealthBar3D" type="Sprite3D" parent="Node3D/AgentWithAI/Visuals"]
+[node name="HealthBar3D" type="Sprite3D" parent="Node3D/AgentWithAI"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -4.68527)
 billboard = 1
 script = ExtResource("5_ge32v")
 
-[node name="SubViewport" type="SubViewport" parent="Node3D/AgentWithAI/Visuals/HealthBar3D"]
+[node name="SubViewport" type="SubViewport" parent="Node3D/AgentWithAI/HealthBar3D"]
 disable_3d = true
 transparent_bg = true
 snap_2d_transforms_to_pixel = true
@@ -345,15 +354,15 @@ size = Vector2i(120, 15)
 size_2d_override = Vector2i(120, 15)
 size_2d_override_stretch = true
 
-[node name="HealthBar" type="Control" parent="Node3D/AgentWithAI/Visuals/HealthBar3D/SubViewport" node_paths=PackedStringArray("agent")]
+[node name="HealthBar" type="Control" parent="Node3D/AgentWithAI/HealthBar3D/SubViewport" node_paths=PackedStringArray("agent")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 120.0
 offset_bottom = 15.0
 script = ExtResource("5_3tonp")
-agent = NodePath("../../../..")
+agent = NodePath("../../..")
 
-[node name="ProgressBar" type="ProgressBar" parent="Node3D/AgentWithAI/Visuals/HealthBar3D/SubViewport/HealthBar"]
+[node name="ProgressBar" type="ProgressBar" parent="Node3D/AgentWithAI/HealthBar3D/SubViewport/HealthBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -364,17 +373,38 @@ theme = ExtResource("6_mnvth")
 value = 55.0
 show_percentage = false
 
-[node name="HeadPlaceHolder" type="Node3D" parent="Node3D/AgentWithAI/Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209995, 0, -3.68897)
+[node name="Visuals" type="Sprite3D" parent="Node3D/AgentWithAI"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_k3ahc")
 
-[node name="RightHandPlaceHolder" type="Node3D" parent="Node3D/AgentWithAI/Visuals"]
-transform = Transform3D(0.840737, 0, -0.541444, 0, 1, 0, 0.541444, 0, 0.840737, 3.02734, 8.92747, 3.26165)
+[node name="SubViewport" type="SubViewport" parent="Node3D/AgentWithAI/Visuals"]
+disable_3d = true
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(500, 500)
 
-[node name="LeftHandPlaceHolder" type="Node3D" parent="Node3D/AgentWithAI/Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.392, 0, 2.66)
+[node name="Sprite2D" type="Sprite2D" parent="Node3D/AgentWithAI/Visuals/SubViewport"]
+position = Vector2(250, 250)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_8p5yp")
 
-[node name="LegsPlaceHolder" type="Node3D" parent="Node3D/AgentWithAI/Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.255, 0, 2.418)
+[node name="HeadPlaceHolder" type="Node2D" parent="Node3D/AgentWithAI/Visuals/SubViewport"]
+position = Vector2(250, 165)
+
+[node name="RightHandPlaceHolder" type="Node2D" parent="Node3D/AgentWithAI/Visuals/SubViewport"]
+position = Vector2(326, 319)
+rotation = 0.349066
+scale = Vector2(1, 1)
+
+[node name="LeftHandPlaceHolder" type="Node2D" parent="Node3D/AgentWithAI/Visuals/SubViewport"]
+position = Vector2(181, 316)
+rotation = -0.349066
+scale = Vector2(1, 1)
+
+[node name="FeetPlaceHolder" type="Node2D" parent="Node3D/AgentWithAI/Visuals/SubViewport"]
+position = Vector2(250, 345)
 
 [node name="AgentAI" type="Node" parent="Node3D/AgentWithAI"]
 script = ExtResource("5_t5ai7")
@@ -384,7 +414,7 @@ script = ExtResource("6_7ele3")
 current_equipment = {
 "RightHand": ExtResource("7_ivki7")
 }
-_head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
-_right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
-_left_hand_place_holder = NodePath("../Visuals/LeftHandPlaceHolder")
-_legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
+_head_place_holder = NodePath("../Visuals/SubViewport/HeadPlaceHolder")
+_right_hand_place_holder = NodePath("../Visuals/SubViewport/RightHandPlaceHolder")
+_left_hand_place_holder = NodePath("../Visuals/SubViewport/LeftHandPlaceHolder")
+_legs_place_holder = NodePath("../Visuals/SubViewport/FeetPlaceHolder")
