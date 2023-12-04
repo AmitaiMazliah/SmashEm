@@ -48,7 +48,7 @@ size = Vector3(20, 10, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n4g5e"]
 height = 10.0
-radius = 2.0
+radius = 3.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_k3ahc"]
 viewport_path = NodePath("Node3D/AgentWithPlayer/Visuals/SubViewport")
@@ -235,6 +235,7 @@ starting_velocity = 50.0
 starting_damage = 25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AgentWithPlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72623, 0)
 shape = SubResource("CylinderShape3D_n4g5e")
 
 [node name="HealthBar3D" type="Sprite3D" parent="Node3D/AgentWithPlayer"]
@@ -271,7 +272,7 @@ value = 55.0
 show_percentage = false
 
 [node name="Visuals" type="Sprite3D" parent="Node3D/AgentWithPlayer"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_k3ahc")
 
@@ -307,13 +308,6 @@ position = Vector2(250, 345)
 script = ExtResource("3_ia631")
 agent_movement_projection = NodePath("../../../GameUI/MovementPredictionLine")
 camera = NodePath("../../Camera3D")
-
-[node name="CollisionCheck" type="CharacterBody3D" parent="Node3D/AgentWithPlayer/PlayerAgentController"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/AgentWithPlayer/PlayerAgentController/CollisionCheck"]
-shape = SubResource("CylinderShape3D_n4g5e")
 
 [node name="AgentEquipment" type="Node" parent="Node3D/AgentWithPlayer" node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
 script = ExtResource("6_7ele3")
@@ -374,7 +368,7 @@ value = 55.0
 show_percentage = false
 
 [node name="Visuals" type="Sprite3D" parent="Node3D/AgentWithAI"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_k3ahc")
 

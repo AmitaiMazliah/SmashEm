@@ -44,14 +44,17 @@ func _input(event):
 
 func calculate_movement(direction: Vector3, delta: float) -> PackedVector2Array:
 	var points = PackedVector2Array()
+	var space_state = get_world_3d().direct_space_state
 	var position : Vector3 = global_position
-	$CollisionCheck.position = position
 	var velocity = direction * agent.current_velocity
+	var last_position: Vector3
 	for i in max_points_to_predict:
+		last_position = position
 		points.append(camera.unproject_position(position))
 		position += velocity * delta
-		var collision = $CollisionCheck.move_and_collide(velocity * delta, true)
-		if collision:
+		var query = PhysicsRayQueryParameters3D.create(last_position, position)
+		query.collide_with_areas = true
+		var result = space_state.intersect_ray(query)
+		if result:
 			break
-		$CollisionCheck.global_position = position
 	return points
