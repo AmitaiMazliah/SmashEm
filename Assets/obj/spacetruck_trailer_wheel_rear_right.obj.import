@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://be6vbgjo68x0j"
+path="res://.godot/imported/spacetruck_trailer_wheel_rear_right.obj-eab1aea44087e0b7bdc50e39af77a5b3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/spacetruck_trailer_wheel_rear_right.obj-eab1aea44087e0b7bdc50e39af77a5b3.mesh"]
+
+source_file="res://Assets/obj/spacetruck_trailer_wheel_rear_right.obj"
+dest_files=["res://.godot/imported/spacetruck_trailer_wheel_rear_right.obj-eab1aea44087e0b7bdc50e39af77a5b3.mesh", "res://.godot/imported/spacetruck_trailer_wheel_rear_right.obj-eab1aea44087e0b7bdc50e39af77a5b3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

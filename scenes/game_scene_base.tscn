@@ -271,7 +271,6 @@ transform = Transform3D(0.237513, -0.417048, 0.877302, -0.955094, 0.0644464, 0.2
 
 [node name="AgentWithPlayer" parent="Node3D" instance=ExtResource("7_ajaon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.507, 0.5, 36.191)
-starting_damage = 999
 
 [node name="AgentWithAI" parent="Node3D" instance=ExtResource("6_du88s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1624, 0.5, 34.7786)

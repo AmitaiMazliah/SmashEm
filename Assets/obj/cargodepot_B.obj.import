@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cb0my43sx1jcg"
+path="res://.godot/imported/cargodepot_B.obj-267d87fbb3b5c2a17298f627b0b74a59.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cargodepot_B.obj-267d87fbb3b5c2a17298f627b0b74a59.mesh"]
+
+source_file="res://Assets/obj/cargodepot_B.obj"
+dest_files=["res://.godot/imported/cargodepot_B.obj-267d87fbb3b5c2a17298f627b0b74a59.mesh", "res://.godot/imported/cargodepot_B.obj-267d87fbb3b5c2a17298f627b0b74a59.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

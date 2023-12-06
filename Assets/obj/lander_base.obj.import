@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://xoxhqc5iutq3"
+path="res://.godot/imported/lander_base.obj-5b8f8e1378ec705c4bf7f37402b608ec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/lander_base.obj-5b8f8e1378ec705c4bf7f37402b608ec.mesh"]
+
+source_file="res://Assets/obj/lander_base.obj"
+dest_files=["res://.godot/imported/lander_base.obj-5b8f8e1378ec705c4bf7f37402b608ec.mesh", "res://.godot/imported/lander_base.obj-5b8f8e1378ec705c4bf7f37402b608ec.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

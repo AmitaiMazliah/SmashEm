@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b2f8b86fi8wg5"
+path="res://.godot/imported/structure_low.obj-84a81ab2320e3b16b858a91e324a683e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure_low.obj-84a81ab2320e3b16b858a91e324a683e.mesh"]
+
+source_file="res://Assets/obj/structure_low.obj"
+dest_files=["res://.godot/imported/structure_low.obj-84a81ab2320e3b16b858a91e324a683e.mesh", "res://.godot/imported/structure_low.obj-84a81ab2320e3b16b858a91e324a683e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
