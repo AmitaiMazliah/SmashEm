@@ -100,6 +100,7 @@ func _kill_dead_agents():
 		if agent.is_player:
 			defeat_event_channel.raise_event()
 			stop()
+			return
 	agents = agents.filter(func (a: MyAgent): return a.current_health > 0)
 	if len(agents) == 1:
 		print("Player won the game")

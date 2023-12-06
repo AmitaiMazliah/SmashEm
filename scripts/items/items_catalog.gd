@@ -26,7 +26,7 @@ func _get_items_catalog() -> Array[Equipment]:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			var item = load("res://resources/items/" + file_name)
+			var item = load("res://resources/items/" + file_name.trim_suffix('.remap'))
 			if item:
 				items.append(item)
 			file_name = dir.get_next()
