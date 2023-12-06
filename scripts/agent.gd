@@ -62,6 +62,6 @@ func die():
 	queue_free()
 
 func _on_body_entered(body: Node):
-	if !is_my_turn and body is MyAgent:
-		var attacker = body as MyAgent
-		take_damage(attacker.current_damage)
+	if is_my_turn and body is MyAgent:
+		var agent = body as MyAgent
+		agent.take_damage(current_damage)
