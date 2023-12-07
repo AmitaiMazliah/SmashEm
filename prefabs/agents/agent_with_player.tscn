@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxygh0jwqfawt"]
+[gd_scene load_steps=15 format=3 uid="uid://dxygh0jwqfawt"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="1_niukr"]
 [ext_resource type="Script" path="res://scripts/agent.gd" id="2_llj7m"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="8_3sxbl"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="8_ela1w"]
 [ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/ice-staff.tres" id="9_cyirb"]
-[ext_resource type="Script" path="res://scripts/agents/movement_prediction_line.gd" id="9_ex5n1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n4g5e"]
 height = 10.0
@@ -113,11 +112,9 @@ agent_movement_projection = NodePath("MovementPredictionLine")
 
 [node name="MovementPredictionLine" type="Line2D" parent="PlayerAgentController"]
 material = SubResource("ShaderMaterial_vwksg")
+width = 100.0
 texture = ExtResource("8_ela1w")
 texture_mode = 1
-script = ExtResource("9_ex5n1")
-max_points_to_predict = 30000
-precision = 50
 
 [node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
 script = ExtResource("8_3sxbl")

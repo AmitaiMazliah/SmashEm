@@ -7,8 +7,8 @@ class_name StatusEffect
 
 func execute(agent: Agent):
 	var targets = _get_targets(target, agent)
-	for target in targets:
-		target.status = status
+	for current_target: MyAgent in targets:
+		current_target.status = status
 
 func _get_targets(who_to_find: Target, agent: Agent) -> Array:
 	match who_to_find:

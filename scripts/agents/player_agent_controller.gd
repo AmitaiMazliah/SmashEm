@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var distance_from_touch_location_to_count_play : float = 60
-@export var agent_movement_projection: AgentMovementProjection
+@export var agent_movement_projection: Line2D
 @export var max_points_to_predict: int = 300
 
 @onready var agent: MyAgent = self.get_parent()
@@ -45,17 +45,17 @@ func _input(event):
 		else:
 			should_draw_projection = false
 
-func calculate_movement(direction: Vector3, delta: float) -> PackedVector2Array:
+func calculate_movement(_direction: Vector3, delta: float) -> PackedVector2Array:
 	var points = PackedVector2Array()
 	var space_state = get_world_3d().direct_space_state
-	var position : Vector3 = global_position
-	var velocity = direction * agent.current_velocity
+	var current_position : Vector3 = global_position
+	var velocity = _direction * agent.current_velocity
 	var last_position: Vector3
 	for i in max_points_to_predict:
-		last_position = position
-		points.append(camera.unproject_position(position))
-		position += velocity * delta
-		var query = PhysicsRayQueryParameters3D.create(last_position, position)
+		last_position = current_position
+		points.append(camera.unproject_position(current_position))
+		current_position += velocity * delta
+		var query = PhysicsRayQueryParameters3D.create(last_position, current_position)
 		query.collide_with_areas = true
 		var result = space_state.intersect_ray(query)
 		if result:

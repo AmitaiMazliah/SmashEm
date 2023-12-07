@@ -1077,6 +1077,7 @@ grow_vertical = 2
 flat = true
 
 [node name="ItemsTab" type="Control" parent="UI/TabContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("9_hdxf0")
@@ -1121,6 +1122,7 @@ alignment = 1
 [node name="HeadSlot" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/MyItemsContainer"]
 custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_di1xv")
 
@@ -1145,6 +1147,7 @@ stretch_mode = 5
 [node name="RightHandSlot" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/MyItemsContainer"]
 custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_di1xv")
 
@@ -1169,6 +1172,7 @@ stretch_mode = 5
 [node name="LeftHandSlot" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/MyItemsContainer"]
 custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_di1xv")
 
@@ -1193,6 +1197,7 @@ stretch_mode = 5
 [node name="BootsSlot" type="Panel" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/MyItemsContainer"]
 custom_minimum_size = Vector2(150, 220)
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("2_bv25m")
 theme_override_styles/panel = SubResource("StyleBoxFlat_di1xv")
 
@@ -1225,6 +1230,33 @@ horizontal_alignment = 1
 layout_mode = 2
 mouse_filter = 2
 columns = 4
+
+[node name="ItemView" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
+
+[node name="ItemView2" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
+
+[node name="ItemView3" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
+
+[node name="ItemView4" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
+
+[node name="ItemView5" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
+
+[node name="ItemView6" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
+
+[node name="ItemView7" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
+
+[node name="ItemView8" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
+
+[node name="ItemView9" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
+layout_mode = 2
 
 [node name="ItemDetailsPopup" type="Control" parent="UI/TabContainer/ItemsTab"]
 visible = false

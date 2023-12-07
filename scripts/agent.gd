@@ -25,7 +25,7 @@ func _ready():
 	current_health = max_health
 	current_damage = starting_damage
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if linear_velocity.length_squared() > 0.01:
 		moving = true
 	elif linear_velocity.length_squared() < 0.01:

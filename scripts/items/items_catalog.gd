@@ -38,11 +38,11 @@ class CatalogItem:
 	var description: String
 	var type: CatalogItemType
 	
-	func _init(playfab_id: String, name: String, description: String, type: CatalogItemType):
-		self.playfab_id = playfab_id
-		self.name = name
-		self.description = description
-		self.type = type
+	func _init(_playfab_id: String, _name: String, _description: String, _type: CatalogItemType):
+		playfab_id = _playfab_id
+		name = _name
+		description = _description
+		type = _type
 
 enum CatalogItemType {
 	currency
