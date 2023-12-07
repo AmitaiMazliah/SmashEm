@@ -1,7 +1,7 @@
 extends Control
 
-@onready var _my_items_container: HBoxContainer = $ScrollContainer/MarginContainer/Control/ItemsContainer/MyItemsContainer
-@onready var _owned_items_grid: GridContainer = $ScrollContainer/MarginContainer/Control/ItemsContainer/OwnedItemsGridContainer
+@onready var _my_items_container: HBoxContainer = $ScrollContainer/MarginContainer/ItemsContainer/MyItemsContainer
+@onready var _owned_items_grid: GridContainer = $ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer
 @onready var _item_details_popup: ItemDetailsPopup = $ItemDetailsPopup
 
 @export var _item_view_prefab: PackedScene
