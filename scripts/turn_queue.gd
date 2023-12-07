@@ -31,14 +31,15 @@ func _ready():
 	get_tree().create_timer(1).timeout.connect(start)
 
 func _process(_delta):
-	if _running and not timer.is_stopped():
-		turn_countdown_progress_bar.value = timer.time_left
-	if _running and _active_agent_started_moving:
-		if agents.all(func (a): return not a.moving):
-			print("All agents came to a stop, ending turn")
-			_end_turn()
-	
-	_active_agent_started_moving = agents.any(func (a): return a.moving)
+	if _running:
+		if not timer.is_stopped():
+			turn_countdown_progress_bar.value = timer.time_left
+		if _active_agent_started_moving:
+			if agents.all(func (a): return not a.moving):
+				print("All agents came to a stop, ending turn")
+				_end_turn()
+		
+		_active_agent_started_moving = agents.any(func (a): return a.moving)
 
 func start():
 	if !_running:
