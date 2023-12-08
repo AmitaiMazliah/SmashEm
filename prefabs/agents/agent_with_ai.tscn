@@ -100,6 +100,8 @@ position = Vector2(250, 345)
 
 [node name="AgentAI" type="Node" parent="."]
 script = ExtResource("7_nt7hw")
+min_think_time_in_secs = 0.1
+max_think_time_in_secs = 1.0
 
 [node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
 script = ExtResource("8_huvhx")

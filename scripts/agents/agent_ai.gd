@@ -2,8 +2,8 @@ extends Node
 
 class_name AgentAI
 
-@export var min_think_time_in_secs = 1
-@export var max_think_time_in_secs = 5
+@export var min_think_time_in_secs: float = 1
+@export var max_think_time_in_secs: float = 5
 
 @onready var agent: MyAgent = self.get_parent()
 
