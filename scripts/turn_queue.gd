@@ -26,7 +26,7 @@ func _ready():
 	timer.timeout.connect(_end_turn)
 	turn_countdown_progress_bar.max_value = turn_time_in_secs
 	turn_countdown_progress_bar.value = turn_time_in_secs
-	for agent in agents:
+	for agent: Agent2D in agents:
 		agent.moved.connect(_on_agent_moved)
 	get_tree().create_timer(1).timeout.connect(start)
 
@@ -35,7 +35,7 @@ func _process(_delta):
 		if not timer.is_stopped():
 			turn_countdown_progress_bar.value = timer.time_left
 		if _active_agent_started_moving:
-			if agents.all(func (a): return not a.moving):
+			if agents.all(func (a: Agent2D): return not a.moving):
 				print("All agents came to a stop, ending turn")
 				_end_turn()
 		

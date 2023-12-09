@@ -26,9 +26,9 @@ func _ready():
 	current_damage = starting_damage
 
 func _physics_process(_delta):
-	if linear_velocity.length_squared() > 0.01:
+	if linear_velocity.length_squared() > 2:
 		moving = true
-	elif linear_velocity.length_squared() < 0.01:
+	elif linear_velocity.length_squared() < 2:
 		moving = false
 	previous_velocity = linear_velocity
 

@@ -14,43 +14,31 @@ var should_draw_projection: bool
 
 func _ready():
 	agent.is_player = true
-	#var t = TestDraw.new()
-	#var p = global_position
-	#p.y = $CollisionCheck/CollisionShape3D.shape.height / 2
-	#print(global_position)
-	#print(p)
-	#print("$CollisionCheck/CollisionShape3D.shape.radius ", $CollisionCheck/CollisionShape3D.shape.radius)
-	#t.set_parameters(get_viewport().get_camera_3d().unproject_position(p), $CollisionCheck/CollisionShape3D.shape.radius)
-	#add_child(t)
 
-func _process(delta):
+func _process(delta) -> void:
 	if agent.is_my_turn and pressed and should_draw_projection:
 		#var points = calculate_movement(direction, delta)
 		#agent_movement_projection.points = points
 		#agent_movement_projection.show()
 		
-		#var p : Vector3 = Vector3.ZERO
-		#$CollisionCheck.position = p
-		#var velocity = direction * agent.current_velocity
-		#var collision: KinematicCollision3D = null
-		#var found_collision: bool
-		#for i in 3000:
-			#collision = $CollisionCheck.move_and_collide(velocity * delta, true)
-			#if collision:
-				#print(i)
-				#print("collision.get_collision_count() ", collision.get_collision_count())
-				#print("collision.get_travel() ", collision.get_travel())
-				#print("collision.get_remainder() ", collision.get_remainder())
-				#break
-			#p += velocity * delta
-			#$CollisionCheck.position = p
-		#
-		#$TestDraw.set_parameters(get_viewport().get_camera_3d().unproject_position($CollisionCheck.global_position + collision.get_remainder()), $CollisionCheck/CollisionShape3D.shape.radius)
-		#$TestDraw.show()
+		var p : Vector2 = Vector2.ZERO
+		$Node2D/CollisionCheck.position = p
+		var velocity = direction * agent.current_velocity
+		var collision: KinematicCollision2D
+		for i in 3000:
+			collision = $Node2D/CollisionCheck.move_and_collide(velocity * delta, true)
+			if collision:
+				break
+			p += velocity * delta
+			$Node2D/CollisionCheck.position = p
+		
+		$Node2D/TestDraw.set_parameters(p, $Node2D/CollisionCheck/CollisionShape2D.shape.radius)
+		$Node2D/TestDraw.show()
+		$Node2D/CollisionCheck.position = Vector2.ZERO
 		var f = 5
 		
 	else:
-		#$TestDraw.hide()
+		$Node2D/TestDraw.hide()
 		#agent_movement_projection.hide()
 		var d = 5
 

@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="10_ca4tq"]
 [ext_resource type="Resource" uid="uid://3uf1hdxpp2fd" path="res://resources/items/plate-boots.tres" id="11_jln01"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent_controller_2d.gd" id="12_hgxyg"]
+[ext_resource type="Script" path="res://scripts/test_draw.gd" id="13_438nb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
 bounce = 1.0
@@ -22,9 +23,6 @@ radius = 55.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1efxl"]
 shader = ExtResource("3_urv4q")
 shader_parameter/scrolling_speed = 2.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gh628"]
-radius = 6.50077
 
 [node name="PlayerAgent" type="RigidBody2D" groups=["Agents"]]
 physics_material_override = SubResource("PhysicsMaterial_hbdn7")
@@ -47,19 +45,6 @@ script = ExtResource("2_err2o")
 position = Vector2(0, 1)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_sn7ia")
-
-[node name="MovementPredictionLine" type="Line2D" parent="Visuals"]
-material = SubResource("ShaderMaterial_1efxl")
-texture = ExtResource("4_iupx7")
-texture_mode = 1
-script = ExtResource("5_af2o0")
-
-[node name="CollisionCheck" type="CharacterBody2D" parent="Visuals/MovementPredictionLine"]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/MovementPredictionLine/CollisionCheck"]
-shape = SubResource("CircleShape2D_gh628")
 
 [node name="HeadPlaceHolder" type="Node2D" parent="Visuals"]
 z_index = 10
@@ -109,3 +94,21 @@ _legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 
 [node name="PlayerAgentController" type="Node2D" parent="."]
 script = ExtResource("12_hgxyg")
+
+[node name="Node2D" type="Node2D" parent="PlayerAgentController"]
+
+[node name="MovementPredictionLine" type="Line2D" parent="PlayerAgentController/Node2D"]
+material = SubResource("ShaderMaterial_1efxl")
+texture = ExtResource("4_iupx7")
+texture_mode = 1
+script = ExtResource("5_af2o0")
+
+[node name="TestDraw" type="Node2D" parent="PlayerAgentController/Node2D"]
+script = ExtResource("13_438nb")
+
+[node name="CollisionCheck" type="CharacterBody2D" parent="PlayerAgentController/Node2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAgentController/Node2D/CollisionCheck"]
+shape = SubResource("CircleShape2D_0fnhx")
