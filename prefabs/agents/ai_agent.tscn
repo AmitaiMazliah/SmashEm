@@ -23,6 +23,12 @@ max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("1_jnvnm")
+starting_velocity = 700.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0fnhx")
+script = ExtResource("6_ijs4a")
+highlight_color = Color(1, 0, 0, 1)
 
 [node name="Visuals" type="Node2D" parent="."]
 script = ExtResource("2_yybyc")
@@ -31,25 +37,6 @@ script = ExtResource("2_yybyc")
 position = Vector2(0, 1)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_nng2j")
-
-[node name="HealthBar" type="Control" parent="Visuals"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -60.0
-offset_top = -75.0
-offset_right = 60.0
-offset_bottom = -60.0
-script = ExtResource("4_u55su")
-
-[node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("5_c3u1n")
-show_percentage = false
 
 [node name="HeadPlaceHolder" type="Node2D" parent="Visuals"]
 z_index = 10
@@ -67,10 +54,25 @@ position = Vector2(-36, 44)
 z_index = 10
 position = Vector2(0, 56)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0fnhx")
-script = ExtResource("6_ijs4a")
-highlight_color = Color(1, 0, 0, 1)
+[node name="HealthBar" type="Control" parent="Visuals" node_paths=PackedStringArray("agent")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -60.0
+offset_top = -75.0
+offset_right = 60.0
+offset_bottom = -60.0
+script = ExtResource("4_u55su")
+agent = NodePath("../..")
+
+[node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_c3u1n")
+show_percentage = false
 
 [node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
 script = ExtResource("7_hry6l")
@@ -84,5 +86,7 @@ _legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 
 [node name="AgentAI" type="Node" parent="."]
 script = ExtResource("2_1m0e3")
+min_think_time_in_secs = 0.1
+max_think_time_in_secs = 1.0
 
 [connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

@@ -29,29 +29,30 @@ func _process(delta):
 		#agent_movement_projection.points = points
 		#agent_movement_projection.show()
 		
-		var p : Vector3 = Vector3.ZERO
-		$CollisionCheck.position = p
-		var velocity = direction * agent.current_velocity
-		var collision: KinematicCollision3D = null
-		var found_collision: bool
-		for i in 3000:
-			collision = $CollisionCheck.move_and_collide(velocity * delta, true)
-			if collision:
-				print(i)
-				print("collision.get_collision_count() ", collision.get_collision_count())
-				print("collision.get_travel() ", collision.get_travel())
-				print("collision.get_remainder() ", collision.get_remainder())
-				break
-			p += velocity * delta
-			$CollisionCheck.position = p
-		
-		$TestDraw.set_parameters(get_viewport().get_camera_3d().unproject_position($CollisionCheck.global_position + collision.get_remainder()), $CollisionCheck/CollisionShape3D.shape.radius)
-		$TestDraw.show()
+		#var p : Vector3 = Vector3.ZERO
+		#$CollisionCheck.position = p
+		#var velocity = direction * agent.current_velocity
+		#var collision: KinematicCollision3D = null
+		#var found_collision: bool
+		#for i in 3000:
+			#collision = $CollisionCheck.move_and_collide(velocity * delta, true)
+			#if collision:
+				#print(i)
+				#print("collision.get_collision_count() ", collision.get_collision_count())
+				#print("collision.get_travel() ", collision.get_travel())
+				#print("collision.get_remainder() ", collision.get_remainder())
+				#break
+			#p += velocity * delta
+			#$CollisionCheck.position = p
+		#
+		#$TestDraw.set_parameters(get_viewport().get_camera_3d().unproject_position($CollisionCheck.global_position + collision.get_remainder()), $CollisionCheck/CollisionShape3D.shape.radius)
+		#$TestDraw.show()
 		var f = 5
 		
 	else:
-		$TestDraw.hide()
-		agent_movement_projection.hide()
+		#$TestDraw.hide()
+		#agent_movement_projection.hide()
+		var d = 5
 
 func _input(event):
 	if event is InputEventScreenTouch:
