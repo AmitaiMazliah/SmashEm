@@ -5,7 +5,7 @@ class_name AgentAI
 @export var min_think_time_in_secs: float = 1
 @export var max_think_time_in_secs: float = 5
 
-@onready var agent: MyAgent = self.get_parent()
+@onready var agent: Agent3D = self.get_parent()
 
 var _played_turn: bool
 
@@ -26,7 +26,7 @@ func _play_turn():
 	var direction = agent.position.direction_to(nearest_agent.position)
 	agent.move(direction)
 
-func _get_nearest_agent() -> MyAgent:
+func _get_nearest_agent() -> Agent3D:
 	var other_agents = get_tree().get_nodes_in_group("Agents").filter(func (a): return a != agent)
 	other_agents.sort_custom(func (a, b): return agent.position.distance_to(a.position) < agent.position.distance_to(b.position))
 	return other_agents.front()

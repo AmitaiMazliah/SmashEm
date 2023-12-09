@@ -16,7 +16,7 @@ class_name TurnQueue
 @onready var agents = get_tree().get_nodes_in_group("Agents")
 
 var _active_agent_index = -1
-var _active_agent: MyAgent
+var _active_agent: Agent3D
 var _active_agent_started_moving: bool
 var _running : bool
 var _countdown_timers: Array[SceneTreeTimer]
@@ -79,7 +79,7 @@ func _end_turn():
 	_kill_dead_agents()
 	_start_turn()
 
-func _get_next_live_agent() -> MyAgent:
+func _get_next_live_agent() -> Agent3D:
 	var live_agents = agents
 	_active_agent_index = (_active_agent_index + 1) % live_agents.size()
 	return live_agents[_active_agent_index]
@@ -95,14 +95,14 @@ func _fade_label():
 	await tween.finished
 
 func _kill_dead_agents():
-	var dead_agents = agents.filter(func (a: MyAgent): return a.current_health <= 0)
-	for agent: MyAgent in dead_agents:
+	var dead_agents = agents.filter(func (a: Agent3D): return a.current_health <= 0)
+	for agent: Agent3D in dead_agents:
 		agent.die()
 		if agent.is_player:
 			defeat_event_channel.raise_event()
 			stop()
 			return
-	agents = agents.filter(func (a: MyAgent): return a.current_health > 0)
+	agents = agents.filter(func (a: Agent3D): return a.current_health > 0)
 	if len(agents) == 1:
 		print("Player won the game")
 		victory_event_channel.raise_event()

@@ -6,10 +6,10 @@ class_name SpeedStatus
 
 var _previous_velocity
 
-func on_status_given(agent: Agent):
+func on_status_given(agent: Agent3D):
 	super.on_status_given(agent)
 	_previous_velocity = agent.current_velocity
 	agent.current_velocity = agent.current_velocity * (1 + change_percentage)
 
-func on_status_ended(agent: Agent):
+func on_status_ended(agent: Agent3D):
 	agent.current_velocity = _previous_velocity

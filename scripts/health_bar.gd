@@ -1,6 +1,6 @@
 extends Control
 
-@export var agent : MyAgent
+@export var agent : Agent3D
 @onready var progress_bar : ProgressBar = $ProgressBar
 
 func _process(_delta):

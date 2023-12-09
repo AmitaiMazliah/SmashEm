@@ -25,7 +25,7 @@ func _ready():
 			Equipment.Slot.Boots:
 				_legs_place_holder.add_child(equipment_instance)
 
-func execute_all_effect_for_time(agent: Agent, effect_time: Effect.EffectTime):
+func execute_all_effect_for_time(agent: Agent3D, effect_time: Effect.EffectTime):
 	for i in current_equipment:
 		var equipment : Equipment = current_equipment[i]
 		for effect in equipment.effects:

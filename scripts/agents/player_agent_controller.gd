@@ -4,7 +4,7 @@ extends Node3D
 @export var agent_movement_projection: Line2D
 @export var max_points_to_predict: int = 300
 
-@onready var agent: MyAgent = self.get_parent()
+@onready var agent: Agent3D = self.get_parent()
 @onready var camera: Camera3D = get_viewport().get_camera_3d()
 
 var pressed: bool
@@ -14,13 +14,43 @@ var should_draw_projection: bool
 
 func _ready():
 	agent.is_player = true
+	#var t = TestDraw.new()
+	#var p = global_position
+	#p.y = $CollisionCheck/CollisionShape3D.shape.height / 2
+	#print(global_position)
+	#print(p)
+	#print("$CollisionCheck/CollisionShape3D.shape.radius ", $CollisionCheck/CollisionShape3D.shape.radius)
+	#t.set_parameters(get_viewport().get_camera_3d().unproject_position(p), $CollisionCheck/CollisionShape3D.shape.radius)
+	#add_child(t)
 
 func _process(delta):
 	if agent.is_my_turn and pressed and should_draw_projection:
-		var points = calculate_movement(direction, delta)
-		agent_movement_projection.points = points
-		agent_movement_projection.show()
+		#var points = calculate_movement(direction, delta)
+		#agent_movement_projection.points = points
+		#agent_movement_projection.show()
+		
+		var p : Vector3 = Vector3.ZERO
+		$CollisionCheck.position = p
+		var velocity = direction * agent.current_velocity
+		var collision: KinematicCollision3D = null
+		var found_collision: bool
+		for i in 3000:
+			collision = $CollisionCheck.move_and_collide(velocity * delta, true)
+			if collision:
+				print(i)
+				print("collision.get_collision_count() ", collision.get_collision_count())
+				print("collision.get_travel() ", collision.get_travel())
+				print("collision.get_remainder() ", collision.get_remainder())
+				break
+			p += velocity * delta
+			$CollisionCheck.position = p
+		
+		$TestDraw.set_parameters(get_viewport().get_camera_3d().unproject_position($CollisionCheck.global_position + collision.get_remainder()), $CollisionCheck/CollisionShape3D.shape.radius)
+		$TestDraw.show()
+		var f = 5
+		
 	else:
+		$TestDraw.hide()
 		agent_movement_projection.hide()
 
 func _input(event):

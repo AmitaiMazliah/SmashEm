@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-class_name MyAgent
+class_name Agent3D
 
 signal moved
 signal turn_ended
@@ -62,6 +62,6 @@ func die():
 	queue_free()
 
 func _on_body_entered(body: Node):
-	if !is_my_turn and body is MyAgent:
-		var attacker = body as MyAgent
+	if !is_my_turn and body is Agent3D:
+		var attacker = body as Agent3D
 		take_damage(attacker.current_damage)
