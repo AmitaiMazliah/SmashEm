@@ -11,13 +11,13 @@ func _ready():
 	PlayFabManager.client.api_error.connect(_on_api_error)
 	_login()
 
-func _on_logged_in(login_result: LoginResult):
+func _on_logged_in(_login_result: LoginResult):
 	print("Logged in successfully")
 	await items_catalog.init()
 	await Player.init(items_catalog)
 	load_scene_event_channel.raise_event(main_menu_scene, true)
 
-func _on_api_error(api_error_wrapper: ApiErrorWrapper):
+func _on_api_error(_api_error_wrapper: ApiErrorWrapper):
 	print("error")
 
 func _login():

@@ -14,7 +14,7 @@ func apply_to(audio_stream_player):
 	audio_stream_player.pitch_scale = pitch
 	audio_stream_player.bus = AudioBusName.keys()[audio_bus]
 
-func _normalize_volume(volume: float) -> float:
-	return (volume - 1) * 80
+func _normalize_volume(_volume: float) -> float:
+	return (_volume - 1) * 80
 
 enum AudioBusName { Music, SFX }

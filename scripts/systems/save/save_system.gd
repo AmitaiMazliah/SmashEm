@@ -10,7 +10,6 @@ var _values: Dictionary
 var _dirty_values: Dictionary
 
 func get_value(key: String, default_value = null):
-	var value
 	if _dirty_values.has(key):
 		return _dirty_values.get(key)
 	else:

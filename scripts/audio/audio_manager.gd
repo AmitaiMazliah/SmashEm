@@ -37,7 +37,7 @@ func _change_audio_bus_volume(volume: float, bus_name: AudioConfiguration.AudioB
 	var bus_index = AudioServer.get_bus_index(AudioConfiguration.AudioBusName.keys()[bus_name])
 	AudioServer.set_bus_volume_db(bus_index, volume)
 
-func _on_play_music_audio_cue(audio_cue: AudioCue, audio_config: AudioConfiguration, position: Vector2 = Vector2.ZERO):
+func _on_play_music_audio_cue(audio_cue: AudioCue, audio_config: AudioConfiguration, _position: Vector2 = Vector2.ZERO):
 	if _music_sound_emitter and _music_sound_emitter.playing:
 		_music_sound_emitter.fade_out(2)
 	
@@ -46,11 +46,11 @@ func _on_play_music_audio_cue(audio_cue: AudioCue, audio_config: AudioConfigurat
 	print(clip_to_play)
 	_music_sound_emitter.fade_music_in(clip_to_play, audio_config, 1)
 
-func _on_play_sound_audio_cue(audio_cue: AudioCue, audio_config: AudioConfiguration, position: Vector2 = Vector2.ZERO):
+func _on_play_sound_audio_cue(audio_cue: AudioCue, audio_config: AudioConfiguration, _position: Vector2 = Vector2.ZERO):
 	var clip_to_play = audio_cue.get_next_clip()
 	var sound_emitter = _sound_emitter_pool.pop_back();
 	print(clip_to_play)
-	sound_emitter.play_audio_clip(clip_to_play, audio_config, false, position)
+	sound_emitter.play_audio_clip(clip_to_play, audio_config, false, _position)
 
 func _on_stream_player_finished(sound_emitter):
 	if sound_emitter:
