@@ -1,10 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=16 format=3 uid="uid://dd6skvb0tvmwh"]
 
-[ext_resource type="PackedScene" uid="uid://dqsa78xqy80jb" path="res://prefabs/agents/agent.tscn" id="1_8igvm"]
-[ext_resource type="Script" path="res://scripts/agents/player_agent.gd" id="2_fx3lm"]
+[ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_y2y5r"]
+[ext_resource type="Script" path="res://scripts/agents/agent_visuals.gd" id="2_err2o"]
+[ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="3_sn7ia"]
 [ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="3_urv4q"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_3ji4u"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_38tbr"]
 [ext_resource type="Script" path="res://scripts/agents/movement_prediction_line.gd" id="5_af2o0"]
+[ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="9_pm1gp"]
+[ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="10_ca4tq"]
+[ext_resource type="Resource" uid="uid://3uf1hdxpp2fd" path="res://resources/items/plate-boots.tres" id="11_jln01"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
+bounce = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1efxl"]
 shader = ExtResource("3_urv4q")
@@ -13,34 +22,88 @@ shader_parameter/scrolling_speed = 2.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gh628"]
 radius = 6.50077
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hdpcg"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
+radius = 55.0
 
-[node name="PlayerAgent" instance=ExtResource("1_8igvm")]
-script = ExtResource("2_fx3lm")
-distance_from_touch_location_to_count_play = 60.0
+[node name="PlayerAgent" type="RigidBody2D" groups=["Agents"]]
+physics_material_override = SubResource("PhysicsMaterial_hbdn7")
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+linear_damp = 1.0
+script = ExtResource("1_y2y5r")
 
-[node name="MovementPredictionLine" type="Line2D" parent="Visuals" index="2"]
+[node name="Visuals" type="Node2D" parent="."]
+script = ExtResource("2_err2o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_sn7ia")
+
+[node name="HealthBar" type="Control" parent="Visuals"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -60.0
+offset_top = -75.0
+offset_right = 60.0
+offset_bottom = -60.0
+script = ExtResource("4_3ji4u")
+
+[node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_38tbr")
+show_percentage = false
+
+[node name="MovementPredictionLine" type="Line2D" parent="Visuals"]
 material = SubResource("ShaderMaterial_1efxl")
 texture = ExtResource("4_iupx7")
 texture_mode = 1
 script = ExtResource("5_af2o0")
-max_points_to_predict = 30000
-precision = 50
 
-[node name="CollisionCheck" type="CharacterBody2D" parent="Visuals/MovementPredictionLine" index="0"]
+[node name="CollisionCheck" type="CharacterBody2D" parent="Visuals/MovementPredictionLine"]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/MovementPredictionLine/CollisionCheck" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/MovementPredictionLine/CollisionCheck"]
 shape = SubResource("CircleShape2D_gh628")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="HeadPlaceHolder" type="Node2D" parent="Visuals"]
+z_index = 10
+position = Vector2(1, -47)
+
+[node name="RightHandPlaceHolder" type="Node2D" parent="Visuals"]
+z_index = 10
+position = Vector2(39, 44)
+
+[node name="LeftHandPlaceHolder" type="Node2D" parent="Visuals"]
+z_index = 10
+position = Vector2(-36, 44)
+
+[node name="LegsPlaceHolder" type="Node2D" parent="Visuals"]
+z_index = 10
+position = Vector2(0, 56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0fnhx")
+script = ExtResource("9_pm1gp")
 highlight_color = Color(0, 0, 1, 1)
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="." index="2"]
-scale = Vector2(6, 6)
-shape = SubResource("CircleShape2D_hdpcg")
-shape_visible = false
+[node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
+script = ExtResource("10_ca4tq")
+current_equipment = {
+"Boots": ExtResource("11_jln01")
+}
+_head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
+_right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
+_left_hand_place_holder = NodePath("../Visuals/LeftHandPlaceHolder")
+_legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 
-[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
-[connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
+[node name="PlayerAgentController" type="Node2D" parent="."]
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

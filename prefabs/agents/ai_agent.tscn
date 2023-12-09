@@ -1,13 +1,88 @@
-[gd_scene load_steps=3 format=3 uid="uid://vwth8qa6lmwn"]
+[gd_scene load_steps=12 format=3 uid="uid://vwth8qa6lmwn"]
 
-[ext_resource type="PackedScene" uid="uid://dqsa78xqy80jb" path="res://prefabs/agents/agent.tscn" id="1_sai42"]
-[ext_resource type="Script" path="res://scripts/agents/ai_agent.gd" id="2_01t2a"]
+[ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_jnvnm"]
+[ext_resource type="Script" path="res://scripts/agents/agent_ai_2d.gd" id="2_1m0e3"]
+[ext_resource type="Script" path="res://scripts/agents/agent_visuals.gd" id="2_yybyc"]
+[ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="3_nng2j"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_u55su"]
+[ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_c3u1n"]
+[ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="6_ijs4a"]
+[ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="7_hry6l"]
+[ext_resource type="Resource" uid="uid://3uf1hdxpp2fd" path="res://resources/items/plate-boots.tres" id="8_8xgc7"]
 
-[node name="AIAgent" groups=["AI_Agents"] instance=ExtResource("1_sai42")]
-script = ExtResource("2_01t2a")
-min_think_time_in_secs = 1
-max_think_time_in_secs = 5
-default_velocity = 5000.0
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
+bounce = 1.0
 
-[node name="CollisionShape2D" parent="." index="1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
+radius = 55.0
+
+[node name="AIAgent" type="RigidBody2D" groups=["AI_Agents", "Agents"]]
+physics_material_override = SubResource("PhysicsMaterial_hbdn7")
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+linear_damp = 1.0
+script = ExtResource("1_jnvnm")
+
+[node name="Visuals" type="Node2D" parent="."]
+script = ExtResource("2_yybyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_nng2j")
+
+[node name="HealthBar" type="Control" parent="Visuals"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -60.0
+offset_top = -75.0
+offset_right = 60.0
+offset_bottom = -60.0
+script = ExtResource("4_u55su")
+
+[node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_c3u1n")
+show_percentage = false
+
+[node name="HeadPlaceHolder" type="Node2D" parent="Visuals"]
+z_index = 10
+position = Vector2(1, -47)
+
+[node name="RightHandPlaceHolder" type="Node2D" parent="Visuals"]
+z_index = 10
+position = Vector2(39, 44)
+
+[node name="LeftHandPlaceHolder" type="Node2D" parent="Visuals"]
+z_index = 10
+position = Vector2(-36, 44)
+
+[node name="LegsPlaceHolder" type="Node2D" parent="Visuals"]
+z_index = 10
+position = Vector2(0, 56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0fnhx")
+script = ExtResource("6_ijs4a")
 highlight_color = Color(1, 0, 0, 1)
+
+[node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
+script = ExtResource("7_hry6l")
+current_equipment = {
+"Boots": ExtResource("8_8xgc7")
+}
+_head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
+_right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
+_left_hand_place_holder = NodePath("../Visuals/LeftHandPlaceHolder")
+_legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
+
+[node name="AgentAI" type="Node" parent="."]
+script = ExtResource("2_1m0e3")
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

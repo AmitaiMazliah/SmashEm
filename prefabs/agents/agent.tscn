@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqsa78xqy80jb"]
+[gd_scene load_steps=12 format=3 uid="uid://h5vhenkajrac"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_yap2o"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_j826y"]
@@ -16,16 +16,13 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
 radius = 55.0
 
-[node name="Agent" type="RigidBody2D" node_paths=PackedStringArray("nodes_to_disable_on_death", "health") groups=["Agents"]]
+[node name="Agent" type="RigidBody2D" groups=["Agents"]]
 physics_material_override = SubResource("PhysicsMaterial_hbdn7")
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("1_yap2o")
-nodes_to_disable_on_death = [NodePath("Visuals"), NodePath("CollisionShape2D")]
-health = NodePath("HealthComponent")
-default_damage = 0
 
 [node name="Visuals" type="Node2D" parent="."]
 script = ExtResource("4_v7toc")
@@ -35,7 +32,7 @@ position = Vector2(0, 1)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_j826y")
 
-[node name="HealthBar" type="Control" parent="Visuals" node_paths=PackedStringArray("health")]
+[node name="HealthBar" type="Control" parent="Visuals"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -60.0
@@ -43,7 +40,6 @@ offset_top = -75.0
 offset_right = 60.0
 offset_bottom = -60.0
 script = ExtResource("4_qdccr")
-health = NodePath("../../HealthComponent")
 
 [node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
 layout_mode = 1
