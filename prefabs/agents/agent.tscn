@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dqsa78xqy80jb"]
 
-[ext_resource type="Script" path="res://scripts/agents/agent.gd" id="1_yap2o"]
+[ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_yap2o"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_j826y"]
 [ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="3_knjvt"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_qdccr"]

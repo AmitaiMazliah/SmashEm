@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://02lpxvdyrnb6"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="1_6ceal"]
-[ext_resource type="Script" path="res://scripts/agent.gd" id="2_j36lg"]
+[ext_resource type="Script" path="res://scripts/agents/agent_3d.gd" id="2_vuivn"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_to63g"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_0d42q"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="6_gpni3"]
@@ -26,7 +26,7 @@ lock_rotation = true
 max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 1.0
-script = ExtResource("2_j36lg")
+script = ExtResource("2_vuivn")
 starting_velocity = 110.0
 starting_damage = 25
 
