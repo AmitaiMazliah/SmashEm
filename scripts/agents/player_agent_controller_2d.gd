@@ -2,10 +2,8 @@ extends Node2D
 
 @export var distance_from_touch_location_to_count_play : float = 60
 @export var agent_movement_projection: AgentMovementPrediction
-@export var max_points_to_predict: int = 300
 
 @onready var agent: Agent2D = self.get_parent()
-@onready var camera: Camera3D = get_viewport().get_camera_3d()
 
 var pressed: bool
 var input_start_position: Vector2
@@ -22,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		agent_movement_projection.hide()
 
-func _input(event) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		var input = event.position
 		

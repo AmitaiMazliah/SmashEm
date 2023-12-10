@@ -93,7 +93,6 @@ _legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 [node name="PlayerAgentController" type="Node2D" parent="." node_paths=PackedStringArray("agent_movement_projection")]
 script = ExtResource("12_hgxyg")
 agent_movement_projection = NodePath("AgentMovementPrediction")
-max_points_to_predict = 1000
 
 [node name="AgentMovementPrediction" type="Node2D" parent="PlayerAgentController" node_paths=PackedStringArray("agent_collision_shape")]
 script = ExtResource("10_m3u7j")
@@ -106,6 +105,7 @@ texture = ExtResource("4_iupx7")
 texture_mode = 1
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="PlayerAgentController/AgentMovementPrediction"]
+visible = false
 shape = SubResource("CircleShape2D_mdfl4")
 target_position = Vector2(0, 0)
 collide_with_areas = true
