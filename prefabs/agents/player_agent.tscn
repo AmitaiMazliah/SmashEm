@@ -60,7 +60,7 @@ position = Vector2(-36, 44)
 z_index = 10
 position = Vector2(0, 56)
 
-[node name="HealthBar" type="Control" parent="Visuals" node_paths=PackedStringArray("agent")]
+[node name="HealthBar" type="Control" parent="." node_paths=PackedStringArray("agent")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -60.0
@@ -68,9 +68,9 @@ offset_top = -75.0
 offset_right = 60.0
 offset_bottom = -60.0
 script = ExtResource("4_3ji4u")
-agent = NodePath("../..")
+agent = NodePath("..")
 
-[node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
+[node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,14 +98,6 @@ max_points_to_predict = 1000
 [node name="AgentMovementPrediction" type="Node2D" parent="PlayerAgentController" node_paths=PackedStringArray("agent_collision_shape")]
 script = ExtResource("10_m3u7j")
 agent_collision_shape = NodePath("../../CollisionShape2D")
-
-[node name="CollisionCheck" type="CharacterBody2D" parent="PlayerAgentController/AgentMovementPrediction"]
-collision_layer = 0
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAgentController/AgentMovementPrediction/CollisionCheck"]
-shape = SubResource("CircleShape2D_0fnhx")
-debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="PredictionLine" type="Line2D" parent="PlayerAgentController/AgentMovementPrediction"]
 top_level = true

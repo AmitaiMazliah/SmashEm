@@ -3,43 +3,32 @@ extends Node2D
 class_name AgentMovementPrediction
 
 @onready var prediction_line: Line2D = $PredictionLine
-@onready var collision_check: CharacterBody2D = $CollisionCheck
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 
 @export var agent_collision_shape: CollisionShape2D
 
-var agent_collision_shape_id: RID
 var draw_center: Vector2
-
-func _ready() -> void:
-	agent_collision_shape_id = agent_collision_shape.shape.get_rid()
 
 func show_prediction(direction: Vector2, agent_speed: float, delta: float) -> void:
 	var points = calculate_movement(direction, agent_speed, delta)
 	prediction_line.points = points
 	prediction_line.show()
 	
-	var space_state = get_world_2d().direct_space_state
+	draw_center = _get_position_before_colision(direction)
+	queue_redraw()
+
+func _get_position_before_colision(direction: Vector2) -> Vector2:
 	var to = global_position + (direction * 1000)
 	var query = PhysicsRayQueryParameters2D.create(global_position, to)
 	query.collide_with_areas = true
-	#query.collision_mask = 1
+	var space_state = get_world_2d().direct_space_state
 	var result = space_state.intersect_ray(query)
 	if result:
-		var pp = to_local(result.position)
-		
-		shape_cast_2d.target_position = pp
-		var s = shape_cast_2d.get_collision_count()
-		var s1 = shape_cast_2d.get_collision_point(0)
-		var s2 = shape_cast_2d.get_closest_collision_safe_fraction()
-		var s3 = shape_cast_2d.get_closest_collision_unsafe_fraction()
-		print("s=", s, " s1=", s1, " s2=", s2, " s3=", s3)
-		print("p1=", to_global(pp))
-		print("p2=", to_global(pp * s2))
-		print("p3=", to_global(pp * s3))
-		draw_center = pp * s3
-	
-	queue_redraw()
+		var target_position = to_local(result.position)
+		shape_cast_2d.target_position = target_position
+		return target_position * shape_cast_2d.get_closest_collision_unsafe_fraction()
+	else:
+		return Vector2.ZERO
 
 func calculate_movement(direction: Vector2, agent_speed: float, delta: float) -> PackedVector2Array:
 	var points = PackedVector2Array()

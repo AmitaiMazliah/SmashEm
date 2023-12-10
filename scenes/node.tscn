@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_wvhhm"]
 [ext_resource type="PackedScene" uid="uid://bp22mksxi8dw0" path="res://prefabs/turn_queue.tscn" id="6_m7c8m"]
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="6_xu7ma"]
+[ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="9_0ka0l"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="9_ub7xk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_04reb"]
@@ -47,9 +48,6 @@ size = Vector2(78, 239.002)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmb0g"]
 size = Vector2(78, 254.558)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u72fc"]
-radius = 55.0
 
 [node name="Node" type="Node"]
 
@@ -167,9 +165,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 76.
 current = true
 fov = 70.0
 size = 107.999
-
-[node name="PlayerAgent" parent="." instance=ExtResource("6_xu7ma")]
-position = Vector2(190, 771)
 
 [node name="Arena" type="Node" parent="."]
 
@@ -343,16 +338,10 @@ position = Vector2(-38, -132.229)
 shape = SubResource("RectangleShape2D_cmb0g")
 debug_color = Color(0, 0.6, 0.701961, 0.235294)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(642, 571)
-shape = SubResource("CircleShape2D_u72fc")
+[node name="PlayerAgent" parent="." instance=ExtResource("6_xu7ma")]
+position = Vector2(190, 771)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(584, 596)
-shape = SubResource("CircleShape2D_u72fc")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(587, 595)
-shape = SubResource("CircleShape2D_u72fc")
+[node name="AIAgent" parent="." instance=ExtResource("9_0ka0l")]
+position = Vector2(423, 548)
 
 [connection signal="pressed" from="MatchUI/MatchEndPanel/BackButton" to="MatchUI" method="_on_back_button_pressed"]
