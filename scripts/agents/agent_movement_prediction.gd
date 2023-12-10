@@ -4,10 +4,12 @@ class_name AgentMovementPrediction
 
 @onready var prediction_line: Line2D = $PredictionLine
 @onready var collision_check: CharacterBody2D = $CollisionCheck
+@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 
 @export var agent_collision_shape: CollisionShape2D
 
 var agent_collision_shape_id: RID
+var draw_center: Vector2
 
 func _ready() -> void:
 	agent_collision_shape_id = agent_collision_shape.shape.get_rid()
@@ -17,25 +19,27 @@ func show_prediction(direction: Vector2, agent_speed: float, delta: float) -> vo
 	prediction_line.points = points
 	prediction_line.show()
 	
-	_get_position_before_collision(direction, agent_speed, delta)
+	var space_state = get_world_2d().direct_space_state
+	var to = global_position + (direction * 1000)
+	var query = PhysicsRayQueryParameters2D.create(global_position, to)
+	query.collide_with_areas = true
+	#query.collision_mask = 1
+	var result = space_state.intersect_ray(query)
+	if result:
+		var pp = to_local(result.position)
+		
+		shape_cast_2d.target_position = pp
+		var s = shape_cast_2d.get_collision_count()
+		var s1 = shape_cast_2d.get_collision_point(0)
+		var s2 = shape_cast_2d.get_closest_collision_safe_fraction()
+		var s3 = shape_cast_2d.get_closest_collision_unsafe_fraction()
+		print("s=", s, " s1=", s1, " s2=", s2, " s3=", s3)
+		print("p1=", to_global(pp))
+		print("p2=", to_global(pp * s2))
+		print("p3=", to_global(pp * s3))
+		draw_center = pp * s3
+	
 	queue_redraw()
-
-func _get_position_before_collision(direction: Vector2, agent_speed: float, delta: float) -> void:
-	var p: Vector2 = Vector2.ZERO
-	collision_check.position = p
-	var velocity = direction * agent_speed
-	var collision: KinematicCollision2D
-	var d = delta
-	var m = true
-	while m:
-		collision = collision_check.move_and_collide(velocity * d, true)
-		while collision and collision.get_collider_shape().shape.get_rid() != agent_collision_shape_id and d > 0.002:
-			d -= 0.001
-			collision = collision_check.move_and_collide(velocity * d, true)
-		if d <= 0.002:
-			m = false
-		p += velocity * d
-		collision_check.position = p
 
 func calculate_movement(direction: Vector2, agent_speed: float, delta: float) -> PackedVector2Array:
 	var points = PackedVector2Array()
@@ -55,7 +59,7 @@ func calculate_movement(direction: Vector2, agent_speed: float, delta: float) ->
 			break
 	return points
 
-func _draw():
+func _draw() -> void:
 	var angles = [
 		{"start": 2.5, "end": 42.5},
 		{"start": 47.5, "end": 87.5},
@@ -67,9 +71,9 @@ func _draw():
 		{"start": 317.5, "end": 357.5}
 	]
 	for a in angles:
-		draw_circle_arc(collision_check.position, agent_collision_shape.shape.radius, a.start, a.end, Color.WHITE)
+		_draw_circle_arc(draw_center, agent_collision_shape.shape.radius, a.start, a.end, Color.WHITE)
 
-func draw_circle_arc(center, radius, angle_from, angle_to, color):
+func _draw_circle_arc(center, radius, angle_from, angle_to, color):
 	var nb_points = 32
 	var points_arc = PackedVector2Array()
 

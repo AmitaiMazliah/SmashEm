@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://vwth8qa6lmwn"]
+[gd_scene load_steps=10 format=3 uid="uid://vwth8qa6lmwn"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_jnvnm"]
 [ext_resource type="Script" path="res://scripts/agents/agent_ai_2d.gd" id="2_1m0e3"]
-[ext_resource type="Script" path="res://scripts/agents/agent_visuals.gd" id="2_yybyc"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="3_nng2j"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_u55su"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_c3u1n"]
-[ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="6_ijs4a"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="7_hry6l"]
 [ext_resource type="Resource" uid="uid://3uf1hdxpp2fd" path="res://resources/items/plate-boots.tres" id="8_8xgc7"]
 
@@ -28,11 +26,8 @@ starting_velocity = 700.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
-script = ExtResource("6_ijs4a")
-highlight_color = Color(1, 0, 0, 1)
 
 [node name="Visuals" type="Node2D" parent="."]
-script = ExtResource("2_yybyc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, 1)

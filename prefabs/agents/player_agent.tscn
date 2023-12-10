@@ -1,13 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=15 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_y2y5r"]
-[ext_resource type="Script" path="res://scripts/agents/agent_visuals.gd" id="2_err2o"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="3_sn7ia"]
 [ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="3_urv4q"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_3ji4u"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_38tbr"]
-[ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="9_pm1gp"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="10_ca4tq"]
 [ext_resource type="Script" path="res://scripts/agents/agent_movement_prediction.gd" id="10_m3u7j"]
 [ext_resource type="Resource" uid="uid://3uf1hdxpp2fd" path="res://resources/items/plate-boots.tres" id="11_jln01"]
@@ -23,6 +21,9 @@ radius = 55.0
 shader = ExtResource("3_urv4q")
 shader_parameter/scrolling_speed = 2.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdfl4"]
+radius = 55.0
+
 [node name="PlayerAgent" type="RigidBody2D" groups=["Agents"]]
 physics_material_override = SubResource("PhysicsMaterial_hbdn7")
 gravity_scale = 0.0
@@ -35,11 +36,8 @@ starting_velocity = 700.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
-script = ExtResource("9_pm1gp")
-highlight_color = Color(0, 0, 1, 1)
 
 [node name="Visuals" type="Node2D" parent="."]
-script = ExtResource("2_err2o")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, 1)
@@ -114,3 +112,8 @@ top_level = true
 material = SubResource("ShaderMaterial_1efxl")
 texture = ExtResource("4_iupx7")
 texture_mode = 1
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="PlayerAgentController/AgentMovementPrediction"]
+shape = SubResource("CircleShape2D_mdfl4")
+target_position = Vector2(0, 0)
+collide_with_areas = true

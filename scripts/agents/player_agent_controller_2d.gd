@@ -12,19 +12,17 @@ var input_start_position: Vector2
 var direction: Vector2
 var should_draw_projection: bool
 
-func _ready():
+func _ready() -> void:
 	agent.is_player = true
 
-func _process(delta) -> void:
+func _physics_process(delta: float) -> void:
 	if agent.is_my_turn and pressed and should_draw_projection:
 		agent_movement_projection.show_prediction(direction, agent.current_velocity, delta)
 		agent_movement_projection.show()
 	else:
-		#$Node2D/TestDraw.hide()
 		agent_movement_projection.hide()
-		#var d = 5
 
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventScreenTouch:
 		var input = event.position
 		

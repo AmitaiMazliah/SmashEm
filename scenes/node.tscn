@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgff2q1lirw7t"]
+[gd_scene load_steps=23 format=3 uid="uid://cgff2q1lirw7t"]
 
 [ext_resource type="Script" path="res://scripts/UI/match_ui.gd" id="1_i1hxe"]
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="2_fwcwo"]
@@ -7,7 +7,6 @@
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_wvhhm"]
 [ext_resource type="PackedScene" uid="uid://bp22mksxi8dw0" path="res://prefabs/turn_queue.tscn" id="6_m7c8m"]
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="6_xu7ma"]
-[ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="8_2buco"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="9_ub7xk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_04reb"]
@@ -36,6 +35,21 @@ size = Vector2(76.0001, 1173)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g6g1"]
 size = Vector2(78, 1167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_680c4"]
+size = Vector2(78, 255.973)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qwsp"]
+size = Vector2(78, 251.73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpf4v"]
+size = Vector2(78, 239.002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmb0g"]
+size = Vector2(78, 254.558)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u72fc"]
+radius = 55.0
 
 [node name="Node" type="Node"]
 
@@ -155,10 +169,7 @@ fov = 70.0
 size = 107.999
 
 [node name="PlayerAgent" parent="." instance=ExtResource("6_xu7ma")]
-position = Vector2(261, 899)
-
-[node name="AIAgent" parent="." instance=ExtResource("8_2buco")]
-position = Vector2(422, 466)
+position = Vector2(190, 771)
 
 [node name="Arena" type="Node" parent="."]
 
@@ -275,5 +286,73 @@ physics_material_override = ExtResource("9_ub7xk")
 position = Vector2(-38, -156.5)
 shape = SubResource("RectangleShape2D_1g6g1")
 debug_color = Color(0, 0.6, 0.701961, 0.235294)
+
+[node name="TopLeftCorner" type="Node2D" parent="Arena/Colliders"]
+position = Vector2(54, 238)
+rotation = 0.785398
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena/Colliders/TopLeftCorner"]
+collision_layer = 5
+collision_mask = 5
+physics_material_override = ExtResource("9_ub7xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Colliders/TopLeftCorner/StaticBody2D"]
+position = Vector2(-38.0001, -139.3)
+shape = SubResource("RectangleShape2D_680c4")
+debug_color = Color(0, 0.6, 0.701961, 0.235294)
+
+[node name="TopRightCorner" type="Node2D" parent="Arena/Colliders"]
+position = Vector2(723, 192)
+rotation = -0.785398
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena/Colliders/TopRightCorner"]
+collision_layer = 5
+collision_mask = 5
+physics_material_override = ExtResource("9_ub7xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Colliders/TopRightCorner/StaticBody2D"]
+position = Vector2(-38, -149.907)
+shape = SubResource("RectangleShape2D_0qwsp")
+debug_color = Color(0, 0.6, 0.701961, 0.235294)
+
+[node name="BottomLeftCorner" type="Node2D" parent="Arena/Colliders"]
+position = Vector2(164, 1151)
+rotation = -0.785398
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena/Colliders/BottomLeftCorner"]
+collision_layer = 5
+collision_mask = 5
+physics_material_override = ExtResource("9_ub7xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Colliders/BottomLeftCorner/StaticBody2D"]
+position = Vector2(-38.0002, -16.9706)
+shape = SubResource("RectangleShape2D_qpf4v")
+debug_color = Color(0, 0.6, 0.701961, 0.235294)
+
+[node name="BottomRightCorner" type="Node2D" parent="Arena/Colliders"]
+position = Vector2(524, 1285)
+rotation = 0.785398
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena/Colliders/BottomRightCorner"]
+collision_layer = 5
+collision_mask = 5
+physics_material_override = ExtResource("9_ub7xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Colliders/BottomRightCorner/StaticBody2D"]
+position = Vector2(-38, -132.229)
+shape = SubResource("RectangleShape2D_cmb0g")
+debug_color = Color(0, 0.6, 0.701961, 0.235294)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(642, 571)
+shape = SubResource("CircleShape2D_u72fc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(584, 596)
+shape = SubResource("CircleShape2D_u72fc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(587, 595)
+shape = SubResource("CircleShape2D_u72fc")
 
 [connection signal="pressed" from="MatchUI/MatchEndPanel/BackButton" to="MatchUI" method="_on_back_button_pressed"]

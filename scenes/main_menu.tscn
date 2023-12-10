@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://scripts/UI/settings_panel.gd" id="12_bpdcs"]
 [ext_resource type="Texture2D" uid="uid://cavi4fecd3cmi" path="res://art/ui/main-menu/Red_X_Cross_Wrong_Not_clip_art_small.png" id="13_pg5gj"]
 [ext_resource type="Script" path="res://scripts/UI/core/ui_button.gd" id="13_slbhp"]
-[ext_resource type="PackedScene" uid="uid://qo6a5oc54pdy" path="res://scenes/game_scene_base.tscn" id="14_vef7u"]
+[ext_resource type="PackedScene" uid="uid://cgff2q1lirw7t" path="res://scenes/node.tscn" id="14_paibw"]
 [ext_resource type="Script" path="res://scripts/UI/chest_area_ui.gd" id="15_dr38f"]
 [ext_resource type="PackedScene" uid="uid://c4uxbe4mt0ymo" path="res://prefabs/ui/item_view.tscn" id="15_e5ni1"]
 [ext_resource type="PackedScene" uid="uid://ymcc5x36un2d" path="res://prefabs/ui/chest_ui.tscn" id="16_7b5qt"]
@@ -50,9 +50,9 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pno0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="Resource" id="Resource_tjlyx"]
+[sub_resource type="Resource" id="Resource_18eb5"]
 script = ExtResource("4_oh1vm")
-scene_reference = ExtResource("14_vef7u")
+scene_reference = ExtResource("14_paibw")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cgm3"]
 bg_color = Color(0, 0, 0, 0.27451)
@@ -287,7 +287,7 @@ visible = false
 layout_mode = 2
 script = ExtResource("10_o3i1a")
 load_scene_event_channel = ExtResource("2_4dvcv")
-game_scene = SubResource("Resource_tjlyx")
+game_scene = SubResource("Resource_18eb5")
 
 [node name="PlayerData" parent="UI/TabContainer/PlayTab" instance=ExtResource("11_ro0ak")]
 layout_mode = 2
