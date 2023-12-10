@@ -1,4 +1,4 @@
-extends Control
+extends CanvasItem
 
 class_name TestDraw
 
@@ -8,7 +8,9 @@ var _radius: float
 func set_parameters(center: Vector2, radius: float):
 	_center = center
 	_radius = radius
+	print("cennter ", center, " radius ", radius)
 	queue_redraw()
 
 func _draw():
-	draw_arc(_center, _radius * 12, 0, 360, 32, Color.RED, 1)
+	print("drawing")
+	draw_arc(_center, _radius, 0, 360, 32, Color.RED, 5)
