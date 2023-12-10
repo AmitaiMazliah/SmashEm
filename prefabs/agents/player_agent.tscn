@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_3ji4u"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_38tbr"]
-[ext_resource type="Script" path="res://scripts/agents/movement_prediction_line.gd" id="5_af2o0"]
 [ext_resource type="Script" path="res://scripts/agents/agent_highlight.gd" id="9_pm1gp"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="10_ca4tq"]
+[ext_resource type="Script" path="res://scripts/agents/agent_movement_prediction.gd" id="10_m3u7j"]
 [ext_resource type="Resource" uid="uid://3uf1hdxpp2fd" path="res://resources/items/plate-boots.tres" id="11_jln01"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent_controller_2d.gd" id="12_hgxyg"]
 [ext_resource type="Script" path="res://scripts/test_draw.gd" id="13_438nb"]
@@ -27,6 +27,7 @@ shader_parameter/scrolling_speed = 2.0
 [node name="PlayerAgent" type="RigidBody2D" groups=["Agents"]]
 physics_material_override = SubResource("PhysicsMaterial_hbdn7")
 gravity_scale = 0.0
+lock_rotation = true
 max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 1.0
@@ -92,23 +93,26 @@ _right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
 _left_hand_place_holder = NodePath("../Visuals/LeftHandPlaceHolder")
 _legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 
-[node name="PlayerAgentController" type="Node2D" parent="."]
+[node name="PlayerAgentController" type="Node2D" parent="." node_paths=PackedStringArray("agent_movement_projection")]
 script = ExtResource("12_hgxyg")
+agent_movement_projection = NodePath("AgentMovementPrediction")
+max_points_to_predict = 1000
 
-[node name="Node2D" type="Node2D" parent="PlayerAgentController"]
+[node name="AgentMovementPrediction" type="Node2D" parent="PlayerAgentController"]
+script = ExtResource("10_m3u7j")
 
-[node name="MovementPredictionLine" type="Line2D" parent="PlayerAgentController/Node2D"]
+[node name="PredictionLine" type="Line2D" parent="PlayerAgentController/AgentMovementPrediction"]
+top_level = true
 material = SubResource("ShaderMaterial_1efxl")
 texture = ExtResource("4_iupx7")
 texture_mode = 1
-script = ExtResource("5_af2o0")
 
-[node name="TestDraw" type="Node2D" parent="PlayerAgentController/Node2D"]
+[node name="TestDraw" type="Node2D" parent="PlayerAgentController/AgentMovementPrediction"]
 script = ExtResource("13_438nb")
 
-[node name="CollisionCheck" type="CharacterBody2D" parent="PlayerAgentController/Node2D"]
-collision_layer = 4
-collision_mask = 4
+[node name="CollisionCheck" type="CharacterBody2D" parent="PlayerAgentController/AgentMovementPrediction"]
+collision_layer = 0
+collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAgentController/Node2D/CollisionCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAgentController/AgentMovementPrediction/CollisionCheck"]
 shape = SubResource("CircleShape2D_0fnhx")

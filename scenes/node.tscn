@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://3i7egq3yuiwm"]
+[gd_scene load_steps=19 format=3 uid="uid://cgff2q1lirw7t"]
 
 [ext_resource type="Script" path="res://scripts/UI/match_ui.gd" id="1_i1hxe"]
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="2_fwcwo"]
@@ -38,6 +38,9 @@ size = Vector2(76.0001, 1173)
 size = Vector2(78, 1167)
 
 [node name="Node" type="Node"]
+
+[node name="TurnQueue" parent="." instance=ExtResource("6_m7c8m")]
+turn_time_in_secs = 9999.0
 
 [node name="MatchUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_i1hxe")
@@ -150,8 +153,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 76.
 current = true
 fov = 70.0
 size = 107.999
-
-[node name="TurnQueue" parent="." instance=ExtResource("6_m7c8m")]
 
 [node name="PlayerAgent" parent="." instance=ExtResource("6_xu7ma")]
 position = Vector2(261, 899)

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var distance_from_touch_location_to_count_play : float = 60
-@export var agent_movement_projection: Line2D
+@export var agent_movement_projection: AgentMovementPrediction
 @export var max_points_to_predict: int = 300
 
 @onready var agent: Agent2D = self.get_parent()
@@ -17,30 +17,12 @@ func _ready():
 
 func _process(delta) -> void:
 	if agent.is_my_turn and pressed and should_draw_projection:
-		#var points = calculate_movement(direction, delta)
-		#agent_movement_projection.points = points
-		#agent_movement_projection.show()
-		
-		var p : Vector2 = Vector2.ZERO
-		$Node2D/CollisionCheck.position = p
-		var velocity = direction * agent.current_velocity
-		var collision: KinematicCollision2D
-		for i in 3000:
-			collision = $Node2D/CollisionCheck.move_and_collide(velocity * delta, true)
-			if collision:
-				break
-			p += velocity * delta
-			$Node2D/CollisionCheck.position = p
-		
-		$Node2D/TestDraw.set_parameters(p, $Node2D/CollisionCheck/CollisionShape2D.shape.radius)
-		$Node2D/TestDraw.show()
-		$Node2D/CollisionCheck.position = Vector2.ZERO
-		var f = 5
-		
+		agent_movement_projection.show_prediction(direction, agent.current_velocity, delta)
+		agent_movement_projection.show()
 	else:
-		$Node2D/TestDraw.hide()
-		#agent_movement_projection.hide()
-		var d = 5
+		#$Node2D/TestDraw.hide()
+		agent_movement_projection.hide()
+		#var d = 5
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -62,20 +44,3 @@ func _input(event):
 			should_draw_projection = true
 		else:
 			should_draw_projection = false
-
-func calculate_movement(_direction: Vector3, delta: float) -> PackedVector2Array:
-	var points = PackedVector2Array()
-	var space_state = get_world_2d().direct_space_state
-	var current_position : Vector2 = global_position
-	var velocity = _direction * agent.current_velocity
-	var last_position: Vector2
-	for i in max_points_to_predict:
-		last_position = current_position
-		points.append(current_position)
-		current_position += velocity * delta
-		var query = PhysicsRayQueryParameters2D.create(last_position, current_position)
-		query.collide_with_areas = true
-		var result = space_state.intersect_ray(query)
-		if result:
-			break
-	return points
