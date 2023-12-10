@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=16 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_y2y5r"]
 [ext_resource type="Script" path="res://scripts/agents/agent_visuals.gd" id="2_err2o"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://scripts/agents/agent_movement_prediction.gd" id="10_m3u7j"]
 [ext_resource type="Resource" uid="uid://3uf1hdxpp2fd" path="res://resources/items/plate-boots.tres" id="11_jln01"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent_controller_2d.gd" id="12_hgxyg"]
-[ext_resource type="Script" path="res://scripts/test_draw.gd" id="13_438nb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
 bounce = 1.0
@@ -98,17 +97,9 @@ script = ExtResource("12_hgxyg")
 agent_movement_projection = NodePath("AgentMovementPrediction")
 max_points_to_predict = 1000
 
-[node name="AgentMovementPrediction" type="Node2D" parent="PlayerAgentController"]
+[node name="AgentMovementPrediction" type="Node2D" parent="PlayerAgentController" node_paths=PackedStringArray("agent_collision_shape")]
 script = ExtResource("10_m3u7j")
-
-[node name="PredictionLine" type="Line2D" parent="PlayerAgentController/AgentMovementPrediction"]
-top_level = true
-material = SubResource("ShaderMaterial_1efxl")
-texture = ExtResource("4_iupx7")
-texture_mode = 1
-
-[node name="TestDraw" type="Node2D" parent="PlayerAgentController/AgentMovementPrediction"]
-script = ExtResource("13_438nb")
+agent_collision_shape = NodePath("../../CollisionShape2D")
 
 [node name="CollisionCheck" type="CharacterBody2D" parent="PlayerAgentController/AgentMovementPrediction"]
 collision_layer = 0
@@ -116,3 +107,10 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAgentController/AgentMovementPrediction/CollisionCheck"]
 shape = SubResource("CircleShape2D_0fnhx")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="PredictionLine" type="Line2D" parent="PlayerAgentController/AgentMovementPrediction"]
+top_level = true
+material = SubResource("ShaderMaterial_1efxl")
+texture = ExtResource("4_iupx7")
+texture_mode = 1
