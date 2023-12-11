@@ -344,4 +344,7 @@ position = Vector2(190, 771)
 [node name="AIAgent" parent="." instance=ExtResource("9_0ka0l")]
 position = Vector2(423, 548)
 
+[node name="AIAgent2" parent="." instance=ExtResource("9_0ka0l")]
+position = Vector2(470, 918)
+
 [connection signal="pressed" from="MatchUI/MatchEndPanel/BackButton" to="MatchUI" method="_on_back_button_pressed"]
