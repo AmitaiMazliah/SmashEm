@@ -76,4 +76,4 @@ func _on_body_entered(body: Node) -> void:
 
 func _draw() -> void:
 	if is_being_aimed:
-		draw_arc(position, collision_shape.shape.radius, 0, 360, 64, Color.RED, 2)
+		draw_arc(Vector2.ZERO, collision_shape.shape.radius, 0, 360, 64, Color.RED, 2)

@@ -5,9 +5,13 @@ class_name AgentMovementPrediction
 @onready var prediction_line: Line2D = $PredictionLine
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 
-@export var agent_collision_shape: CollisionShape2D
+@export var agent_collision: CollisionObject2D
 
 var draw_center: Vector2
+var _previous_target: Agent2D
+
+func _ready() -> void:
+	shape_cast_2d.add_exception(agent_collision)
 
 func show_prediction(direction: Vector2, agent_speed: float, delta: float) -> void:
 	var points = calculate_movement(direction, agent_speed, delta)
@@ -26,6 +30,13 @@ func _get_position_before_colision(direction: Vector2) -> Vector2:
 	if result:
 		var target_position = to_local(result.position)
 		shape_cast_2d.target_position = target_position
+		if _previous_target:
+			_previous_target.is_being_aimed = false
+		var collider = shape_cast_2d.get_collider(shape_cast_2d.get_collision_count() - 1)
+		if collider is Agent2D:
+			var target = collider as Agent2D
+			target.is_being_aimed = true
+			_previous_target = target
 		return target_position * shape_cast_2d.get_closest_collision_unsafe_fraction()
 	else:
 		return Vector2.ZERO
@@ -60,7 +71,7 @@ func _draw() -> void:
 		{"start": 317.5, "end": 357.5}
 	]
 	for a in angles:
-		_draw_circle_arc(draw_center, agent_collision_shape.shape.radius, a.start, a.end, Color.WHITE)
+		_draw_circle_arc(draw_center, shape_cast_2d.shape.radius, a.start, a.end, Color.WHITE)
 
 func _draw_circle_arc(center, radius, angle_from, angle_to, color):
 	var nb_points = 32
@@ -72,3 +83,8 @@ func _draw_circle_arc(center, radius, angle_from, angle_to, color):
 
 	for index_point in range(nb_points):
 		draw_line(points_arc[index_point], points_arc[index_point + 1], color, 2)
+
+
+func _on_visibility_changed() -> void:
+	if _previous_target:
+		_previous_target.is_being_aimed = false

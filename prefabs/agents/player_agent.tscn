@@ -94,9 +94,8 @@ _legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 script = ExtResource("12_hgxyg")
 agent_movement_projection = NodePath("AgentMovementPrediction")
 
-[node name="AgentMovementPrediction" type="Node2D" parent="PlayerAgentController" node_paths=PackedStringArray("agent_collision_shape")]
+[node name="AgentMovementPrediction" type="Node2D" parent="PlayerAgentController"]
 script = ExtResource("10_m3u7j")
-agent_collision_shape = NodePath("../../CollisionShape2D")
 
 [node name="PredictionLine" type="Line2D" parent="PlayerAgentController/AgentMovementPrediction"]
 top_level = true
@@ -109,3 +108,5 @@ visible = false
 shape = SubResource("CircleShape2D_mdfl4")
 target_position = Vector2(0, 0)
 collide_with_areas = true
+
+[connection signal="visibility_changed" from="PlayerAgentController/AgentMovementPrediction" to="PlayerAgentController/AgentMovementPrediction" method="_on_visibility_changed"]
