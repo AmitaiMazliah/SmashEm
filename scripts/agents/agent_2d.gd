@@ -5,6 +5,8 @@ class_name Agent2D
 signal moved
 signal turn_ended
 
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 @export var starting_velocity: float = 5
 @export var starting_health: int = 100
 @export var starting_damage: int = 5
@@ -17,6 +19,12 @@ var current_health: int
 var current_damage: int
 var previous_velocity: Vector2
 var is_player: bool
+
+var is_being_aimed: bool :
+	set(value):
+		is_being_aimed = value
+		queue_redraw()
+	get: return is_being_aimed
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -65,3 +73,7 @@ func _on_body_entered(body: Node) -> void:
 	if !is_my_turn and body is Agent2D:
 		var attacker = body as Agent2D
 		take_damage(attacker.current_damage)
+
+func _draw() -> void:
+	if is_being_aimed:
+		draw_arc(position, collision_shape.shape.radius, 0, 360, 64, Color.RED, 2)
