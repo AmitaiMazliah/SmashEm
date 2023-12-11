@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="8_3sxbl"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="8_ela1w"]
 [ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/ice-staff.tres" id="9_cyirb"]
-[ext_resource type="Script" path="res://scripts/test_draw.gd" id="9_khrut"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n4g5e"]
 height = 10.0
@@ -122,13 +121,6 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAgentController/CollisionCheck"]
 shape = SubResource("CylinderShape3D_n4g5e")
-
-[node name="TestDraw" type="Control" parent="PlayerAgentController"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("9_khrut")
 
 [node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
 script = ExtResource("8_3sxbl")
