@@ -3,5 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_31550"]
 
 [node name="Ice-staff" type="Sprite2D"]
-scale = Vector2(0.5, 0.5)
+position = Vector2(3, -12)
+rotation = 0.471239
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_31550")

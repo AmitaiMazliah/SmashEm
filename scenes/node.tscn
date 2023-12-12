@@ -52,7 +52,7 @@ size = Vector2(78, 254.558)
 [node name="Node" type="Node"]
 
 [node name="TurnQueue" parent="." instance=ExtResource("6_m7c8m")]
-turn_time_in_secs = 9999.0
+turn_time_in_secs = 10.0
 
 [node name="MatchUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_i1hxe")

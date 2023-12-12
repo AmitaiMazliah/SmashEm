@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_3ji4u"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_38tbr"]
-[ext_resource type="Resource" uid="uid://tiqv2f7n0fb1" path="res://resources/items/smashing-gloves.tres" id="6_87gnf"]
+[ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/ice-staff.tres" id="6_434fd"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="10_ca4tq"]
 [ext_resource type="Script" path="res://scripts/agents/agent_movement_prediction.gd" id="10_m3u7j"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent_controller_2d.gd" id="12_hgxyg"]
@@ -32,7 +32,7 @@ max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("1_y2y5r")
-starting_velocity = 700.0
+starting_velocity = 1400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
@@ -83,7 +83,7 @@ show_percentage = false
 [node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
 script = ExtResource("10_ca4tq")
 current_equipment = {
-"Boots": ExtResource("6_87gnf")
+"Boots": ExtResource("6_434fd")
 }
 _head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
 _right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
