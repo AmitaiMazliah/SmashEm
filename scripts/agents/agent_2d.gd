@@ -85,6 +85,8 @@ func die() -> void:
 	queue_free()
 
 func _on_body_entered(body: Node) -> void:
+	if is_my_turn:
+		agent_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnCollision)
 	if !is_my_turn and body is Agent2D:
 		var attacker = body as Agent2D
 		take_damage(attacker.current_damage)
