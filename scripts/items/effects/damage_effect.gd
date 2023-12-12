@@ -4,12 +4,12 @@ class_name DamageEffect
 
 @export var who_to_damage: Target
 
-func execute(agent: Agent):
+func execute(agent: Agent2D):
 	var targets = _get_targets(who_to_damage, agent)
 	for target in targets:
 		target.health.take_damage(amount)
 
-func _get_targets(who_to_find: Target, agent: Agent) -> Array:
+func _get_targets(who_to_find: Target, agent: Agent2D) -> Array:
 	match who_to_find:
 		Target.All:
 			return _get_all_live_agents(agent)
@@ -23,10 +23,10 @@ func _get_targets(who_to_find: Target, agent: Agent) -> Array:
 			return [_get_nearest_agent(agent)]
 		_: return []
 
-func _get_all_live_agents(agent: Agent) -> Array:
+func _get_all_live_agents(agent: Agent2D) -> Array:
 	return agent.get_tree().get_nodes_in_group("Agents").filter(func (a): return not a.dead)
 
-func _get_nearest_agent(agent: Agent) -> Agent:
+func _get_nearest_agent(agent: Agent2D) -> Agent2D:
 	var min_distance
 	var nearest_agent
 	var other_agents = _get_all_live_agents(agent).filter(func (a): return a != agent)

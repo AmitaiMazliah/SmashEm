@@ -6,6 +6,7 @@ signal moved
 signal turn_ended
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var agent_equipment: AgentEquipment = $AgentEquipment
 
 @export var starting_velocity: float = 5
 @export var starting_health: int = 100
@@ -19,6 +20,17 @@ var current_health: int
 var current_damage: int
 var previous_velocity: Vector2
 var is_player: bool
+
+var status: AgentStatus :
+	set(value):
+		var previous_status = status
+		if previous_status and previous_status.has_method("on_status_ended"):
+			previous_status.on_status_ended(self)
+		status = value
+		if status and status.has_method("on_status_given"):
+			status.on_status_given(self)
+	get:
+		return status
 
 var is_being_aimed: bool :
 	set(value):
@@ -48,11 +60,13 @@ func move(direction: Vector2) -> void:
 
 func start_turn() -> void:
 	print(self.name, " turns has started")
+	agent_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnTurnStart)
 	is_my_turn = true
 
 func end_turn() -> void:
 	print(self.name, " turns has ended")
 	is_my_turn = false
+	agent_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnTurnEnd)
 	turn_ended.emit()
 
 func take_damage(damage: int) -> void:
@@ -67,6 +81,7 @@ func heal(amount: int) -> void:
 
 func die() -> void:
 	print(name, " is now dead")
+	agent_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnDeath)
 	queue_free()
 
 func _on_body_entered(body: Node) -> void:

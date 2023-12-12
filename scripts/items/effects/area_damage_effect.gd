@@ -4,12 +4,12 @@ class_name AreaDamageEffect
 
 @export var radius: float
 
-func execute(agent: Agent3D):
+func execute(agent: Agent2D):
 	var targets = _get_targets(agent)
 	for target in targets:
 		target.health.take_damage(amount)
 
-func _get_targets(agent: Agent3D) -> Array:
+func _get_targets(agent: Agent2D) -> Array:
 	var shape_rid = PhysicsServer2D.circle_shape_create()
 	PhysicsServer2D.shape_set_data(shape_rid, radius)
 	

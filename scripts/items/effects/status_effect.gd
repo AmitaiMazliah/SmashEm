@@ -5,12 +5,12 @@ class_name StatusEffect
 @export var status: AgentStatus
 @export var target: Target
 
-func execute(agent: Agent3D):
+func execute(agent: Agent2D):
 	var targets = _get_targets(target, agent)
-	for current_target: Agent3D in targets:
+	for current_target: Agent2D in targets:
 		current_target.status = status
 
-func _get_targets(who_to_find: Target, agent: Agent3D) -> Array:
+func _get_targets(who_to_find: Target, agent: Agent2D) -> Array:
 	match who_to_find:
 		Target.All:
 			return _get_all_live_agents(agent)
@@ -26,10 +26,10 @@ func _get_targets(who_to_find: Target, agent: Agent3D) -> Array:
 			return [agent]
 		_: return []
 
-func _get_all_live_agents(agent: Agent3D) -> Array:
-	return agent.get_tree().get_nodes_in_group("Agents").filter(func (a): return not a.dead)
+func _get_all_live_agents(agent: Agent2D) -> Array:
+	return agent.get_tree().get_nodes_in_group("Agents")
 
-func _get_nearest_agent(agent: Agent3D) -> Agent3D:
+func _get_nearest_agent(agent: Agent2D) -> Agent2D:
 	var min_distance
 	var nearest_agent
 	var other_agents = _get_all_live_agents(agent).filter(func (a): return a != agent)
