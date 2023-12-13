@@ -33,7 +33,7 @@ func _input(event: InputEvent) -> void:
 			pressed = true
 			should_draw_projection = false
 			input_start_position = input
-		else:
+		elif pressed:
 			pressed = false
 			if input.distance_to(input_start_position) > distance_from_touch_location_to_count_play:
 				agent.move(direction)
