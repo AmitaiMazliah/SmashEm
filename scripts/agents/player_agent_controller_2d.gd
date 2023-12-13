@@ -9,9 +9,11 @@ var pressed: bool
 var input_start_position: Vector2
 var direction: Vector2
 var should_draw_projection: bool
+var played: bool
 
 func _ready() -> void:
 	agent.is_player = true
+	agent.turn_ended.connect(func (): played = false)
 
 func _physics_process(delta: float) -> void:
 	if agent.is_my_turn and pressed and should_draw_projection:
@@ -21,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		agent_movement_projection.hide()
 
 func _input(event: InputEvent) -> void:
-	if not agent.is_my_turn:
+	if not agent.is_my_turn or played:
 		return
 	
 	if event is InputEventScreenTouch:
@@ -35,6 +37,7 @@ func _input(event: InputEvent) -> void:
 			pressed = false
 			if input.distance_to(input_start_position) > distance_from_touch_location_to_count_play:
 				agent.move(direction)
+				played = true
 	elif event is InputEventScreenDrag:
 		var input = event.position
 		
