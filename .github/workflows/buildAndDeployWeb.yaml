@@ -5,7 +5,7 @@ on:
       - main
 
 env:
-  GODOT_VERSION: 4.1.2
+  GODOT_VERSION: 4.2
   EXPORT_NAME: SmashEm
   
 jobs:
@@ -13,7 +13,7 @@ jobs:
     name: Web Export
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.1.2
+      image: barichello/godot-ci:4.2
     steps:
       - name: Checkout
         uses: actions/checkout@v4
