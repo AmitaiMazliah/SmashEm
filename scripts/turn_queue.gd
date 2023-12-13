@@ -28,11 +28,7 @@ func _ready():
 	turn_countdown_progress_bar.value = turn_time_in_secs
 	for agent: Agent2D in agents:
 		agent.moved.connect(_on_agent_moved)
-	get_tree().create_timer(10).timeout.connect(start)
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch and event.pressed:
-		start()
+	get_tree().create_timer(1).timeout.connect(start)
 
 func _process(_delta):
 	if _running:
