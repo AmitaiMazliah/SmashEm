@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://jscrss2sgl0n"]
+
+[ext_resource type="Texture2D" uid="uid://nbf3ktcndh1t" path="res://art/Smoke VFX 2.png" id="1_rfy1t"]
+
+[node name="AgentCollisionEffect" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture = ExtResource("1_rfy1t")
