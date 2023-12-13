@@ -21,6 +21,9 @@ func _physics_process(delta: float) -> void:
 		agent_movement_projection.hide()
 
 func _input(event: InputEvent) -> void:
+	if not agent.is_my_turn:
+		return
+	
 	if event is InputEventScreenTouch:
 		var input = event.position
 		
