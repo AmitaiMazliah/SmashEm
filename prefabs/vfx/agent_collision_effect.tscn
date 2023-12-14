@@ -1,50 +1,50 @@
 [gd_scene load_steps=15 format=3 uid="uid://jscrss2sgl0n"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent_collision_effect.gd" id="1_klr74"]
-[ext_resource type="Texture2D" uid="uid://nbf3ktcndh1t" path="res://art/Smoke VFX 2.png" id="1_rfy1t"]
+[ext_resource type="Texture2D" uid="uid://nbf3ktcndh1t" path="res://art/vfx/Smoke VFX 2.png" id="2_fyau2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x502v"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0bmf"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gbunu"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eu1io"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdufb"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klvvv"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pnw13"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_775jb"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbwi2"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gjie3"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7oa5"]
-atlas = ExtResource("1_rfy1t")
+atlas = ExtResource("2_fyau2")
 region = Rect2(640, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvwig"]
@@ -93,4 +93,4 @@ script = ExtResource("1_klr74")
 
 [node name="SmokeAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvwig")
-frame_progress = 0.0201763
+frame_progress = 0.484963

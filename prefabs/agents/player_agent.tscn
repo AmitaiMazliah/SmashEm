@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=17 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_y2y5r"]
 [ext_resource type="PackedScene" uid="uid://jscrss2sgl0n" path="res://prefabs/vfx/agent_collision_effect.tscn" id="2_6xkav"]
+[ext_resource type="PackedScene" uid="uid://6r4gd80quheg" path="res://prefabs/vfx/agent_wall_collision_effect.tscn" id="3_gamps"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="3_sn7ia"]
 [ext_resource type="Shader" path="res://movement_prediction_line.gdshader" id="3_urv4q"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_3ji4u"]
@@ -35,6 +36,7 @@ linear_damp = 1.0
 script = ExtResource("1_y2y5r")
 starting_velocity = 1400.0
 collision_vfx_prefab = ExtResource("2_6xkav")
+wall_collision_vfx_prefab = ExtResource("3_gamps")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
