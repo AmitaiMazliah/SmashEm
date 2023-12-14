@@ -11,6 +11,7 @@ signal turn_ended
 @export var starting_velocity: float = 5
 @export var starting_health: int = 100
 @export var starting_damage: int = 5
+@export var max_status_count: int = 3
 
 @export_category("VFX")
 @export var collision_vfx_prefab: PackedScene
@@ -26,16 +27,7 @@ var previous_velocity: Vector2
 var is_player: bool
 var collision_pos : Vector2
 
-var status: AgentStatus :
-	set(value):
-		var previous_status = status
-		if previous_status and previous_status.has_method("on_status_ended"):
-			previous_status.on_status_ended(self)
-		status = value
-		if status and status.has_method("on_status_given"):
-			status.on_status_given(self)
-	get:
-		return status
+var statuses: Array[AgentStatus] = []
 
 var is_being_aimed: bool :
 	set(value):
@@ -88,6 +80,20 @@ func die() -> void:
 	print(name, " is now dead")
 	agent_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnDeath)
 	queue_free()
+
+func give_status(status: AgentStatus) -> void:
+	if statuses.has(status):
+		print(name, " already has this status, ignoring")
+		return
+	if len(statuses) >= max_status_count:
+		var status_to_remove = statuses.pop_back()
+		print(name, " has too many statuses, removing last status")
+		if status_to_remove.has_method("on_status_ended"):
+			status_to_remove.on_status_ended(self)
+	if status.has_method("on_status_given"):
+		status.on_status_given(self)
+	statuses.append(status)
+	print(name, " now has ", len(statuses), " statuses")
 
 func _on_body_entered(body: Node) -> void:
 	var collision_vfx
