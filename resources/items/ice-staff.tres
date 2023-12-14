@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_ej7sp"]
 script = ExtResource("2_vc4og")
-change_percentage = -0.95
+change_percentage = -0.05
 duration = 1
 
 [sub_resource type="Resource" id="Resource_jeerm"]

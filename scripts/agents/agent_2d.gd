@@ -12,6 +12,9 @@ signal turn_ended
 @export var starting_health: int = 100
 @export var starting_damage: int = 5
 
+@export_category("VFX")
+@export var collision_vfx_prefab: PackedScene
+
 var is_my_turn: bool
 var moving: bool
 var current_velocity: float
@@ -20,6 +23,7 @@ var current_health: int
 var current_damage: int
 var previous_velocity: Vector2
 var is_player: bool
+var collision_pos : Vector2
 
 var status: AgentStatus :
 	set(value):
@@ -85,11 +89,18 @@ func die() -> void:
 	queue_free()
 
 func _on_body_entered(body: Node) -> void:
+	var collision_vfx = collision_vfx_prefab.instantiate() as AgentCollisionEffect
+	collision_vfx.position = collision_pos
+	get_tree().root.add_child(collision_vfx)
 	if is_my_turn:
 		agent_equipment.execute_all_effect_for_time(self, Effect.EffectTime.OnCollision)
 	if !is_my_turn and body is Agent2D:
 		var attacker = body as Agent2D
 		take_damage(attacker.current_damage)
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if state.get_contact_count() > 0:
+		collision_pos = state.get_contact_local_position(0)
 
 func _draw() -> void:
 	if is_being_aimed:

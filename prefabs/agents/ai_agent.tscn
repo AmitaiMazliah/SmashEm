@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://vwth8qa6lmwn"]
+[gd_scene load_steps=11 format=3 uid="uid://vwth8qa6lmwn"]
 
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_jnvnm"]
 [ext_resource type="Script" path="res://scripts/agents/agent_ai_2d.gd" id="2_1m0e3"]
+[ext_resource type="PackedScene" uid="uid://jscrss2sgl0n" path="res://prefabs/vfx/agent_collision_effect.tscn" id="2_4oimm"]
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="3_nng2j"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_u55su"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_c3u1n"]
@@ -22,7 +23,8 @@ max_contacts_reported = 10
 contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("1_jnvnm")
-starting_velocity = 700.0
+starting_velocity = 1400.0
+collision_vfx_prefab = ExtResource("2_4oimm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
