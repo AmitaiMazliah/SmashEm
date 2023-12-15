@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ux05o5ugmaw"]
+
+[ext_resource type="Script" path="res://scripts/UI/match/player_panel.gd" id="1_4i5iu"]
+[ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_y6c2m"]
+
+[node name="PlayerPanel" type="Panel"]
+custom_minimum_size = Vector2(150, 0)
+script = ExtResource("1_4i5iu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y6c2m")
+expand_mode = 1
+stretch_mode = 5

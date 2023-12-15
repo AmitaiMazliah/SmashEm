@@ -9,7 +9,8 @@
 [sub_resource type="Resource" id="Resource_ej7sp"]
 script = ExtResource("2_vc4og")
 change_percentage = -0.05
-duration = 1
+name = "Slowed"
+description = "haha u r slowed"
 
 [sub_resource type="Resource" id="Resource_jeerm"]
 script = ExtResource("1_87cl2")
