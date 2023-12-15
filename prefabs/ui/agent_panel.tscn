@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="2_y6c2m"]
 
 [node name="PlayerPanel" type="Panel"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(150, 140)
 script = ExtResource("1_4i5iu")
 
 [node name="TextureRect" type="TextureRect" parent="."]
