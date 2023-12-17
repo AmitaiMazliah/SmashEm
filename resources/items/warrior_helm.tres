@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://bas1gvh2c13qs"]
 
+[ext_resource type="Texture2D" uid="uid://bs60jio0hhami" path="res://art/items/warrior-helm.png" id="1_47ts1"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_iviyx"]
-[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_kbwkr"]
 
 [resource]
 script = ExtResource("1_iviyx")
 name = "Warrior Helm"
 description = ""
-icon = ExtResource("1_kbwkr")
+icon = ExtResource("1_47ts1")
 slot = 0
 bonus_health = 10
 bonus_damage = 5

@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://3uf1hdxpp2fd"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_fa52v"]
-[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_ramqt"]
+[ext_resource type="Texture2D" uid="uid://h7bvt2pyua5l" path="res://art/items/paladin-boots.png" id="1_wtm0g"]
 
 [resource]
 script = ExtResource("1_fa52v")
 name = "Plate Boots"
 description = "health bonus
 shield?"
-icon = ExtResource("1_ramqt")
-slot = 0
+icon = ExtResource("1_wtm0g")
+slot = 3
 bonus_health = 0
 bonus_damage = 0
 effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])

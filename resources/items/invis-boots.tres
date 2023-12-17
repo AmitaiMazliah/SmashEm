@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://ct7fhvulbya5k"]
 
-[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_0myk5"]
+[ext_resource type="Texture2D" uid="uid://b8o3y4heprbue" path="res://art/items/invis-boots.png" id="1_7ro1l"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_x5ct0"]
 
 [resource]
 script = ExtResource("1_x5ct0")
 name = "Invis Boots"
 description = "These boots allow you to move tho other agents"
-icon = ExtResource("1_0myk5")
+icon = ExtResource("1_7ro1l")
 slot = 3
 bonus_health = 0
 bonus_damage = 0

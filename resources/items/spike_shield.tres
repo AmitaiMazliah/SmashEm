@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://bekvfnso28m3a"]
 
+[ext_resource type="Texture2D" uid="uid://8t8bp2st2oj2" path="res://art/items/spiked-shield.png" id="1_plt7j"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_rvywl"]
-[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_vyhia"]
 
 [resource]
 script = ExtResource("1_rvywl")
 name = "Spike Shield"
 description = ""
-icon = ExtResource("1_vyhia")
+icon = ExtResource("1_plt7j")
 slot = 2
 bonus_health = 20
 bonus_damage = 0

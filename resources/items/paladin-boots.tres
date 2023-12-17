@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_raedn"]
 [ext_resource type="Script" path="res://scripts/items/effects/heal_effect.gd" id="1_roj87"]
-[ext_resource type="Texture2D" uid="uid://dr865ac8d8kco" path="res://art/items/ice-staff.png" id="1_s06av"]
+[ext_resource type="Texture2D" uid="uid://h7bvt2pyua5l" path="res://art/items/paladin-boots.png" id="2_ei1oh"]
 
 [sub_resource type="Resource" id="Resource_ulty6"]
 script = ExtResource("1_roj87")
@@ -13,8 +13,8 @@ amount = 2
 script = ExtResource("1_raedn")
 name = "Paladin Boots"
 description = "heal yourself on hit"
-icon = ExtResource("1_s06av")
-slot = 0
+icon = ExtResource("2_ei1oh")
+slot = 3
 bonus_health = 0
 bonus_damage = 0
 effects = Array[Resource("res://scripts/items/effects/effect.gd")]([SubResource("Resource_ulty6")])

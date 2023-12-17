@@ -12,9 +12,11 @@ func _ready():
 	_item_details_popup.use_item.connect(_on_use_item)
 	_prepare_player_items_view()
 	
-	for item in Player.owned_items:
+	var owned_unused_items = Player.owned_items \
+		.filter(func (player_equipment: PlayerEquipment): return not Player.selected_items.values().has(player_equipment))
+	for player_equipment: PlayerEquipment in owned_unused_items:
 		var item_view = _create_item_view()
-		item_view.ready.connect(item_view.set_item.bind(item))
+		item_view.ready.connect(item_view.set_item.bind(player_equipment))
 		_owned_items_grid.add_child(item_view)
 
 func _create_item_view() -> ItemSlotView:
