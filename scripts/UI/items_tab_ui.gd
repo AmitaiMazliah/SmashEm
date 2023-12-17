@@ -12,8 +12,6 @@ func _ready():
 	_item_details_popup.use_item.connect(_on_use_item)
 	_prepare_player_items_view()
 	
-	Player.owned_items.append_array(_items_catalog.equipment.map(func (e): return PlayerEquipment.new(e, 1, 1)))
-	
 	for item in Player.owned_items:
 		var item_view = _create_item_view()
 		item_view.ready.connect(item_view.set_item.bind(item))

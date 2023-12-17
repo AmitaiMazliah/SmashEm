@@ -1231,33 +1231,6 @@ layout_mode = 2
 mouse_filter = 2
 columns = 4
 
-[node name="ItemView" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
-[node name="ItemView2" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
-[node name="ItemView3" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
-[node name="ItemView4" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
-[node name="ItemView5" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
-[node name="ItemView6" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
-[node name="ItemView7" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
-[node name="ItemView8" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
-[node name="ItemView9" parent="UI/TabContainer/ItemsTab/ScrollContainer/MarginContainer/ItemsContainer/OwnedItemsGridContainer" instance=ExtResource("15_e5ni1")]
-layout_mode = 2
-
 [node name="ItemDetailsPopup" type="Control" parent="UI/TabContainer/ItemsTab"]
 visible = false
 anchors_preset = 0
