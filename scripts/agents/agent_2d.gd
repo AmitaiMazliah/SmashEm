@@ -86,7 +86,7 @@ func give_status(status: AgentStatus) -> void:
 		print(name, " already has this status, ignoring")
 		return
 	if len(statuses) >= max_status_count:
-		var status_to_remove = statuses.pop_back()
+		var status_to_remove = statuses.pop_front()
 		print(name, " has too many statuses, removing last status")
 		if status_to_remove.has_method("on_status_ended"):
 			status_to_remove.on_status_ended(self)
