@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgff2q1lirw7t"]
+[gd_scene load_steps=35 format=3 uid="uid://cgff2q1lirw7t"]
 
 [ext_resource type="Script" path="res://scripts/UI/match_ui.gd" id="1_i1hxe"]
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="2_fwcwo"]
@@ -10,8 +10,48 @@
 [ext_resource type="PackedScene" uid="uid://dd6skvb0tvmwh" path="res://prefabs/agents/player_agent.tscn" id="6_xu7ma"]
 [ext_resource type="Script" path="res://scripts/UI/match/agent_details_panel.gd" id="8_y0ba1"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="9_0ka0l"]
-[ext_resource type="PackedScene" uid="uid://geywmdguejwv" path="res://prefabs/ui/status_details.tscn" id="9_iq8yi"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="9_ub7xk"]
+[ext_resource type="PackedScene" uid="uid://pfqjg8d2dnr1" path="res://prefabs/ui/status_container.tscn" id="9_y4sxa"]
+[ext_resource type="Texture2D" uid="uid://b80nmeo74k1hy" path="res://art/ui/main-menu/heart-icon.png" id="10_bhevk"]
+[ext_resource type="Texture2D" uid="uid://ctupjkes4ls8i" path="res://art/ui/main-menu/sword-icon.png" id="11_shfb4"]
+[ext_resource type="Texture2D" uid="uid://j17e03vwph15" path="res://art/ui/main-menu/helm-icon.png" id="12_lemv4"]
+[ext_resource type="Texture2D" uid="uid://bvqf1pgluhqdi" path="res://art/ui/main-menu/items-tab/sword-icon.png" id="13_0lwy8"]
+[ext_resource type="Texture2D" uid="uid://y8nf6ke8fdeq" path="res://art/ui/main-menu/items-tab/shield-icon.png" id="14_etr5o"]
+[ext_resource type="Texture2D" uid="uid://dmidt3q743mlb" path="res://art/ui/main-menu/boots-icon.png" id="15_tksxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxi2c"]
+bg_color = Color(0.133333, 0.301961, 0.423529, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.690196, 0.768627, 0.886275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n14gm"]
+bg_color = Color(0.811765, 0.854902, 0.921569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.52549, 0.596078, 0.694118, 1)
+shadow_size = 2
+shadow_offset = Vector2(-2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kduk5"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_04reb"]
 size = Vector2(100, 200)
@@ -135,7 +175,6 @@ layout_mode = 2
 alignment = 1
 
 [node name="AgentDetailsPanel" type="Panel" parent="MatchUI"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -148,7 +187,7 @@ offset_bottom = 285.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_y0ba1")
-status_details_prefab = ExtResource("9_iq8yi")
+status_details_prefab = ExtResource("9_y4sxa")
 
 [node name="MarginContainer" type="MarginContainer" parent="MatchUI/AgentDetailsPanel"]
 layout_mode = 1
@@ -165,13 +204,246 @@ theme_override_constants/margin_bottom = 10
 [node name="Control" type="Control" parent="MatchUI/AgentDetailsPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="StatusesContainer" type="VBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control"]
+[node name="AgentStatsPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 235.0
+grow_horizontal = 2
+theme = ExtResource("5_wvhhm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wxi2c")
+
+[node name="MarginContainer" type="MarginContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AgentHealthPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_wvhhm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_n14gm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("10_bhevk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AgentHealth" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_wvhhm")
+bbcode_enabled = true
+text = "[font_size=24][color=black]Hitpoints[/color]
+50/50[/font_size]"
+
+[node name="AgentSpeedPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_wvhhm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_n14gm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("11_shfb4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AgentSpeed" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_wvhhm")
+bbcode_enabled = true
+text = "[font_size=24][color=black]Speed[/color]
+50[/font_size]"
+
+[node name="AgentDamagePanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_wvhhm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_n14gm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("11_shfb4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AgentDamage" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_wvhhm")
+bbcode_enabled = true
+text = "[font_size=24][color=black]Damage[/color]
+50[/font_size]"
+
+[node name="MyItemsContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -29.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HeadSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("5_wvhhm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
+
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer/HeadSlot"]
+self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_lemv4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("5_wvhhm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
+
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer/RightHandSlot"]
+self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_0lwy8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("5_wvhhm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
+
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer/LeftHandSlot"]
+self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_etr5o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BootsSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("5_wvhhm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
+
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer/BootsSlot"]
+self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_tksxi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StatusesContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -127.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_right = 720.0

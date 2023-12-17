@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpeedStatus" load_steps=3 format=3 uid="uid://dbhfp2bubqtju"]
+
+[ext_resource type="Script" path="res://scripts/agents/statuses/speed_status.gd" id="1_1ucv1"]
+[ext_resource type="Texture2D" uid="uid://b7kbg6csm7ba0" path="res://art/status-icons/poison-icon.png" id="1_mlli7"]
+
+[resource]
+script = ExtResource("1_1ucv1")
+change_percentage = -0.05
+name = "Slowed"
+description = "haha u r slowed"
+icon = ExtResource("1_mlli7")

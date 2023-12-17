@@ -1,19 +1,13 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://geett66gbknt"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://geett66gbknt"]
 
 [ext_resource type="Script" path="res://scripts/items/effects/status_effect.gd" id="1_bm2hb"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_iwp1n"]
-[ext_resource type="Script" path="res://scripts/agents/statuses/speed_status.gd" id="2_4spgg"]
+[ext_resource type="Resource" uid="uid://bbx8scrsrgrhq" path="res://resources/statuses/speed-boost-status.tres" id="2_j3o5b"]
 [ext_resource type="Texture2D" uid="uid://b6habddmqc04c" path="res://art/items/speed-boots.png" id="3_tw3qh"]
-
-[sub_resource type="Resource" id="Resource_iusc4"]
-script = ExtResource("2_4spgg")
-change_percentage = 0.5
-name = ""
-description = ""
 
 [sub_resource type="Resource" id="Resource_ofpvs"]
 script = ExtResource("1_bm2hb")
-status = SubResource("Resource_iusc4")
+status = ExtResource("2_j3o5b")
 target = 0
 time = 0
 amount = 0

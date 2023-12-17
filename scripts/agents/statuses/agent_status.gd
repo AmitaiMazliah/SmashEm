@@ -4,6 +4,7 @@ class_name AgentStatus
 
 @export var name: String
 @export_multiline var description: String
+@export var icon: Texture
 
 var _agent: Agent2D
 
