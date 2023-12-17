@@ -1,5 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://dd6skvb0tvmwh"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="1_jfxcy"]
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_y2y5r"]
 [ext_resource type="PackedScene" uid="uid://jscrss2sgl0n" path="res://prefabs/vfx/agent_collision_effect.tscn" id="2_6xkav"]
 [ext_resource type="PackedScene" uid="uid://6r4gd80quheg" path="res://prefabs/vfx/agent_wall_collision_effect.tscn" id="3_gamps"]
@@ -13,9 +14,6 @@
 [ext_resource type="Script" path="res://scripts/agents/agent_movement_prediction.gd" id="10_m3u7j"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent_controller_2d.gd" id="12_hgxyg"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hbdn7"]
-bounce = 1.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
 radius = 55.0
 
@@ -27,7 +25,7 @@ shader_parameter/scrolling_speed = 2.0
 radius = 55.0
 
 [node name="PlayerAgent" type="RigidBody2D" groups=["Agents"]]
-physics_material_override = SubResource("PhysicsMaterial_hbdn7")
+physics_material_override = ExtResource("1_jfxcy")
 gravity_scale = 0.0
 lock_rotation = true
 max_contacts_reported = 10
