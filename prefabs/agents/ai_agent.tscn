@@ -74,9 +74,6 @@ show_percentage = false
 
 [node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
 script = ExtResource("7_hry6l")
-current_equipment = {
-"Boots": ExtResource("8_8xgc7")
-}
 _head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
 _right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
 _left_hand_place_holder = NodePath("../Visuals/LeftHandPlaceHolder")
