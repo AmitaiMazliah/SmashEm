@@ -4,6 +4,7 @@ class_name Agent2D
 
 signal moved
 signal turn_ended
+signal statuses_changed(statuses: Array[AgentStatus])
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var agent_equipment: AgentEquipment = $AgentEquipment
@@ -93,6 +94,7 @@ func give_status(status: AgentStatus) -> void:
 	if status.has_method("on_status_given"):
 		status.on_status_given(self)
 	statuses.append(status)
+	statuses_changed.emit(statuses)
 	print(name, " now has ", len(statuses), " statuses")
 
 func _on_body_entered(body: Node) -> void:

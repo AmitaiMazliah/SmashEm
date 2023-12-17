@@ -24,15 +24,11 @@ func _ready() -> void:
 func set_agent(agent: Agent2D):
 	print("need to show details of ", agent.name)
 	_agent = agent
-	for status: AgentStatus in agent.statuses:
-		var status_details = status_details_prefab.instantiate() as StatusDetailsUI
-		status_details.ready.connect(func (): status_details.set_agent_status(status))
-		statuses_container.add_child(status_details)
+	agent.statuses_changed.connect(_on_agent_statuses_changed)
+	_on_agent_statuses_changed(agent.statuses)
 	show()
 
 func close():
-	for child: Node in statuses_container.get_children():
-		child.queue_free()
 	hide()
 
 func _process(delta: float) -> void:
@@ -49,3 +45,11 @@ func _process(delta: float) -> void:
 	agent_damage_label.text = AGENT_DAMAGE_TEXT.format({
 		"damage": _agent.current_damage
 	})
+
+func _on_agent_statuses_changed(statuses: Array[AgentStatus]) -> void:
+	for child: Node in statuses_container.get_children():
+		child.queue_free()
+	for status: AgentStatus in statuses:
+		var status_details = status_details_prefab.instantiate() as StatusDetailsUI
+		status_details.ready.connect(func (): status_details.set_agent_status(status))
+		statuses_container.add_child(status_details)
