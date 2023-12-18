@@ -11,9 +11,7 @@ func init():
 	print("Items catalog successfuly initialized")
 
 func _get_catalog():
-	var dict = {
-	}
-	var result = await MyPlayFab.send_request(dict, "/Catalog/SearchItems", PlayFab.AUTH_TYPE.ENTITY_TOKEN).settled
+	var result: Promise.PromiseResult = await MyPlayFab.send_request({}, "/Catalog/SearchItems", PlayFab.AUTH_TYPE.ENTITY_TOKEN).settled
 	if result.status == Promise.Status.RESOLVED:
 		var catalog_items = result.payload.data.Items.map(func (item):
 			return CatalogItem.new(item.Id, item.Title.get("NEUTRAL", ""), item.Description.get("NEUTRAL", ""), CatalogItemType.get(item.Type)))

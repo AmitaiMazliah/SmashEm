@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_u55su"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_c3u1n"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="7_hry6l"]
-[ext_resource type="Resource" uid="uid://3uf1hdxpp2fd" path="res://resources/items/plate-boots.tres" id="8_8xgc7"]
+[ext_resource type="Resource" uid="uid://d0chcwn00fwsc" path="res://resources/items_catalog.tres" id="10_e7ho8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
 radius = 55.0
@@ -83,3 +83,4 @@ _legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 script = ExtResource("2_1m0e3")
 min_think_time_in_secs = 0.1
 max_think_time_in_secs = 1.0
+item_catalog = ExtResource("10_e7ho8")

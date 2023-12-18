@@ -42,7 +42,7 @@ func _ready() -> void:
 	max_health = starting_health
 	current_health = max_health
 	current_damage = starting_damage
-	var equipment = {}
+	var equipment := {}
 	if is_player:
 		for player_equipment: PlayerEquipment in Player.selected_items.values():
 			if player_equipment:

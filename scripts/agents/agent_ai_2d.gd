@@ -4,6 +4,8 @@ class_name AgentAI3D
 
 @export var min_think_time_in_secs: float = 1
 @export var max_think_time_in_secs: float = 5
+@export_range(0, 1, 0.01) var chance_to_have_item: float = 0.25
+@export var item_catalog: ItemsCatalog
 
 @onready var agent: Agent2D = self.get_parent()
 
@@ -11,6 +13,13 @@ var _played_turn: bool
 
 func _ready():
 	agent.turn_ended.connect(_on_agent_turn_ended)
+	var equipment := {}
+	for slot in Equipment.Slot.values():
+		randomize()
+		var randomNumber = randi() % 100
+		if randomNumber <= (chance_to_have_item * 100):
+			equipment[slot] = item_catalog.equipment.pick_random()
+	agent.ready.connect(func (): agent.agent_equipment.set_equipment(equipment))
 
 func _process(_delta):
 	if agent.is_my_turn and not _played_turn:
