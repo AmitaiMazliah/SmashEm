@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scripts/UI/match/agent_details_panel.gd" id="8_y0ba1"]
 [ext_resource type="PackedScene" uid="uid://vwth8qa6lmwn" path="res://prefabs/agents/ai_agent.tscn" id="9_0ka0l"]
 [ext_resource type="PhysicsMaterial" uid="uid://hlsflh436ngb" path="res://arena_wall_physics_material.tres" id="9_ub7xk"]
-[ext_resource type="PackedScene" uid="uid://pfqjg8d2dnr1" path="res://prefabs/ui/status_container.tscn" id="9_y4sxa"]
+[ext_resource type="PackedScene" path="res://prefabs/ui/status_container.tscn" id="9_y4sxa"]
 [ext_resource type="Texture2D" uid="uid://b80nmeo74k1hy" path="res://art/ui/main-menu/heart-icon.png" id="10_bhevk"]
 [ext_resource type="Texture2D" uid="uid://ctupjkes4ls8i" path="res://art/ui/main-menu/sword-icon.png" id="11_shfb4"]
 [ext_resource type="Texture2D" uid="uid://j17e03vwph15" path="res://art/ui/main-menu/helm-icon.png" id="12_lemv4"]
@@ -180,10 +180,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -285.0
-offset_right = 224.0
-offset_bottom = 285.0
+offset_left = -250.0
+offset_top = -325.0
+offset_right = 250.0
+offset_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_y0ba1")
@@ -204,16 +204,22 @@ theme_override_constants/margin_bottom = 10
 [node name="Control" type="Control" parent="MatchUI/AgentDetailsPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="AgentStatsPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 235.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AgentStatsPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 255)
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_wxi2c")
 
-[node name="MarginContainer" type="MarginContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,17 +231,17 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="AgentHealthPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer"]
+[node name="AgentHealthPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_n14gm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -244,14 +250,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("10_bhevk")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AgentHealth" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel/HBoxContainer"]
+[node name="AgentHealth" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_wvhhm")
@@ -259,13 +265,13 @@ bbcode_enabled = true
 text = "[font_size=24][color=black]Hitpoints[/color]
 50/50[/font_size]"
 
-[node name="AgentSpeedPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer"]
+[node name="AgentSpeedPanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_n14gm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -274,14 +280,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("11_shfb4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AgentSpeed" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel/HBoxContainer"]
+[node name="AgentSpeed" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_wvhhm")
@@ -289,13 +295,13 @@ bbcode_enabled = true
 text = "[font_size=24][color=black]Speed[/color]
 50[/font_size]"
 
-[node name="AgentDamagePanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer"]
+[node name="AgentDamagePanel" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_n14gm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -304,14 +310,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("11_shfb4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AgentDamage" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel/HBoxContainer"]
+[node name="AgentDamage" type="RichTextLabel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_wvhhm")
@@ -319,28 +325,22 @@ bbcode_enabled = true
 text = "[font_size=24][color=black]Damage[/color]
 50[/font_size]"
 
-[node name="MyItemsContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -29.0
-offset_bottom = 124.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MyItemsContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="HeadSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer"]
+[node name="HeadSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer/HeadSlot"]
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer/HeadSlot"]
 self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
 layout_mode = 1
 anchors_preset = 8
@@ -358,14 +358,14 @@ texture = ExtResource("12_lemv4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="RightHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer"]
+[node name="RightHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer/RightHandSlot"]
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer/RightHandSlot"]
 self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
 layout_mode = 1
 anchors_preset = 8
@@ -383,14 +383,14 @@ texture = ExtResource("13_0lwy8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LeftHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer"]
+[node name="LeftHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer/LeftHandSlot"]
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer/LeftHandSlot"]
 self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
 layout_mode = 1
 anchors_preset = 8
@@ -408,14 +408,14 @@ texture = ExtResource("14_etr5o")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BootsSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer"]
+[node name="BootsSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/MyItemsContainer/BootsSlot"]
+[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer/BootsSlot"]
 self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
 layout_mode = 1
 anchors_preset = 8
@@ -433,15 +433,15 @@ texture = ExtResource("15_tksxi")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StatusesContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -127.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Label" type="Label" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Statuses"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusesContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 10
 alignment = 1
 
