@@ -42,6 +42,12 @@ func _ready() -> void:
 	max_health = starting_health
 	current_health = max_health
 	current_damage = starting_damage
+	var equipment = {}
+	if is_player:
+		for player_equipment: PlayerEquipment in Player.selected_items.values():
+			if player_equipment:
+				equipment[player_equipment.equipment.slot] = player_equipment.equipment
+	agent_equipment.set_equipment(equipment)
 
 func _physics_process(_delta) -> void:
 	if linear_velocity.length_squared() > 2:

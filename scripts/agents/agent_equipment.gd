@@ -9,16 +9,14 @@ class_name AgentEquipment
 
 var current_equipment : Dictionary = {}
 
-func _ready():
-	for player_equipment: PlayerEquipment in Player.selected_items.values():
-		if player_equipment:
-			current_equipment[player_equipment.equipment.slot] = player_equipment.equipment
-	for equipment: Equipment in current_equipment.values():
-		if not equipment.prefab:
-			printerr(equipment.name, " has no prefab")
+func set_equipment(equipment: Dictionary) -> void:
+	current_equipment = equipment
+	for e: Equipment in current_equipment.values():
+		if not e.prefab:
+			printerr(e.name, " has no prefab")
 		else:
-			var equipment_instance = equipment.prefab.instantiate()
-			match equipment.slot:
+			var equipment_instance = e.prefab.instantiate()
+			match e.slot:
 				Equipment.Slot.Head:
 					_head_place_holder.add_child(equipment_instance)
 				Equipment.Slot.RightHand:
