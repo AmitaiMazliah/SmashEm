@@ -325,7 +325,7 @@ bbcode_enabled = true
 text = "[font_size=24][color=black]Damage[/color]
 50[/font_size]"
 
-[node name="MyItemsContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer"]
+[node name="AgentItemsContainer" type="HBoxContainer" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_vertical = 3
@@ -333,14 +333,14 @@ mouse_filter = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="HeadSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer"]
+[node name="HeadSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer/HeadSlot"]
+[node name="DefaultHeadItemIcon" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer/HeadSlot"]
 self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
 layout_mode = 1
 anchors_preset = 8
@@ -358,14 +358,30 @@ texture = ExtResource("12_lemv4")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="RightHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer"]
+[node name="HeadItemIcon" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer/HeadSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer/RightHandSlot"]
+[node name="DefaultRightHandItemIcon" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer/RightHandSlot"]
 self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
 layout_mode = 1
 anchors_preset = 8
@@ -383,14 +399,30 @@ texture = ExtResource("13_0lwy8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LeftHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer"]
+[node name="RightHandItemIcon" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer/RightHandSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftHandSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer/LeftHandSlot"]
+[node name="DefaultLeftHandItemIcon" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer/LeftHandSlot"]
 self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
 layout_mode = 1
 anchors_preset = 8
@@ -408,14 +440,30 @@ texture = ExtResource("14_etr5o")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BootsSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer"]
+[node name="LeftHandItemIcon" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer/LeftHandSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BootsSlot" type="Panel" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("5_wvhhm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kduk5")
 
-[node name="TextureRect" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/MyItemsContainer/BootsSlot"]
+[node name="DefaultBootsItemIcon" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer/BootsSlot"]
 self_modulate = Color(0.67451, 0.67451, 0.67451, 0.666667)
 layout_mode = 1
 anchors_preset = 8
@@ -430,6 +478,22 @@ offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_tksxi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BootsItemIcon" type="TextureRect" parent="MatchUI/AgentDetailsPanel/MarginContainer/Control/VBoxContainer/AgentItemsContainer/BootsSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -67.5
+offset_right = 46.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
