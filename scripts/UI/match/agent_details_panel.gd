@@ -9,10 +9,10 @@ const AGENT_SPEED_TEXT = "[font_size=24][color=black]Speed[/color]
 const AGENT_DAMAGE_TEXT = "[font_size=24][color=black]Damage[/color]
 {damage}[/font_size]"
 
-@onready var agent_health_label: RichTextLabel = $MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel/HBoxContainer/AgentHealth
-@onready var agent_speed_label: RichTextLabel = $MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel/HBoxContainer/AgentSpeed
-@onready var agent_damage_label: RichTextLabel = $MarginContainer/Control/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel/HBoxContainer/AgentDamage
-@onready var statuses_container: Control = $MarginContainer/Control/StatusesContainer
+@onready var agent_health_label: RichTextLabel = $MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentHealthPanel/HBoxContainer/AgentHealth
+@onready var agent_speed_label: RichTextLabel = $MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentSpeedPanel/HBoxContainer/AgentSpeed
+@onready var agent_damage_label: RichTextLabel = $MarginContainer/Control/VBoxContainer/AgentStatsPanel/MarginContainer/VBoxContainer/AgentDamagePanel/HBoxContainer/AgentDamage
+@onready var statuses_container: Control = $MarginContainer/Control/VBoxContainer/StatusesContainer
 
 @export var status_details_prefab: PackedScene
 
