@@ -8,7 +8,7 @@ class_name StatusEffect
 func execute(agent: Agent2D):
 	var targets = _get_targets(target, agent)
 	for current_target: Agent2D in targets:
-		current_target.give_status(status)
+		current_target.give_status(status.duplicate())
 
 func _get_targets(who_to_find: Target, agent: Agent2D) -> Array:
 	match who_to_find:

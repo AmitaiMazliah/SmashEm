@@ -4,6 +4,7 @@ class_name TurnQueue
 
 @export var victory_event_channel: VoidEventChannel
 @export var defeat_event_channel: VoidEventChannel
+@export var turn_changed_event_channel: VoidEventChannel
 @export var turn_time_in_secs : float = 10
 @export var turn_label : Label
 @export var turn_countdown_progress_bar: ProgressBar
@@ -63,6 +64,7 @@ func _start_turn():
 		turn_label.modulate.a = 1
 		turn_label.text = _active_agent.name + "'s turns"
 		get_tree().create_timer(1).timeout.connect(_fade_label)
+		turn_changed_event_channel.raise_event()
 		_active_agent.start_turn()
 		timer.start()
 		_countdown_timers = [

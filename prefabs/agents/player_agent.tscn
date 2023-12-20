@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=16 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="1_jfxcy"]
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_y2y5r"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_3ji4u"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_38tbr"]
-[ext_resource type="Resource" uid="uid://uc34v13np0qq" path="res://resources/items/ice-staff.tres" id="6_434fd"]
 [ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="10_ca4tq"]
 [ext_resource type="Script" path="res://scripts/agents/agent_movement_prediction.gd" id="10_m3u7j"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent_controller_2d.gd" id="12_hgxyg"]
