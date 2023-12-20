@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://bas1gvh2c13qs"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://bas1gvh2c13qs"]
 
 [ext_resource type="Texture2D" uid="uid://bs60jio0hhami" path="res://art/items/warrior-helm.png" id="1_47ts1"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_iviyx"]
+[ext_resource type="PackedScene" uid="uid://bcekrxcp3v31q" path="res://prefabs/items/warrior_helm.tscn" id="2_wbfdv"]
 
 [resource]
 script = ExtResource("1_iviyx")
 name = "Warrior Helm"
 description = "This helm belongs to a great warrior, gives you health and damage bonus"
 icon = ExtResource("1_47ts1")
+prefab = ExtResource("2_wbfdv")
 slot = 0
 bonus_health = 10
 bonus_damage = 5

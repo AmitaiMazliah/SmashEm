@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://p7akgdli5ai4"]
+
+[ext_resource type="Texture2D" uid="uid://dlers2qngmynq" path="res://art/items/poison-dagger.png" id="1_5cysh"]
+
+[node name="Poison-dagger" type="Sprite2D"]
+rotation = 0.610865
+scale = Vector2(0.285714, 0.285714)
+texture = ExtResource("1_5cysh")

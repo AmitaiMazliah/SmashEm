@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcekrxcp3v31q"]
+
+[ext_resource type="Texture2D" uid="uid://bs60jio0hhami" path="res://art/items/warrior-helm.png" id="1_ckvho"]
+
+[node name="Warrior-helm" type="Sprite2D"]
+position = Vector2(1, -13)
+scale = Vector2(0.528249, 0.528249)
+texture = ExtResource("1_ckvho")
