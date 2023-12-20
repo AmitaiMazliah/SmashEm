@@ -16,7 +16,7 @@ amount = 0
 [resource]
 script = ExtResource("1_6c0yp")
 name = "Ice Staff"
-description = "This is a great item"
+description = "This great icy staff slows all enemies by 10% in the end of your turn."
 icon = ExtResource("3_qkrfb")
 prefab = ExtResource("1_vtuwt")
 slot = 1

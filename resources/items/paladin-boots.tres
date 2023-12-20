@@ -12,7 +12,7 @@ amount = 2
 [resource]
 script = ExtResource("1_raedn")
 name = "Paladin Boots"
-description = "heal yourself on hit"
+description = "heal 2 HP yourself on each collision"
 icon = ExtResource("2_ei1oh")
 slot = 3
 bonus_health = 0

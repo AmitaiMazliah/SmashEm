@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_fa52v")
 name = "Plate Boots"
-description = "health bonus
+description = "This strong metal bonus give you 50 HP bonus.
 shield?"
 icon = ExtResource("1_wtm0g")
 slot = 3
-bonus_health = 0
+bonus_health = 50
 bonus_damage = 0
 effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])

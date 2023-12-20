@@ -13,7 +13,7 @@ amount = 5
 [resource]
 script = ExtResource("1_teeo0")
 name = "Smashing Gloves"
-description = "on turn end attack players near"
+description = "On the end of your turn it will damage all enemies around you by 5 HP."
 icon = ExtResource("2_e4otb")
 slot = 1
 bonus_health = 0

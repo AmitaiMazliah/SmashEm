@@ -8,14 +8,14 @@
 [sub_resource type="Resource" id="Resource_ofpvs"]
 script = ExtResource("1_bm2hb")
 status = ExtResource("2_j3o5b")
-target = 0
+target = 5
 time = 0
 amount = 0
 
 [resource]
 script = ExtResource("1_iwp1n")
 name = "Speed Boots"
-description = ""
+description = "This god like boots give you a 20% speed boost when your turn starts."
 icon = ExtResource("3_tw3qh")
 slot = 3
 bonus_health = 0
