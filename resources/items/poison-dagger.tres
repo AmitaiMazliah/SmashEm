@@ -15,8 +15,7 @@ amount = 0
 [resource]
 script = ExtResource("1_eectm")
 name = "Poison Dagger"
-description = "poison on hit
-poison = dmg on turn end"
+description = "This dagger has a poison blade, it will poison any enemies you collide with make them take 7 damage on each turn end."
 icon = ExtResource("1_65oem")
 slot = 1
 bonus_health = 0
