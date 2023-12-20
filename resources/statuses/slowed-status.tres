@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_1ucv1")
-change_percentage = -0.05
+change_percentage = -0.1
 name = "Slowed"
 description = "haha u r slowed"
 icon = ExtResource("1_mlli7")

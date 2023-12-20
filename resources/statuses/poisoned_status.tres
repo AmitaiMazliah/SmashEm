@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PoisonStatus" load_steps=4 format=3 uid="uid://5hj6466c36tw"]
+
+[ext_resource type="Script" path="res://scripts/agents/statuses/poison_status.gd" id="1_jsrop"]
+[ext_resource type="Texture2D" uid="uid://b7kbg6csm7ba0" path="res://art/status-icons/poison-icon.png" id="1_umold"]
+[ext_resource type="Resource" uid="uid://b8o6t2vq7t8o2" path="res://resources/events/turn_manager/turn_changed_event_channel.tres" id="3_h70c2"]
+
+[resource]
+script = ExtResource("1_jsrop")
+damage_per_turn = 7
+turn_changed_event_channel = ExtResource("3_h70c2")
+name = "Poisoned Status"
+description = ""
+icon = ExtResource("1_umold")

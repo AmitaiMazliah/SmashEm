@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_6gbm4")
-change_percentage = 0.5
+change_percentage = 0.2
 name = ""
 description = ""
 icon = ExtResource("1_fc4d1")
