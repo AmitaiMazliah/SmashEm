@@ -64,31 +64,31 @@ func _on_agent_statuses_changed(statuses: Array[AgentStatus]) -> void:
 		statuses_container.add_child(status_details)
 
 func _set_agent_equipment_ui() -> void:
-	if _agent.agent_equipment.current_equipment.has(Equipment.Slot.Head):
+	if _agent.current_equipment.has(Equipment.Slot.Head):
 		default_agent_head_item_icon.hide()
 		agent_head_item_icon.show()
-		agent_head_item_icon.texture = _agent.agent_equipment.current_equipment.get(Equipment.Slot.Head).icon
+		agent_head_item_icon.texture = _agent.current_equipment.get(Equipment.Slot.Head).icon
 	else:
 		default_agent_head_item_icon.show()
 		agent_head_item_icon.hide()
-	if _agent.agent_equipment.current_equipment.has(Equipment.Slot.RightHand):
+	if _agent.current_equipment.has(Equipment.Slot.RightHand):
 		default_agent_right_hand_item_icon.hide()
 		agent_right_hand_item_icon.show()
-		agent_right_hand_item_icon.texture = _agent.agent_equipment.current_equipment.get(Equipment.Slot.RightHand).icon
+		agent_right_hand_item_icon.texture = _agent.current_equipment.get(Equipment.Slot.RightHand).icon
 	else:
 		default_agent_right_hand_item_icon.show()
 		agent_right_hand_item_icon.hide()
-	if _agent.agent_equipment.current_equipment.has(Equipment.Slot.LeftHand):
+	if _agent.current_equipment.has(Equipment.Slot.LeftHand):
 		default_agent_left_hand_item_icon.hide()
 		agent_left_hand_item_icon.show()
-		agent_left_hand_item_icon.texture = _agent.agent_equipment.current_equipment.get(Equipment.Slot.LeftHand).icon
+		agent_left_hand_item_icon.texture = _agent.current_equipment.get(Equipment.Slot.LeftHand).icon
 	else:
 		default_agent_left_hand_item_icon.show()
 		agent_left_hand_item_icon.hide()
-	if _agent.agent_equipment.current_equipment.has(Equipment.Slot.Boots):
+	if _agent.current_equipment.has(Equipment.Slot.Boots):
 		default_agent_boots_item_icon.hide()
 		agent_boots_item_icon.show()
-		agent_boots_item_icon.texture = _agent.agent_equipment.current_equipment.get(Equipment.Slot.Boots).icon
+		agent_boots_item_icon.texture = _agent.current_equipment.get(Equipment.Slot.Boots).icon
 	else:
 		default_agent_boots_item_icon.show()
 		agent_boots_item_icon.hide()

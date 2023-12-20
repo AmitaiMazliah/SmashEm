@@ -18,8 +18,8 @@ func _ready():
 		randomize()
 		var randomNumber = randi() % 100
 		if randomNumber <= (chance_to_have_item * 100):
-			equipment[slot] = item_catalog.equipment.pick_random()
-	agent.ready.connect(func (): agent.agent_equipment.set_equipment(equipment))
+			equipment[slot] = item_catalog.equipment.filter(func (e): return e.slot == slot).pick_random()
+	agent.set_equipment(equipment)
 
 func _process(_delta):
 	if agent.is_my_turn and not _played_turn:

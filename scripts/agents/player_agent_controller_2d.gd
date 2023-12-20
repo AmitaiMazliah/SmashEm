@@ -14,6 +14,11 @@ var played: bool
 func _ready() -> void:
 	agent.is_player = true
 	agent.turn_ended.connect(func (): played = false)
+	var equipment := {}
+	for player_equipment: PlayerEquipment in Player.selected_items.values():
+		if player_equipment:
+			equipment[player_equipment.equipment.slot] = player_equipment.equipment
+	agent.set_equipment(equipment)
 
 func _physics_process(delta: float) -> void:
 	if agent.is_my_turn and pressed and should_draw_projection:

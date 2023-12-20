@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=15 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="1_jfxcy"]
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_y2y5r"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_3ji4u"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_38tbr"]
-[ext_resource type="Script" path="res://scripts/agents/agent_equipment.gd" id="10_ca4tq"]
 [ext_resource type="Script" path="res://scripts/agents/agent_movement_prediction.gd" id="10_m3u7j"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent_controller_2d.gd" id="12_hgxyg"]
 
@@ -23,7 +22,7 @@ shader_parameter/scrolling_speed = 2.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdfl4"]
 radius = 55.0
 
-[node name="PlayerAgent" type="RigidBody2D" groups=["Agents"]]
+[node name="PlayerAgent" type="RigidBody2D" node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder") groups=["Agents"]]
 physics_material_override = ExtResource("1_jfxcy")
 gravity_scale = 0.0
 lock_rotation = true
@@ -32,6 +31,10 @@ contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("1_y2y5r")
 starting_velocity = 1400.0
+_head_place_holder = NodePath("Visuals/HeadPlaceHolder")
+_right_hand_place_holder = NodePath("Visuals/RightHandPlaceHolder")
+_left_hand_place_holder = NodePath("Visuals/LeftHandPlaceHolder")
+_legs_place_holder = NodePath("Visuals/LegsPlaceHolder")
 collision_vfx_prefab = ExtResource("2_6xkav")
 wall_collision_vfx_prefab = ExtResource("3_gamps")
 
@@ -80,13 +83,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_38tbr")
 show_percentage = false
-
-[node name="AgentEquipment" type="Node" parent="." node_paths=PackedStringArray("_head_place_holder", "_right_hand_place_holder", "_left_hand_place_holder", "_legs_place_holder")]
-script = ExtResource("10_ca4tq")
-_head_place_holder = NodePath("../Visuals/HeadPlaceHolder")
-_right_hand_place_holder = NodePath("../Visuals/RightHandPlaceHolder")
-_left_hand_place_holder = NodePath("../Visuals/LeftHandPlaceHolder")
-_legs_place_holder = NodePath("../Visuals/LegsPlaceHolder")
 
 [node name="PlayerAgentController" type="Node2D" parent="." node_paths=PackedStringArray("agent_movement_projection")]
 script = ExtResource("12_hgxyg")
