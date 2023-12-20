@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_iviyx")
 name = "Warrior Helm"
-description = ""
+description = "This helm belongs to a great warrior, gives you health and damage bonus"
 icon = ExtResource("1_47ts1")
 slot = 0
 bonus_health = 10
