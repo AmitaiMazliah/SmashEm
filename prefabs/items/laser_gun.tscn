@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bce66put060qn"]
+
+[ext_resource type="Texture2D" uid="uid://ua8uchq5p8og" path="res://art/items/laser-gun.png" id="1_86oye"]
+
+[node name="Laser-gun" type="Sprite2D"]
+position = Vector2(12, -4)
+rotation = -0.717936
+scale = Vector2(0.357862, 0.357862)
+texture = ExtResource("1_86oye")

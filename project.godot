@@ -62,6 +62,11 @@ Test={
 
 pointing/emulate_touch_from_mouse=true
 
+[layer_names]
+
+2d_physics/layer_1="Agents"
+2d_physics/layer_2="Walls"
+
 [playfab]
 
 title_id="B9762"
