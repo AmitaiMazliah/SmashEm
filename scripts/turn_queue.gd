@@ -77,7 +77,7 @@ func _start_turn():
 
 func _end_turn() -> void:
 	print("Ending turn of ", _active_agent_index, " ", _active_agent)
-	_active_agent.end_turn()
+	await _active_agent.end_turn()
 	_kill_dead_agents()
 	_start_turn()
 

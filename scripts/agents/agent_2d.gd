@@ -71,7 +71,7 @@ func start_turn() -> void:
 func end_turn() -> void:
 	print(self.name, " turns has ended")
 	is_my_turn = false
-	execute_all_effect_for_time(self, Effect.EffectTime.OnTurnEnd)
+	await execute_all_effect_for_time(self, Effect.EffectTime.OnTurnEnd)
 	turn_ended.emit()
 
 func take_damage(damage: int) -> void:
@@ -128,7 +128,7 @@ func execute_all_effect_for_time(agent: Agent2D, effect_time: Effect.EffectTime)
 		var equipment : Equipment = current_equipment[i]
 		for effect: Effect in equipment.effects:
 			if effect.time == effect_time:
-				effect.execute(agent)
+				await effect.execute(agent)
 
 func get_total_health_bonus() -> int:
 	var health_bonus = 0
