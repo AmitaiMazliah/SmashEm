@@ -34,11 +34,12 @@ func _get_position_before_colision(direction: Vector2) -> Vector2:
 		shape_cast_2d.target_position = target_position
 		if _previous_target != null:
 			_previous_target.is_being_aimed = false
-		var collider = shape_cast_2d.get_collider(shape_cast_2d.get_collision_count() - 1)
-		if collider is Agent2D:
-			var target = collider as Agent2D
-			target.is_being_aimed = true
-			_previous_target = target
+		if shape_cast_2d.get_collision_count() > 0:
+			var collider = shape_cast_2d.get_collider(shape_cast_2d.get_collision_count() - 1)
+			if collider is Agent2D:
+				var target = collider as Agent2D
+				target.is_being_aimed = true
+				_previous_target = target
 		return target_position * shape_cast_2d.get_closest_collision_unsafe_fraction()
 	else:
 		return Vector2.ZERO
