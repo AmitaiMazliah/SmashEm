@@ -151,7 +151,7 @@ func _on_body_entered(body: Node) -> void:
 	else:
 		collision_vfx = wall_collision_vfx_prefab.instantiate() as AgentWallCollisionEffect
 	collision_vfx.position = collision_pos
-	get_tree().root.add_child(collision_vfx)
+	owner.add_child(collision_vfx)
 	if is_my_turn:
 		execute_all_effect_for_time(self, Effect.EffectTime.OnCollision)
 		if body is Agent2D:

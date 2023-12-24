@@ -15,7 +15,7 @@ amount = 0
 [resource]
 script = ExtResource("1_xdriu")
 name = "Molotov"
-description = "On collistion leave a circle of fire that burns player in it"
+description = "On collistion leave a circle of fire that burns players in it"
 icon = ExtResource("1_y7jgk")
 prefab = ExtResource("2_6531b")
 slot = 2
