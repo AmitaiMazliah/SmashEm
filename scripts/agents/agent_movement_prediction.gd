@@ -6,6 +6,7 @@ class_name AgentMovementPrediction
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 
 @export var agent_collision: CollisionObject2D
+@export_flags_2d_physics var layers_agent_collide_with
 
 var draw_center: Vector2
 var _previous_target: Agent2D
@@ -25,12 +26,13 @@ func _get_position_before_colision(direction: Vector2) -> Vector2:
 	var to = global_position + (direction * 1000)
 	var query = PhysicsRayQueryParameters2D.create(global_position, to)
 	query.collide_with_areas = true
+	query.collision_mask = layers_agent_collide_with
 	var space_state = get_world_2d().direct_space_state
 	var result = space_state.intersect_ray(query)
 	if result:
 		var target_position = to_local(result.position)
 		shape_cast_2d.target_position = target_position
-		if _previous_target:
+		if _previous_target != null:
 			_previous_target.is_being_aimed = false
 		var collider = shape_cast_2d.get_collider(shape_cast_2d.get_collision_count() - 1)
 		if collider is Agent2D:
@@ -84,7 +86,6 @@ func _draw_circle_arc(center, radius, angle_from, angle_to, color):
 	for index_point in range(nb_points):
 		draw_line(points_arc[index_point], points_arc[index_point + 1], color, 2)
 
-
 func _on_visibility_changed() -> void:
-	if _previous_target:
+	if _previous_target != null:
 		_previous_target.is_being_aimed = false

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://3uf1hdxpp2fd"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://3uf1hdxpp2fd"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_fa52v"]
 [ext_resource type="Texture2D" uid="uid://h7bvt2pyua5l" path="res://art/items/paladin-boots.png" id="1_wtm0g"]
+[ext_resource type="PackedScene" uid="uid://c0ffrh7byox70" path="res://prefabs/items/paladin_boots.tscn" id="2_fgt80"]
 
 [resource]
 script = ExtResource("1_fa52v")
@@ -9,6 +10,7 @@ name = "Plate Boots"
 description = "This strong metal bonus give you 50 HP bonus.
 shield?"
 icon = ExtResource("1_wtm0g")
+prefab = ExtResource("2_fgt80")
 slot = 3
 bonus_health = 50
 bonus_damage = 0

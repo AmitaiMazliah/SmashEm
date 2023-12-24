@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://64jf2yexxdm6"]
+
+[ext_resource type="Texture2D" uid="uid://b6habddmqc04c" path="res://art/items/speed-boots.png" id="1_euocy"]
+
+[node name="Speed-boots" type="Sprite2D"]
+position = Vector2(0, 7)
+scale = Vector2(0.163495, 0.163495)
+texture = ExtResource("1_euocy")

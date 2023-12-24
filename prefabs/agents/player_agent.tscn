@@ -91,6 +91,7 @@ agent_movement_projection = NodePath("AgentMovementPrediction")
 [node name="AgentMovementPrediction" type="Node2D" parent="PlayerAgentController" node_paths=PackedStringArray("agent_collision")]
 script = ExtResource("10_m3u7j")
 agent_collision = NodePath("../..")
+layers_agent_collide_with = 7
 
 [node name="PredictionLine" type="Line2D" parent="PlayerAgentController/AgentMovementPrediction"]
 top_level = true
