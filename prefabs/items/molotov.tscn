@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj4jgsaaw70i4"]
+
+[ext_resource type="Texture2D" uid="uid://dg8elpdwqn2nd" path="res://art/items/molotov.png" id="1_ohx38"]
+
+[node name="Molotov" type="Sprite2D"]
+position = Vector2(-19, -12)
+rotation = -1.30027
+scale = Vector2(0.340376, 0.340376)
+texture = ExtResource("1_ohx38")
