@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://geett66gbknt"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://geett66gbknt"]
 
 [ext_resource type="Script" path="res://scripts/items/effects/status_effect.gd" id="1_bm2hb"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_iwp1n"]
 [ext_resource type="Resource" uid="uid://bbx8scrsrgrhq" path="res://resources/statuses/speed-boost-status.tres" id="2_j3o5b"]
 [ext_resource type="Texture2D" uid="uid://b6habddmqc04c" path="res://art/items/speed-boots.png" id="3_tw3qh"]
+[ext_resource type="PackedScene" uid="uid://64jf2yexxdm6" path="res://prefabs/items/speed_boots.tscn" id="4_ft87s"]
 
 [sub_resource type="Resource" id="Resource_ofpvs"]
 script = ExtResource("1_bm2hb")
@@ -17,6 +18,7 @@ script = ExtResource("1_iwp1n")
 name = "Speed Boots"
 description = "This god like boots give you a 20% speed boost when your turn starts."
 icon = ExtResource("3_tw3qh")
+prefab = ExtResource("4_ft87s")
 slot = 3
 bonus_health = 0
 bonus_damage = 0

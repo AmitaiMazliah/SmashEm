@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=5 format=3 uid="uid://b86o17na18sph"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://b86o17na18sph"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_raedn"]
 [ext_resource type="Script" path="res://scripts/items/effects/heal_effect.gd" id="1_roj87"]
 [ext_resource type="Texture2D" uid="uid://h7bvt2pyua5l" path="res://art/items/paladin-boots.png" id="2_ei1oh"]
+[ext_resource type="PackedScene" uid="uid://c0ffrh7byox70" path="res://prefabs/items/paladin_boots.tscn" id="3_o8oal"]
 
 [sub_resource type="Resource" id="Resource_ulty6"]
 script = ExtResource("1_roj87")
@@ -14,6 +15,7 @@ script = ExtResource("1_raedn")
 name = "Paladin Boots"
 description = "heal 2 HP yourself on each collision"
 icon = ExtResource("2_ei1oh")
+prefab = ExtResource("3_o8oal")
 slot = 3
 bonus_health = 0
 bonus_damage = 0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0ffrh7byox70"]
+
+[ext_resource type="Texture2D" uid="uid://h7bvt2pyua5l" path="res://art/items/paladin-boots.png" id="1_j3c40"]
+
+[node name="Paladin-boots" type="Sprite2D"]
+position = Vector2(0, 7)
+scale = Vector2(0.144265, 0.144265)
+texture = ExtResource("1_j3c40")
