@@ -1,14 +1,24 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://psm0gjoxtx04"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://psm0gjoxtx04"]
 
+[ext_resource type="PackedScene" uid="uid://q8oq7sayecy" path="res://prefabs/fire_puddle.tscn" id="1_bdhko"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_xdriu"]
 [ext_resource type="Texture2D" uid="uid://dg8elpdwqn2nd" path="res://art/items/molotov.png" id="1_y7jgk"]
+[ext_resource type="PackedScene" uid="uid://dj4jgsaaw70i4" path="res://prefabs/items/molotov.tscn" id="2_6531b"]
+[ext_resource type="Script" path="res://scripts/items/effects/spawn_effect.gd" id="2_dlsik"]
+
+[sub_resource type="Resource" id="Resource_iiq13"]
+script = ExtResource("2_dlsik")
+prefab = ExtResource("1_bdhko")
+time = 3
+amount = 0
 
 [resource]
 script = ExtResource("1_xdriu")
 name = "Molotov"
 description = "On collistion leave a circle of fire that burns player in it"
 icon = ExtResource("1_y7jgk")
+prefab = ExtResource("2_6531b")
 slot = 2
 bonus_health = 0
-bonus_damage = 0
-effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])
+bonus_damage = 3
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([SubResource("Resource_iiq13")])
