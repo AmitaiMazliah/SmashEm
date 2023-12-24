@@ -30,7 +30,7 @@ func _get_position_before_colision(direction: Vector2) -> Vector2:
 	if result:
 		var target_position = to_local(result.position)
 		shape_cast_2d.target_position = target_position
-		if _previous_target:
+		if _previous_target != null:
 			_previous_target.is_being_aimed = false
 		var collider = shape_cast_2d.get_collider(shape_cast_2d.get_collision_count() - 1)
 		if collider is Agent2D:
@@ -84,7 +84,6 @@ func _draw_circle_arc(center, radius, angle_from, angle_to, color):
 	for index_point in range(nb_points):
 		draw_line(points_arc[index_point], points_arc[index_point + 1], color, 2)
 
-
 func _on_visibility_changed() -> void:
-	if _previous_target:
+	if _previous_target != null:
 		_previous_target.is_being_aimed = false
