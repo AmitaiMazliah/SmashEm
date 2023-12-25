@@ -15,7 +15,7 @@ amount = 0
 [resource]
 script = ExtResource("1_8o6yc")
 name = "Laser Gun"
-description = "on turn start shot a sright line to near target and dmg all in that line"
+description = "On the end of your turn this laser gun will fire a laser beam to the cloest enemy and damage all in the path."
 icon = ExtResource("1_kegyc")
 prefab = ExtResource("4_1e6w1")
 slot = 1
