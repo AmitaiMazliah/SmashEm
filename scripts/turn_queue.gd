@@ -33,6 +33,7 @@ func _ready():
 
 func _process(_delta):
 	if _running:
+		agents = agents.filter(func (a: Agent2D): return a != null)
 		if not timer.is_stopped():
 			turn_countdown_progress_bar.value = timer.time_left
 		if _active_agent_started_moving:
@@ -78,7 +79,7 @@ func _start_turn():
 func _end_turn() -> void:
 	print("Ending turn of ", _active_agent_index, " ", _active_agent)
 	await _active_agent.end_turn()
-	_kill_dead_agents()
+	await _kill_dead_agents()
 	_start_turn()
 
 func _get_next_live_agent() -> Agent2D:
@@ -98,17 +99,25 @@ func _fade_label() -> void:
 
 func _kill_dead_agents():
 	var dead_agents = agents.filter(func (a: Agent2D): return a.current_health <= 0)
-	for agent: Agent2D in dead_agents:
-		agent.die()
-		if agent.is_player:
-			defeat_event_channel.raise_event()
-			stop()
-			return
-	agents = agents.filter(func (a: Agent2D): return a.current_health > 0)
-	if len(agents) == 1:
-		print("Player won the game")
-		victory_event_channel.raise_event()
-		stop()
+	if len(dead_agents) > 0:
+		var is_player_dead = dead_agents.any(func (a: Agent2D): return a.is_player)
+		var promises: Array[Promise]
+		promises.assign(dead_agents.map(func (a: Agent2D): return Promise.new(
+			func(resolve: Callable, reject: Callable):
+				await a.die()
+				resolve.call("")
+		)))
+		var result = await Promise.all(promises).settled
+		if result.status == Promise.Status.RESOLVED:
+			print("Done killing ", len(dead_agents), " agents")
+			if is_player_dead:
+				print("Player lost the match")
+				defeat_event_channel.raise_event()
+				stop()
+			elif len(agents) == 1:
+				print("Player won the match")
+				victory_event_channel.raise_event()
+				stop()
 
 func _play_countdown_audio():
 	play_sfx_event_channel.raise_play_event(timer_countdown_audio, sfx_2d_audio_config)

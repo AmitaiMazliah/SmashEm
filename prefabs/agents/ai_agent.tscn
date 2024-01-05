@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://vwth8qa6lmwn"]
+[gd_scene load_steps=12 format=3 uid="uid://vwth8qa6lmwn"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="1_3mmyk"]
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_jnvnm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6r4gd80quheg" path="res://prefabs/vfx/agent_wall_collision_effect.tscn" id="3_tgdao"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_u55su"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_c3u1n"]
+[ext_resource type="PackedScene" uid="uid://cvwa28gjp2pf7" path="res://prefabs/vfx/death_particles.tscn" id="5_rh1fi"]
 [ext_resource type="Resource" uid="uid://d0chcwn00fwsc" path="res://resources/items_catalog.tres" id="10_e7ho8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fnhx"]
@@ -28,6 +29,7 @@ _left_hand_place_holder = NodePath("Visuals/LeftHandPlaceHolder")
 _legs_place_holder = NodePath("Visuals/LegsPlaceHolder")
 collision_vfx_prefab = ExtResource("2_4oimm")
 wall_collision_vfx_prefab = ExtResource("3_tgdao")
+death_vfx_prefab = ExtResource("5_rh1fi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
@@ -55,7 +57,7 @@ position = Vector2(-36, 44)
 z_index = 10
 position = Vector2(0, 56)
 
-[node name="HealthBar" type="Control" parent="." node_paths=PackedStringArray("agent")]
+[node name="HealthBar" type="Control" parent="Visuals" node_paths=PackedStringArray("agent")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -60.0
@@ -63,9 +65,9 @@ offset_top = -75.0
 offset_right = 60.0
 offset_bottom = -60.0
 script = ExtResource("4_u55su")
-agent = NodePath("..")
+agent = NodePath("../..")
 
-[node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
+[node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

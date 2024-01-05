@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dd6skvb0tvmwh"]
+[gd_scene load_steps=16 format=3 uid="uid://dd6skvb0tvmwh"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="1_jfxcy"]
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="1_y2y5r"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="4_3ji4u"]
 [ext_resource type="Texture2D" uid="uid://bw5o7xbm5rwjg" path="res://art/projection-line.png" id="4_iupx7"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="5_38tbr"]
+[ext_resource type="PackedScene" uid="uid://cvwa28gjp2pf7" path="res://prefabs/vfx/death_particles.tscn" id="5_p71l4"]
 [ext_resource type="Script" path="res://scripts/agents/agent_movement_prediction.gd" id="10_m3u7j"]
 [ext_resource type="Script" path="res://scripts/agents/player_agent_controller_2d.gd" id="12_hgxyg"]
 
@@ -37,6 +38,7 @@ _left_hand_place_holder = NodePath("Visuals/LeftHandPlaceHolder")
 _legs_place_holder = NodePath("Visuals/LegsPlaceHolder")
 collision_vfx_prefab = ExtResource("2_6xkav")
 wall_collision_vfx_prefab = ExtResource("3_gamps")
+death_vfx_prefab = ExtResource("5_p71l4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0fnhx")
@@ -64,7 +66,7 @@ position = Vector2(-36, 44)
 z_index = 10
 position = Vector2(0, 56)
 
-[node name="HealthBar" type="Control" parent="." node_paths=PackedStringArray("agent")]
+[node name="HealthBar" type="Control" parent="Visuals" node_paths=PackedStringArray("agent")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -60.0
@@ -72,9 +74,9 @@ offset_top = -75.0
 offset_right = 60.0
 offset_bottom = -60.0
 script = ExtResource("4_3ji4u")
-agent = NodePath("..")
+agent = NodePath("../..")
 
-[node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
+[node name="ProgressBar" type="ProgressBar" parent="Visuals/HealthBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -7,6 +7,7 @@ signal turn_ended
 signal statuses_changed(statuses: Array[AgentStatus])
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var visuals: Node2D = $Visuals
 
 @export var starting_velocity: float = 5
 @export var starting_health: int = 100
@@ -22,6 +23,7 @@ signal statuses_changed(statuses: Array[AgentStatus])
 @export_category("VFX")
 @export var collision_vfx_prefab: PackedScene
 @export var wall_collision_vfx_prefab: PackedScene
+@export var death_vfx_prefab: PackedScene
 
 var is_my_turn: bool
 var moving: bool
@@ -87,6 +89,11 @@ func heal(amount: int) -> void:
 func die() -> void:
 	print(name, " is now dead")
 	execute_all_effect_for_time(self, Effect.EffectTime.OnDeath)
+	visuals.visible = false
+	var death_vfx = death_vfx_prefab.instantiate() as GPUParticles2D
+	death_vfx.emitting = true
+	add_child(death_vfx)
+	await death_vfx.finished
 	queue_free()
 
 func give_status(status: AgentStatus) -> void:
