@@ -77,6 +77,11 @@ func end_turn() -> void:
 	await execute_all_effect_for_time(self, Effect.EffectTime.OnTurnEnd)
 	turn_ended.emit()
 
+func turn_changed() -> void:
+	for status: AgentStatus in statuses:
+		if status.has_method('on_turn_changed'):
+			status.on_turn_changed()
+
 func take_damage(damage: int) -> void:
 	current_health -= damage
 	print(name, " took ", damage, " and left with current_health ", current_health)
