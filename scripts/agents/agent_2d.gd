@@ -99,7 +99,7 @@ func die() -> void:
 	queue_free()
 
 func give_status(status: AgentStatus) -> void:
-	if statuses.has(status):
+	if statuses.any(func (s: AgentStatus): return s.name == status.name):
 		print(name, " already has this status, ignoring")
 		return
 	if len(statuses) >= max_status_count:
