@@ -5,6 +5,7 @@ class_name Agent2D
 signal moved
 signal turn_ended
 signal statuses_changed(statuses: Array[AgentStatus])
+signal died
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var visuals: Node2D = $Visuals
@@ -94,6 +95,7 @@ func die() -> void:
 	death_vfx.emitting = true
 	add_child(death_vfx)
 	await death_vfx.finished
+	died.emit()
 	queue_free()
 
 func give_status(status: AgentStatus) -> void:

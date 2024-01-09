@@ -21,6 +21,7 @@ func _ready():
 		agent_panel.pressed.connect(func (): agent_details_panel.set_agent(agent))
 		agent_panel.released.connect(func (): agent_details_panel.close())
 		agents_container.add_child(agent_panel)
+		agent.died.connect(_on_agent_died.bind(agent_panel))
 
 func _on_victory():
 	label.text = "Vicotory!!!"
@@ -32,3 +33,8 @@ func _on_defeat():
 
 func _on_back_button_pressed():
 	load_main_menu_event_channel.raise_event()
+
+func _on_agent_died(agent_panel: AgentPanel):
+	agent_panel.disabled = true
+	#agents_container.remove_child(agent_panel)
+	#agent_panel.queue_free()
