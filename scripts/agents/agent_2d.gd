@@ -82,7 +82,8 @@ func turn_changed() -> void:
 	for status: AgentStatus in statuses:
 		if status.has_method('on_turn_changed'):
 			status.on_turn_changed()
-	for spawn: Node in spawns:
+	var current_spawns = spawns.duplicate()
+	for spawn: Node in current_spawns:
 		if spawn.has_method('on_turn_changed'):
 			spawn.on_turn_changed()
 
