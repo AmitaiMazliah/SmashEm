@@ -32,7 +32,6 @@ func _ready():
 
 func _process(_delta):
 	if _running:
-		agents = get_tree().get_nodes_in_group("Agents")
 		if not timer.is_stopped():
 			turn_countdown_progress_bar.value = timer.time_left
 		if _active_agent_started_moving:
@@ -99,6 +98,7 @@ func _fade_label() -> void:
 
 func _kill_dead_agents():
 	var dead_agents = agents.filter(func (a: Agent2D): return a.current_health <= 0)
+	agents = agents.filter(func (a: Agent2D): return a.current_health > 0)
 	if len(dead_agents) > 0:
 		var is_player_dead = dead_agents.any(func (a: Agent2D): return a.is_player)
 		var promises: Array[Promise]
