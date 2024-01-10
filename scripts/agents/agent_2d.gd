@@ -37,6 +37,7 @@ var is_player: bool
 var collision_pos : Vector2
 
 var statuses: Array[AgentStatus] = []
+var spawns: Array[Node] = []
 var current_equipment : Dictionary = {}
 
 var is_being_aimed: bool :
@@ -81,6 +82,9 @@ func turn_changed() -> void:
 	for status: AgentStatus in statuses:
 		if status.has_method('on_turn_changed'):
 			status.on_turn_changed()
+	for spawn: Node in spawns:
+		if spawn.has_method('on_turn_changed'):
+			spawn.on_turn_changed()
 
 func take_damage(damage: int) -> void:
 	current_health -= damage
@@ -117,6 +121,16 @@ func give_status(status: AgentStatus) -> void:
 	statuses.append(status)
 	statuses_changed.emit(statuses)
 	print(name, " now has ", len(statuses), " statuses")
+
+func add_spawn(spawn: Node) -> void:
+	spawns.append(spawn)
+
+func remove_spawn(spawn: Node) -> void:
+	var index = spawns.find(spawn)
+	if index != -1:
+		spawns.remove_at(index)
+	else:
+		printerr("Couldn't find spawn on agent ", name)
 
 #region Equipment Logic
 

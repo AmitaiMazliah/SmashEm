@@ -32,7 +32,7 @@ func _ready():
 
 func _process(_delta):
 	if _running:
-		agents = agents.filter(func (a: Agent2D): return a != null)
+		agents = get_tree().get_nodes_in_group("Agents")
 		if not timer.is_stopped():
 			turn_countdown_progress_bar.value = timer.time_left
 		if _active_agent_started_moving:
