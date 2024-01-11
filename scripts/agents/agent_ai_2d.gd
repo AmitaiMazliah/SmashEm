@@ -36,7 +36,7 @@ func _play_turn():
 	agent.move(direction)
 
 func _get_nearest_agent() -> Agent2D:
-	var other_agents = get_tree().get_nodes_in_group("Agents").filter(func (a): return a != agent)
+	var other_agents = get_tree().get_nodes_in_group("Agents").filter(func (a: Agent2D): return a != agent and not a.dead)
 	other_agents.sort_custom(func (a, b): return agent.position.distance_to(a.position) < agent.position.distance_to(b.position))
 	return other_agents.front()
 

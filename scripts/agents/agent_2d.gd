@@ -35,6 +35,7 @@ var current_damage: int
 var previous_velocity: Vector2
 var is_player: bool
 var collision_pos : Vector2
+var dead: bool
 
 var statuses: Array[AgentStatus] = []
 var spawns: Array[Node] = []
@@ -106,7 +107,9 @@ func die() -> void:
 	add_child(death_vfx)
 	await death_vfx.finished
 	died.emit()
-	queue_free()
+	visible = false
+	process_mode = 4
+	dead = true
 
 func give_status(status: AgentStatus) -> void:
 	if statuses.any(func (s: AgentStatus): return s.name == status.name):

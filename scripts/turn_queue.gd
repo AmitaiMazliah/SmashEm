@@ -21,6 +21,10 @@ var _active_agent_started_moving: bool
 var _running : bool
 var _countdown_timers: Array[SceneTreeTimer]
 
+var live_agents :
+	get:
+		return agents.filter(func (a: Agent2D): return not a.dead)
+
 func _ready():
 	timer.wait_time = turn_time_in_secs
 	timer.timeout.connect(_end_turn)
@@ -35,11 +39,11 @@ func _process(_delta):
 		if not timer.is_stopped():
 			turn_countdown_progress_bar.value = timer.time_left
 		if _active_agent_started_moving:
-			if agents.all(func (a: Agent2D): return not a.moving):
+			if live_agents.all(func (a: Agent2D): return not a.moving):
 				print("All agents came to a stop, ending turn")
 				_end_turn()
 		
-		_active_agent_started_moving = agents.any(func (a): return a.moving)
+		_active_agent_started_moving = live_agents.any(func (a): return a.moving)
 
 func start():
 	if !_running:
@@ -76,15 +80,18 @@ func _start_turn():
 func _end_turn() -> void:
 	print("Ending turn of ", _active_agent_index, " ", _active_agent)
 	await _active_agent.end_turn()
-	for agent: Agent2D in agents:
+	for agent: Agent2D in live_agents:
 		agent.turn_changed()
 	await _kill_dead_agents()
 	_start_turn()
 
 func _get_next_live_agent() -> Agent2D:
-	var live_agents = agents
-	_active_agent_index = (_active_agent_index + 1) % live_agents.size()
-	return live_agents[_active_agent_index]
+	_active_agent_index = (_active_agent_index + 1) % agents.size()
+	var agent: Agent2D = agents[_active_agent_index]
+	while agent.current_health <= 0:
+		_active_agent_index = (_active_agent_index + 1) % agents.size()
+		agent = agents[_active_agent_index]
+	return agent
 
 func _on_agent_moved() -> void:
 	timer.stop()
@@ -97,8 +104,7 @@ func _fade_label() -> void:
 	await tween.finished
 
 func _kill_dead_agents():
-	var dead_agents = agents.filter(func (a: Agent2D): return a.current_health <= 0)
-	agents = agents.filter(func (a: Agent2D): return a.current_health > 0)
+	var dead_agents = live_agents.filter(func (a: Agent2D): return a.current_health <= 0)
 	if len(dead_agents) > 0:
 		var is_player_dead = dead_agents.any(func (a: Agent2D): return a.is_player)
 		var promises: Array[Promise]
@@ -114,7 +120,7 @@ func _kill_dead_agents():
 				print("Player lost the match")
 				defeat_event_channel.raise_event()
 				stop()
-			elif len(agents) == 1:
+			elif len(live_agents) == 1:
 				print("Player won the match")
 				victory_event_channel.raise_event()
 				stop()
