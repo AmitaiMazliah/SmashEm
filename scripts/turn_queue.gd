@@ -74,7 +74,7 @@ func _start_turn():
 			get_tree().create_timer(turn_time_in_secs - 2),
 			get_tree().create_timer(turn_time_in_secs - 1)
 		]
-		for t in _countdown_timers:
+		for t: SceneTreeTimer in _countdown_timers:
 			t.timeout.connect(_play_countdown_audio)
 
 func _end_turn() -> void:
@@ -95,7 +95,7 @@ func _get_next_live_agent() -> Agent2D:
 
 func _on_agent_moved() -> void:
 	timer.stop()
-	for t in _countdown_timers:
+	for t: SceneTreeTimer in _countdown_timers:
 		t.timeout.disconnect(_play_countdown_audio)
 
 func _fade_label() -> void:

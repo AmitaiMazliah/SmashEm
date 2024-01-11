@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bp22mksxi8dw0"]
+[gd_scene load_steps=11 format=3 uid="uid://bp22mksxi8dw0"]
 
 [ext_resource type="Script" path="res://scripts/turn_queue.gd" id="1_uop6f"]
 [ext_resource type="Resource" uid="uid://d0e5uorq1a1rt" path="res://resources/events/victory_event_channel.tres" id="2_ya30x"]
 [ext_resource type="Resource" uid="uid://ceg0y65hkm0a2" path="res://resources/events/defeat_event_channel.tres" id="3_tldaw"]
-[ext_resource type="Resource" uid="uid://b8o6t2vq7t8o2" path="res://resources/events/turn_manager/turn_changed_event_channel.tres" id="4_4v01b"]
 [ext_resource type="Resource" uid="uid://2nvlhruxpke6" path="res://resources/events/play_sound_event_channel.tres" id="4_vxxsm"]
 [ext_resource type="Texture2D" uid="uid://i4w008b3vmdo" path="res://art/timer-icon.png" id="4_vyamo"]
 [ext_resource type="Resource" uid="uid://cjfbhsoqhw48n" path="res://resources/audio/cues/countdown_audio.tres" id="5_hnwi4"]
@@ -28,7 +27,6 @@ corner_radius_bottom_left = 5
 script = ExtResource("1_uop6f")
 victory_event_channel = ExtResource("2_ya30x")
 defeat_event_channel = ExtResource("3_tldaw")
-turn_changed_event_channel = ExtResource("4_4v01b")
 turn_time_in_secs = 15.0
 turn_label = NodePath("CanvasLayer/CurrentTurnLabel")
 turn_countdown_progress_bar = NodePath("CanvasLayer/TurnCountCount/TurnCountDownProgressBar")
