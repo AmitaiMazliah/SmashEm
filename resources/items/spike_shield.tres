@@ -1,14 +1,23 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=3 format=3 uid="uid://bekvfnso28m3a"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://bekvfnso28m3a"]
 
+[ext_resource type="Script" path="res://scripts/items/effects/damage_effect.gd" id="1_ileem"]
 [ext_resource type="Texture2D" uid="uid://8t8bp2st2oj2" path="res://art/items/spiked-shield.png" id="1_plt7j"]
 [ext_resource type="Script" path="res://scripts/items/equipment.gd" id="1_rvywl"]
+[ext_resource type="PackedScene" uid="uid://cr2ka507jcv2d" path="res://prefabs/items/spiked_shield.tscn" id="3_eqobc"]
+
+[sub_resource type="Resource" id="Resource_7s4gg"]
+script = ExtResource("1_ileem")
+who_to_damage = 4
+time = 4
+amount = 2
 
 [resource]
 script = ExtResource("1_rvywl")
 name = "Spike Shield"
-description = ""
+description = "A spiky shield which damage those you collide with"
 icon = ExtResource("1_plt7j")
+prefab = ExtResource("3_eqobc")
 slot = 2
 bonus_health = 20
 bonus_damage = 0
-effects = Array[Resource("res://scripts/items/effects/effect.gd")]([])
+effects = Array[Resource("res://scripts/items/effects/effect.gd")]([SubResource("Resource_7s4gg")])

@@ -7,7 +7,7 @@ class_name DamageEffect
 func execute(agent: Agent2D):
 	var targets = _get_targets(who_to_damage, agent)
 	for target in targets:
-		target.health.take_damage(amount)
+		target.take_damage(amount)
 
 func _get_targets(who_to_find: Target, agent: Agent2D) -> Array:
 	match who_to_find:

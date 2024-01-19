@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr2ka507jcv2d"]
+
+[ext_resource type="Texture2D" uid="uid://8t8bp2st2oj2" path="res://art/items/spiked-shield.png" id="1_awmfj"]
+
+[node name="Spiked-shield" type="Sprite2D"]
+position = Vector2(-14, 0)
+scale = Vector2(0.283505, 0.283505)
+texture = ExtResource("1_awmfj")
