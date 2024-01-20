@@ -38,6 +38,7 @@ func set_agent(agent: Agent2D):
 	show()
 
 func close():
+	_agent.statuses_changed.disconnect(_on_agent_statuses_changed)
 	hide()
 
 func _process(delta: float) -> void:
