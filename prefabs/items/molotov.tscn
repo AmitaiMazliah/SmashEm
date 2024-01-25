@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dg8elpdwqn2nd" path="res://art/items/molotov.png" id="1_ohx38"]
 
 [node name="Molotov" type="Sprite2D"]
-position = Vector2(-19, -12)
+z_as_relative = false
+position = Vector2(-45, -11)
 rotation = -1.30027
-scale = Vector2(0.340376, 0.340376)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("1_ohx38")

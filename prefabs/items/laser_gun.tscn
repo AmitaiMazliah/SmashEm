@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://ua8uchq5p8og" path="res://art/items/laser-gun.png" id="1_86oye"]
 
 [node name="Laser-gun" type="Sprite2D"]
-position = Vector2(12, -4)
-rotation = -0.717936
-scale = Vector2(0.357862, 0.357862)
+z_as_relative = false
+position = Vector2(49, -15)
+rotation = 0.178436
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_86oye")
