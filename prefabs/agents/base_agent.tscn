@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cl2oliy18bkk7"]
+[gd_scene load_steps=12 format=3 uid="uid://cl2oliy18bkk7"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://nfder5jo4p27" path="res://agent_physics_material.tres" id="1_sq3ck"]
 [ext_resource type="Script" path="res://scripts/agents/agent_2d.gd" id="2_k548n"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cyyj1wrprivnb" path="res://art/kenney_shape-characters/PNG/Double/blue_body_rhombus.png" id="6_3e7mx"]
 [ext_resource type="Texture2D" uid="uid://dy1n6rxo6h1a2" path="res://art/kenney_shape-characters/PNG/Double/face_a.png" id="7_dklko"]
 [ext_resource type="Texture2D" uid="uid://b1vwfajx7j17e" path="res://art/kenney_shape-characters/PNG/Double/blue_hand_open.png" id="8_pr7bm"]
-[ext_resource type="Texture2D" uid="uid://dhlgpfw72xdwl" path="res://art/Untitled_design-removebg-preview.png" id="9_c5ma1"]
 [ext_resource type="Script" path="res://scripts/health_bar.gd" id="10_j0r5x"]
 [ext_resource type="Theme" uid="uid://dx4axq65l727t" path="res://theme.tres" id="11_cpbxc"]
 
@@ -46,23 +45,19 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("7_dklko")
 
 [node name="BlueHandOpen" type="Sprite2D" parent="Visuals"]
+z_index = 1
 position = Vector2(55, 40)
 rotation = 2.00713
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("8_pr7bm")
 
 [node name="BlueHandOpen2" type="Sprite2D" parent="Visuals"]
+z_index = 1
 position = Vector2(-55, 40)
 rotation = -2.00713
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("8_pr7bm")
 flip_h = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-visible = false
-position = Vector2(0, 1)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("9_c5ma1")
 
 [node name="HeadPlaceHolder" type="Node2D" parent="Visuals"]
 z_index = 10
